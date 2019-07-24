@@ -12,15 +12,16 @@ public class HomeUserView extends AbstractView{
 
 	@Override
 	public void showResults(Request request) {
-		System.out.println("\n Benvenuto in iTeams PROJECT "+request.get("username").toString() + "\n");
-
+		if(request!=null) {
+	    	System.out.println("\n Benvenuto in iTeams PROJECT "+request.get("username").toString() + "\n");
+	    	}
 	}
 
 	@Override
 	public void showOptions() {
 		System.out.println("-------------MENU------------\n");
         System.out.println(" Seleziona cosa vuoi gestire:");
-        System.out.println("[M]atch [E]sci");
+        System.out.println("[M]atch [F]eedback [E]sci");
         //Il metodo che salva l'input nella stringa choice.
         //getInput() è definito in AbstractView.
         choice = this.getInput();
@@ -33,6 +34,10 @@ public class HomeUserView extends AbstractView{
 		case "m":
 			this.request.put("mode", "MATCHLIST");
 			MainDispatcher.getInstance().callAction("Match", "doControl", request);
+			break;
+		case "f":
+			this.request.put("mode", "FEEDBACKLIST");
+			MainDispatcher.getInstance().callAction("Feedback", "doControl", request);
 			break;
 		case "e":
 			MainDispatcher.getInstance().callAction("Login", "doControl", null);
