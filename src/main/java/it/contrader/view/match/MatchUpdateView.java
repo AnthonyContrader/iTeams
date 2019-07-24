@@ -29,7 +29,9 @@ public class MatchUpdateView extends AbstractView {
 	public void showResults(Request request) {
 		if (request!=null) {
 			System.out.println("Modifica andata a buon fine.\n");
-			MainDispatcher.getInstance().callView("Match", null);
+			//MainDispatcher.getInstance().callView("Match", null);
+			request.put("mode", "MATCHLIST");
+			MainDispatcher.getInstance().callAction("Match", "doControl", request);
 		}
 	}
 

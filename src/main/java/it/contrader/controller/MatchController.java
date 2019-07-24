@@ -107,11 +107,11 @@ public class MatchController implements Controller {
 			case "C":
 				MainDispatcher.getInstance().callView(sub_package + "MatchDelete", null);
 				break;
-
+				
 			case "E":
 				MainDispatcher.getInstance().callView("Login", null);
 				break;
-
+				
 			case "B":
 				MainDispatcher.getInstance().callView("HomeUser", null);
 				break;

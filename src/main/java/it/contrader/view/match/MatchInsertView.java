@@ -25,7 +25,9 @@ public class MatchInsertView extends AbstractView{
 	public void showResults(Request request) {
 		if (request!=null) {
 			System.out.println("Inserimento andato a buon fine.\n");
-			MainDispatcher.getInstance().callView("Match", null);
+			//MainDispatcher.getInstance().callView("Match", null);
+			request.put("mode", "MATCHLIST");
+			MainDispatcher.getInstance().callAction("Match", "doControl", request);
 		}
 	}
 

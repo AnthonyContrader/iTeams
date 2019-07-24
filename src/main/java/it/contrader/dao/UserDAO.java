@@ -96,15 +96,15 @@ public class UserDAO implements DAO<User> {
 		if (!userRead.equals(userToUpdate)) {
 			try {
 				// Fill the userToUpdate object
-				if (userToUpdate.getUsername() == null || userToUpdate.getUsername().equals("")) {
+				if (userToUpdate.getUsername() == null || userToUpdate.getUsername().equals("") || userToUpdate.getUsername().equals("0")) {
 					userToUpdate.setUsername(userRead.getUsername());
 				}
 
-				if (userToUpdate.getPassword() == null || userToUpdate.getPassword().equals("")) {
+				if (userToUpdate.getPassword() == null || userToUpdate.getPassword().equals("") || userToUpdate.getPassword().equals("0")) {
 					userToUpdate.setPassword(userRead.getPassword());
 				}
 
-				if (userToUpdate.getUsertype() == null || userToUpdate.getUsertype().equals("")) {
+				if (userToUpdate.getUsertype() == null || userToUpdate.getUsertype().equals("") || userToUpdate.getUsertype().equals("0")) {
 					userToUpdate.setUsertype(userRead.getUsertype());
 				}
 

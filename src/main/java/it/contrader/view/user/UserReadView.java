@@ -34,7 +34,9 @@ public class UserReadView extends AbstractView {
 		if (request != null) {
 			UserDTO user = (UserDTO) request.get("user");
 			System.out.println(user);
-			MainDispatcher.getInstance().callView("User", null);
+			//MainDispatcher.getInstance().callView("User", null);
+			request.put("mode", "USERLIST");
+        	MainDispatcher.getInstance().callAction("User", "doControl", request);
 		}
 	}
 
