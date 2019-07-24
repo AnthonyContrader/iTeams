@@ -34,7 +34,10 @@ public class HomeController implements Controller {
 				break;
 				
 			case "USER": 
-				MainDispatcher.getInstance().callView("Match", request);
+				//request.put("mode", "MATCHLIST");
+				//MainDispatcher.getInstance().callAction("Match", "doControl", request);
+				//MainDispatcher.getInstance().callView("Match", request);
+				MainDispatcher.getInstance().callView("HomeUser", request);
 				break;
 			
 			default:

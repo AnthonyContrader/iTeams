@@ -1,6 +1,5 @@
 package it.contrader.dto;
 
-import java.sql.Date;
 
 public class MatchDTO {
 
@@ -9,12 +8,12 @@ public class MatchDTO {
 	private int idUser;
 	private int rate;
 	private String address;
-	private Date matchtime;
+	private String matchtime;
 	
 	
 	public MatchDTO () {}
 	
-	public MatchDTO (int id,int idSport, int idUser, int rate, String address, Date matchtime) {
+	public MatchDTO (int id,int idSport, int idUser, int rate, String address, String matchtime) {
 		this.idSport= idSport;
 		this.idUser= idUser;
 		this.rate= rate;
@@ -26,7 +25,7 @@ public class MatchDTO {
 		
 	}
 
-	public MatchDTO (int idSport, int idUser, int rate, String address, Date matchtime) {
+	public MatchDTO (int idSport, int idUser, int rate, String address, String matchtime) {
 		this.idSport= idSport;
 		this.idUser= idUser;
 		this.rate= rate;
@@ -70,11 +69,11 @@ public class MatchDTO {
 		this.address = address;
 	}
 
-	public Date getMatchtime() {
+	public String getMatchtime() {
 		return matchtime;
 	}
 
-	public void setMatchtime(Date matchtime) {
+	public void setMatchtime(String matchtime) {
 		this.matchtime = matchtime;
 	}
 

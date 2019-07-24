@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import it.contrader.main.ConnectionSingleton;
 import it.contrader.model.Match;
-import it.contrader.model.User;
 
 /**
  * 
@@ -15,11 +14,11 @@ import it.contrader.model.User;
  */
 public class MatchDAO implements DAO<Match> {
 
-	private final String QUERY_ALL = "SELECT * FROM match";
-	private final String QUERY_CREATE = "INSERT INTO match (idsport, iduser,rate,address,matchtime) VALUES (?,?,?,?,?)";
-	private final String QUERY_READ = "SELECT * FROM match WHERE id=?";
-	private final String QUERY_UPDATE = "UPDATE match SET idsport=?, iduser=?, rate=?, address=?, matchtime=? WHERE id=?";
-	private final String QUERY_DELETE = "DELETE FROM match WHERE id=?";
+	private final String QUERY_ALL = "SELECT * FROM iteams.match";
+	private final String QUERY_CREATE = "INSERT INTO iteams.match (idsport, iduser,rate,address,matchtime) VALUES (?,?,?,?,?)";
+	private final String QUERY_READ = "SELECT * FROM iteams.match WHERE id=?";
+	private final String QUERY_UPDATE = "UPDATE iteams.match SET idsport=?, iduser=?, rate=?, address=?, matchtime=? WHERE id=?";
+	private final String QUERY_DELETE = "DELETE FROM iteams.match WHERE id=?";
 
 	public MatchDAO() {
 
@@ -37,7 +36,7 @@ public class MatchDAO implements DAO<Match> {
 				int idUser = resultSet.getInt("iduser");
 				int rate = resultSet.getInt("rate");
 				String address = resultSet.getString("address");
-				Date matchtime = resultSet.getDate("matchtime");
+				String matchtime = resultSet.getString("matchtime");
 				int id = resultSet.getInt("id");
 				match = new Match(idSport, idUser, rate, address, matchtime);
 				match.setId(id);
@@ -57,7 +56,7 @@ public class MatchDAO implements DAO<Match> {
 			preparedStatement.setInt(2, matchToInsert.getIdUser());
 			preparedStatement.setInt(3, matchToInsert.getRate());
 			preparedStatement.setString(4, matchToInsert.getAddress());
-			preparedStatement.setDate(5, matchToInsert.getMatchtime());
+			preparedStatement.setString(5, matchToInsert.getMatchtime());
 			preparedStatement.execute();
 			return true;
 		} catch (SQLException e) {
@@ -77,12 +76,12 @@ public class MatchDAO implements DAO<Match> {
 			resultSet.next();
 			int idSport, idUser, rate;
 			String address;
-			Date matchtime;
+			String matchtime;
 			idSport = resultSet.getInt("idsport");
 			idUser = resultSet.getInt("iduser");
 			rate = resultSet.getInt("rate");
 			address = resultSet.getString("address");
-			matchtime = resultSet.getDate("matchtime");
+			matchtime = resultSet.getString("matchtime");
 			Match match= new Match(idSport, idUser, rate, address, matchtime);
 			match.setId(resultSet.getInt("id"));
 
@@ -106,6 +105,7 @@ public class MatchDAO implements DAO<Match> {
 				// Fill the matchToUpdate object
 				if (matchToUpdate.getIdSport() == 0) {
 					matchToUpdate.setIdSport(matchRead.getIdSport());
+				System.out.println("primo if ");
 				}
 
 				if (matchToUpdate.getIdUser() == 0) {
@@ -116,11 +116,11 @@ public class MatchDAO implements DAO<Match> {
 					matchToUpdate.setRate(matchRead.getRate());
 				}
 				
-				if (matchToUpdate.getAddress() == null || matchToUpdate.getAddress().equals("")) {
+				if (matchToUpdate.getAddress() == null || matchToUpdate.getAddress().equals("") || matchToUpdate.getAddress().equals("0")) {
 					matchToUpdate.setAddress(matchRead.getAddress());
 				}
 				
-				if (matchToUpdate.getMatchtime() == null || matchToUpdate.getMatchtime().equals("")) {
+				if (matchToUpdate.getMatchtime() == null || matchToUpdate.getMatchtime().equals("") || matchToUpdate.getMatchtime().equals("0")) {
 					matchToUpdate.setMatchtime(matchRead.getMatchtime());
 				}
 
@@ -130,7 +130,8 @@ public class MatchDAO implements DAO<Match> {
 				preparedStatement.setInt(2, matchToUpdate.getIdUser());
 				preparedStatement.setInt(3, matchToUpdate.getRate());
 				preparedStatement.setString(4, matchToUpdate.getAddress());
-				preparedStatement.setDate(5, matchToUpdate.getMatchtime());
+				preparedStatement.setString(5, matchToUpdate.getMatchtime());
+				preparedStatement.setInt(6, matchToUpdate.getId());
 				int a = preparedStatement.executeUpdate();
 				if (a > 0)
 					return true;

@@ -1,11 +1,11 @@
 package it.contrader.controller;
 
-import java.sql.Date;
 import java.util.List;
 
 import it.contrader.dto.MatchDTO;
 import it.contrader.main.MainDispatcher;
 import it.contrader.service.MatchService;
+import it.contrader.service.UserService;
 
 public class MatchController implements Controller {
 
@@ -28,10 +28,10 @@ public class MatchController implements Controller {
 
 		int id;
 		int idSport;
-		int idMatch;
+		int idUser;
 		int rate;
 		String address;
-		Date matchtime;
+		String matchtime;
 
 		switch (mode) {
 
@@ -44,21 +44,35 @@ public class MatchController implements Controller {
 
 		case "INSERT":
 			idSport = Integer.parseInt(request.get("idSport").toString());
-			idMatch = Integer.parseInt(request.get("idMatch").toString());
+			idUser = Integer.parseInt(request.get("idUser").toString());
 			rate = Integer.parseInt(request.get("rate").toString());
 			address = request.get("address").toString();
-			matchtime = Date.valueOf(request.get("matchtime").toString());
+			matchtime = request.get("matchtime").toString();
+			MatchDTO usertoinsert = new MatchDTO(idSport, idUser, rate, address, matchtime);
+			//invoca il service
+			matchService.insert(usertoinsert);
+			request = new Request();
+			request.put("mode", "mode");
 			MainDispatcher.getInstance().callView(sub_package + "MatchInsert", request);
 			break;
-
+		
+		case "DELETE":
+			id = Integer.parseInt(request.get("id").toString());
+			//Qui chiama il service
+			matchService.delete(id);
+			request = new Request();
+			request.put("mode", "mode");
+			MainDispatcher.getInstance().callView(sub_package + "MatchDelete", request);
+			break;
+			
 		case "UPDATE":
 			id = Integer.parseInt(request.get("id").toString());
 			idSport = Integer.parseInt(request.get("idSport").toString());
-			idMatch = Integer.parseInt(request.get("idMatch").toString());
+			idUser = Integer.parseInt(request.get("idUser").toString());
 			rate = Integer.parseInt(request.get("rate").toString());
 			address = request.get("address").toString();
-			matchtime = Date.valueOf(request.get("matchtime").toString());
-			MatchDTO matchtoupdate = new MatchDTO(idSport, idMatch, rate, address, matchtime);
+			matchtime = request.get("matchtime").toString();
+			MatchDTO matchtoupdate = new MatchDTO(idSport, idUser, rate, address, matchtime);
 			matchtoupdate.setId(id);
 			matchService.update(matchtoupdate);
 			request = new Request();
@@ -99,7 +113,7 @@ public class MatchController implements Controller {
 				break;
 
 			case "B":
-				MainDispatcher.getInstance().callView("HomeAdmin", null);
+				MainDispatcher.getInstance().callView("HomeUser", null);
 				break;
 
 			default:

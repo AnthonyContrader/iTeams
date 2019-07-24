@@ -11,6 +11,9 @@ public abstract class AbstractView implements View {
 	*/
 	public String getInput() {
 		scanner = new Scanner(System.in);
-		return scanner.nextLine();
+		String valore = scanner.nextLine();
+		if(valore.equalsIgnoreCase("") || valore == null)
+			return "0";
+		return valore;
 	}
 }

@@ -1,6 +1,6 @@
 package it.contrader.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Match {
 
@@ -14,11 +14,11 @@ public class Match {
 	
 	private String address;
 	
-	private Date matchtime;
+	private String matchtime;
 	
 	
 
-	public Match(int id, int idSport, int idUser, int rate, String address, Date matchtime) {
+	public Match(int id, int idSport, int idUser, int rate, String address, String matchtime) {
 		super();
 		this.id = id;
 		this.idSport = idSport;
@@ -28,7 +28,7 @@ public class Match {
 		this.address = address;
 	}
 
-	public Match(int idSport, int idUser, int rate, String address, Date matchtime) {
+	public Match(int idSport, int idUser, int rate, String address, String matchtime) {
 		super();
 		this.idSport = idSport;
 		this.idUser = idUser;
@@ -72,11 +72,11 @@ public class Match {
 		this.rate = rate;
 	}
 
-	public Date getMatchtime() {
+	public String getMatchtime() {
 		return matchtime;
 	}
 
-	public void setMatchtime(Date matchtime) {
+	public void setMatchtime(String matchtime) {
 		this.matchtime = matchtime;
 	}
 
