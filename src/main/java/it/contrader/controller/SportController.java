@@ -29,7 +29,6 @@ public class SportController implements Controller {
 		int id;
 		int players;
 		String name;
-		
 
 		switch (mode) {
 
@@ -41,29 +40,29 @@ public class SportController implements Controller {
 			break;
 
 		case "INSERT":
-			players = Integer.parseInt(request.get("players").toString());			
-			name = request.get("name").toString();			
+			players = Integer.parseInt(request.get("players").toString());
+			name = request.get("name").toString();
 			SportDTO usertoinsert = new SportDTO(players, name);
-			//invoca il service
+			// invoca il service
 			sportService.insert(usertoinsert);
 			request = new Request();
 			request.put("mode", "mode");
 			MainDispatcher.getInstance().callView(sub_package + "SportInsert", request);
 			break;
-		
+
 		case "DELETE":
 			id = Integer.parseInt(request.get("id").toString());
-			//Qui chiama il service
+			// Qui chiama il service
 			sportService.delete(id);
 			request = new Request();
 			request.put("mode", "mode");
 			MainDispatcher.getInstance().callView(sub_package + "SportDelete", request);
 			break;
-			
+
 		case "UPDATE":
 			id = Integer.parseInt(request.get("id").toString());
-			players = Integer.parseInt(request.get("players").toString());			
-			name = request.get("name").toString();			
+			players = Integer.parseInt(request.get("players").toString());
+			name = request.get("name").toString();
 			SportDTO sporttoupdate = new SportDTO(players, name);
 			sporttoupdate.setId(id);
 			sportService.update(sporttoupdate);
@@ -119,4 +118,3 @@ public class SportController implements Controller {
 	}
 
 }
-

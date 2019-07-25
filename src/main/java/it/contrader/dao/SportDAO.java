@@ -10,7 +10,7 @@ import it.contrader.model.Sport;
  * 
  * @author Vittorio
  *
- *Per i dettagli della classe vedi Guida sez 6: DAO
+ *         Per i dettagli della classe vedi Guida sez 6: DAO
  */
 public class SportDAO implements DAO<Sport> {
 
@@ -33,11 +33,11 @@ public class SportDAO implements DAO<Sport> {
 			Sport sport;
 			while (resultSet.next()) {
 				int players = resultSet.getInt("nplayers");
-				
+
 				String name = resultSet.getString("name");
-				
+
 				int id = resultSet.getInt("id");
-				
+
 				sport = new Sport(players, name);
 				sport.setId(id);
 				sportsList.add(sport);
@@ -50,13 +50,13 @@ public class SportDAO implements DAO<Sport> {
 
 	public boolean insert(Sport sportToInsert) {
 		Connection connection = ConnectionSingleton.getInstance();
-		try {	
+		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_CREATE);
-			preparedStatement.setInt(1, sportToInsert.getPlayers());			
+			preparedStatement.setInt(1, sportToInsert.getPlayers());
 			preparedStatement.setString(2, sportToInsert.getName());
 			preparedStatement.execute();
 			return true;
-			
+
 		} catch (SQLException e) {
 			return false;
 		}
@@ -67,21 +67,20 @@ public class SportDAO implements DAO<Sport> {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 
-
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_READ);
 			preparedStatement.setInt(1, sportId);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			resultSet.next();
+
 			int players;
 			String name;
-			
-			players = resultSet.getInt("nplayers");
-			
-			name = resultSet.getString("name");
-			
-			Sport sport= new Sport(players, name);
-			sport.setId(resultSet.getInt("id"));
 
+			players = resultSet.getInt("nplayers");
+
+			name = resultSet.getString("name");
+
+			Sport sport = new Sport(players, name);
+			sport.setId(resultSet.getInt("id"));
 			return sport;
 		} catch (SQLException e) {
 			return null;
@@ -104,15 +103,15 @@ public class SportDAO implements DAO<Sport> {
 					sportToUpdate.setPlayers(sportRead.getPlayers());
 				}
 
-							
-				if (sportToUpdate.getName() == null || sportToUpdate.getName().equals("") || sportToUpdate.getName().equals("0")) {
+				if (sportToUpdate.getName() == null || sportToUpdate.getName().equals("")
+						|| sportToUpdate.getName().equals("0")) {
 					sportToUpdate.setName(sportRead.getName());
 				}
 
 				// Update the user
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
-				preparedStatement.setInt(1, sportToUpdate.getPlayers());				
-				preparedStatement.setString(2, sportToUpdate.getName());				
+				preparedStatement.setInt(1, sportToUpdate.getPlayers());
+				preparedStatement.setString(2, sportToUpdate.getName());
 				preparedStatement.setInt(3, sportToUpdate.getId());
 				int a = preparedStatement.executeUpdate();
 				if (a > 0)
@@ -142,6 +141,5 @@ public class SportDAO implements DAO<Sport> {
 		}
 		return false;
 	}
-
 
 }
