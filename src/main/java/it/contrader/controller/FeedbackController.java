@@ -78,7 +78,7 @@ public class FeedbackController implements Controller {
 			MainDispatcher.getInstance().callView(sub_package + "FeedbackUpdate", request);
 			break;
 
-		case "MATCHLIST":
+		case "FEEDBACKLIST":
 			List<FeedbackDTO> feedbacksDTO = feedbackService.getAll();
 			// Impacchetta la request con la lista degli user
 			request.put("feedback", feedbacksDTO);
