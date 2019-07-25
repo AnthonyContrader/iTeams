@@ -32,7 +32,7 @@ public class HomeAdminView extends AbstractView {
      * Chiede all'utente di effettuare una scelta (da console)
      */
     public void showOptions() {
-        System.out.println("-------------MENU------------\n");
+        System.out.println("-------------------- MENU -------------------\n");
         System.out.println(" Seleziona cosa vuoi gestire:");
         System.out.println("[U]tenti  [S]port  [E]sci");
         //Il metodo che salva l'input nella stringa choice.

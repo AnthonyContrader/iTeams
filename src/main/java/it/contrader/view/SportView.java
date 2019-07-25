@@ -28,9 +28,9 @@ public class SportView extends AbstractView {
 	@Override
 	public void showResults(Request request) {
 		if (request != null) {
-			System.out.println("\n------------------- Gestione s ----------------\n");
-			System.out.println("ID\tPlayers\tName");
-			System.out.println("----------------------------------------------------\n");
+			System.out.println("\n--------------- Gestione Sport ---------------\n");
+			System.out.println("ID\t\tPlayers\t\tName");
+			System.out.println("----------------------------------------------\n");
 			
 			@SuppressWarnings("unchecked")
 			List<SportDTO> sports = (List<SportDTO>) request.get("sport");

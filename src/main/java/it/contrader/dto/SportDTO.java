@@ -51,7 +51,7 @@ public class SportDTO {
 
 	@Override
 	public String toString() {
-		return "SportDTO [players= " + players + ", name= " + name + ", id= " + id + "]";
+		return  id + "\t\t" + players + "\t\t" + name;
 	}
 	
 }
