@@ -87,7 +87,7 @@ public class MatchDTO {
 
 	@Override
 	public String toString() {
-		return id + "\t" + idSport +"\t\t"+ idUser + "\t\t" + rate + "\t\t" + address.trim() + "\t\t\t" + matchtime.trim();
+		return id + "\t" + idSport +"\t\t"+ idUser + "\t\t" + rate  + "\t\t" + matchtime+ "\t\t" + address;
 	}
-	
+		
 }

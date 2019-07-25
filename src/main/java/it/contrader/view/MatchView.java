@@ -29,9 +29,9 @@ public class MatchView extends AbstractView {
 	@Override
 	public void showResults(Request request) {
 		if (request != null) {
-			System.out.println("\n-------------------------------------- Gestione match --------------------------------------\n");
-			System.out.println("ID\tID Sport\tID User\t\tRate\t\tAddress\t\t\tMatchtime");
-			System.out.println("---------------------------------------------------------------------------------------\n");
+			System.out.println("\n------------------------------------------- Gestione match -------------------------------------------\n");
+			System.out.println("ID\tID Sport\tID User\t\tRate\t\tMatchtime\t\t\tAddress");
+			System.out.println("------------------------------------------------------------------------------------------------------\n");
 			
 			@SuppressWarnings("unchecked")
 			List<MatchDTO> matchs = (List<MatchDTO>) request.get("match");
