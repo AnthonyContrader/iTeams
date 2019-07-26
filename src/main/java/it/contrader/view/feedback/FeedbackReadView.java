@@ -34,7 +34,9 @@ public class FeedbackReadView extends AbstractView {
 		if (request != null) {
 			FeedbackDTO feedback = (FeedbackDTO) request.get("feedback");
 			System.out.println(feedback);
-			MainDispatcher.getInstance().callView("Feedback", null);
+			//MainDispatcher.getInstance().callView("Feedback", null);
+			request.put("mode", "FEEDBACKLIST");
+			MainDispatcher.getInstance().callAction("Feedback", "doControl", request);
 		}
 	}
 

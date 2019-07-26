@@ -1,5 +1,7 @@
 package it.contrader.controller;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import it.contrader.dto.MatchDTO;
@@ -12,6 +14,9 @@ public class MatchController implements Controller {
 	private static String sub_package = "match.";
 
 	private MatchService matchService;
+	
+	private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+	private LocalDateTime localTime;
 
 	public MatchController() {
 
@@ -48,7 +53,8 @@ public class MatchController implements Controller {
 			rate = Integer.parseInt(request.get("rate").toString());
 			address = request.get("address").toString();
 			matchtime = request.get("matchtime").toString();
-			MatchDTO usertoinsert = new MatchDTO(idSport, idUser, rate, address, matchtime);
+			localTime = LocalDateTime.parse(matchtime, formatter);
+			MatchDTO usertoinsert = new MatchDTO(idSport, idUser, rate, address, localTime);
 			//invoca il service
 			matchService.insert(usertoinsert);
 			request = new Request();
@@ -72,7 +78,8 @@ public class MatchController implements Controller {
 			rate = Integer.parseInt(request.get("rate").toString());
 			address = request.get("address").toString();
 			matchtime = request.get("matchtime").toString();
-			MatchDTO matchtoupdate = new MatchDTO(idSport, idUser, rate, address, matchtime);
+			localTime = LocalDateTime.parse(matchtime, formatter);
+			MatchDTO matchtoupdate = new MatchDTO(idSport, idUser, rate, address, localTime);
 			matchtoupdate.setId(id);
 			matchService.update(matchtoupdate);
 			request = new Request();

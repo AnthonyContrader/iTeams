@@ -21,7 +21,10 @@ public class FeedbackDeleteView extends AbstractView {
 	public void showResults(Request request) {
 		if (request!=null) {
 			System.out.println("Cancellazione andata a buon fine.\n");
-			MainDispatcher.getInstance().callView("Feedback", null);
+			//MainDispatcher.getInstance().callView("Feedback", null);
+			request.put("mode", "FEEDBACKLIST");
+			MainDispatcher.getInstance().callAction("Feedback", "doControl", request);
+	
 		}
 	}
 

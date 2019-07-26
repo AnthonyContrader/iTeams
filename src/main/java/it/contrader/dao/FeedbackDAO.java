@@ -72,13 +72,9 @@ public class FeedbackDAO implements DAO<Feedback> {
 			ResultSet resultSet = preparedStatement.executeQuery();
 			resultSet.next();
 			int idSport, idUser, rate;
-			String address;
-			String feedbacktime;
 			idSport = resultSet.getInt("idsport");
 			idUser = resultSet.getInt("iduser");
 			rate = resultSet.getInt("rate");
-			address = resultSet.getString("address");
-			feedbacktime = resultSet.getString("feedbacktime");
 			Feedback feedback= new Feedback(idSport, idUser, rate);
 			feedback.setId(resultSet.getInt("id"));
 

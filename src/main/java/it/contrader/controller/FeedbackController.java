@@ -30,7 +30,7 @@ public class FeedbackController implements Controller {
 		int idSport;
 		int idUser;
 		int rate;
-		String address;
+
 		
 
 		switch (mode) {
@@ -46,7 +46,6 @@ public class FeedbackController implements Controller {
 			idSport = Integer.parseInt(request.get("idSport").toString());
 			idUser = Integer.parseInt(request.get("idUser").toString());
 			rate = Integer.parseInt(request.get("rate").toString());
-			address = request.get("address").toString();
 			FeedbackDTO usertoinsert = new FeedbackDTO(idSport, idUser, rate);
 			//invoca il service
 			feedbackService.insert(usertoinsert);
@@ -69,7 +68,6 @@ public class FeedbackController implements Controller {
 			idSport = Integer.parseInt(request.get("idSport").toString());
 			idUser = Integer.parseInt(request.get("idUser").toString());
 			rate = Integer.parseInt(request.get("rate").toString());
-			address = request.get("address").toString();
 			FeedbackDTO feedbacktoupdate = new FeedbackDTO(idSport, idUser, rate);
 			feedbacktoupdate.setId(id);
 			feedbackService.update(feedbacktoupdate);

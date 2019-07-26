@@ -1,5 +1,6 @@
 package it.contrader.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Match {
@@ -14,11 +15,12 @@ public class Match {
 	
 	private String address;
 	
-	private String matchtime;
+	private LocalDateTime matchtime;
+	//private String matchtime;
 	
 	
 
-	public Match(int id, int idSport, int idUser, int rate, String address, String matchtime) {
+	public Match(int id, int idSport, int idUser, int rate, String address, LocalDateTime matchtime) {
 		super();
 		this.id = id;
 		this.idSport = idSport;
@@ -28,7 +30,7 @@ public class Match {
 		this.address = address;
 	}
 
-	public Match(int idSport, int idUser, int rate, String address, String matchtime) {
+	public Match(int idSport, int idUser, int rate, String address, LocalDateTime matchtime) {
 		super();
 		this.idSport = idSport;
 		this.idUser = idUser;
@@ -72,11 +74,11 @@ public class Match {
 		this.rate = rate;
 	}
 
-	public String getMatchtime() {
+	public LocalDateTime getMatchtime() {
 		return matchtime;
 	}
 
-	public void setMatchtime(String matchtime) {
+	public void setMatchtime(LocalDateTime matchtime) {
 		this.matchtime = matchtime;
 	}
 

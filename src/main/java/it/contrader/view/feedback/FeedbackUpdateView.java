@@ -11,8 +11,7 @@ public class FeedbackUpdateView extends AbstractView {
 	private int idSport;
 	private int idUser;
 	private int rate;
-	private String address;
-	private String feedbacktime;
+
 
 	private final String mode = "UPDATE";
 
@@ -27,7 +26,10 @@ public class FeedbackUpdateView extends AbstractView {
 	public void showResults(Request request) {
 		if (request!=null) {
 			System.out.println("Modifica andata a buon fine.\n");
-			MainDispatcher.getInstance().callView("Feedback", null);
+			//MainDispatcher.getInstance().callView("Feedback", null);
+			request.put("mode", "FEEDBACKLIST");
+			MainDispatcher.getInstance().callAction("Feedback", "doControl", request);
+	
 		}
 	}
 
@@ -47,12 +49,9 @@ public class FeedbackUpdateView extends AbstractView {
 			idUser = Integer.parseInt(getInput());
 			System.out.println("Inserisci id dello sport:");
 			idSport = Integer.parseInt(getInput());
-			System.out.println("Inserisci il livello della partita:");
+			System.out.println("Inserisci il feedback:");
 			rate = Integer.parseInt(getInput());
-			System.out.println("Inserisci l'indirizzo:");
-			address = getInput();
-			System.out.println("Inserisci la data:");
-			feedbacktime = getInput();
+
 			
 		} catch (Exception e) {
 
@@ -71,8 +70,6 @@ public class FeedbackUpdateView extends AbstractView {
 		request.put("idSport", idSport);
 		request.put("idUser", idUser);
 		request.put("rate", rate);
-		request.put("address", address);
-		request.put("feedbacktime", feedbacktime);		
 		request.put("mode", mode);
 		MainDispatcher.getInstance().callAction("Feedback", "doControl", request);
 		

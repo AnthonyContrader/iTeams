@@ -36,10 +36,10 @@ public class HomeUserView extends AbstractView{
 			this.request.put("mode", "MATCHLIST");
 			MainDispatcher.getInstance().callAction("Match", "doControl", request);
 			break;
-		/*case "f": 			
+		case "f": 			
 			this.request.put("mode", "FEEDBACKLIST");
 			MainDispatcher.getInstance().callAction("Feedback", "doControl", request);
-			break;*/
+			break;
 		case "e":
 			MainDispatcher.getInstance().callAction("Login", "doControl", null);
 			break;

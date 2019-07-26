@@ -55,7 +55,7 @@ public class MatchUpdateView extends AbstractView {
 			rate = Integer.parseInt(getInput());
 			System.out.println("Inserisci l'indirizzo:");
 			address = getInput();
-			System.out.println("Inserisci la data:");
+			System.out.println("Inserisci la data nel formato YYYY-MM-DD HH:MM:SS :");
 			matchtime = getInput();
 			
 		} catch (Exception e) {

@@ -1,6 +1,9 @@
 package it.contrader.dao;
 
 import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import it.contrader.main.ConnectionSingleton;
@@ -19,7 +22,10 @@ public class MatchDAO implements DAO<Match> {
 	private final String QUERY_READ = "SELECT * FROM iteams.match WHERE id=?";
 	private final String QUERY_UPDATE = "UPDATE iteams.match SET idsport=?, iduser=?, rate=?, address=?, matchtime=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE FROM iteams.match WHERE id=?";
-
+	
+	private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+	private LocalDateTime localTime;
+	
 	public MatchDAO() {
 
 	}
@@ -38,7 +44,8 @@ public class MatchDAO implements DAO<Match> {
 				String address = resultSet.getString("address");
 				String matchtime = resultSet.getString("matchtime");
 				int id = resultSet.getInt("id");
-				match = new Match(idSport, idUser, rate, address, matchtime);
+				localTime=LocalDateTime.parse(matchtime, formatter);
+				match = new Match(idSport, idUser, rate, address, localTime);
 				match.setId(id);
 				matchsList.add(match);
 			}
@@ -56,7 +63,7 @@ public class MatchDAO implements DAO<Match> {
 			preparedStatement.setInt(2, matchToInsert.getIdUser());
 			preparedStatement.setInt(3, matchToInsert.getRate());
 			preparedStatement.setString(4, matchToInsert.getAddress());
-			preparedStatement.setString(5, matchToInsert.getMatchtime());
+			preparedStatement.setTimestamp(5, Timestamp.valueOf(matchToInsert.getMatchtime()));
 			preparedStatement.execute();
 			return true;
 		} catch (SQLException e) {
@@ -82,7 +89,8 @@ public class MatchDAO implements DAO<Match> {
 			rate = resultSet.getInt("rate");
 			address = resultSet.getString("address");
 			matchtime = resultSet.getString("matchtime");
-			Match match= new Match(idSport, idUser, rate, address, matchtime);
+			localTime = LocalDateTime.parse(matchtime, formatter);
+			Match match= new Match(idSport, idUser, rate, address, localTime);
 			match.setId(resultSet.getInt("id"));
 
 			return match;
@@ -123,14 +131,14 @@ public class MatchDAO implements DAO<Match> {
 				if (matchToUpdate.getMatchtime() == null || matchToUpdate.getMatchtime().equals("") || matchToUpdate.getMatchtime().equals("0")) {
 					matchToUpdate.setMatchtime(matchRead.getMatchtime());
 				}
-
+				
 				// Update the user
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
 				preparedStatement.setInt(1, matchToUpdate.getIdSport());
 				preparedStatement.setInt(2, matchToUpdate.getIdUser());
 				preparedStatement.setInt(3, matchToUpdate.getRate());
 				preparedStatement.setString(4, matchToUpdate.getAddress());
-				preparedStatement.setString(5, matchToUpdate.getMatchtime());
+				preparedStatement.setTimestamp(5, Timestamp.valueOf(matchToUpdate.getMatchtime()));
 				preparedStatement.setInt(6, matchToUpdate.getId());
 				int a = preparedStatement.executeUpdate();
 				if (a > 0)

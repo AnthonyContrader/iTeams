@@ -29,8 +29,8 @@ public class FeedbackView extends AbstractView {
 	@Override
 	public void showResults(Request request) {
 		if (request != null) {
-			System.out.println("\n------------------- Gestione feedback ----------------\n");
-			System.out.println("ID\tID Sport\tID User\tRate\tAddress\tFeedbacktime");
+			System.out.println("\n------------------ Gestione feedback ---------------\n");
+			System.out.println("ID\tID USER\t\tID SPORT\tRate");
 			System.out.println("----------------------------------------------------\n");
 			
 			@SuppressWarnings("unchecked")

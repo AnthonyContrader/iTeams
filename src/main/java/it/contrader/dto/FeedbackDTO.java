@@ -68,8 +68,7 @@ public class FeedbackDTO {
 
 	@Override
 	public String toString() {
-		return "FeedbackDTO [idSport=" + idSport + ", idUser=" + idUser + ", rate=" + rate 
-				 + ", id=" + id + "]";
+		return id + "\t" + idUser + "\t\t" + idSport + "\t\t" + rate;
 	}
 	
 }
