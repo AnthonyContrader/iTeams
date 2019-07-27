@@ -1,7 +1,8 @@
 package it.contrader.dto;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class MatchDTO {
 
@@ -10,13 +11,12 @@ public class MatchDTO {
 	private int idUser;
 	private int rate;
 	private String address;
-	// private String matchtime;
-	private LocalDateTime matchtime;
-
+	private Date matchtime;
+	
 	public MatchDTO() {
 	}
 
-	public MatchDTO(int id, int idSport, int idUser, int rate, String address, LocalDateTime matchtime) {
+	public MatchDTO(int id, int idSport, int idUser, int rate, String address, Date matchtime) {
 		this.idSport = idSport;
 		this.idUser = idUser;
 		this.rate = rate;
@@ -26,7 +26,7 @@ public class MatchDTO {
 
 	}
 
-	public MatchDTO(int idSport, int idUser, int rate, String address, LocalDateTime matchtime) {
+	public MatchDTO(int idSport, int idUser, int rate, String address, Date matchtime) {
 		this.idSport = idSport;
 		this.idUser = idUser;
 		this.rate = rate;
@@ -67,11 +67,11 @@ public class MatchDTO {
 		this.address = address;
 	}
 
-	public LocalDateTime getMatchtime() {
+	public Date getMatchtime() {
 		return matchtime;
 	}
 
-	public void setMatchtime(LocalDateTime matchtime) {
+	public void setMatchtime(Date matchtime) {
 		this.matchtime = matchtime;
 	}
 
@@ -85,7 +85,8 @@ public class MatchDTO {
 
 	@Override
 	public String toString() {
-		return id + "\t" + idSport + "\t\t" + idUser + "\t\t" + rate + "\t\t" + DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(matchtime )+ "\t\t" + address;
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		return id + "\t" + idSport + "\t\t" + idUser + "\t\t" + rate + "\t\t" +  sdf.format(matchtime)+ "\t\t" + address;
 	}
 
 }

@@ -1,13 +1,10 @@
 package it.contrader.controller;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import it.contrader.dto.MatchDTO;
 import it.contrader.main.MainDispatcher;
 import it.contrader.service.MatchService;
-import it.contrader.service.UserService;
 
 public class MatchController implements Controller {
 
@@ -15,9 +12,6 @@ public class MatchController implements Controller {
 
 	private MatchService matchService;
 	
-	private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-	private LocalDateTime localTime;
-
 	public MatchController() {
 
 		this.matchService = new MatchService();
@@ -36,7 +30,7 @@ public class MatchController implements Controller {
 		int idUser;
 		int rate;
 		String address;
-		String matchtime;
+		java.util.Date matchtime;
 
 		switch (mode) {
 
@@ -52,10 +46,8 @@ public class MatchController implements Controller {
 			idUser = Integer.parseInt(request.get("idUser").toString());
 			rate = Integer.parseInt(request.get("rate").toString());
 			address = request.get("address").toString();
-			matchtime = request.get("matchtime").toString();
-			localTime = LocalDateTime.parse(matchtime, formatter);
-			MatchDTO usertoinsert = new MatchDTO(idSport, idUser, rate, address, localTime);
-			//invoca il service
+			matchtime = (java.util.Date)(request.get("matchtime"));
+			MatchDTO usertoinsert = new MatchDTO(idSport, idUser, rate, address, matchtime);
 			matchService.insert(usertoinsert);
 			request = new Request();
 			request.put("mode", "mode");
@@ -64,7 +56,6 @@ public class MatchController implements Controller {
 		
 		case "DELETE":
 			id = Integer.parseInt(request.get("id").toString());
-			//Qui chiama il service
 			matchService.delete(id);
 			request = new Request();
 			request.put("mode", "mode");
@@ -77,9 +68,8 @@ public class MatchController implements Controller {
 			idUser = Integer.parseInt(request.get("idUser").toString());
 			rate = Integer.parseInt(request.get("rate").toString());
 			address = request.get("address").toString();
-			matchtime = request.get("matchtime").toString();
-			localTime = LocalDateTime.parse(matchtime, formatter);
-			MatchDTO matchtoupdate = new MatchDTO(idSport, idUser, rate, address, localTime);
+			matchtime = (java.util.Date) request.get("matchtime");
+			MatchDTO matchtoupdate = new MatchDTO(idSport, idUser, rate, address, matchtime);
 			matchtoupdate.setId(id);
 			matchService.update(matchtoupdate);
 			request = new Request();
@@ -89,14 +79,11 @@ public class MatchController implements Controller {
 
 		case "MATCHLIST":
 			List<MatchDTO> matchsDTO = matchService.getAll();
-			// Impacchetta la request con la lista degli user
 			request.put("match", matchsDTO);
 			MainDispatcher.getInstance().callView("Match", request);
 			break;
 
 		case "GETCHOICE":
-
-			// toUpperCase() mette in maiuscolo la scelta
 			switch (choice.toUpperCase()) {
 
 			case "L":

@@ -5,7 +5,6 @@ import java.util.List;
 import it.contrader.dto.SportDTO;
 import it.contrader.main.MainDispatcher;
 import it.contrader.service.SportService;
-import it.contrader.service.UserService;
 
 public class SportController implements Controller {
 
@@ -73,14 +72,11 @@ public class SportController implements Controller {
 
 		case "SPORTLIST":
 			List<SportDTO> sportsDTO = sportService.getAll();
-			// Impacchetta la request con la lista degli user
 			request.put("sport", sportsDTO);
 			MainDispatcher.getInstance().callView("Sport", request);
 			break;
 
 		case "GETCHOICE":
-
-			// toUpperCase() mette in maiuscolo la scelta
 			switch (choice.toUpperCase()) {
 
 			case "L":

@@ -6,12 +6,6 @@ import java.util.List;
 import it.contrader.main.ConnectionSingleton;
 import it.contrader.model.Feedback;
 
-/**
- * 
- * @author Vittorio
- *
- *Per i dettagli della classe vedi Guida sez 6: DAO
- */
 public class FeedbackDAO implements DAO<Feedback> {
 
 	private final String QUERY_ALL = "SELECT * FROM iteams.feedback";
@@ -88,14 +82,12 @@ public class FeedbackDAO implements DAO<Feedback> {
 	public boolean update(Feedback feedbackToUpdate) {
 		Connection connection = ConnectionSingleton.getInstance();
 
-		// Check if id is present
 		if (feedbackToUpdate.getId() == 0)
 			return false;
 
 		Feedback feedbackRead = read(feedbackToUpdate.getId());
 		if (!feedbackRead.equals(feedbackToUpdate)) {
 			try {
-				// Fill the feedbackToUpdate object
 				if (feedbackToUpdate.getIdSport() == 0) {
 					feedbackToUpdate.setIdSport(feedbackRead.getIdSport());
 				System.out.println("primo if ");
@@ -110,8 +102,6 @@ public class FeedbackDAO implements DAO<Feedback> {
 				}
 				
 				
-
-				// Update the user
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
 				preparedStatement.setInt(1, feedbackToUpdate.getIdSport());
 				preparedStatement.setInt(2, feedbackToUpdate.getIdUser());

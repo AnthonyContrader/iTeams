@@ -1,20 +1,13 @@
 package it.contrader.dao;
 
 import java.sql.*;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import it.contrader.main.ConnectionSingleton;
 import it.contrader.model.Match;
 
-/**
- * 
- * @author Vittorio
- *
- *Per i dettagli della classe vedi Guida sez 6: DAO
- */
+
 public class MatchDAO implements DAO<Match> {
 
 	private final String QUERY_ALL = "SELECT * FROM iteams.match";
@@ -22,10 +15,8 @@ public class MatchDAO implements DAO<Match> {
 	private final String QUERY_READ = "SELECT * FROM iteams.match WHERE id=?";
 	private final String QUERY_UPDATE = "UPDATE iteams.match SET idsport=?, iduser=?, rate=?, address=?, matchtime=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE FROM iteams.match WHERE id=?";
-	
-	private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-	private LocalDateTime localTime;
-	
+
+	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	public MatchDAO() {
 
 	}
@@ -42,10 +33,9 @@ public class MatchDAO implements DAO<Match> {
 				int idUser = resultSet.getInt("iduser");
 				int rate = resultSet.getInt("rate");
 				String address = resultSet.getString("address");
-				String matchtime = resultSet.getString("matchtime");
+				java.util.Date matchtime = resultSet.getTimestamp("matchtime");
 				int id = resultSet.getInt("id");
-				localTime=LocalDateTime.parse(matchtime, formatter);
-				match = new Match(idSport, idUser, rate, address, localTime);
+				match = new Match(idSport, idUser, rate, address, matchtime);
 				match.setId(id);
 				matchsList.add(match);
 			}
@@ -63,7 +53,7 @@ public class MatchDAO implements DAO<Match> {
 			preparedStatement.setInt(2, matchToInsert.getIdUser());
 			preparedStatement.setInt(3, matchToInsert.getRate());
 			preparedStatement.setString(4, matchToInsert.getAddress());
-			preparedStatement.setTimestamp(5, Timestamp.valueOf(matchToInsert.getMatchtime()));
+			preparedStatement.setTimestamp(5, Timestamp.valueOf(sdf.format(matchToInsert.getMatchtime())));
 			preparedStatement.execute();
 			return true;
 		} catch (SQLException e) {
@@ -83,14 +73,14 @@ public class MatchDAO implements DAO<Match> {
 			resultSet.next();
 			int idSport, idUser, rate;
 			String address;
-			String matchtime;
+			java.util.Date matchtime;
 			idSport = resultSet.getInt("idsport");
 			idUser = resultSet.getInt("iduser");
 			rate = resultSet.getInt("rate");
 			address = resultSet.getString("address");
-			matchtime = resultSet.getString("matchtime");
-			localTime = LocalDateTime.parse(matchtime, formatter);
-			Match match= new Match(idSport, idUser, rate, address, localTime);
+			matchtime = resultSet.getTimestamp("matchtime");
+			//localTime = LocalDateTime.parse(matchtime, formatter);
+			Match match= new Match(idSport, idUser, rate, address, matchtime);
 			match.setId(resultSet.getInt("id"));
 
 			return match;
@@ -102,15 +92,12 @@ public class MatchDAO implements DAO<Match> {
 
 	public boolean update(Match matchToUpdate) {
 		Connection connection = ConnectionSingleton.getInstance();
-
-		// Check if id is present
 		if (matchToUpdate.getId() == 0)
 			return false;
 
 		Match matchRead = read(matchToUpdate.getId());
 		if (!matchRead.equals(matchToUpdate)) {
 			try {
-				// Fill the matchToUpdate object
 				if (matchToUpdate.getIdSport() == 0) {
 					matchToUpdate.setIdSport(matchRead.getIdSport());
 				System.out.println("primo if ");
@@ -132,13 +119,12 @@ public class MatchDAO implements DAO<Match> {
 					matchToUpdate.setMatchtime(matchRead.getMatchtime());
 				}
 				
-				// Update the user
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
 				preparedStatement.setInt(1, matchToUpdate.getIdSport());
 				preparedStatement.setInt(2, matchToUpdate.getIdUser());
 				preparedStatement.setInt(3, matchToUpdate.getRate());
 				preparedStatement.setString(4, matchToUpdate.getAddress());
-				preparedStatement.setTimestamp(5, Timestamp.valueOf(matchToUpdate.getMatchtime()));
+				preparedStatement.setTimestamp(5, Timestamp.valueOf(sdf.format(matchToUpdate.getMatchtime())));
 				preparedStatement.setInt(6, matchToUpdate.getId());
 				int a = preparedStatement.executeUpdate();
 				if (a > 0)

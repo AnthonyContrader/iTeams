@@ -6,12 +6,6 @@ import java.util.List;
 import it.contrader.main.ConnectionSingleton;
 import it.contrader.model.Sport;
 
-/**
- * 
- * @author Vittorio
- *
- *         Per i dettagli della classe vedi Guida sez 6: DAO
- */
 public class SportDAO implements DAO<Sport> {
 
 	private final String QUERY_ALL = "SELECT * FROM iteams.sport";
@@ -91,14 +85,12 @@ public class SportDAO implements DAO<Sport> {
 	public boolean update(Sport sportToUpdate) {
 		Connection connection = ConnectionSingleton.getInstance();
 
-		// Check if id is present
 		if (sportToUpdate.getId() == 0)
 			return false;
 
 		Sport sportRead = read(sportToUpdate.getId());
 		if (!sportRead.equals(sportToUpdate)) {
 			try {
-				// Fill the matchToUpdate object
 				if (sportToUpdate.getPlayers() == 0) {
 					sportToUpdate.setPlayers(sportRead.getPlayers());
 				}

@@ -4,16 +4,9 @@ import java.util.List;
 
 import it.contrader.controller.Request;
 import it.contrader.dto.FeedbackDTO;
-import it.contrader.dto.UserDTO;
 import it.contrader.main.MainDispatcher;
 
 
-/**
- * 
- * @author Vittorio
- *
- * Si osservi che alla View arrivano solo oggetti di tipo DTO!
- */
 public class FeedbackView extends AbstractView {
 
 	private Request request;
@@ -23,9 +16,6 @@ public class FeedbackView extends AbstractView {
 		
 	}
 
-	/**
-	 * Mostra la lista utenti
-	 */
 	@Override
 	public void showResults(Request request) {
 		if (request != null) {
@@ -41,10 +31,6 @@ public class FeedbackView extends AbstractView {
 		}
 	}
 
-	/**
-	 * Chiede all'utente un input (lettera da tastiera) per la choice (vedi UserController). 
-	 * Mette la modalità GETCHOICE nella mode.
-	 */
 	@Override
 	public void showOptions() {
 		System.out.println("          Scegli l'operazione da effettuare:");
@@ -55,9 +41,6 @@ public class FeedbackView extends AbstractView {
 		
 	}
 	
-	/**
-	 * Impacchetta la request e la manda allo UserController.
-	 */
 	@Override
 	public void submit() {
 		request = new Request();

@@ -24,7 +24,6 @@ public class SportUpdateView extends AbstractView {
 	public void showResults(Request request) {
 		if (request!=null) {
 			System.out.println("Modifica andata a buon fine.\n");
-			//MainDispatcher.getInstance().callView("Match", null);
 			request.put("mode", "SPORTLIST");
 			MainDispatcher.getInstance().callAction("Sport", "doControl", request);
 		}

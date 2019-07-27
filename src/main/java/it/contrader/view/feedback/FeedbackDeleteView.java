@@ -13,24 +13,16 @@ public class FeedbackDeleteView extends AbstractView {
 	public FeedbackDeleteView() {
 	}
 
-	/**
-	 * Se la request non è nulla (ovvero se si arriva dalla mode DELETE del controller) mostra
-	 * l'esito dell'operazione
-	 */
 	@Override
 	public void showResults(Request request) {
 		if (request!=null) {
 			System.out.println("Cancellazione andata a buon fine.\n");
-			//MainDispatcher.getInstance().callView("Feedback", null);
 			request.put("mode", "FEEDBACKLIST");
 			MainDispatcher.getInstance().callAction("Feedback", "doControl", request);
 	
 		}
 	}
 
-	/**
-	 * Chiede all'utente di inserire l'id dell'utente da cancellare
-	 */
 	@Override
 	public void showOptions() {
 			System.out.println("Inserisci id del feedback:");
@@ -38,9 +30,6 @@ public class FeedbackDeleteView extends AbstractView {
 
 	}
 
-	/**
-	 * impacchetta la request con l'id dell'utente da cancellare
-	 */
 	@Override
 	public void submit() {
 		request = new Request();

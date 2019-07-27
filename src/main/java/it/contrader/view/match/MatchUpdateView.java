@@ -1,6 +1,10 @@
 package it.contrader.view.match;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
 import it.contrader.view.AbstractView;
@@ -14,30 +18,23 @@ public class MatchUpdateView extends AbstractView {
 	private int idUser;
 	private int rate;
 	private String address;
-	private String matchtime;
-
+	private Date matchtime;
+	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private final String mode = "UPDATE";
 
 	public MatchUpdateView() {
 	}
 
-	/**
-	 * Se la request non è nulla (ovvero se si arriva dalla mode UPDATE del controller) mostra
-	 * l'esito dell'operazione
-	 */
+
 	@Override
 	public void showResults(Request request) {
 		if (request!=null) {
 			System.out.println("Modifica andata a buon fine.\n");
-			//MainDispatcher.getInstance().callView("Match", null);
 			request.put("mode", "MATCHLIST");
 			MainDispatcher.getInstance().callAction("Match", "doControl", request);
 		}
 	}
 
-	/**
-	 * Chiede all'utente di inserire gli attributi dell'utente da modificare
-	 */
 	@Override
 	public void showOptions() {
 		try {
@@ -56,7 +53,13 @@ public class MatchUpdateView extends AbstractView {
 			System.out.println("Inserisci l'indirizzo:");
 			address = getInput();
 			System.out.println("Inserisci la data nel formato YYYY-MM-DD HH:MM:SS :");
-			matchtime = getInput();
+			try {
+				matchtime = sdf.parse(getInput());
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				//e.printStackTrace();
+				System.err.println("errore nella conversione della stringa");
+			}
 			
 		} catch (Exception e) {
 
@@ -64,9 +67,6 @@ public class MatchUpdateView extends AbstractView {
 	}
 
 
-	/**
-	 * Impacchetta la request con i dati inseriti nel metodo showOption()
-	 */
 	@Override
 	public void submit() {
 				

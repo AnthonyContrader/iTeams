@@ -1,7 +1,6 @@
 package it.contrader.service;
 
 import it.contrader.converter.FeedbackConverter;
-import it.contrader.converter.UserConverter;
 import it.contrader.dao.FeedbackDAO;
 import it.contrader.dto.FeedbackDTO;
 import it.contrader.model.Feedback;

@@ -1,6 +1,6 @@
 package it.contrader.model;
 
-import java.time.LocalDateTime;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Match {
@@ -15,12 +15,10 @@ public class Match {
 	
 	private String address;
 	
-	private LocalDateTime matchtime;
-	//private String matchtime;
-	
+	private Date matchtime;
 	
 
-	public Match(int id, int idSport, int idUser, int rate, String address, LocalDateTime matchtime) {
+	public Match(int id, int idSport, int idUser, int rate, String address, Date matchtime) {
 		super();
 		this.id = id;
 		this.idSport = idSport;
@@ -30,7 +28,7 @@ public class Match {
 		this.address = address;
 	}
 
-	public Match(int idSport, int idUser, int rate, String address, LocalDateTime matchtime) {
+	public Match(int idSport, int idUser, int rate, String address, Date matchtime) {
 		super();
 		this.idSport = idSport;
 		this.idUser = idUser;
@@ -74,11 +72,11 @@ public class Match {
 		this.rate = rate;
 	}
 
-	public LocalDateTime getMatchtime() {
+	public Date getMatchtime() {
 		return matchtime;
 	}
 
-	public void setMatchtime(LocalDateTime matchtime) {
+	public void setMatchtime(Date matchtime) {
 		this.matchtime = matchtime;
 	}
 
@@ -92,8 +90,9 @@ public class Match {
 
 	@Override
 	public String toString() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return "Match [id=" + id + ", idSport=" + idSport + ", idUser=" + idUser + ", rate=" + rate + ", matchtime="
-				+ matchtime + ", address=" + address + "]";
+				+ sdf.format(matchtime) + ", address=" + address + "]";
 	}
 
 	

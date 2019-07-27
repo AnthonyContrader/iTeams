@@ -1,7 +1,6 @@
 package it.contrader.service;
 
 import it.contrader.converter.MatchConverter;
-import it.contrader.converter.UserConverter;
 import it.contrader.dao.MatchDAO;
 import it.contrader.dto.MatchDTO;
 import it.contrader.model.Match;

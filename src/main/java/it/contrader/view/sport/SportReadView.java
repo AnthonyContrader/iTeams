@@ -20,7 +20,6 @@ public class SportReadView extends AbstractView {
 		if (request != null) {
 			SportDTO sport = (SportDTO) request.get("sport");
 			System.out.println(sport);
-			//MainDispatcher.getInstance().callView("Sport", null);
 			request.put("mode", "SPORTLIST");
 			MainDispatcher.getInstance().callAction("Sport", "doControl", request);
 		}

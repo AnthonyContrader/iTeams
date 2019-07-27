@@ -1,5 +1,8 @@
 package it.contrader.view.match;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
 import it.contrader.view.AbstractView;
@@ -11,29 +14,23 @@ public class MatchInsertView extends AbstractView{
 	private int idUser;
 	private int rate;
 	private String address;
-	private String matchtime;
+	private java.util.Date matchtime;
 	private final String mode = "INSERT";
-
+	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	
 	public MatchInsertView() {
 	}
 	
-	/**
-	 * Se la request non è nulla (ovvero se si arriva dalla mode INSERT del controller) mostra
-	 * l'esito dell'operazione
-	 */
+
 	@Override
 	public void showResults(Request request) {
 		if (request!=null) {
 			System.out.println("Inserimento andato a buon fine.\n");
-			//MainDispatcher.getInstance().callView("Match", null);
 			request.put("mode", "MATCHLIST");
 			MainDispatcher.getInstance().callAction("Match", "doControl", request);
 		}
 	}
 
-	/**
-	 * Chiede all'utente di inserire gli attributi dell'utente da inserire
-	 */
 	@Override
 	public void showOptions() {
 			System.out.println("Inserisci id dell'utente:");
@@ -45,12 +42,13 @@ public class MatchInsertView extends AbstractView{
 			System.out.println("Inserisci l'indirizzo:");
 			address = getInput();
 			System.out.println("Inserisci la data nel formato YYYY-MM-DD HH:MM:SS :");
-			matchtime = getInput();
+			try {
+				matchtime = sdf.parse((getInput()));
+			} catch (ParseException e) {
+				System.err.println("errore nella conversione della stringa");
+			}
 	}
 
-	/**
-	 * Impacchetta la request con i dati inseriti nel metodo showOption()
-	 */
 	@Override
 	public void submit() {
 		request = new Request();

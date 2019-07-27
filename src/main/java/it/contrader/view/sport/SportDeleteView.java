@@ -13,23 +13,15 @@ public class SportDeleteView extends AbstractView {
 	public SportDeleteView() {
 	}
 
-	/**
-	 * Se la request non è nulla (ovvero se si arriva dalla mode DELETE del controller) mostra
-	 * l'esito dell'operazione
-	 */
 	@Override
 	public void showResults(Request request) {
 		if (request!=null) {
 			System.out.println("Cancellazione andata a buon fine.\n");
-			//MainDispatcher.getInstance().callView("Sport", null);
 			request.put("mode", "SPORTLIST");
 			MainDispatcher.getInstance().callAction("Sport", "doControl", request);
 		}
 	}
 
-	/**
-	 * Chiede all'utente di inserire l'id dell'utente da cancellare
-	 */
 	@Override
 	public void showOptions() {
 			System.out.println("Inserisci id dello sport:");
@@ -37,9 +29,6 @@ public class SportDeleteView extends AbstractView {
 
 	}
 
-	/**
-	 * impacchetta la request con l'id dell'utente da cancellare
-	 */
 	@Override
 	public void submit() {
 		request = new Request();
@@ -50,5 +39,3 @@ public class SportDeleteView extends AbstractView {
 
 
 }
-
-
