@@ -10,8 +10,13 @@
 <body>
 <%@ include file="../css/header.jsp" %>
 <div class="navbar">
-  <a href="homeadmin.jsp">Home</a>
-  <a class="active" href="MatchServlet?mode=userlist">Users</a>
+  <a  href="homeadmin.jsp">Home</a>
+  
+  <a href="SportServlet?mode=sportlist">Sport</a>
+  <a href="FeedbackServlet?mode=feedbacklist">Feedback</a>
+  <a href="UserServlet?mode=userlist">User</a>
+  <a class="active" href="MatchServlet?mode=matchlist">Match</a>
+  
   <a href="LogoutServlet" id="logout">Logout</a>
 </div>
 <br>
@@ -26,7 +31,7 @@
       <label for="iduser">id User</label>
     </div>
     <div class="col-75">
-      <input type="text" id="iduser" name="iduser" value=<%=f.getIdUser()%>>
+      <input type="number" id="iduser" name="iduser" value=<%=f.getIdUser()%>>
     </div>
   </div>
   <div class="row">
@@ -35,7 +40,7 @@
     </div>
     <div class="col-75">
       <input
-			type="text" id="idsport" name="idsport" value=<%=f.getIdSport()%>> 
+			type="number" id="idsport" name="idsport" value=<%=f.getIdSport()%>> 
     </div>
   </div>
   <div class="row">
@@ -44,7 +49,7 @@
     </div>
     <div class="col-75">
       <input
-			type="text" id="rate" name="rate" value=<%=f.getRate()%>> 
+			type="number" id="rate" name="rate" value=<%=f.getRate()%>> 
     </div>
   </div>
   <div class="row">

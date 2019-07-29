@@ -13,7 +13,12 @@
 
 <div class="navbar">
   <a  href="homeadmin.jsp">Home</a>
+  
+  <a href="SportServlet?mode=sportlist">Sport</a>
+  <a href="FeedbackServlet?mode=feedbacklist">Feedback</a>
+  <a href="UserServlet?mode=userlist">User</a>
   <a class="active" href="MatchServlet?mode=matchlist">Match</a>
+  
   <a href="LogoutServlet" id="logout">Logout</a>
 </div>
 <div class="main">
@@ -63,7 +68,7 @@
       <label for="iduser">ID USER</label>
     </div>
     <div class="col-75">
-      <input type="text" id="iduser" name="iduser" placeholder="inserisci id User">
+      <input type="number" id="iduser" name="iduser" placeholder="inserisci id User">
     </div>
   </div>
   <div class="row">
@@ -71,7 +76,7 @@
       <label for="idsport">ID SPORT</label>
     </div>
     <div class="col-75">
-      <input type="text" id="idsport" name="idsport" placeholder="inserisci id Sport">
+      <input type="number" id="idsport" name="idsport" placeholder="inserisci id Sport">
     </div>
   </div>
   <div class="row">
@@ -79,7 +84,7 @@
      <label for="rate">RATE</label>
     </div>
     <div class="col-75">
-      <input type="text" id="rate" name="rate" placeholder="inserisci rate"> 
+      <input type="number" id="rate" name="rate" placeholder="inserisci rate"> 
     </div>
   </div>
   <div class="row">

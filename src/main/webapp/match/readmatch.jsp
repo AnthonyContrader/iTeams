@@ -10,8 +10,13 @@
 <body>
 <%@ include file="../css/header.jsp" %>
 <div class="navbar">
-  <a href="homeadmin.jsp">Home</a>
-  <a class="active"  href="matchServlet?mode=matchlist">Users</a>
+  <a  href="homeadmin.jsp">Home</a>
+  
+  <a href="SportServlet?mode=sportlist">Sport</a>
+  <a href="FeedbackServlet?mode=feedbacklist">Feedback</a>
+  <a href="UserServlet?mode=userlist">User</a>
+  <a class="active" href="MatchServlet?mode=matchlist">Match</a>
+  
   <a href="LogoutServlet" id="logout">Logout</a>
 </div>
 <br>
