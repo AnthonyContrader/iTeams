@@ -52,9 +52,9 @@ public class MatchUpdateView extends AbstractView {
 			rate = Integer.parseInt(getInput());
 			System.out.println("Inserisci l'indirizzo:");
 			address = getInput();
-			System.out.println("Inserisci la data nel formato YYYY-MM-DD HH:MM:SS :");
+			System.out.println("Inserisci la data nel formato YYYY-MM-DD HH:MM :");
 			try {
-				matchtime = sdf.parse(getInput());
+				matchtime = sdf.parse(getInput()+":00");
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				//e.printStackTrace();
