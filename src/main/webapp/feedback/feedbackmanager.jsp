@@ -11,11 +11,8 @@
 <body>
 <%@ include file="../css/header.jsp" %>
 
-<div class="navbar">
-  <a  href="homeadmin.jsp">Home</a>
-  <a class="active" href="FeedbackServlet?mode=feedbacklist">Feedback</a>
-  <a href="LogoutServlet" id="logout">Logout</a>
-</div>
+<%@ include file="../css/feedbackmenu.jsp" %>
+
 <div class="main">
 	<%
 		List<FeedbackDTO> list = (List<FeedbackDTO>) request.getAttribute("list");
