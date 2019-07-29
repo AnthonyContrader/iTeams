@@ -15,6 +15,22 @@
     <servlet-name>FeedbackServlet</servlet-name>
     <servlet-class>it.contrader.servlets.FeedbackServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>SportServlet</servlet-name>
+    <servlet-class>it.contrader.servlets.SportServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SportServlet</servlet-name>
+    <url-pattern>/SportServlet</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>MatchServlet</servlet-name>
+    <servlet-class>it.contrader.servlets.MatchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MatchServlet</servlet-name>
+    <url-pattern>/MatchServlet</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/LoginServlet</url-pattern>
