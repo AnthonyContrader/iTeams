@@ -11,9 +11,10 @@
 <%@ include file="../css/header.jsp" %>
 <div class="navbar">
   <a href="homeadmin.jsp">Home</a>
-  <a class="active" href="UserServlet?mode=userlist">Users</a>
-  <a class="active" href="SportServlet?mode=sportlist">Sport</a>
-  <a class="active" href="FeedbackServlet?mode=feedbacklist">Feedback</a>
+  <a class="active"  href="SportServlet?mode=sportlist">Sport</a>
+  <a href="FeedbackServlet?mode=feedbacklist">Feedback</a>
+  <a href="UserServlet?mode=userlist">User</a>
+  <a href="MatchServlet?mode=matchlist">Match</a>
   <a href="LogoutServlet" id="logout">Logout</a>
 </div>
 <br>
@@ -25,7 +26,7 @@
 <form id="floatleft" action="SportServlet?mode=update&id=<%=s.getId()%>" method="post">
   <div class="row">
     <div class="col-25">
-      <label for="name">Nome Sport</label>
+      <label for="name">Sport Name</label>
     </div>
     <div class="col-75">
       <input type="text" id="name" name="name" value=<%=s.getName()%>>
@@ -33,11 +34,11 @@
   </div>
   <div class="row">
     <div class="col-25">
-     <label for="players">Numero Giocatori</label>
+     <label for="players">Number of Players</label>
     </div>
     <div class="col-75">
       <input
-			type="text" id="players" name="players" value=<%=s.getPlayers()%>> 
+			type="number" id="players" name="players" value=<%=s.getPlayers()%>> 
     </div>
   </div>
       <button type="submit" >Edit</button>

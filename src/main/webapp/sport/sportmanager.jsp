@@ -12,8 +12,11 @@
 <%@ include file="../css/header.jsp" %>
 
 <div class="navbar">
-  <a  href="homeadmin.jsp">Home</a>
-  <a class="active" href="SportServlet?mode=sportlist">Users</a>
+  <a href="homeadmin.jsp">Home</a>
+  <a class="active"  href="SportServlet?mode=sportlist">Sport</a>
+  <a href="FeedbackServlet?mode=feedbacklist">Feedback</a>
+  <a href="UserServlet?mode=userlist">User</a>
+  <a href="MatchServlet?mode=matchlist">Match</a>
   <a href="LogoutServlet" id="logout">Logout</a>
 </div>
 <div class="main">
@@ -25,8 +28,8 @@
 
 	<table>
 		<tr>
-			<th>Nome Sport</th>
-			<th>Numero Giocatori</th>
+			<th>Sport Name</th>
+			<th>Number of Players</th>
 			<th></th>
 			<th></th>
 		</tr>
@@ -65,7 +68,7 @@
      <label for="players">Numero Giocatori</label>
     </div>
     <div class="col-75">
-      <input type="text" id="pass" name="players" placeholder="inserisci numero giocatori"> 
+      <input type="number" id="pass" name="players" placeholder="inserisci numero giocatori"> 
     </div>
   </div>
       <button type="submit" >Insert</button>
