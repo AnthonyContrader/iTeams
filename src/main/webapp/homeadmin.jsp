@@ -24,9 +24,14 @@
 
 </head>
 <body>
+
+
+
+
 	<%@include file="css/header.jsp"%>
 	
 	<%@include file="css/homeadminmenu.jsp"%>
+
 
 
 
@@ -36,7 +41,7 @@
 
 
 
-		<h1>Welcome <%=session.getAttribute("utente")%> </h1>
+		<h1>Welcome <%=session.getAttribute("utente")%></h1>
 
 		<!-- <h3>
 			iTeams si basa su un sistema di feedback per organizzare squadre
@@ -46,13 +51,31 @@
 			Dopo ogni partita dai un voto agli altri giocatori.<br>
 		</h3> -->
 
+		<table style = "margin-left:auto; margin-right:auto;">
+			
+		
+			<tr>
+				<td>
+					<br>
+					<%@include file="include/userTable.jsp"%>
+					<br>
+				</td>
+	
+				<td>
+					<br>
+					<%@include file="include/sportTable.jsp"%>
+					<br>
+				</td>
+	
+			</tr>
+		</table>
+		
+
 	</div>
 	
-		<%@include file="include/userTable.jsp"%>
+		
+	
 
-	<br>
-	<%@include file="include/sportTable.jsp"%>
-	<br>
 
 	<%@ include file="css/footer.jsp"%>
 
