@@ -29,6 +29,15 @@ public class LoginServlet extends HttpServlet {
 		
 		LoginService service = new LoginService();
 
+		String bt = request.getParameter("register");
+		
+		if(bt !=null) {
+			
+			getServletContext().getRequestDispatcher("/register.jsp").forward(request, response);
+			
+			
+		}
+		
 		if (request != null) {
 			String username = request.getParameter("username").toString();
 			String password = request.getParameter("password").toString();

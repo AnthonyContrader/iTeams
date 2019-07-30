@@ -15,35 +15,46 @@ public class RegisterServlet extends HttpServlet {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
+		
+		String bt = request.getParameter("register");
+				
+		//getServletContext().getRequestDispatcher("/register.jsp").forward(request, response);
 
-		boolean ans;
-
-		UserDTO userDTO = new UserDTO();
-
-		String username = request.getParameter("userName");
-		String password = request.getParameter("userPass");
-
-		try {
-
-			userDTO.setUsername(username);
-			userDTO.setPassword(password);
-			userDTO.setUsertype("user");
-
-			Service<UserDTO> service = new UserService();
-
-			ans = service.insert(userDTO);
-
-			if (ans) {
-				out.print("You are successfully registered...");
-			}
-					
+		boolean login = false;
+		
+		
+		String mode = request.getParameter("mode");
+		
+		if(bt !=null) {
 			
-		} catch (Exception e2) {
-			System.out.println(e2);
-		}
+			boolean ans;
+	
+			UserDTO userDTO = new UserDTO();
+	
+			String username = request.getParameter("userName");
+			String password = request.getParameter("userPass");
+	
+			try {
+	
+				userDTO.setUsername(username);
+				userDTO.setPassword(password);
+				userDTO.setUsertype("user");
+	
+				Service<UserDTO> service = new UserService();
+	
+				ans = service.insert(userDTO);
+	
+				if (ans) {
+					System.out.println("You are successfully registered...");
+					getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+				}
+				
+				
+			} catch (Exception e2) {
+				System.out.println(e2);
+			}
 
-		out.close();
+		}
 	}
 
 }

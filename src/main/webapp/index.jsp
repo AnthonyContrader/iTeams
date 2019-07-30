@@ -18,6 +18,10 @@
 				 <input type="password" id="pass" name="password" placeholder="Insert password">
 		
 			<button type="submit" value="Login" name="pulsante">Login</button>
+			<br>
+		
+			<button type="submit" name="register" value="register" name="pulsante">Register</button>
+		
 		</form>
 
 	
