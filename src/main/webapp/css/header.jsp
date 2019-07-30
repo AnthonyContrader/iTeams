@@ -5,11 +5,11 @@
 <head>
 <meta charset="ISO-8859-1">
 <link href="css/vittoriostyle.css" rel="stylesheet">
+<link href="css/iteams.css" rel="stylesheet">
 </head>
 <body>
 
-<div class="header">SAMPLE Project
-</div>
+<img src="img/iTeams-02.svg" alt="iTeams" id="logo">
 
 
 

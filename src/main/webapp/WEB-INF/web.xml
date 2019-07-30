@@ -15,6 +15,10 @@
     <servlet-name>FeedbackServlet</servlet-name>
     <servlet-class>it.contrader.servlets.FeedbackServlet</servlet-class>
   </servlet>
+     <servlet>
+    <servlet-name>RegisterServlet</servlet-name>
+    <servlet-class>it.contrader.servlets.RegisterServlet</servlet-class>
+  </servlet>
   <servlet>
     <servlet-name>SportServlet</servlet-name>
     <servlet-class>it.contrader.servlets.SportServlet</servlet-class>
@@ -42,6 +46,10 @@
    <servlet-mapping>
     <servlet-name>FeedbackServlet</servlet-name>
     <url-pattern>/FeedbackServlet</url-pattern>
+  </servlet-mapping>
+     <servlet-mapping>
+    <servlet-name>RegisterServlet</servlet-name>
+    <url-pattern>/RegisterServlet</url-pattern>
   </servlet-mapping>
   <session-config>
     <session-timeout>4000</session-timeout>

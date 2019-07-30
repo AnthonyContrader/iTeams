@@ -121,10 +121,11 @@ a:visited {
 /*Tables*/
 table {
 	border-collapse: collapse;
-	width: 50%;
+	width: 45%;
 	float:left;
 	border-radius:4px;
     -moz-border-radius:4px;
+    margin: 1%;
 }
 
 
