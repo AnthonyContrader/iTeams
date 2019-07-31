@@ -67,12 +67,6 @@
 					<%@include file="include/sportTable.jsp"%>
 					<br>
 				</td>
-				
-				<td>
-					<br>
-					<%@include file="include/feedbackAvgTable.jsp"%>
-					<br>
-				</td>
 	
 			</tr>
 		</table>
