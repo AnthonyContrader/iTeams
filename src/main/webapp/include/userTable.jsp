@@ -19,13 +19,9 @@
 			
 			
 		%>
-	
-	
-	<h2>User</h2>
 
-	<br>
-	
 	<table>
+	<tr><td colspan="3">USERS</td></tr>
 		<tr>
 			<th>ID </th>
 			<th>Name</th>

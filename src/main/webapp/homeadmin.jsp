@@ -22,6 +22,19 @@
 <title>Home Admin</title>
 <link href="css/vittoriostyle.css" rel="stylesheet">
 
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 
@@ -53,25 +66,25 @@
 			Dopo ogni partita dai un voto agli altri giocatori.<br>
 		</h3> -->
 
-		<table>
-					
-			<tr>
-				<td>
-					<br>
-					<%@include file="include/userTable.jsp"%>
-					<br>
-				</td>
-	
-				<td>
-					<br>
-					<%@include file="include/sportTable.jsp"%>
-					<br>
-				</td>
-	
-			</tr>
-		</table>
-		
 
+<div class="row">
+   <div class="col-md-2 col-lg-2 col-sm-3 col-xs-1"></div>
+        <div style="float:left;" class="col-md-8 col-lg-8 col-sm-6 col-xs-10">
+
+		<%@include file="include/userTable.jsp"%>
+		<%@include file="include/sportTable.jsp"%> 
+					
+				
+		
+		</div>
+
+
+
+	</div>
+	
+	<div class="col-md-2 col-lg-2 col-sm-3 col-xs-1"></div>
+	
+	
 	</div>
 	
 		

@@ -19,15 +19,10 @@
 		
 			
 		%>
-		
 
-
-
-	<h2>Sport</h2>
-
-	<br>
 	
 	<table>
+		<tr><td colspan="3">SPORT</td></tr>
 		<tr>
 			<th>ID </th>
 			<th>Sport</th>
