@@ -38,6 +38,7 @@ public class MatchServlet extends HttpServlet {
 		case "MATCHLIST":
 			updateList(request);
 			getServletContext().getRequestDispatcher("/match/matchmanager.jsp").forward(request, response);
+			
 			break;
 
 		case "READ":

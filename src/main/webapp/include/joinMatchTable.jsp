@@ -13,6 +13,8 @@
 			Service<MatchDTO> serviceMatch = new MatchService();
 			List<MatchDTO> listMatchDTO = serviceMatch.getAll();
 			List<MatchDTO> listMatch = (List<MatchDTO>) listMatchDTO;
+		//	int idUser = Integer.parseInt(session.getAttribute("iduser").toString());
+			request.setAttribute("iduser", session.getAttribute("iduser"));
 			request.setAttribute("listmatch", listMatchDTO);
 			
 		
@@ -29,9 +31,12 @@
 	<table>
 		<tr><td colspan="3">SPORT</td></tr>>
 		<tr>
-			<th>ID </th>
-			<th>id</th>
-			<th>N players</th>
+			<th>ID MATCH </th>
+			<th>ID SPORT</th>
+			<th>ID USER</th>
+			<th>RATE</th>
+			<th>ADDRESS</th>
+			<th>TIME</th>
 		</tr>
 		<%
 			for (MatchDTO m : listMatch) {
@@ -46,9 +51,9 @@
 			<% if(!m.isStatus()){ %>
 			<td>
 			<form name="submitForm" method="POST" action="JoinMatchServlet">
-    		<input type="hidden" name="iduser" value="<%=request.getParameter("iduser")%>">
-    		<input type="hidden" name="idmatch" value="<%=m.getId()%>">
-    		<a href="JoinMatchServlet?mode=join">JOIN MATCH</a></td>
+    		<%--<input type="hidden" name="iduser" value="<%=session.getAttribute("iduser")%>">--%>
+    		
+    		<a href="JoinMatchServlet?mode=join&idmatch=<%=m.getId()%>">JOIN MATCH</a></td>
 			</form>
 			<%}else{%>
 			<td></td>
