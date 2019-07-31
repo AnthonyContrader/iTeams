@@ -38,8 +38,9 @@ public class MatchDAO implements DAO<Match>{
 				int rate = resultSet.getInt("rate");
 				String address = resultSet.getString("address");
 				java.util.Date matchtime = resultSet.getTimestamp("matchtime");
+				boolean status = resultSet.getBoolean("status");
 				int id = resultSet.getInt("id");
-				match = new Match(idSport, idUser, rate, address, matchtime);
+				match = new Match(idSport, idUser, rate, address, matchtime, status);
 				match.setId(id);
 				matchsList.add(match);
 			}
@@ -77,14 +78,16 @@ public class MatchDAO implements DAO<Match>{
 			resultSet.next();
 			int idSport, idUser, rate;
 			String address;
+			boolean status;
 			java.util.Date matchtime;
 			idSport = resultSet.getInt("idsport");
 			idUser = resultSet.getInt("iduser");
 			rate = resultSet.getInt("rate");
 			address = resultSet.getString("address");
 			matchtime = resultSet.getTimestamp("matchtime");
+			status = resultSet.getBoolean("status");
 			//localTime = LocalDateTime.parse(matchtime, formatter);
-			Match match= new Match(idSport, idUser, rate, address, matchtime);
+			Match match= new Match(idSport, idUser, rate, address, matchtime,status);
 			match.setId(resultSet.getInt("id"));
 
 			return match;

@@ -9,13 +9,13 @@ import it.contrader.model.Match;
 public class MatchConverter  implements Converter<Match, MatchDTO> {
 
 	public MatchDTO toDTO(Match match) {
-		MatchDTO matchDTO = new MatchDTO (match.getId(), match.getIdSport(), match.getIdUser(), match.getRate(), match.getAddress(), match.getMatchtime());
+		MatchDTO matchDTO = new MatchDTO (match.getId(), match.getIdSport(), match.getIdUser(), match.getRate(), match.getAddress(), match.getMatchtime(), match.isStatus());
 		return matchDTO; 
 	}
 
 	@Override
 	public Match toEntity(MatchDTO matchDTO) {
-		Match match =new Match(matchDTO.getId(), matchDTO.getIdSport(), matchDTO.getIdUser(), matchDTO.getRate(), matchDTO.getAddress(), matchDTO.getMatchtime() );
+		Match match =new Match(matchDTO.getId(), matchDTO.getIdSport(), matchDTO.getIdUser(), matchDTO.getRate(), matchDTO.getAddress(), matchDTO.getMatchtime(),matchDTO.isStatus());
 		return match;
 		
 	}
