@@ -18,6 +18,7 @@
 	List<MatchDTO> list = (List<MatchDTO>) request.getAttribute("list");
 	%>
 
+<%--
 <br>
 
 	<table>
@@ -50,7 +51,9 @@
 		<%
 			}
 		%>
-	</table>
+	</table> --%>
+
+<%@ include file="../include/myMatchTable.jsp"%>
 
 
 
@@ -100,7 +103,9 @@
 
 </div>
 <br>
-<%@include file="../include/joinMatchTable.jsp"%>
+<%@ include file="../include/joinMatchTable.jsp"%>
+<br>
+<%@ include file="../include/unjoinMatchTable.jsp"%>
 <br>
 <%@ include file="../css/footer.jsp" %>
 </body>

@@ -8,11 +8,11 @@
 %>
 		<%
 
-			MatchDAO sDAO = new MatchDAO();
+			MatchDAO mDAO = new MatchDAO();
 			
-			MatchService serviceMatch = new MatchService();
-			List<MatchDTO> listMatchDTO = serviceMatch.getNotJoined(Integer.parseInt(session.getAttribute("iduser").toString()));
-			List<MatchDTO> listMatch = (List<MatchDTO>) listMatchDTO;
+			MatchService myserviceMatch = new MatchService();
+			List<MatchDTO> mylistMatchDTO = myserviceMatch.getMine(Integer.parseInt(session.getAttribute("iduser").toString()));
+			List<MatchDTO> mylistMatch = (List<MatchDTO>) mylistMatchDTO;
 		//	int idUser = Integer.parseInt(session.getAttribute("iduser").toString());
 			request.setAttribute("iduser", session.getAttribute("iduser"));
 			//request.setAttribute("listmatch", listMatchDTO);
@@ -29,32 +29,35 @@
 	<br>
 	
 	<table>
-		<tr><td colspan="7">UNJOINED MATCH</td></tr>
+		<tr><td colspan="8">MY MATCH</td></tr>
 		<tr>
 			<th>ID MATCH </th>
 			<th>ID SPORT</th>
-			<th>ID PROPOSER</th>
 			<th>RATE</th>
 			<th>ADDRESS</th>
 			<th>TIME</th>
 			<th></th>
+			<th></th>
+			<th></th>
 		</tr>
 		<%
-			for (MatchDTO m : listMatch) {
+			for (MatchDTO m : mylistMatch) {
 		%>
 		<tr>
 			<td><%=m.getId()%></td>
 			<td><%=m.getIdSport()%></td>
-			<td><%=m.getIdUser()%></td>
 			<td><%=m.getRate()%></td>
 			<td><%=m.getAddress()%></td>
 			<td><%=m.getMatchtime()%></td>
 			<% if(!m.isStatus()){ %>
-			<td>
-			<a href="JoinMatchServlet?mode=join&idmatch=<%=m.getId()%>">JOIN MATCH</a></td>
+			<td>Incomplete</td>
 			<%}else{%>
-			<td></td>
+			<td>Complete</td>
 			<%}%>
+			<td><a href=MatchServlet?mode=read&update=true&id=<%=m.getId()%>>Edit</a>
+			</td>
+			<td><a href=MatchServlet?mode=delete&id=<%=m.getId()%>>Delete</a>
+			</td>
 		</tr>
 		<%
 			}

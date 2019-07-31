@@ -51,7 +51,10 @@ public class JoinMatchServlet  extends HttpServlet {
 			case "UNJOIN":
 				jmDTO = new JoinMatchDTO(idMatch,Integer.parseInt(session.getAttribute("iduser").toString()));
 				jmDAO = new JoinMatchDAO();
-				jmDAO.delete(jmDTO);				
+				ans=jmDAO.delete(jmDTO);		
+				request.setAttribute("ans", ans);
+				updateList(request);
+				getServletContext().getRequestDispatcher("/match/matchmanager.jsp").forward(request, response);
 				break;
 
 			}

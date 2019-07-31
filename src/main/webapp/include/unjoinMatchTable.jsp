@@ -8,14 +8,14 @@
 %>
 		<%
 
-			MatchDAO sDAO = new MatchDAO();
+			MatchDAO unDAO = new MatchDAO();
 			
-			MatchService serviceMatch = new MatchService();
-			List<MatchDTO> listMatchDTO = serviceMatch.getNotJoined(Integer.parseInt(session.getAttribute("iduser").toString()));
-			List<MatchDTO> listMatch = (List<MatchDTO>) listMatchDTO;
+			MatchService unserviceMatch = new MatchService();
+			List<MatchDTO> unlistMatchDTO = unserviceMatch.getJoined(Integer.parseInt(session.getAttribute("iduser").toString()));
+			List<MatchDTO> unlistMatch = (List<MatchDTO>) unlistMatchDTO;
 		//	int idUser = Integer.parseInt(session.getAttribute("iduser").toString());
 			request.setAttribute("iduser", session.getAttribute("iduser"));
-			//request.setAttribute("listmatch", listMatchDTO);
+			//request.setAttribute("listmatch", unlistMatchDTO);
 			
 		
 			
@@ -29,7 +29,7 @@
 	<br>
 	
 	<table>
-		<tr><td colspan="7">UNJOINED MATCH</td></tr>
+		<tr><td colspan="7">JOINED MATCH</td></tr>
 		<tr>
 			<th>ID MATCH </th>
 			<th>ID SPORT</th>
@@ -40,7 +40,7 @@
 			<th></th>
 		</tr>
 		<%
-			for (MatchDTO m : listMatch) {
+			for (MatchDTO m : unlistMatch) {
 		%>
 		<tr>
 			<td><%=m.getId()%></td>
@@ -51,7 +51,7 @@
 			<td><%=m.getMatchtime()%></td>
 			<% if(!m.isStatus()){ %>
 			<td>
-			<a href="JoinMatchServlet?mode=join&idmatch=<%=m.getId()%>">JOIN MATCH</a></td>
+			<a href="JoinMatchServlet?mode=unjoin&idmatch=<%=m.getId()%>">UNJOIN MATCH</a></td>
 			<%}else{%>
 			<td></td>
 			<%}%>

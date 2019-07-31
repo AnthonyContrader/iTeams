@@ -16,10 +16,17 @@ import it.contrader.utils.ConnectionSingleton;
 public class MatchDAO implements DAO<Match>{
 
 	private final String QUERY_ALL = "SELECT * FROM iteams.match";
+	private final String QUERY_MINE = "SELECT * FROM iteams.match WHERE iduser=?";
 	private final String QUERY_CREATE = "INSERT INTO iteams.match (idsport, iduser,rate,address,matchtime) VALUES (?,?,?,?,?)";
 	private final String QUERY_READ = "SELECT * FROM iteams.match WHERE id=?";
 	private final String QUERY_UPDATE = "UPDATE iteams.match SET idsport=?, iduser=?, rate=?, address=?, matchtime=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE FROM iteams.match WHERE id=?";
+	private final String QUERY_JOINED = "SELECT iteams.match.* FROM iteams.match JOIN iteams.matchusers	"
+			+ "ON iteams.match.id = iteams.matchusers.idMatch where iteams.matchusers.idUser = ?";
+	private final String QUERY_NOT_JOINED = "SELECT * FROM iteams.match WHERE iteams.match.id NOT IN "
+			+ "(SELECT iteams.match.id FROM iteams.match "
+			+ "JOIN iteams.matchusers ON iteams.match.id = iteams.matchusers.idMatch where iteams.matchusers.idUser = ?)";
+	
 	
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	public MatchDAO() {
@@ -31,6 +38,84 @@ public class MatchDAO implements DAO<Match>{
 		try {
 			Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(QUERY_ALL);
+			Match match;
+			while (resultSet.next()) {
+				int idSport = resultSet.getInt("idsport");
+				int idUser = resultSet.getInt("iduser");
+				int rate = resultSet.getInt("rate");
+				String address = resultSet.getString("address");
+				java.util.Date matchtime = resultSet.getTimestamp("matchtime");
+				boolean status = resultSet.getBoolean("status");
+				int id = resultSet.getInt("id");
+				match = new Match(idSport, idUser, rate, address, matchtime, status);
+				match.setId(id);
+				matchsList.add(match);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return matchsList;
+	}
+	
+	public List<Match> getMine(int idU) {
+		List<Match> matchsList = new ArrayList<>();
+		Connection connection = ConnectionSingleton.getInstance();
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_MINE);
+			preparedStatement.setInt(1, idU);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			Match match;
+			while (resultSet.next()) {
+				int idSport = resultSet.getInt("idsport");
+				int idUser = resultSet.getInt("iduser");
+				int rate = resultSet.getInt("rate");
+				String address = resultSet.getString("address");
+				java.util.Date matchtime = resultSet.getTimestamp("matchtime");
+				boolean status = resultSet.getBoolean("status");
+				int id = resultSet.getInt("id");
+				match = new Match(idSport, idUser, rate, address, matchtime, status);
+				match.setId(id);
+				matchsList.add(match);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return matchsList;
+	}
+	
+	public List<Match> getJoined(int idU) {
+		List<Match> matchsList = new ArrayList<>();
+		Connection connection = ConnectionSingleton.getInstance();
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_JOINED);
+			preparedStatement.setInt(1, idU);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			Match match;
+			while (resultSet.next()) {
+				int idSport = resultSet.getInt("idsport");
+				int idUser = resultSet.getInt("iduser");
+				int rate = resultSet.getInt("rate");
+				String address = resultSet.getString("address");
+				java.util.Date matchtime = resultSet.getTimestamp("matchtime");
+				boolean status = resultSet.getBoolean("status");
+				int id = resultSet.getInt("id");
+				match = new Match(idSport, idUser, rate, address, matchtime, status);
+				match.setId(id);
+				matchsList.add(match);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return matchsList;
+	}
+	
+	public List<Match> getNotJoined(int idU) {
+		List<Match> matchsList = new ArrayList<>();
+		Connection connection = ConnectionSingleton.getInstance();
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_NOT_JOINED);
+			preparedStatement.setInt(1, idU);
+			ResultSet resultSet = preparedStatement.executeQuery();
 			Match match;
 			while (resultSet.next()) {
 				int idSport = resultSet.getInt("idsport");
