@@ -42,7 +42,9 @@
 
 
 		<h1>Welcome <%=session.getAttribute("utente")%></h1>
-
+		
+		<br>
+		
 		<!-- <h3>
 			iTeams si basa su un sistema di feedback per organizzare squadre
 			bilanciate per i tuoi sport preferiti.<br> Iscriviti e scegli i
@@ -51,9 +53,8 @@
 			Dopo ogni partita dai un voto agli altri giocatori.<br>
 		</h3> -->
 
-		<table style = "margin-left:auto; margin-right:auto;">
-			
-		
+		<table>
+					
 			<tr>
 				<td>
 					<br>
