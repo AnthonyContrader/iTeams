@@ -9,11 +9,7 @@
 </head>
 <body>
 <%@ include file="../css/header.jsp" %>
-<div class="navbar">
-  <a href="homeadmin.jsp">Home</a>
-  <a class="active" href="FeedbackServlet?mode=userlist">Users</a>
-  <a href="LogoutServlet" id="logout">Logout</a>
-</div>
+<%@ include file="../css/feedbackmenu.jsp" %>
 <br>
 <div class="main">
 

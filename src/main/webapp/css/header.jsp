@@ -6,10 +6,11 @@
 <meta charset="ISO-8859-1">
 <link href="css/vittoriostyle.css" rel="stylesheet">
 <link href="css/iteams.css" rel="stylesheet">
+
 </head>
 <body>
 
-<img src="img/iTeams-02.svg" alt="iTeams" id="logo">
+<img src="img/iTeams-02.svg" alt="iTeams" id="logo" style="max-width: 50%;   display: block;  margin-left: auto; margin-right: auto;">
 
 
 
