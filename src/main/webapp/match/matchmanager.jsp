@@ -100,6 +100,8 @@
 
 </div>
 <br>
+<%@include file="../include/joinmatch.jsp"%>
+<br>
 <%@ include file="../css/footer.jsp" %>
 </body>
 </html>
