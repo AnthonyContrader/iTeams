@@ -23,6 +23,10 @@
     <servlet-name>SportServlet</servlet-name>
     <servlet-class>it.contrader.servlets.SportServlet</servlet-class>
   </servlet>
+    <servlet>
+    <servlet-name>JoinMatchServlet</servlet-name>
+    <servlet-class>it.contrader.servlets.JoinMatchServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>SportServlet</servlet-name>
     <url-pattern>/SportServlet</url-pattern>
@@ -50,6 +54,10 @@
      <servlet-mapping>
     <servlet-name>RegisterServlet</servlet-name>
     <url-pattern>/RegisterServlet</url-pattern>
+  </servlet-mapping>
+       <servlet-mapping>
+    <servlet-name>JoinMatchServlet</servlet-name>
+    <url-pattern>/JoinMatchServlet</url-pattern>
   </servlet-mapping>
   <session-config>
     <session-timeout>4000</session-timeout>

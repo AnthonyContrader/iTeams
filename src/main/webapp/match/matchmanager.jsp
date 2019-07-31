@@ -100,7 +100,7 @@
 
 </div>
 <br>
-<%@include file="../include/joinmatch.jsp"%>
+<%@include file="../include/joinMatchTable.jsp"%>
 <br>
 <%@ include file="../css/footer.jsp" %>
 </body>

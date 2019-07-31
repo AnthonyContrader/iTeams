@@ -47,6 +47,8 @@ public class LoginServlet extends HttpServlet {
 				//se il login ha funzionato, salva l'utente nella sessione
 				session.setAttribute("user", dto);
 				session.setAttribute("utente", dto.getUsername());
+				session.setAttribute("idutente", dto.getId());
+				
 			}
 			else
 				//altrimenti torna alla pagina di login
@@ -60,6 +62,9 @@ public class LoginServlet extends HttpServlet {
 				break;
 				
 			case "USER":
+				session.setAttribute("user", dto);
+				session.setAttribute("utente", dto.getUsername());
+				session.setAttribute("iduser", dto.getId());
 				getServletContext().getRequestDispatcher("/homeuser.jsp").forward(request, response);
 				break;
 				
