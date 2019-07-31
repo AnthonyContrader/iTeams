@@ -29,7 +29,10 @@
 			<th>Type</th>
 		</tr>
 		<%
+		
 			for (UserDTO u : listUser) {
+				
+				
 		%>
 		<tr>
 			<td><%=u.getId()%></td>
@@ -39,6 +42,7 @@
 			
 		</tr>
 		<%
+				
 			}
 		%>
 	</table>
