@@ -40,7 +40,7 @@
     </div>
    		 <div class="col-75">
  			<select id="type" name="usertype">
-  				<option value="ADMIN" <%if(u.getUsertype().equals("ADMIN")) {%>selected<%}%>>ADMIN</option>
+<%--   				<option value="ADMIN" <%if(u.getUsertype().equals("ADMIN")) {%>selected<%}%>>ADMIN</option> --%>
   				<option value="USER" <%if(u.getUsertype().equals("USER")) {%>selected<%}%>>USER</option>
 			</select>
     	</div>

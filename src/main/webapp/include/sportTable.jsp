@@ -35,6 +35,7 @@
 		</tr>
 		<%
 			for (SportDTO s : listSport) {
+				
 		%>
 		<tr>
 			<td><%=s.getId()%></td>

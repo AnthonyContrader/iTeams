@@ -29,6 +29,7 @@
 		</tr>
 		<%
 			for (UserDTO u : list) {
+				if(! u.getUsertype().contains("ADMIN") ){
 		%>
 		<tr>
 			<td><a href=UserServlet?mode=read&id=<%=u.getId()%>>
@@ -43,6 +44,7 @@
 
 		</tr>
 		<%
+				}
 			}
 		%>
 	</table>
@@ -72,7 +74,7 @@
     </div>
    		 <div class="col-75">
  			<select id="type" name="usertype">
-  				<option value="ADMIN">ADMIN</option>
+<!--   				<option value="ADMIN">ADMIN</option> -->
   				<option value="USER">USER</option>
  
 			</select>
