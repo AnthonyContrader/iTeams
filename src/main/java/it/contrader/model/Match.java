@@ -10,26 +10,29 @@ public class Match {
 	private int rate;
 	private String address;
 	private Date matchtime;
+	private boolean status;
 	
 	public Match() {
 
 	}
 
-	public Match(int idSport, int idUser, int rate, String address, Date matchtime) {
+	public Match(int idSport, int idUser, int rate, String address, Date matchtime, boolean status) {
 		this.idSport = idSport;
 		this.idUser = idUser;
 		this.rate = rate;
 		this.address = address;
 		this.matchtime = matchtime;
+		this.status = status;
 	}
 
-	public Match(int id, int idSport, int idUser, int rate, String address, Date matchtime) {
+	public Match(int id, int idSport, int idUser, int rate, String address, Date matchtime, boolean status) {
 		this.id = id;
 		this.idSport = idSport;
 		this.idUser = idUser;
 		this.rate = rate;
 		this.address = address;
 		this.matchtime = matchtime;
+		this.status = status;
 	}
 
 	public int getId() {
@@ -78,6 +81,14 @@ public class Match {
 
 	public void setMatchtime(Date matchtime) {
 		this.matchtime = matchtime;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 
 	@Override

@@ -3,33 +3,40 @@ package it.contrader.dto;
 import java.util.Date;
 
 public class MatchDTO {
-
+	
 	private int id;
 	private int idSport;
 	private int idUser;
 	private int rate;
 	private String address;
 	private Date matchtime;
-	
+	private boolean status;
 	
 	public MatchDTO() {
 		
 	}
 
 
-	public MatchDTO(int idSport, int idUser, int rate, String address, Date matchtime) {
-		super();
+	public MatchDTO(int idSport, int idUser, int rate, String address, Date matchtime, boolean status) {
 		this.idSport = idSport;
 		this.idUser = idUser;
 		this.rate = rate;
 		this.address = address;
 		this.matchtime = matchtime;
+		this.status=status;
 	}
 
 
-	public MatchDTO(int id, int idSport, int idUser, int rate, String address, Date matchtime) {
-		super();
-		this.id = id;
+	public MatchDTO(int id, int idSport, int idUser, int rate, String address, Date matchtime, boolean status) {
+		this.id= id;
+		this.idSport = idSport;
+		this.idUser = idUser;
+		this.rate = rate;
+		this.address = address;
+		this.matchtime = matchtime;
+		this.status = status;
+	}
+	public MatchDTO(int idSport, int idUser, int rate, String address, Date matchtime) {
 		this.idSport = idSport;
 		this.idUser = idUser;
 		this.rate = rate;
@@ -101,6 +108,16 @@ public class MatchDTO {
 		return matchtime.toString();
 	}
 	
+	public boolean isStatus() {
+		return status;
+	}
+
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Match [id=" + id + ", idSport=" + idSport + ", idUser=" + idUser + ", rate=" + rate + ", address="
