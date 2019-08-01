@@ -68,7 +68,11 @@
 </form>
 
 </div>
+
 <br>
-<%@ include file="../css/footer.jsp" %>
+<%@ include file="../include/joinSportTable.jsp"%>
+<br>
+<%@ include file="../include/unjoinSportTable.jsp"%>
+<br><%@ include file="../css/footer.jsp" %>
 </body>
 </html>

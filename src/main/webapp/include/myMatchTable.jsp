@@ -36,9 +36,8 @@
 			<th>RATE</th>
 			<th>ADDRESS</th>
 			<th>TIME</th>
-			<th></th>
-			<th></th>
-			<th></th>
+			<th>STATUS</th>
+			<th colspan="2">OPTION</th>
 		</tr>
 		<%
 			for (MatchDTO m : mylistMatch) {

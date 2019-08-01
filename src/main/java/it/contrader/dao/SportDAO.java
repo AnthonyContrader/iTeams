@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import it.contrader.model.Match;
 import it.contrader.model.Sport;
 import it.contrader.utils.ConnectionSingleton;
 
@@ -16,7 +18,11 @@ public class SportDAO implements DAO<Sport> {
 	private final String QUERY_READ = "SELECT * FROM iteams.sport WHERE id=?";
 	private final String QUERY_UPDATE = "UPDATE iteams.sport SET nplayers=?, name=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE FROM iteams.sport WHERE id=?";
-	
+	private final String QUERY_JOINED ="SELECT iteams.sport.* FROM iteams.sport JOIN iteams.sportusers "
+			+ "ON iteams.sport.id = iteams.sportusers.idsport where iteams.sportusers.iduser = ?";
+	private final String QUERY_NOT_JOINED = "SELECT * FROM iteams.sport WHERE iteams.sport.id NOT IN "
+			+ "(SELECT iteams.sport.id FROM iteams.sport JOIN iteams.sportusers ON iteams.sport.id = iteams.sportusers.idsport "
+			+ "WHERE iteams.sportusers.iduser = ?)";
 	public SportDAO() {}
 	
 	@Override
@@ -44,6 +50,50 @@ public class SportDAO implements DAO<Sport> {
 		return sportsList;
 	}
 	
+	public List<Sport> getJoined(int idUser) {
+		List<Sport> sportList = new ArrayList<>();
+		Connection connection = ConnectionSingleton.getInstance();
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_JOINED);
+			preparedStatement.setInt(1, idUser);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			Sport sport;
+			while (resultSet.next()) {
+				int id = resultSet.getInt("id");
+				int players = resultSet.getInt("nplayers");
+				String name = resultSet.getString("name");
+				sport = new Sport(players, name);
+				sport.setId(id);
+				sportList.add(sport);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return sportList;
+	}
+	
+	public List<Sport> getNotJoined(int idUser) {
+		List<Sport> sportList = new ArrayList<>();
+		Connection connection = ConnectionSingleton.getInstance();
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_NOT_JOINED);
+			preparedStatement.setInt(1, idUser);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			Sport sport;
+			while (resultSet.next()) {
+				int id = resultSet.getInt("id");
+				int players = resultSet.getInt("nplayers");
+				String name = resultSet.getString("name");
+				sport = new Sport(players, name);
+				sport.setId(id);
+				sportList.add(sport);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return sportList;
+	}
+
 	
 	@Override
 	public Sport read(int sportId) {
