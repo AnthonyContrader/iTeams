@@ -48,7 +48,7 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("user", dto);
 				session.setAttribute("utente", dto.getUsername());
 				session.setAttribute("idutente", dto.getId());
-				
+				session.setAttribute("usertype", dto.getUsertype());
 			}
 			else
 				//altrimenti torna alla pagina di login
@@ -58,10 +58,15 @@ public class LoginServlet extends HttpServlet {
 			switch (dto.getUsertype().toUpperCase()) {
 			case "ADMIN":
 				//questo metodo reindirizza alla JSP tramite URL con una request e una response
+				session.setAttribute("usertype", dto.getUsertype());
+				session.setAttribute("user", dto);
+				session.setAttribute("utente", dto.getUsername());
+				session.setAttribute("iduser", dto.getId());
 				getServletContext().getRequestDispatcher("/homeadmin.jsp").forward(request, response);
 				break;
 				
 			case "USER":
+				session.setAttribute("usertype", dto.getUsertype());
 				session.setAttribute("user", dto);
 				session.setAttribute("utente", dto.getUsername());
 				session.setAttribute("iduser", dto.getId());

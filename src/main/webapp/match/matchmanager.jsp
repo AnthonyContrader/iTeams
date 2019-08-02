@@ -11,7 +11,8 @@
 <body>
 <%@ include file="../css/header.jsp" %>
 
-<%@ include file="../css/matchmenu.jsp" %>
+<%-- <%@ include file="../css/matchmenu.jsp" %> --%>
+<%@ include file="../css/menu.jsp" %>
 
 <div class="main">
 	<%

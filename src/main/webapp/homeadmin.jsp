@@ -43,7 +43,8 @@
 
 	<%@include file="css/header.jsp"%>
 	
-	<%@include file="css/homeadminmenu.jsp"%>
+<%-- 	<%@include file="css/homeadminmenu.jsp"%> --%>
+<%@include file="css/menu.jsp"%>
 
 
 

@@ -10,7 +10,7 @@
 </head>
 <body>
 <%@ include file="../css/header.jsp" %>
-<%@ include file="../css/usermenu.jsp" %>
+<%@ include file="../css/menu.jsp" %>
 
 <div class="main">
 	<%
@@ -29,7 +29,8 @@
 		</tr>
 		<%
 			for (UserDTO u : list) {
-				if(! u.getUsertype().contains("ADMIN") ){
+				if(! session.getAttribute("usertype").toString().toUpperCase().contains("ADMIN") ){
+					if(u.getId()==Integer.parseInt(session.getAttribute("iduser").toString())){
 		%>
 		<tr>
 			<td><a href=UserServlet?mode=read&id=<%=u.getId()%>>
@@ -39,17 +40,44 @@
 			<td><%=u.getUsertype()%></td>
 			<td><a href=UserServlet?mode=read&update=true&id=<%=u.getId()%>>Edit</a>
 			</td>
+			<% if(u.getUsertype().contains("ADMIN")){ %>
 			<td><a href=UserServlet?mode=delete&id=<%=u.getId()%>>Delete</a>
 			</td>
-
+	<%
+					}else{ %>
+						
+						<td></td>
+						<%
+					}
+		%>
 		</tr>
 		<%
+					}
+				}else{%>
+				
+					<tr>
+			<td><a href=UserServlet?mode=read&id=<%=u.getId()%>>
+					<%=u.getUsername()%>
+			</a></td>
+			<td><%=u.getPassword()%></td>
+			<td><%=u.getUsertype()%></td>
+			<td><a href=UserServlet?mode=read&update=true&id=<%=u.getId()%>>Edit</a>
+			</td>
+			
+			<td><a href=UserServlet?mode=delete&id=<%=u.getId()%>>Delete</a>
+			</td>
+			</tr>
+				
+				<% 
+					
+					
+					
 				}
 			}
 		%>
 	</table>
 
-
+	<%  if(session.getAttribute("usertype").toString().toUpperCase().contains("ADMIN")){ %>
 
 <form id="floatright" action="UserServlet?mode=insert" method="post">
   <div class="row">
@@ -82,7 +110,9 @@
   </div>
       <button type="submit" >Insert</button>
 </form>
-
+	<%
+					}
+		%>
 </div>
 <br>
 <%@ include file="../css/footer.jsp" %>

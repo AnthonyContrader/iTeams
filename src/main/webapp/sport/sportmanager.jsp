@@ -10,7 +10,7 @@
 </head>
 <body>
 <%@ include file="../css/header.jsp" %>
-<%@ include file="../css/sportmenu.jsp" %>
+<%@ include file="../css/menu.jsp" %>
 
 <div class="main">
 	<%
@@ -18,6 +18,10 @@
 	%>
 
 <br>
+<%
+		if( session.getAttribute("usertype").toString().toUpperCase().contains("ADMIN") ){
+			
+		%>
 
 	<table>
 		<tr>
@@ -27,6 +31,7 @@
 			<th></th>
 		</tr>
 		<%
+		
 			for (SportDTO s : list) {
 		%>
 		<tr>
@@ -42,10 +47,15 @@
 		</tr>
 		<%
 			}
+		
 		%>
 	</table>
+		<%
+			}
+		
+		%>
 
-
+<% if (session.getAttribute("usertype").toString().toUpperCase().contains("ADMIN")){ %>
 
 <form id="floatright" action="SportServlet?mode=insert" method="post">
   <div class="row">
@@ -66,13 +76,18 @@
   </div>
       <button type="submit" >Insert</button>
 </form>
+<% } %>
 
 </div>
 
 <br>
+
+<%  if(!session.getAttribute("usertype").toString().toUpperCase().contains("ADMIN")){ %>
+
 <%@ include file="../include/joinSportTable.jsp"%>
 <br>
 <%@ include file="../include/unjoinSportTable.jsp"%>
+<%} %>
 <br><%@ include file="../css/footer.jsp" %>
 </body>
 </html>

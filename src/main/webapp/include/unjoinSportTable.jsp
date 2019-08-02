@@ -29,7 +29,7 @@
 	<br>
 	
 	<table>
-		<tr><td colspan="4">UNJOINED SPORT</td></tr>
+		<tr><td colspan="4">JOINED SPORT</td></tr>
 		<tr>
 			<th>ID SPORT</th>
 			<th>SPORT</th>
@@ -43,7 +43,7 @@
 			<td><%=s.getId()%></td>
 			<td><%=s.getName()%></td>
 			<td><%=s.getPlayers()%></td>
-			<td><a href="JoinSportServlet?mode=join&idsport=<%=s.getId()%>">UNJOIN SPORT</a></td>
+			<td><a href="JoinSportServlet?mode=unjoin&idsport=<%=s.getId()%>">UNJOIN SPORT</a></td>
 		</tr>
 		<%
 			}

@@ -9,7 +9,7 @@
 </head>
 <body>
 <%@ include file="../css/header.jsp" %>
-<%@ include file="../css/sportmenu.jsp" %>
+<%@ include file="../css/menu.jsp" %>
 <br>
 <div class="main">
 

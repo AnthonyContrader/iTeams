@@ -11,7 +11,7 @@
 <body>
 <%@ include file="../css/header.jsp" %>
 
-<%@ include file="../css/feedbackmenu.jsp" %>
+<%@ include file="../css/menu.jsp" %>
 
 <div class="main">
 	<%
