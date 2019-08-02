@@ -3,9 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="ISO-8859-1" />
+<link rel="icon" type="image/png" href="img/icona.png" />
 <link href="css/vittoriostyle.css" rel="stylesheet">
 <link href="css/iteams.css" rel="stylesheet">
+
 
 </head>
 <body>
