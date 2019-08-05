@@ -80,6 +80,7 @@
 	<%  if(session.getAttribute("usertype").toString().toUpperCase().contains("ADMIN")){ %>
 
 <form id="floatright" action="UserServlet?mode=insert" method="post">
+
   <div class="row">
     <div class="col-25">
       <label for="user">Username</label>
