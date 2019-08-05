@@ -20,6 +20,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Home User</title>
+<link rel="icon" type="image/png" href="img/icona.png" />
 <link href="css/vittoriostyle.css" rel="stylesheet">
 
 </head>
