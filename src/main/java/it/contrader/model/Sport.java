@@ -5,9 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotNull;
-
-import org.springframework.lang.Nullable;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,22 +16,28 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name="sport")
+//@NamedQuery(name="Sport.findAll", query="SELECT s FROM Sport s")
 
 
-public class User {
 
-	@Id
+
+public class Sport {
 	
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idUser;
-
-	@Column(name = "username")
+	
+	private int id;
+	
+	@Column(name = "name")
 	@NotNull
-	private String username;
-
-	@Column(name = "password")
+	private String name;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "players")
 	@NotNull
-	private String password;
-
+	private int players;
+	
 	
 }
