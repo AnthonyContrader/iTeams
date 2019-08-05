@@ -27,8 +27,7 @@ public class ConverterUser {
 			user.setIdUser(userDTO.getIdUser());
 			user.setUsername(userDTO.getUsername());
 			user.setPassword(userDTO.getPassword());
-			user.setEmail(userDTO.getEmail());
-			user.setRuolo(userDTO.getRuolo());
+		
 		}
 		return user;
 	}

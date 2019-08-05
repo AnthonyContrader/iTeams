@@ -41,10 +41,10 @@ public class SportController {
 	public List<SportDTO> getSport() {
 		List<SportDTO> tmp = sportService.getListaSportDTO();
 		List<SportDTO> sportList = new ArrayList<>();
-		for (UserDTO sport : tmp) {
-			if (sport.getSporttype() != "") {
+		for (SportDTO sport : tmp) {
+			
 				sportList.add(sport);
-			}
+			
 		}
 
 		return sportList;
@@ -71,11 +71,11 @@ public class SportController {
 	{
 		int idUpdate = Integer.parseInt(request.getParameter("id"));
 		String nameUpdate = request.getParameter("name");
-		Integer PlayersUpdate = request.getParameter("players");
+		Integer PlayersUpdate = Integer.parseInt(request.getParameter("players"));
 	
 		
 			
-		final SportDTO sport = new SportDTO(nameUpdate,playersUpdate);
+		final SportDTO sport = new SportDTO(nameUpdate, PlayersUpdate);
 		sport.setId(idUpdate);
 		
 		sportService.updateSport(sport);
