@@ -1,21 +1,15 @@
 			<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="java.util.List"
+	import= "it.contrader.model.User"
 	import="it.contrader.dto.UserDTO" 
-	import="it.contrader.dao.UserDAO"
+	import="it.contrader.dao.UserRepository"
 	import="it.contrader.service.Service"
 	import="it.contrader.service.UserService"%>
 	
 			
 			
 			<%
-			
-			UserDAO uDAO = new UserDAO();
-
-			Service<UserDTO> serviceUser = new UserService();
-			List<UserDTO> listUserDTO = serviceUser.getAll();
-			List<UserDTO> listUser = (List<UserDTO>) listUserDTO;
-			request.setAttribute("listuser", listUserDTO);
-			
+			List<UserDTO> listUser= (List<UserDTO>) request.getAttribute("allUserDTO");
 			
 			
 		%>

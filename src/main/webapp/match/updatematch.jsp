@@ -1,130 +1,73 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ page import="java.util.List" %>
-<%@	page import="it.contrader.dto.EventDTO"%>
+    pageEncoding="ISO-8859-1" import="it.contrader.dto.MatchDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Match Management</title>
-<%
-	EventDTO eventUpdate = (EventDTO) request.getAttribute("event");
-%>
-	 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
-  <meta name="author" content="GeeksLabs">
-  <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
-  <link rel="shortcut icon" href="img/favicon.png">
-
-  <title>Match Management</title>
-
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+<link rel="icon" type="image/png" href="img/icona.png" />
+<link href="../css/vittoriostyle.css" rel="stylesheet">
+<title>Edit User</title>
 </head>
 <body>
-	  <!-- container section start -->
-  <section id="container" class="">
+<%@ include file="../css/header.jsp" %>
+<%@ include file="../css/menu.jsp" %>
 
 
-    <header class="header dark-bg">
-      <div class="toggle-nav">
-        <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
-      </div>
+<br>
+<div class="main">
 
-      <!--logo start-->
-      <a href="/homeAdmin.jsp" class="logo">iTeams</a>
-      <!--logo end-->
-
-      <div class="top-nav notification-row">
-        <!-- notificatoin dropdown start-->
-        <ul class="nav pull-right top-menu">
-          <!-- user login dropdown start-->
-          <li class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <b class="caret"></b>
-                        </a>
-            <ul class="dropdown-menu extended logout">
-              <div class="log-arrow-up"></div>
-              <li>
-                <a href="/User/logout"><i class="icon_key_alt"></i> Log Out</a>
-              </li>
-            </ul>
-          </li>
-          <!-- user login dropdown end -->
-        </ul>
-        <!-- notificatoin dropdown end-->
-      </div>
-    </header>
-    <!--header end-->
-
-    <!--sidebar start-->
-     <%@ include file="/include/menuUser.jsp" %>
-    <!--sidebar end-->
-
-    <!--main content start-->
-    <section id="main-content">
-      <section class="wrapper">
-        <!--overview start-->
-        <div class="row">
-          <div class="col-lg-12">
-            <h3 class="page-header"><i class="fa fa-laptop"></i> Admin Management</h3>
-            <ol class="breadcrumb">
-              <li><i class="fa fa-home"></i>Home</a></li>
-              <li><i class="fa fa-laptop"></i>User Management</li>
-            </ol>
-          </div>
-        </div>
-        
-        <div class="row">
-        	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        		<form class="insert-form" action="/Match/updateMatch" method="post">
-        		<input type="hidden" name="id" value="<%=eventUpdate.getId()%>">
-        		<input type="hidden" name="userName" value="<%=eventUpdate.getUserName()%>">
-		<table>
-			<tr>
-				<td>Sport Name</td><td><input type="text" name="sportName" value="<%=eventUpdate.getSportName()%>"></td>
-			</tr>
-			
-			<tr>
-				<td>Rate</td><td><input type="number" name="rate" min="0" max="5" value="<%=eventUpdate.getRate()%>"></td>
-			</tr>
-			<tr>
-				<td>City</td><td><input type="text" name="city" value="<%=eventUpdate.getCity()%>"></td>
-			</tr>
-			<tr>
-				<td>Address</td><td><input type="text" name="address" value="<%=eventUpdate.getAddress()%>"></td>
-			</tr>
-			<tr>
-				<td>Match date</td><td><input type="datetime-local" name="matchtime" value="<%=eventUpdate.getMatchtime()%>"></td>
-			</tr>
-		</table>
-		<br>
-		<button class="btn btn-primary btn-lg btn-block" type="submit">Insert</button>
-	</form>
-	<br>
-	<a class="btn btn-primary btn-lg btn-block" href="/Match/userManagement">Back</a>
-            </div>
-        </div>
-
-      </section>
-    </section>
-    <!--main content end-->
-  </section>
-  <!-- container section start -->
-
-  <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<%MatchDTO f = (MatchDTO) request.getAttribute("dto");%>
 
 
+<form id="floatleft" action="MatchServlet?mode=update&id=<%=f.getId()%>" method="post">
+  <div class="row">
+    <div class="col-25">
+      <label for="iduser">id User</label>
+    </div>
+    <div class="col-75">
+      <input type="number" id="iduser" name="iduser" value=<%=f.getIdUser()%>>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+     <label for="idsport">id sport</label>
+    </div>
+    <div class="col-75">
+      <input
+			type="number" id="idsport" name="idsport" value=<%=f.getIdSport()%>> 
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+     <label for="idrate">rate</label>
+    </div>
+    <div class="col-75">
+      <input
+			type="number" id="rate" name="rate" value=<%=f.getRate()%>> 
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="address">address</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="address" name="address" value=<%=f.getAddress()%>>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="matchtime">Matchtime</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="matchtime" name="matchtime" value=<%=f.getMatchtime()%>>
+    </div>
+  </div>
+      <button type="submit" >Edit</button>
+</form>
+
+	
+</div>
+<br>
+<%@ include file="../css/footer.jsp" %>	
 </body>
 </html>

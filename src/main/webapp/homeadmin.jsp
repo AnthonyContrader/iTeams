@@ -1,19 +1,12 @@
-<%@page import="com.mysql.cj.Session"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+
+<%@ taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="java.util.List"
-	import="it.contrader.dto.UserDTO" 
-	import="it.contrader.dao.UserDAO"
-	import="it.contrader.dto.FeedbackDTO"
-	import="it.contrader.dao.FeedbackDAO"
-	import="it.contrader.dto.SportDTO" 
-	import="it.contrader.dao.SportDAO"
-	import="it.contrader.dto.MatchDTO" 
-	import="it.contrader.dao.MatchDAO"
-	import="it.contrader.service.Service"
-	import="it.contrader.service.FeedbackService"
-	import="it.contrader.service.SportService"
-	import="it.contrader.service.MatchService"
-	import="it.contrader.service.UserService"%>
+	import="it.contrader.dto.UserDTO"
+	import="it.contrader.dao.UserRepository"
+	import="it.contrader.services.UserService"
+	%>
+
 	
 <!DOCTYPE html>
 <html>
@@ -42,11 +35,8 @@
 
 
 
-	<%@include file="css/header.jsp"%>
-	
-<%-- 	<%@include file="css/homeadminmenu.jsp"%> --%>
-<%@include file="css/menu.jsp"%>
 
+<%@include file="css/menu.jsp"%>
 
 
 
@@ -73,9 +63,7 @@
    <div class="col-md-2 col-lg-2 col-sm-3 col-xs-1"></div>
         <div style="float:left;" class="col-md-8 col-lg-8 col-sm-6 col-xs-10">
 
-		<%@include file="include/userTable.jsp"%>
-		<%@include file="include/sportTable.jsp"%> 
-					
+		
 				
 		
 		</div>

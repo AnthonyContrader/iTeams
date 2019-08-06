@@ -1,15 +1,17 @@
 			<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="java.util.List"
 	import="it.contrader.dto.SportDTO" 
-	import="it.contrader.dao.SportRepository"
-	import="it.contrader.services.SportService"
+	import="it.contrader.dao.SportDAO"
+	import="it.contrader.service.Service"
+	import="it.contrader.service.SportService"
 %>
 
 
 		<%
 
-			SportRepository sDAO = new SportRepository();
-			SportService serviceSport = new SportService();
+			SportDAO sDAO = new SportDAO();
+			
+			Service<SportDTO> serviceSport = new SportService();
 			List<SportDTO> listSportDTO = serviceSport.getAll();
 			List<SportDTO> listSport = (List<SportDTO>) listSportDTO;
 			request.setAttribute("listsport", listSportDTO);

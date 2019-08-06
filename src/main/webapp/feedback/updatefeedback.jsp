@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="it.contrader.dto.SportDTO"%>
+    pageEncoding="ISO-8859-1" import="it.contrader.dto.FeedbackDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <link rel="icon" type="image/png" href="img/icona.png" />
 <link href="../css/vittoriostyle.css" rel="stylesheet">
-<title>Edit Sport</title>
+<title>Edit User</title>
 </head>
 <body>
 <%@ include file="../css/header.jsp" %>
@@ -14,25 +14,34 @@
 <br>
 <div class="main">
 
-<%SportDTO s = (SportDTO) request.getAttribute("dto");%>
+<%FeedbackDTO f = (FeedbackDTO) request.getAttribute("dto");%>
 
 
-<form id="floatleft" action="SportServlet?mode=update&id=<%=s.getId()%>" method="post">
+<form id="floatleft" action="FeedbackServlet?mode=update&id=<%=f.getId()%>" method="post">
   <div class="row">
     <div class="col-25">
-      <label for="name">Sport Name</label>
+      <label for="iduser">id User</label>
     </div>
     <div class="col-75">
-      <input type="text" id="name" name="name" value=<%=s.getName()%>>
+      <input type="text" id="iduser" name="iduser" value=<%=f.getIdUser()%>>
     </div>
   </div>
   <div class="row">
     <div class="col-25">
-     <label for="players">Number of Players</label>
+     <label for="idsport">id sport</label>
     </div>
     <div class="col-75">
       <input
-			type="number" id="players" name="players" value=<%=s.getPlayers()%>> 
+			type="text" id="idsport" name="idsport" value=<%=f.getIdSport()%>> 
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+     <label for="idrate">rate</label>
+    </div>
+    <div class="col-75">
+      <input
+			type="text" id="rate" name="rate" value=<%=f.getRate()%>> 
     </div>
   </div>
       <button type="submit" >Edit</button>

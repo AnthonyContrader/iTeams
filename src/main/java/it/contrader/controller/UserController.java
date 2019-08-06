@@ -35,7 +35,7 @@ public class UserController {
 	@RequestMapping(value = "/usermanager", method = RequestMethod.GET)
 	public String usermanager(HttpServletRequest request) {
 		visualUser(request);
-		return "homeUser";		
+		return "usermanager";		
 	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
@@ -92,12 +92,17 @@ public class UserController {
 		
 		final UserDTO userDTO = userService.getByUsernameAndPassword(username, password);
 		final String usertype = userDTO.getUsertype();
+		System.out.println("Utente:"+ username);
+		
 		if (!StringUtils.isEmpty(usertype)) {
 			session.setAttribute("utenteCollegato", userDTO);
-			if (usertype.equals("ADMIN")) {
-				return "home";
-			} else if (usertype.equals("USER")) {
-				return "home";
+			if (usertype.toUpperCase().equals("ADMIN")) {
+				return "homeadmin";
+			} else if (usertype.toUpperCase().equals("USER")) {
+				return "homeuser";
+			} else
+			{
+				return "homeuser";
 			}
 		}
 		return "index";

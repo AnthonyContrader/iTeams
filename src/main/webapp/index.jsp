@@ -1,43 +1,51 @@
-<%@ taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
+<%@ taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+	
 
-<html lang="en">
+<html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
+<link rel="icon" type="image/png" href="img/icona.png" />
 
-
-<title>LOGIN PAGE</title>
-
-<!-- Bootstrap core CSS -->
-<link href="/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Custom styles for this template -->
-<link href="/css/signin.css" rel="stylesheet">
 
 <link href="css/vittoriostyle.css" rel="stylesheet" >
 <link href="css/iteams.css" rel="stylesheet" >
-
+<title>Login SAMPLE</title>
 </head>
+<body>
 
-<body class="text-center">
-	<form class="form-signin" action="/User/login" method="post">
-		<h1 class="h3 mb-3 font-weight-normal">iTeams LOGIN PAGE</h1>
 
-		<label for="inputUser" class="sr-only">Username</label> <input
-			type="text" name="username" id="inputUser" class="form-control"
-			placeholder="Username" required autofocus> <label
-			for="inputPassword" class="sr-only">Password</label> <input
-			type="password" name="password" id="inputPassword"
-			class="form-control" placeholder="Password" required> <input
-			type="text" name="richiesta" value="login" hidden>
+	<div style="float: left;display: block;" class= "box">
+		<img src="img/iTeams-02.svg"  alt="iTeams" id="logo"">
 
-		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
-			in</button>
-	</form>
+	</div>
+<br>
+
+
+	<div style="float: left;display: block;" class= "box">
+		<form class="login" action="/User/login" method="post">
+
+			<label for="user">Username:</label> <input type="text" id="user"
+				name="username" placeholder="Insert username" required autofocus>  <label
+				for="pass">Password: </label> <input type="password" id="pass"
+				name="password" placeholder="Insert password" required>
+				<input type = "text" name= "richiesta" value= "login" hidden>
+
+			<button type="submit" value="login" name="pulsante">Login</button>
+			<br>
+
+			<button type="submit" name="pulsante">Register</button>
+
+		</form>
+	</div>
+	
+
+
+
+
+
+
+
 </body>
 </html>

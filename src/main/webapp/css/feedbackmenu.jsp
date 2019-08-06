@@ -1,0 +1,8 @@
+<div class="navbar">
+  <a href="homeadmin.jsp">Home</a>
+  <a href="UserServlet?mode=userlist">Users</a>
+  <a href="SportServlet?mode=sportlist">Sport</a>
+  <a href="MatchServlet?mode=matchlist">Match</a>
+  <a class="active"  href="FeedbackServlet?mode=feedbacklist">Feedback</a>
+  <a href="LogoutServlet" id="logout">Logout</a>
+</div>
