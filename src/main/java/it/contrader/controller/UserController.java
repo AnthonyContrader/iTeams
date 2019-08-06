@@ -32,8 +32,8 @@ public class UserController {
 		request.setAttribute("allUserDTO", allUser);
 	}
 	
-	@RequestMapping(value = "/userManagement", method = RequestMethod.GET)
-	public String userManagement(HttpServletRequest request) {
+	@RequestMapping(value = "/usermanager", method = RequestMethod.GET)
+	public String usermanager(HttpServletRequest request) {
 		visualUser(request);
 		return "homeUser";		
 	}

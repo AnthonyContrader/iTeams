@@ -48,4 +48,7 @@ public class Event {
 	@Column(name = "status")
 	private Boolean  status;
 	
+	@ManyToOne
+	private Sport sport;
+	
 }

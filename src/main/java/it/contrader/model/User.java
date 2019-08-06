@@ -23,6 +23,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
 
 	@Column(name = "username")
 	@NotNull
@@ -38,6 +39,6 @@ public class User {
 	
 	@Column(name = "status")
 	@NotNull
-	private Boolean status;
+	private boolean status;
 	
 }

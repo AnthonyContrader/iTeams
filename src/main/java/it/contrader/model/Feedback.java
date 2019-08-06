@@ -42,6 +42,8 @@ public class Feedback implements Serializable {
 	@Column(name = "rate")
 	private int rate;
 	
+@ManyToOne
+private Sport sport;
 
 	
 	
