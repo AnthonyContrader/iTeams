@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MatchDTO {
+public class EventDTO {
 
 	private int id;
 	private String sportName;

@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.List" %>
-<%@	page import="it.contrader.dto.MatchDTO"%>
+<%@	page import="it.contrader.dto.EventDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Match Management</title>
+<%
+	EventDTO eventUpdate = (EventDTO) request.getAttribute("event");
+%>
 	 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -81,31 +84,32 @@
         
         <div class="row">
         	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        		<form class="insert-form" action="/Match/insertMatch" method="post">
-        		<input type="hidden" name="userName" value="recupera il nome dell'utente ">
+        		<form class="insert-form" action="/Match/updateMatch" method="post">
+        		<input type="hidden" name="id" value="<%=eventUpdate.getId()%>">
+        		<input type="hidden" name="userName" value="<%=eventUpdate.getUserName()%>">
 		<table>
 			<tr>
-				<td>Sport Name</td><td><input type="text" name="sportName" placeholder="Sport Name"></td>
+				<td>Sport Name</td><td><input type="text" name="sportName" value="<%=eventUpdate.getSportName()%>"></td>
 			</tr>
 			
 			<tr>
-				<td>Rate</td><td><input type="number" name="rate" placeholder="Rate" min="0" max="5" value="0"></td>
+				<td>Rate</td><td><input type="number" name="rate" min="0" max="5" value="<%=eventUpdate.getRate()%>"></td>
 			</tr>
 			<tr>
-				<td>City</td><td><input type="text" name="city" placeholder="City"></td>
+				<td>City</td><td><input type="text" name="city" value="<%=eventUpdate.getCity()%>"></td>
 			</tr>
 			<tr>
-				<td>Address</td><td><input type="text" name="address" placeholder="Address"></td>
+				<td>Address</td><td><input type="text" name="address" value="<%=eventUpdate.getAddress()%>"></td>
 			</tr>
 			<tr>
-				<td>Match date</td><td><input type="datetime-local" name="matchtime" placeholder="Date"></td>
+				<td>Match date</td><td><input type="datetime-local" name="matchtime" value="<%=eventUpdate.getMatchtime()%>"></td>
 			</tr>
 		</table>
 		<br>
 		<button class="btn btn-primary btn-lg btn-block" type="submit">Insert</button>
 	</form>
 	<br>
-	<a class="btn btn-primary btn-lg btn-block" href="/User/userManagement">Back</a>
+	<a class="btn btn-primary btn-lg btn-block" href="/Match/userManagement">Back</a>
             </div>
         </div>
 

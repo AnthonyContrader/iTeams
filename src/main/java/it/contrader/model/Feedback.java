@@ -24,7 +24,7 @@ public class Feedback implements Serializable {
 	private int id;
 	
 	@NotNull
-	@Column(name = "idSport")
+	@Column(name = "idSport")		
 	private int idSport;
 	
 	@NotNull

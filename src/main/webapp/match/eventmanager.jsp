@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.List" %>
-<%@	page import="it.contrader.dto.MatchDTO"%>
+<%@	page import="it.contrader.dto.EventDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Match Management</title>
-<%
-	MatchDTO matchUpdate = (MatchDTO) request.getAttribute("match");
-%>
+	<%
+		List<EventDTO> listEvent = (List<EventDTO>) request.getAttribute("event");
+	 %>
 	 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -84,32 +84,31 @@
         
         <div class="row">
         	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        		<form class="insert-form" action="/Match/updateMatch" method="post">
-        		<input type="hidden" name="id" value="<%=matchUpdate.getId()%>">
-        		<input type="hidden" name="userName" value="<%=matchUpdate.getUserName()%>">
-		<table>
-			<tr>
-				<td>Sport Name</td><td><input type="text" name="sportName" value="<%=matchUpdate.getSportName()%>"></td>
-			</tr>
-			
-			<tr>
-				<td>Rate</td><td><input type="number" name="rate" min="0" max="5" value="<%=matchUpdate.getRate()%>"></td>
-			</tr>
-			<tr>
-				<td>City</td><td><input type="text" name="city" value="<%=matchUpdate.getCity()%>"></td>
-			</tr>
-			<tr>
-				<td>Address</td><td><input type="text" name="address" value="<%=matchUpdate.getAddress()%>"></td>
-			</tr>
-			<tr>
-				<td>Match date</td><td><input type="datetime-local" name="matchtime" value="<%=matchUpdate.getMatchtime()%>"></td>
-			</tr>
-		</table>
-		<br>
-		<button class="btn btn-primary btn-lg btn-block" type="submit">Insert</button>
-	</form>
+            	<table class="table table-striped">
+		<tr><th>Id</th><th>Username</th><th>Password</th><th>User type</th><th>Name</th><th>Surname</th><th>SSN</th><th colspan=2>Manage</th></tr>
+		<%
+			for(EventDTO match: listEvent){
+		 %>
+		 	<tr>
+		 		<td><%=match.getId()%></td>
+		 		<td><%=match.getSportName()%></td>
+		 		<td><%=match.getUserName()%></td>
+		 		<td><%=match.getRate()%></td>
+		 		<td><%=match.getCity()%></td>
+		 		<td><%=match.getAddress()%></td>
+		 		<td><%=match.getMatchtime()%></td>
+		 		<td><%=match.getStatus()%></td>
+		 		<td><a class="btn btn-primary btn-lg btn-block" href="/Match/deleteMatch?id=<%=match.getId() %>">Delete</a></td>
+		 		<td><a class="btn btn-primary btn-lg btn-block"href="/Match/redirectUpdate?id=<%=match.getId()%>">Update</a></td>
+		 	</tr>
+		<% 
+			}
+		%>
+	</table>
+	<a class="btn btn-primary btn-lg btn-block" href="/user/insertUser.jsp">Insert new User</a>
 	<br>
-	<a class="btn btn-primary btn-lg btn-block" href="/Match/userManagement">Back</a>
+	<a class="btn btn-primary btn-lg btn-block" href="/homeAdmin.jsp">Back to home</a>
+	<br>
             </div>
         </div>
 

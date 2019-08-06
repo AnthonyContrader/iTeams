@@ -1,15 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.List" %>
-<%@	page import="it.contrader.dto.MatchDTO"%>
+<%@	page import="it.contrader.dto.EventDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Match Management</title>
-	<%
-		List<MatchDTO> listMatch = (List<MatchDTO>) request.getAttribute("match");
-	 %>
 	 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -84,31 +81,31 @@
         
         <div class="row">
         	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            	<table class="table table-striped">
-		<tr><th>Id</th><th>Username</th><th>Password</th><th>User type</th><th>Name</th><th>Surname</th><th>SSN</th><th colspan=2>Manage</th></tr>
-		<%
-			for(MatchDTO match: listMatch){
-		 %>
-		 	<tr>
-		 		<td><%=match.getId()%></td>
-		 		<td><%=match.getSportName()%></td>
-		 		<td><%=match.getUserName()%></td>
-		 		<td><%=match.getRate()%></td>
-		 		<td><%=match.getCity()%></td>
-		 		<td><%=match.getAddress()%></td>
-		 		<td><%=match.getMatchtime()%></td>
-		 		<td><%=match.getStatus()%></td>
-		 		<td><a class="btn btn-primary btn-lg btn-block" href="/Match/deleteMatch?id=<%=match.getId() %>">Delete</a></td>
-		 		<td><a class="btn btn-primary btn-lg btn-block"href="/Match/redirectUpdate?id=<%=match.getId()%>">Update</a></td>
-		 	</tr>
-		<% 
-			}
-		%>
-	</table>
-	<a class="btn btn-primary btn-lg btn-block" href="/user/insertUser.jsp">Insert new User</a>
+        		<form class="insert-form" action="/Match/insertMatch" method="post">
+        		<input type="hidden" name="userName" value="recupera il nome dell'utente ">
+		<table>
+			<tr>
+				<td>Sport Name</td><td><input type="text" name="sportName" placeholder="Sport Name"></td>
+			</tr>
+			
+			<tr>
+				<td>Rate</td><td><input type="number" name="rate" placeholder="Rate" min="0" max="5" value="0"></td>
+			</tr>
+			<tr>
+				<td>City</td><td><input type="text" name="city" placeholder="City"></td>
+			</tr>
+			<tr>
+				<td>Address</td><td><input type="text" name="address" placeholder="Address"></td>
+			</tr>
+			<tr>
+				<td>Match date</td><td><input type="datetime-local" name="matchtime" placeholder="Date"></td>
+			</tr>
+		</table>
+		<br>
+		<button class="btn btn-primary btn-lg btn-block" type="submit">Insert</button>
+	</form>
 	<br>
-	<a class="btn btn-primary btn-lg btn-block" href="/homeAdmin.jsp">Back to home</a>
-	<br>
+	<a class="btn btn-primary btn-lg btn-block" href="/User/userManagement">Back</a>
             </div>
         </div>
 

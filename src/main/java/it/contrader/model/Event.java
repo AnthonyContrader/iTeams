@@ -1,57 +1,51 @@
 package it.contrader.model;
 
-import java.sql.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-import org.springframework.lang.Nullable;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Match {
+@Table(name = "event")
+public class Event {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name = "sportname")
 	@NotNull
+	@Column(name = "sportName")
 	private String sportName;
 	
-	@Column(name = "username")
 	@NotNull
+	@Column(name = "userName")
 	private String userName;
 	
-	@Column	(name = "rate")
 	@NotNull
+	@Column(name = "rate")
 	private int rate;
-
-	@Column(name = "city")
+	
 	@NotNull
+	@Column(name = "city")
 	private String city;
 	
-	@Column(name = "address")
 	@NotNull
+	@Column(name = "address")
 	private String address;
-
+	
 	@NotNull
 	@Column(name = "matchtime")
 	private String matchtime;
-
-	@Nullable
+	
+	@NotNull
 	@Column(name = "status")
-	private Boolean status;
-
+	private Boolean  status;
+	
 }
