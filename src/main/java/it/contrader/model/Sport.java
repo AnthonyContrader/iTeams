@@ -17,7 +17,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="sport")
 //@NamedQuery(name="Sport.findAll", query="SELECT s FROM Sport s")
 
 
@@ -27,15 +26,13 @@ public class Sport {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
 	private int id;
 	
 	@Column(name = "name")
 	@NotNull
 	private String name;
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	@Column(name = "players")
 	@NotNull
 	private int players;

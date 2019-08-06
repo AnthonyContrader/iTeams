@@ -18,13 +18,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "user")
-
 public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idUser;
+	private int id;
 
 	@Column(name = "username")
 	@NotNull
@@ -33,6 +31,13 @@ public class User {
 	@Column(name = "password")
 	@NotNull
 	private String password;
-
+	
+	@Column(name = "usertype")
+	@NotNull
+	private String usertype;
+	
+	@Column(name = "status")
+	@NotNull
+	private Boolean status;
 	
 }

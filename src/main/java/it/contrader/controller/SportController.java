@@ -32,10 +32,10 @@ public class SportController {
 		this.sportService = sportService;	
 	}
 	
-	@RequestMapping(value = "/sportManagement", method = RequestMethod.GET)
+	@RequestMapping(value = "/sportmanager", method = RequestMethod.GET)
 	public String sportManagement(HttpServletRequest request) {
 		request.setAttribute("sport", getSport());
-		return "sport/sportManagement";
+		return "sport/sportmanager";
 	}
 
 	public List<SportDTO> getSport() {
@@ -55,7 +55,7 @@ public class SportController {
 		int idSport = Integer.parseInt(request.getParameter("id"));
 		sportService.deleteSportById(idSport);
 		request.setAttribute("sport", getSport());
-		return "sport/sportManagement";
+		return "sport/sportmanager";
 	}
 	
 	@RequestMapping(value = "/redirectUpdate", method = RequestMethod.GET)
@@ -63,10 +63,10 @@ public class SportController {
 		int idSport = Integer.parseInt(request.getParameter("id"));
 		SportDTO sport = sportService.getSportDTOById(idSport);
 		request.setAttribute("sport", sport);
-		return "sport/updateSport";
+		return "sport/updatesport";
 	}
 	
-	@RequestMapping(value = "/updateSport", method = RequestMethod.POST)
+	@RequestMapping(value = "/updatesport", method = RequestMethod.POST)
 	public String updateUser(HttpServletRequest request)
 	{
 		int idUpdate = Integer.parseInt(request.getParameter("id"));
@@ -80,12 +80,12 @@ public class SportController {
 		
 		sportService.updateSport(sport);
 		request.setAttribute("sport", getSport());
-		return "sport/sportManagement";	
+		return "sport/sportmanager";	
 		
 	}
 	
 	
-	@RequestMapping(value = "/insertSport", method = RequestMethod.POST)
+	@RequestMapping(value = "/insertsport", method = RequestMethod.POST)
 	public String insertSport(HttpServletRequest request) {
 		
 		String name= request.getParameter("name");
@@ -99,6 +99,6 @@ public class SportController {
 		
 		request.setAttribute("sport", getSport());
 		
-		return "sport/sportManagement";		
+		return "sport/sportmanager";		
 	}
 }

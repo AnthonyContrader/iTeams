@@ -1,7 +1,7 @@
 package it.contrader.services;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +35,8 @@ public class MatchService {
 		return matchRepository.save(ConverterMatch.toEntity(matchDTO)) != null;
 	}
 
-	public boolean updateMatch(MatchDTO userDTO) {
-		return matchRepository.save(ConverterMatch.toEntity(userDTO)) != null;
+	public boolean updateMatch(MatchDTO matchDTO) {
+		return matchRepository.save(ConverterMatch.toEntity(matchDTO)) != null;
 	}
 	
 	public void deleteMatchById(Integer id) {
@@ -50,8 +50,8 @@ public class MatchService {
 		return matchDTOs;
 	}
 	
-	public List<MatchDTO> findMatchDTOByDate(Date matchtime) {
-		final List<Match> list = matchRepository.findAllByDate(matchtime);
+	public List<MatchDTO> findMatchDTOByDate(String matchtime) {
+		final List<Match> list = matchRepository.findAllByMatchtime(matchtime);
 		final List<MatchDTO> matchDTOs = new ArrayList<>();
 		list.forEach(i -> matchDTOs.add(ConverterMatch.toDTO(i)));
 		return matchDTOs;

@@ -13,6 +13,6 @@ import javax.transaction.Transactional;
 public interface SportRepository extends CrudRepository<Sport, Integer> {
 
 	public Sport findSportByName(String name);
-	public List<Sport> findAll(String name);
+	public List<Sport> findAllByName(String name);
 	public List<Sport> findAllByPlayers(Integer players);
 }

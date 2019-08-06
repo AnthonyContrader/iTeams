@@ -58,7 +58,7 @@ public class SportService {
 	
 	public List<SportDTO> findSportDTOByName(String name) {
 		
-		final List<Sport> list = sportRepository.findAll(name);
+		final List<Sport> list = sportRepository.findAllByName(name);
 		final List<SportDTO> sportDTOs = new ArrayList<>();
 		list.forEach(i -> sportDTOs.add(ConverterSport.toDTO(i)));
 		return sportDTOs;

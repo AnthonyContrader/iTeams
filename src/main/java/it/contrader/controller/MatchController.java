@@ -13,7 +13,7 @@ import it.contrader.dto.MatchDTO;
 import it.contrader.services.MatchService;
 import it.contrader.services.UserService;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 
@@ -77,7 +77,7 @@ public class MatchController {
 		Integer rate =  Integer.parseInt(request.getParameter("rate").toString());
 		String city = request.getParameter("city").toString();
 		String address = request.getParameter("address").toString();
-		Date matchtime= java.sql.Date.valueOf(request.getParameter("matchtime"));
+		String matchtime= request.getParameter("matchtime").toString();
 		Boolean status = Boolean.parseBoolean(request.getParameter("status"));
 
 		MatchDTO matchObj = new MatchDTO(0, sportName, userName, rate, city, address, matchtime, status);

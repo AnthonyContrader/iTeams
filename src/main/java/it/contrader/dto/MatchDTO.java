@@ -1,6 +1,6 @@
 package it.contrader.dto;
 
-import java.util.Date;
+import java.sql.Date;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,13 +10,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MatchDTO {
 
-	private Integer id;
+	private int id;
 	private String sportName;
 	private String userName;
-	private Integer rate;
+	private int rate;
 	private String city;
 	private String address;
-	private Date matchtime;
+	private String matchtime;
 	private Boolean status;
 
 }
