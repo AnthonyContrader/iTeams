@@ -10,6 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
+
 <title>LOGIN PAGE</title>
 
 <!-- Bootstrap core CSS -->
@@ -18,11 +19,14 @@
 <!-- Custom styles for this template -->
 <link href="/css/signin.css" rel="stylesheet">
 
+<link href="css/vittoriostyle.css" rel="stylesheet" >
+<link href="css/iteams.css" rel="stylesheet" >
+
 </head>
 
 <body class="text-center">
 	<form class="form-signin" action="/User/login" method="post">
-		<h1 class="h3 mb-3 font-weight-normal">Metabot LOGIN PAGE</h1>
+		<h1 class="h3 mb-3 font-weight-normal">iTeams LOGIN PAGE</h1>
 
 		<label for="inputUser" class="sr-only">Username</label> <input
 			type="text" name="username" id="inputUser" class="form-control"
