@@ -1,5 +1,9 @@
+
+<%@ taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="it.contrader.dto.FeedbackDTO"%>
+    pageEncoding="ISO-8859-1" 
+    import="it.contrader.dto.FeedbackDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +18,8 @@
 <br>
 
 <div class="main">
-<%FeedbackDTO f = (FeedbackDTO) request.getAttribute("dto");%>
+
+<%FeedbackDTO f = (FeedbackDTO) request.getAttribute("feedbackById");%>
 
 
 <table>

@@ -36,7 +36,7 @@
       </div>
 
       <!--logo start-->
-      <a href="/homeAdmin.jsp" class="logo">iTeams</a>
+      <a href="/homeadmin.jsp" class="logo">iTeams</a>
       <!--logo end-->
 
       <div class="top-nav notification-row">
@@ -62,7 +62,7 @@
     <!--header end-->
 
     <!--sidebar start-->
-     <%@ include file="/include/menuUser.jsp" %>
+     <%@ include file="/include/menu.jsp" %>
     <!--sidebar end-->
 
     <!--main content start-->
@@ -81,7 +81,7 @@
         
         <div class="row">
         	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        		<form class="insert-form" action="/Match/insertMatch" method="post">
+        		<form class="insert-form" action="/Event/insertevent" method="post">
         		<input type="hidden" name="userName" value="recupera il nome dell'utente ">
 		<table>
 			<tr>
@@ -98,14 +98,14 @@
 				<td>Address</td><td><input type="text" name="address" placeholder="Address"></td>
 			</tr>
 			<tr>
-				<td>Match date</td><td><input type="datetime-local" name="matchtime" placeholder="Date"></td>
+				<td>Event date</td><td><input type="datetime-local" name="eventTime" placeholder="Date"></td>
 			</tr>
 		</table>
 		<br>
 		<button class="btn btn-primary btn-lg btn-block" type="submit">Insert</button>
 	</form>
 	<br>
-	<a class="btn btn-primary btn-lg btn-block" href="/User/userManagement">Back</a>
+	<a class="btn btn-primary btn-lg btn-block" href="/User/usermanager">Back</a>
             </div>
         </div>
 

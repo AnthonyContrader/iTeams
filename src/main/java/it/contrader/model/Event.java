@@ -49,6 +49,7 @@ public class Event {
 	private Boolean  status;
 	
 	@ManyToOne
+	@JoinColumn(name = "name")
 	private Sport sport;
 	
 }

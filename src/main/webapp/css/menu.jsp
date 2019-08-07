@@ -7,10 +7,10 @@ if(userDTO.getUsertype().toString().toLowerCase().contains("user")){%>
 <div class="navbar">
 	<a <% if(namem.contains("home")){ %>class="active" <% } %> href="/homeuser.jsp">Home</a> 
 	<a <% if(namem.contains("sport")){ %>class="active" <% } %> href="../Sport/sportmanager">Sport</a>
-	<a <% if(namem.contains("match")){ %>class="active" <% } %> href="../Match/matchmanager">Match</a>
-	<a <% if(namem.contains("feedback")){ %>class="active" <% } %> href="../Feedback/feedbackmanager">Feedback</a>
+	<a <% if(namem.contains("event")){ %>class="active" <% } %> href="../Event/eventmanager">Event</a>
+	<a <% if(namem.contains("feedback")){ %>class="active" <% } %> href="../Feedback/readfeedback">Feedback</a>
 	<a	href="/index.jsp" id="logout">Logout</a> 
-	<a	href="../User/thisUser" id="logout">Profile</a>
+	<a	href="../User/readuser" id="logout">Profile</a>
 </div>
 <%} else{%>
 
@@ -18,10 +18,10 @@ if(userDTO.getUsertype().toString().toLowerCase().contains("user")){%>
 	<a <% if(namem.contains("home")){ %>class="active" <% } %> href="/homeadmin.jsp">Home</a> 
 	<a <% if(namem.contains("user")){ %>class="active" <% } %> href="../User/usermanager">User</a>
 	<a <% if(namem.contains("sport")){ %>class="active" <% } %> href="../Sport/sportmanager">Sport</a>
-<%-- 	<a <% if(namem.contains("match")){ %>class="active" <% } %> href="MatchServlet?mode=matchlist">Match</a> --%>
+ 	<a <% if(namem.contains("event")){ %>class="active" <% } %> href= "../Event/eventmanager">Event</a>
 	<a <% if(namem.contains("feedback")){ %>class="active" <% } %> href="../Feedback/feedbackmanager">Feedback</a>
 	<a	href="/index.jsp" id="logout">Logout</a> 
-<!-- 	<a	href="UserServlet?mode=userlist" id="logout">Profile</a> -->
+
 </div>
 
 

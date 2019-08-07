@@ -45,7 +45,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/readuser", method = RequestMethod.GET)
 	public String readuser(HttpServletRequest request) {
-		thisUser(request,session.getAttribute("username").toString());
+		thisUser(request, session.getAttribute("username").toString());
 		return "/user/readuser";		
 	}
 	
@@ -103,11 +103,12 @@ public class UserController {
 		
 		final UserDTO userDTO = userService.getByUsernameAndPassword(username, password);
 		final String usertype = userDTO.getUsertype();
-		System.out.println("Utente:"+ username);
+		
 		
 		if (!StringUtils.isEmpty(usertype)) {
 			session.setAttribute("utenteCollegato", userDTO);
 			session.setAttribute("username", userDTO.getUsername());
+			session.setAttribute("id", userDTO.getId());
 			if (usertype.toUpperCase().equals("ADMIN")) {
 				
 				request.setAttribute("utente", userDTO.getUsername());

@@ -12,7 +12,7 @@
 </head>
 <body>
 <%@ include file="../css/header.jsp" %>
-<%@ include file="../css/usermenu.jsp" %>
+<%@ include file="../css/menu.jsp" %>
 
 <br>
 

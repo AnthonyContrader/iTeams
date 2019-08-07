@@ -1,22 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="it.contrader.dto.MatchDTO"%>
+    pageEncoding="ISO-8859-1" import="it.contrader.dto.EventDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <link rel="icon" type="image/png" href="img/icona.png" />
 <link href="../css/vittoriostyle.css" rel="stylesheet">
-<title>Read Match</title>
+<title>Read Event</title>
 </head>
 <body>
 <%@ include file="../css/header.jsp" %>
-<%-- <%@ include file="../css/matchmenu.jsp" %> --%>
+
 <%@ include file="../css/menu.jsp" %>
 
 <br>
 
 <div class="main">
-<%MatchDTO f = (MatchDTO) request.getAttribute("dto");%>
+<%EventDTO f = (EventDTO) request.getAttribute("dto");%>
 
 
 <table>
@@ -28,7 +28,7 @@
 		<th>Matchtime</th>
 	</tr>
 	<tr>
-		<td><%= f.getIdSport()%></td>
+		<td> <%=f.getIdSport()%></td>
 		<td> <%=f.getIdUser()%></td>
 		<td> <%=f.getRate()%></td>
 		<td> <%=f.getAddress()%></td>

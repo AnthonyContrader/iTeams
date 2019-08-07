@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="it.contrader.dto.MatchDTO"%>
+    pageEncoding="ISO-8859-1" import="it.contrader.dto.EventDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +16,7 @@
 <br>
 <div class="main">
 
-<%MatchDTO f = (MatchDTO) request.getAttribute("dto");%>
+<%EventDTO f = (EventDTO) request.getAttribute("dto");%>
 
 
 <form id="floatleft" action="MatchServlet?mode=update&id=<%=f.getId()%>" method="post">

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Match Management</title>
+<title>Event Management</title>
 	<%
 		List<EventDTO> listEvent = (List<EventDTO>) request.getAttribute("event");
 	 %>
@@ -39,7 +39,7 @@
       </div>
 
       <!--logo start-->
-      <a href="/homeAdmin.jsp" class="logo">iTeams</a>
+      <a href="/homeadmin.jsp" class="logo">iTeams</a>
       <!--logo end-->
 
       <div class="top-nav notification-row">
@@ -65,7 +65,7 @@
     <!--header end-->
 
     <!--sidebar start-->
-     <%@ include file="/include/menuUser.jsp" %>
+     <%@ include file="/include/menu.jsp" %>
     <!--sidebar end-->
 
     <!--main content start-->
@@ -87,19 +87,19 @@
             	<table class="table table-striped">
 		<tr><th>Id</th><th>Username</th><th>Password</th><th>User type</th><th>Name</th><th>Surname</th><th>SSN</th><th colspan=2>Manage</th></tr>
 		<%
-			for(EventDTO match: listEvent){
+			for(EventDTO event: listEvent){
 		 %>
 		 	<tr>
-		 		<td><%=match.getId()%></td>
-		 		<td><%=match.getSportName()%></td>
-		 		<td><%=match.getUserName()%></td>
-		 		<td><%=match.getRate()%></td>
-		 		<td><%=match.getCity()%></td>
-		 		<td><%=match.getAddress()%></td>
-		 		<td><%=match.getMatchtime()%></td>
-		 		<td><%=match.getStatus()%></td>
-		 		<td><a class="btn btn-primary btn-lg btn-block" href="/Match/deleteMatch?id=<%=match.getId() %>">Delete</a></td>
-		 		<td><a class="btn btn-primary btn-lg btn-block"href="/Match/redirectUpdate?id=<%=match.getId()%>">Update</a></td>
+		 		<td><%=event.getId()%></td>
+		 		<td><%=event.getSportName()%></td>
+		 		<td><%=event.getUserName()%></td>
+		 		<td><%=event.getRate()%></td>
+		 		<td><%=event.getCity()%></td>
+		 		<td><%=event.getAddress()%></td>
+		 		<td><%=event.getMatchtime()%></td>
+		 		<td><%=event.getStatus()%></td>
+		 		<td><a class="btn btn-primary btn-lg btn-block" href="/Event/deleteevent?id=<%=event.getId() %>">Delete</a></td>
+		 		<td><a class="btn btn-primary btn-lg btn-block"href="/Event/updateevent?id=<%=event.getId()%>">Update</a></td>
 		 	</tr>
 		<% 
 			}
@@ -107,7 +107,7 @@
 	</table>
 	<a class="btn btn-primary btn-lg btn-block" href="/user/insertUser.jsp">Insert new User</a>
 	<br>
-	<a class="btn btn-primary btn-lg btn-block" href="/homeAdmin.jsp">Back to home</a>
+	<a class="btn btn-primary btn-lg btn-block" href="/homeadmin.jsp">Back to home</a>
 	<br>
             </div>
         </div>

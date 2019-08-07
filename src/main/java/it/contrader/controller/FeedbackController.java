@@ -38,7 +38,7 @@ public class FeedbackController {
 	@RequestMapping(value = "/feedbackmanager", method = RequestMethod.GET)
 	public String feedbackmanager(HttpServletRequest request) {
 		request.setAttribute("feedback", getFeedback());
-		return "feedback/feedbackmanager";
+		return "/feedback/feedbackmanager";
 	}
 
 	public List<FeedbackDTO> getFeedback() {
@@ -104,4 +104,17 @@ public class FeedbackController {
 		
 		return "feedback/feedbackmanager";		
 	}
+	
+	@RequestMapping(value= "/readfeedback", method = RequestMethod.GET)
+	public String readFeedbackById(HttpServletRequest request) {
+
+	Integer idFeedback= Integer.parseInt( request.getSession().getAttribute("id").toString());
+	FeedbackDTO feedback = feedbackService.getFeedbackDTOByIdUser(idFeedback);
+	request.setAttribute("feedbackById", feedback);
+	
+	return "/feedback/readfeedback"; 
+	}
+	
+	
+	
 }
