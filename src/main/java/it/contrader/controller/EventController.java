@@ -34,8 +34,8 @@ public class EventController {
 		request.setAttribute("allEventDTO", allEvent);
 	}
 	
-	@RequestMapping(value = "/eventManagement", method = RequestMethod.GET)
-	public String eventManagement(HttpServletRequest request) {
+	@RequestMapping(value = "/eventmanager", method = RequestMethod.GET)
+	public String eventmanager(HttpServletRequest request) {
 		visualEvent(request);
 		return "homeEvent";		
 	}

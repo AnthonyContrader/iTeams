@@ -67,7 +67,7 @@ public class SportController {
 	}
 	
 	@RequestMapping(value = "/updatesport", method = RequestMethod.POST)
-	public String updateUser(HttpServletRequest request)
+	public String updateSport(HttpServletRequest request)
 	{
 		int idUpdate = Integer.parseInt(request.getParameter("id"));
 		String nameUpdate = request.getParameter("name");
