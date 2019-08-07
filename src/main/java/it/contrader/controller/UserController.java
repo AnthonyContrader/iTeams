@@ -32,10 +32,21 @@ public class UserController {
 		request.setAttribute("allUserDTO", allUser);
 	}
 	
+	private void thisUser(HttpServletRequest request, String userName){
+		List<UserDTO> thisUser = this.userService.findUserDTOByUsername(userName);
+		request.setAttribute("dto", thisUser);
+	}
+	
 	@RequestMapping(value = "/usermanager", method = RequestMethod.GET)
 	public String usermanager(HttpServletRequest request) {
 		visualUser(request);
 		return "usermanager";		
+	}
+	
+	@RequestMapping(value = "/readuser", method = RequestMethod.GET)
+	public String readuser(HttpServletRequest request) {
+		thisUser(request,session.getAttribute("username").toString());
+		return "readuser";		
 	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
@@ -96,6 +107,7 @@ public class UserController {
 		
 		if (!StringUtils.isEmpty(usertype)) {
 			session.setAttribute("utenteCollegato", userDTO);
+			session.setAttribute("username", userDTO.getUsername());
 			if (usertype.toUpperCase().equals("ADMIN")) {
 				
 				request.setAttribute("utente", userDTO.getUsername());

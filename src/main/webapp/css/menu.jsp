@@ -10,7 +10,7 @@ if(userDTO.getUsertype().toString().toLowerCase().contains("user")){%>
 	<a <% if(namem.contains("match")){ %>class="active" <% } %> href="../Match/matchmanager">Match</a>
 	<a <% if(namem.contains("feedback")){ %>class="active" <% } %> href="../Feedback/feedbackmanager">Feedback</a>
 	<a	href="/index.jsp" id="logout">Logout</a> 
-	<a	href="UserServlet?mode=userlist" id="logout">Profile</a>
+	<a	href="../User/thisUser" id="logout">Profile</a>
 </div>
 <%} else{%>
 
