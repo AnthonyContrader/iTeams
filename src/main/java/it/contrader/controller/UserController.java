@@ -97,11 +97,13 @@ public class UserController {
 		if (!StringUtils.isEmpty(usertype)) {
 			session.setAttribute("utenteCollegato", userDTO);
 			if (usertype.toUpperCase().equals("ADMIN")) {
+				
+				request.setAttribute("utente", userDTO.getUsername());
 				return "homeadmin";
+				
 			} else if (usertype.toUpperCase().equals("USER")) {
-				return "homeuser";
-			} else
-			{
+				
+				request.setAttribute("utente", userDTO.getUsername());
 				return "homeuser";
 			}
 		}
