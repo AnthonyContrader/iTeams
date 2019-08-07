@@ -46,7 +46,7 @@ public class UserController {
 	@RequestMapping(value = "/readuser", method = RequestMethod.GET)
 	public String readuser(HttpServletRequest request) {
 		thisUser(request,session.getAttribute("username").toString());
-		return "readuser";		
+		return "/user/readuser";		
 	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)

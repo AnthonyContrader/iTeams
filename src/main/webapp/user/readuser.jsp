@@ -1,6 +1,7 @@
 <%@ taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="it.contrader.dto.UserDTO"%>
+    pageEncoding="ISO-8859-1" import="it.contrader.dto.UserDTO" import="java.util.List"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +17,8 @@
 <br>
 
 <div class="main">
-<%UserDTO u = (UserDTO) request.getAttribute("dto");%>
+<%
+List<UserDTO> u = (List<UserDTO>) request.getAttribute("dto");%>
 
 
 <table>
@@ -26,9 +28,9 @@
 		<th>Usertype</th>
 	</tr>
 	<tr>
-		<td><%=u.getUsername()%></td>
-		<td> <%=u.getPassword()%></td>
-		<td> <%=u.getUsertype()%></td>
+		<td><%=u.get(0).getUsername()%></td>
+		<td> <%=u.get(0).getPassword()%></td>
+		<td> <%=u.get(0).getUsertype()%></td>
 	</tr>	
 </table>
 
