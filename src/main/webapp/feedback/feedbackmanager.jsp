@@ -17,6 +17,9 @@
 <%@ include file="../css/menu.jsp" %>
 
 <div class="main">
+
+
+
 	<%
 		List<FeedbackDTO> list = (List<FeedbackDTO>) request.getAttribute("list");
 	%>
@@ -35,14 +38,18 @@
 			for (FeedbackDTO f : list) {
 		%>
 		<tr>
-			<td><a href=FeedbackServlet?mode=read&id=<%=f.getId()%>>
-					<%=f.getIdSport()%>
+		
+			<td><a href="../Feedback/readfeedback"
+			<%=f.getId()%>>
+			<%=f.getIdSport()%>
 			</a></td>
+			
 			<td><%=f.getIdUser()%></td>
 			<td><%=f.getRate()%></td>
-			<td><a href=FeedbackServlet?mode=read&update=true&id=<%=f.getId()%>>Edit</a>
+			
+			<td><a href="../Feedback/updatefeedback"<%=f.getId()%>>Edit</a>
 			</td>
-			<td><a href=FeedbackServlet?mode=delete&id=<%=f.getId()%>>Delete</a>
+			<td><a href="../Feedback/deletefeedback"<%=f.getId()%>>Delete</a>
 			</td>
 
 		</tr>
@@ -53,7 +60,7 @@
 
 
 
-<form id="floatright" action="FeedbackServlet?mode=insert" method="post">
+<form id="floatright" action="../Feedback/insertfeedback" method="post">
   <div class="row">
     <div class="col-25">
       <label for="iduser">ID USER</label>

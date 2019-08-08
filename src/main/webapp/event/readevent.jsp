@@ -1,3 +1,6 @@
+<%@ taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="it.contrader.dto.EventDTO"%>
 <!DOCTYPE html>
@@ -16,7 +19,8 @@
 <br>
 
 <div class="main">
-<%EventDTO f = (EventDTO) request.getAttribute("dto");%>
+
+<%EventDTO e = (EventDTO) request.getAttribute("eventById");%>
 
 
 <table>
@@ -24,15 +28,19 @@
 		<th>Sport</th>
 		<th>User</th>
 		<th>Rate</th>
+		<th>City</th>
 		<th>Address</th>
-		<th>Matchtime</th>
+		<th>Match time</th>
+		<th>Status</th>
 	</tr>
 	<tr>
-		<td> <%=f.getIdSport()%></td>
-		<td> <%=f.getIdUser()%></td>
-		<td> <%=f.getRate()%></td>
-		<td> <%=f.getAddress()%></td>
-		<td> <%=f.getMatchtime()%></td>
+		<td> <%=e.getSportName()%></td>
+		<td> <%=e.getUserName()%></td>
+		<td> <%=e.getRate()%></td>
+		<td> <%=e.getCity()%></td>
+		<td> <%=e.getAddress()%></td>
+		<td> <%=e.getMatchtime()%></td>
+		<td> <%=e.getStatus()%></td>
 	</tr>	
 </table>
 

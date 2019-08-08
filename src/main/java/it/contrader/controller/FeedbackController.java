@@ -53,7 +53,7 @@ public class FeedbackController {
 		return feedbackList;
 	}		
 	
-	@RequestMapping(value ="/deleteFeedback", method = RequestMethod.GET)
+	@RequestMapping(value ="/deletefeedback", method = RequestMethod.GET)
 	public String deleteFeedback(HttpServletRequest request) {
 		int idFeedback = Integer.parseInt(request.getParameter("id"));
 		feedbackService.deleteFeedbackById(idFeedback);
@@ -69,7 +69,7 @@ public class FeedbackController {
 		return "feedback/updatefeedback";
 	}
 	
-	@RequestMapping(value = "/updatefeedback", method = RequestMethod.POST)
+	@RequestMapping(value = "/updatefeedback", method = RequestMethod.GET)
 	public String updateFeedback(HttpServletRequest request)
 	{
 		int idUpdate = Integer.parseInt(request.getParameter("id"));

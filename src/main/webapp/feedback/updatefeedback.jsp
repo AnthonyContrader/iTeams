@@ -17,7 +17,10 @@
 <%FeedbackDTO f = (FeedbackDTO) request.getAttribute("dto");%>
 
 
-<form id="floatleft" action="FeedbackServlet?mode=update&id=<%=f.getId()%>" method="post">
+
+
+
+<form id="floatleft" action="Feedback/updatefeedback" <%=f.getId()%> method="post">
   <div class="row">
     <div class="col-25">
       <label for="iduser">id User</label>

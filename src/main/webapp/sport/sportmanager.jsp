@@ -1,6 +1,10 @@
+<%@ taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+
 	pageEncoding="ISO-8859-1" import="java.util.List"
 	import="it.contrader.dto.SportDTO"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,13 +40,15 @@
 			for (SportDTO s : list) {
 		%>
 		<tr>
-			<td><a href=SportServlet?mode=read&id=<%=s.getId()%>>
-					<%=s.getName()%>
+			<td><a href= "../Sport/readsport" 
+			<%=s.getId()%>>
+			<%=s.getName()%>
 			</a></td>
+			
 			<td><%=s.getPlayers()%></td>
-			<td><a href=SportServlet?mode=read&update=true&id=<%=s.getId()%>>Edit</a>
+			<td><a href="../Sport/updatesport"<%=s.getId()%>>Edit</a>
 			</td>
-			<td><a href=SportServlet?mode=delete&id=<%=s.getId()%>>Delete</a>
+			<td><a href="../Sport/deletesport"<%=s.getId()%>>Delete</a>
 			</td>
 
 		</tr>
@@ -58,7 +64,7 @@
 
 <% if (session.getAttribute("usertype").toString().toUpperCase().contains("ADMIN")){ %>
 
-<form id="floatright" action="SportServlet?mode=insert" method="post">
+<form id="floatright" action=""../Sport/insertsport"" method="post">
   <div class="row">
     <div class="col-25">
       <label for="name">Nome Sport</label>
@@ -83,12 +89,13 @@
 
 <br>
 
-<%  if(!session.getAttribute("usertype").toString().toUpperCase().contains("ADMIN")){ %>
+<% if(!session.getAttribute("usertype").toString().toUpperCase().contains("ADMIN")){ %>
 
-<%@ include file="../include/joinSportTable.jsp"%>
+<%-- <%@ include file="../include/joinSportTable.jsp"%>
 <br>
 <%@ include file="../include/unjoinSportTable.jsp"%>
 <%} %>
-<br><%@ include file="../css/footer.jsp" %>
+<br><%@ include file="../css/footer.jsp" %> --%>
+
 </body>
 </html>

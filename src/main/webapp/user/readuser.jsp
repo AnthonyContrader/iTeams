@@ -17,8 +17,8 @@
 <br>
 
 <div class="main">
-<%
-List<UserDTO> u = (List<UserDTO>) request.getAttribute("dto");%>
+
+<%List<UserDTO> u = (List<UserDTO>) request.getAttribute("dto");%>
 
 
 <table>

@@ -6,19 +6,22 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.contrader.dto.EventDTO;
+import it.contrader.dto.FeedbackDTO;
 import it.contrader.services.EventService;
 import it.contrader.services.UserService;
 
 import java.sql.Date;
 import java.util.List;
 
-
+@CrossOrigin
 @Controller
 @RequestMapping("/Event")
+
 public class EventController {
 
 	private final EventService eventService;
@@ -37,7 +40,7 @@ public class EventController {
 	@RequestMapping(value = "/eventmanager", method = RequestMethod.GET)
 	public String eventmanager(HttpServletRequest request) {
 		visualEvent(request);
-		return "homeEvent";		
+		return "/event/eventmanager";		
 	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
@@ -46,7 +49,7 @@ public class EventController {
 		request.setAttribute("id", id);
 		this.eventService.deleteEventById(id);
 		visualEvent(request);
-		return "homeUser";
+		return "/event/eventmanager";
 		
 	}
 	
@@ -54,19 +57,32 @@ public class EventController {
 	public String insert(HttpServletRequest request) {
 		visualEvent(request);
 		request.setAttribute("option", "insert");
-		return "creaUser";
+		return "/event/eventmanager";
 		
 	}
 	
+	@RequestMapping(value= "/readevent", method = RequestMethod.GET)
+	public String readEventById(HttpServletRequest request) {
+		
+	Integer idEvent= Integer.parseInt( request.getSession().getAttribute("id").toString());
+	EventDTO event = eventService.getEventDTOById(idEvent);
+	request.setAttribute("eventById", event);
+	
+	return "/event/readevent"; 
+	
+	}
+	
+	
+	
 	@RequestMapping(value = "/findEvent", method = RequestMethod.GET)
-	public String cercaMatch(HttpServletRequest request) {
+	public String cercaEvent(HttpServletRequest request) {
 
 		final String content = request.getParameter("search");
 
 		List<EventDTO> allEvent= this.eventService.findEventDTOByCity(content);
 		request.setAttribute("allEventDTO", allEvent);
 
-		return "homeEvent";
+		return "/event/eventmanager";
 
 	}
 	
@@ -85,7 +101,7 @@ public class EventController {
 		eventService.insertEvent(eventObj);
 
 		visualEvent(request);
-		return "homeEvent";
+		return "/event/eventmanager";
 	}
 	/*
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
