@@ -1,3 +1,4 @@
+<%@ taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="it.contrader.dto.UserDTO"%>
 <!DOCTYPE html>
@@ -17,7 +18,7 @@
 <%UserDTO u = (UserDTO) request.getAttribute("dto");%>
 
 
-<form id="floatleft" action="UserServlet?mode=update&id=<%=u.getId()%>" method="post">
+<form id="floatleft" action="User/updateuser?idUpdate=<%=u.getId()%>" method="post">
   <div class="row">
     <div class="col-25">
       <label for="user">Username</label>

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.stereotype.Controller;
 
+import it.contrader.dto.FeedbackDTO;
 import it.contrader.dto.SportDTO;
 import it.contrader.dto.UserDTO;
 import it.contrader.services.SportService;
@@ -35,7 +36,7 @@ public class SportController {
 	@RequestMapping(value = "/sportmanager", method = RequestMethod.GET)
 	public String sportManagement(HttpServletRequest request) {
 		request.setAttribute("sport", getSport());
-		return "sport/sportmanager";
+		return "/sport/sportmanager";
 	}
 
 	public List<SportDTO> getSport() {
@@ -55,7 +56,7 @@ public class SportController {
 		int idSport = Integer.parseInt(request.getParameter("id"));
 		sportService.deleteSportById(idSport);
 		request.setAttribute("sport", getSport());
-		return "sport/sportmanager";
+		return "/sport/sportmanager";
 	}
 	
 	@RequestMapping(value = "/redirectUpdate", method = RequestMethod.GET)
@@ -63,7 +64,7 @@ public class SportController {
 		int idSport = Integer.parseInt(request.getParameter("id"));
 		SportDTO sport = sportService.getSportDTOById(idSport);
 		request.setAttribute("sport", sport);
-		return "sport/updatesport";
+		return "/sport/updatesport";
 	}
 	
 	@RequestMapping(value = "/updatesport", method = RequestMethod.POST)
@@ -99,6 +100,21 @@ public class SportController {
 		
 		request.setAttribute("sport", getSport());
 		
-		return "sport/sportmanager";		
+		return "/sport/sportmanager";		
+	}
+	
+	@RequestMapping(value= "/readsport", method = RequestMethod.GET)
+	public String readSportById(HttpServletRequest request) {
+
+	Integer idSport= Integer.parseInt( request.getSession().getAttribute("id").toString());
+	//SportDTO sport = sportService.getSportDTOById(idSport);
+	List<SportDTO> sport = sportService.getListaSportDTO();
+	
+	//request.setAttribute("sportById", sport);
+	request.setAttribute("list", sport);
+	return "/sport/sportmanager";
+	
+	//return "/sport/readsport"; 
+	
 	}
 }

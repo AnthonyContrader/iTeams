@@ -9,6 +9,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import it.contrader.dto.SportDTO;
 import it.contrader.dto.UserDTO;
 import it.contrader.services.UserService;
 
@@ -40,7 +41,7 @@ public class UserController {
 	@RequestMapping(value = "/usermanager", method = RequestMethod.GET)
 	public String usermanager(HttpServletRequest request) {
 		visualUser(request);
-		return "usermanager";		
+		return "/user/usermanager";		
 	}
 	
 	@RequestMapping(value = "/readuser", method = RequestMethod.GET)
@@ -49,13 +50,35 @@ public class UserController {
 		return "/user/readuser";		
 	}
 	
+	@RequestMapping(value = "/redirectupdate", method = RequestMethod.GET)
+	public String redirectUpdate(HttpServletRequest request) {
+		int idUser = Integer.parseInt(request.getParameter("idUpdate"));
+		UserDTO user = userService.getUserDTOById(idUser);
+		request.setAttribute("user", user);
+		return "/user/updateuser";
+	}
+	
+	@RequestMapping(value = "/updateuser", method = RequestMethod.POST)
+	public String updateUser(HttpServletRequest request)
+	{
+		int idUpdate = Integer.parseInt(request.getParameter("idUpdate"));
+		String nameUpdate = request.getParameter("username");
+		String passwordUpdate = request.getParameter("password");
+		String usertype = "user";
+		final UserDTO user = new UserDTO(idUpdate, nameUpdate,passwordUpdate, usertype, true);
+		userService.updateUser(user);
+			
+		return "/user/usermanager";	
+		
+	}
+	
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public String delete(HttpServletRequest request) {
-		int id = Integer.parseInt(request.getParameter("id"));
+		int id = Integer.parseInt(request.getParameter("idDelete"));
 		request.setAttribute("id", id);
 		this.userService.deleteUserById(id);
 		visualUser(request);
-		return "homeUser";
+		return "/user/usermanager";
 		
 	}
 	
@@ -79,7 +102,7 @@ public class UserController {
 
 	}
 	
-	@RequestMapping(value = "/creaUser", method = RequestMethod.POST)
+	@RequestMapping(value = "/insertUser", method = RequestMethod.POST)
 	public String insertUser(HttpServletRequest request) {
 		String username = request.getParameter("username").toString();
 		String password = request.getParameter("password").toString();
@@ -109,6 +132,7 @@ public class UserController {
 			session.setAttribute("utenteCollegato", userDTO);
 			session.setAttribute("username", userDTO.getUsername());
 			session.setAttribute("id", userDTO.getId());
+			session.setAttribute("usertype", userDTO.getUsertype());
 			if (usertype.toUpperCase().equals("ADMIN")) {
 				
 				request.setAttribute("utente", userDTO.getUsername());

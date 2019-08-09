@@ -19,12 +19,12 @@
 
 <div class="main">
 	<%
-		List<SportDTO> list = (List<SportDTO>) request.getAttribute("list");
+		List<SportDTO> list = (List<SportDTO>) request.getAttribute("sport");
 	%>
 
 <br>
 <%
-		if( session.getAttribute("usertype").toString().toUpperCase().contains("ADMIN") ){
+		if(! session.getAttribute("usertype").toString().toUpperCase().contains("ADMIN") ){
 			
 		%>
 
@@ -96,6 +96,6 @@
 <%@ include file="../include/unjoinSportTable.jsp"%>
 <%} %>
 <br><%@ include file="../css/footer.jsp" %> --%>
-
+<% } %>
 </body>
 </html>

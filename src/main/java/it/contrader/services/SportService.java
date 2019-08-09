@@ -56,6 +56,10 @@ public class SportService {
 		sportRepository.deleteById(idSport);
 	}
 	
+	public boolean readSport(SportDTO sportDTO) {
+		return sportRepository.save(ConverterSport.toEntity(sportDTO)) != null;
+	}
+	
 	public List<SportDTO> findSportDTOByName(String name) {
 		
 		final List<Sport> list = sportRepository.findAllByName(name);

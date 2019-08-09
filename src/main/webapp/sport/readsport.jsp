@@ -19,7 +19,7 @@
 <br>
 
 <div class="main">
-<%SportDTO s = (SportDTO) request.getAttribute("dto");%>
+<%SportDTO s = (SportDTO) request.getAttribute("sportById");%>
 
 
 <table>
@@ -29,7 +29,7 @@
 	</tr>
 	<tr>
 		<td><%=s.getName()%></td>
-		<td> <%=s.getPlayers()%></td>
+		<td><%=s.getPlayers()%></td>
 	</tr>	
 </table>
 

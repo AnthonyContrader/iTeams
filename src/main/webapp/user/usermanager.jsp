@@ -14,110 +14,110 @@
 <%@ include file="../css/header.jsp" %>
 <%@ include file="../css/menu.jsp" %>
 
-<!-- <div class="main"> -->
-<%-- 	<% --%>
-// 		List<UserDTO> list = (List<UserDTO>) request.getAttribute("list");
-<%-- 	%> --%>
+<div class="main">
+	<%
+		List<UserDTO> list = (List<UserDTO>) request.getAttribute("allUserDTO");
+	%>
 
-<!-- <br> -->
+<br>
 
-<!-- 	<table> -->
-<!-- 		<tr> -->
-<!-- 			<th>Username</th> -->
-<!-- 			<th>Password</th> -->
-<!-- 			<th>Usertype</th> -->
-<!-- 			<th></th> -->
-<!-- 			<th></th> -->
-<!-- 		</tr> -->
-<%-- 		<% --%>
-// 			for (UserDTO u : list) {
-// 				if(! session.getAttribute("usertype").toString().toUpperCase().contains("ADMIN") ){
-// 					if(u.getId()==Integer.parseInt(session.getAttribute("iduser").toString())){
-<%-- 		%> --%>
-<!-- 		<tr> -->
-<%-- 			<td><a href=UserServlet?mode=read&id=<%=u.getId()%>> --%>
-<%-- 					<%=u.getUsername()%> --%>
-<!-- 			</a></td> -->
-<%-- 			<td><%=u.getPassword()%></td> --%>
-<%-- 			<td><%=u.getUsertype()%></td> --%>
-<%-- 			<td><a href=UserServlet?mode=read&update=true&id=<%=u.getId()%>>Edit</a> --%>
-<!-- 			</td> -->
-<%-- 			<% if(u.getUsertype().contains("ADMIN")){ %> --%>
-<%-- 			<td><a href=UserServlet?mode=delete&id=<%=u.getId()%>>Delete</a> --%>
-<!-- 			</td> -->
-<%-- 	<% --%>
-<%-- 					}else{ %> --%>
+	<table>
+		<tr>
+			<th>Username</th>
+			<th>Password</th>
+			<th>Usertype</th>
+			<th></th>
+			<th></th>
+		</tr>
+		<%
+			for (UserDTO u : list) {
+				if(! session.getAttribute("usertype").toString().toUpperCase().contains("ADMIN") ){
+					if(u.getId()==Integer.parseInt(session.getAttribute("iduser").toString())){
+		%>
+		<tr>
+			<td><a href=UserServlet?mode=read&id=<%=u.getId()%>>
+					<%=u.getUsername()%>
+			</a></td>
+			<td><%=u.getPassword()%></td>
+			<td><%=u.getUsertype()%></td>
+			<td><a href=UserServlet?mode=read&update=true&id=<%=u.getId()%>>Edit</a>
+			</td>
+			<% if(u.getUsertype().contains("ADMIN")){ %>
+			<td><a href=UserServlet?mode=delete&id=<%=u.getId()%>>Delete</a>
+			</td>
+	<%
+					}else{ %>
 						
-<!-- 						<td></td> -->
-<%-- 						<% --%>
-// 					}
-<%-- 		%> --%>
-<!-- 		</tr> -->
-<%-- 		<% --%>
-// 					}
-<%-- 				}else{%> --%>
-				
-<!-- 					<tr> -->
-<%-- 			<td><a href=UserServlet?mode=read&id=<%=u.getId()%>> --%>
-<%-- 					<%=u.getUsername()%> --%>
-<!-- 			</a></td> -->
-<%-- 			<td><%=u.getPassword()%></td> --%>
-<%-- 			<td><%=u.getUsertype()%></td> --%>
-<%-- 			<td><a href=UserServlet?mode=read&update=true&id=<%=u.getId()%>>Edit</a> --%>
-<!-- 			</td> -->
+						<td></td>
+						<%
+					}
+		%>
+		</tr>
+		<%
+					}
+				}else{%>
+				<%--sono amministratore, controllo tutti gli utenti ! --%>
+					<tr>
+			<td><a href=User/readuser?idU=<%=u.getId()%>>
+					<%=u.getUsername()%>
+			</a></td>
+			<td><%=u.getPassword()%></td>
+			<td><%=u.getUsertype()%></td>
+			<td><a href=/User/redirectupdate?idUpdate=<%=u.getId()%>>Edit</a>
+			</td>
 			
-<%-- 			<td><a href=UserServlet?mode=delete&id=<%=u.getId()%>>Delete</a> --%>
-<!-- 			</td> -->
-<!-- 			</tr> -->
+			<td><a href=/User/delete?idDelete=<%=u.getId()%>>Delete</a>
+			</td>
+			</tr>
 				
-<%-- 				<%  --%>
+				<% 
 					
 					
 					
-// 				}
-// 			}
-<%-- 		%> --%>
-<!-- 	</table> -->
+				}
+			}
+		%>
+	</table>
 
-<%-- 	<%  if(session.getAttribute("usertype").toString().toUpperCase().contains("ADMIN")){ %> --%>
+	<%  if(session.getAttribute("usertype").toString().toUpperCase().contains("ADMIN")){ %>
 
-<!-- <form id="floatright" action="UserServlet?mode=insert" method="post"> -->
+<form id="floatright" action="/User/insertUser?idInsert" method="post">
 
-<!--   <div class="row"> -->
-<!--     <div class="col-25"> -->
-<!--       <label for="user">Username</label> -->
-<!--     </div> -->
-<!--     <div class="col-75"> -->
-<!--       <input type="text" id="user" name="username" placeholder="inserisci username"> -->
-<!--     </div> -->
-<!--   </div> -->
-<!--   <div class="row"> -->
-<!--     <div class="col-25"> -->
-<!--      <label for="pass">Password</label> -->
-<!--     </div> -->
-<!--     <div class="col-75"> -->
-<!--       <input type="text" id="pass" name="password" placeholder="inserisci password">  -->
-<!--     </div> -->
-<!--   </div> -->
-<!--   <div class="row"> -->
-<!--     <div class="col-25"> -->
-<!--       <label for="type">Usertype</label> -->
-<!--     </div> -->
-<!--    		 <div class="col-75"> -->
-<!--  			<select id="type" name="usertype"> -->
-<!-- <!--   				<option value="ADMIN">ADMIN</option> --> -->
-<!--   				<option value="USER">USER</option> -->
+  <div class="row">
+    <div class="col-25">
+      <label for="user">Username</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="user" name="username" placeholder="inserisci username">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+     <label for="pass">Password</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="pass" name="password" placeholder="inserisci password"> 
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="type">Usertype</label>
+    </div>
+   		 <div class="col-75">
+ 			<select id="type" name="usertype">
+<!--   				<option value="ADMIN">ADMIN</option> -->
+  				<option value="USER">USER</option>
  
-<!-- 			</select> -->
-<!--     	</div> -->
-<!--   </div> -->
-<!--       <button type="submit" >Insert</button> -->
-<!-- </form> -->
-<%-- 	<% --%>
-// 					}
-<%-- 		%> --%>
-<!-- </div> -->
-<!-- <br> -->
-<%-- <%@ include file="../css/footer.jsp" %> --%>
+			</select>
+    	</div>
+  </div>
+      <button type="submit" >Insert</button>
+</form>
+	<%
+					}
+		%>
+</div>
+<br>
+<%@ include file="../css/footer.jsp" %>
 </body>
 </html>
