@@ -24,7 +24,7 @@
 
 <br>
 <%
-		if(! session.getAttribute("usertype").toString().toUpperCase().contains("ADMIN") ){
+		if(session.getAttribute("usertype").toString().toUpperCase().contains("ADMIN") ){
 			
 		%>
 
@@ -43,12 +43,11 @@
 			<td><a href= "../Sport/readsport" 
 			<%=s.getId()%>>
 			<%=s.getName()%>
-			</a></td>
-			
+			</a></td>		
 			<td><%=s.getPlayers()%></td>
-			<td><a href="../Sport/updatesport"<%=s.getId()%>>Edit</a>
+			<td><a href="../Sport/redirectupdate?idUpdate=<%=s.getId()%>">Edit</a>
 			</td>
-			<td><a href="../Sport/deletesport"<%=s.getId()%>>Delete</a>
+			<td><a href="../Sport/deletesport?id=<%=s.getId()%>">Delete</a>
 			</td>
 
 		</tr>
@@ -61,24 +60,60 @@
 			}
 		
 		%>
+		<%
+		if(session.getAttribute("usertype").toString().toUpperCase().contains("USER") ){
+			
+		%>
+
+	<table>
+		<tr>
+			<th>Sport Name</th>
+			<th>Number of Players</th>
+			<th></th>
+			<th></th>
+		</tr>
+		<%
+		
+			for (SportDTO s : list) {
+		%>
+		<tr>
+			<td><a href= "../Sport/readsport" 
+			<%=s.getId()%>>
+			<%=s.getName()%>
+			</a></td>		
+			<td><%=s.getPlayers()%></td>
+			<td><a href=#>JOIN</a>
+
+		</tr>
+		<%
+			}
+		
+		%>
+	</table>
+		<%
+			}
+		
+		%>
+		
+		
 
 <% if (session.getAttribute("usertype").toString().toUpperCase().contains("ADMIN")){ %>
 
-<form id="floatright" action=""../Sport/insertsport"" method="post">
+<form id="floatright" action="../Sport/insertsport" method="post">
   <div class="row">
     <div class="col-25">
-      <label for="name">Nome Sport</label>
+      <label for="name">Sport Name</label>
     </div>
     <div class="col-75">
-      <input type="text" id="user" name="name" placeholder="inserisci nome dello sport">
+      <input type="text" id="user" name="name" placeholder="insert sport name">
     </div>
   </div>
   <div class="row">
     <div class="col-25">
-     <label for="players">Numero Giocatori</label>
+     <label for="players">Number of Players</label>
     </div>
     <div class="col-75">
-      <input type="number" id="pass" name="players" placeholder="inserisci numero giocatori"> 
+      <input type="number" id="pass" name="players" placeholder="insert Number of Players"> 
     </div>
   </div>
       <button type="submit" >Insert</button>

@@ -10,12 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.stereotype.Controller;
 
+import it.contrader.dto.EventDTO;
 import it.contrader.dto.TeamDTO;
 import it.contrader.dto.UserDTO;
 import it.contrader.services.TeamService;
 import it.contrader.services.UserService;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @CrossOrigin
@@ -75,12 +77,12 @@ public class TeamController {
 		Integer idSportUpdate = Integer.parseInt(request.getParameter("idsport"));
 		
 			
-		final TeamDTO team = new TeamDTO(idUpdate, nameUpdate, idSportUpdate, playersUpdate);
-		
+		//final TeamDTO team = new TeamDTO(idUpdate, nameUpdate, idSportUpdate, playersUpdate);
+		final TeamDTO team = new TeamDTO();
+		team.setName(nameUpdate);		
 		teamService.updateTeam(team);
 		request.setAttribute("team", getTeam());
-		return "team/teammanager";	
-		
+		return "team/teammanager";
 	}
 	
 	
@@ -91,7 +93,12 @@ public class TeamController {
 		Integer players= Integer.parseInt(request.getParameter("players"));
 		Integer idSport = Integer.parseInt(request.getParameter("idsport"));
 				
-		TeamDTO teamDTO = new TeamDTO(0, name,idSport, players);
+		//TeamDTO teamDTO = new TeamDTO(0, name,idSport, players);
+		TeamDTO teamDTO = new TeamDTO();
+		teamDTO.setName(name);
+		EventDTO event = (EventDTO) session.getAttribute("event");
+		teamDTO.setEventDTO(event);
+		teamDTO.setComponentsDTO(new HashSet<UserDTO>());
 		
 		teamService.insertTeam(teamDTO);
 		

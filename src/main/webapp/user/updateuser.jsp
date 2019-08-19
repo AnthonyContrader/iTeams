@@ -11,14 +11,15 @@
 </head>
 <body>
 <%@ include file="../css/header.jsp" %>
-<%@ include file="../css/usermenu.jsp" %>
+<%@ include file="../css/menu.jsp" %>
 <br>
 <div class="main">
 
-<%UserDTO u = (UserDTO) request.getAttribute("dto");%>
+<%UserDTO u = (UserDTO) request.getAttribute("user");%>
 
 
-<form id="floatleft" action="User/updateuser?idUpdate=<%=u.getId()%>" method="post">
+<form id="floatleft" action="../User/updateuser" method="post">
+  <input type="hidden" id="id" name="id" value=<%=u.getId()%>>
   <div class="row">
     <div class="col-25">
       <label for="user">Username</label>
@@ -42,8 +43,13 @@
     </div>
    		 <div class="col-75">
  			<select id="type" name="usertype">
-<%--   				<option value="ADMIN" <%if(u.getUsertype().equals("ADMIN")) {%>selected<%}%>>ADMIN</option> --%>
-  				<option value="USER" <%if(u.getUsertype().equals("USER")) {%>selected<%}%>>USER</option>
+ 			<%if(u.getUsertype().toUpperCase().contains("ADMIN")) {%>
+				<option value="ADMIN" selected>ADMIN</option>
+  				<option value="USER">USER</option>
+  			<%}else{%>
+  				<option value="USER" selected>USER</option>
+  				<option value="ADMIN">ADMIN</option>
+  				<%}%>
 			</select>
     	</div>
   </div>

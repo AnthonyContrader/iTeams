@@ -9,5 +9,5 @@ public interface TeamRepository extends CrudRepository<Team, Integer> {
 
 	public Team findTeamByName(String name);
 	public List<Team> findAllByName(String name);
-	public List<Team> findAllByPlayers(Integer players);
+	//public List<Team> findAllByPlayers(Integer players);
 }

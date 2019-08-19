@@ -14,4 +14,5 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 
 	public User findUserByUsernameAndPassword(String username,String password);
 	public List<User> findAllByUsername(String username);
+	public User findUserById(int id);
 }

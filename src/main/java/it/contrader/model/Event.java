@@ -1,15 +1,22 @@
 package it.contrader.model;
 
+import java.util.Set;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -20,13 +27,22 @@ public class Event {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	/*
 	@NotNull
 	@Column(name = "sportName")
 	private String sportName;
+	*/
 	
+	//relazione user - sport
+	@ManyToOne
+	@JoinColumn(name = "idUser", referencedColumnName = "id")
+	private User user;
+	/*
 	@NotNull
 	@Column(name = "userName")
 	private String userName;
+	*/
+	
 	
 	@NotNull
 	@Column(name = "rate")
@@ -45,11 +61,37 @@ public class Event {
 	private String matchtime;
 	
 	@NotNull
-	@Column(name = "status")
-	private Boolean  status;
-	
-	@ManyToOne
-	@JoinColumn(name = "name")
+	@Column(name = "status", columnDefinition="tinyint(1) default 0")
+	private Boolean status;
+		
+	//relazione event - sport
+	@ManyToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "idSport", referencedColumnName = "id")
 	private Sport sport;
 	
+	//relazione event - user
+	
+	//relazione user - evento
+		@ManyToMany(cascade = CascadeType.MERGE)
+		@JoinTable(
+		  name = "user_event", 
+		  joinColumns = @JoinColumn(name = "event_id"), 
+		  inverseJoinColumns = @JoinColumn(name = "user_id"))
+		  private Set<User> joiners;
+	
+		
+	//relazione utenteInvitato - evento
+		@ManyToMany(cascade = CascadeType.MERGE)
+		@JoinTable(
+		  name = "invited_event", 
+		  joinColumns = @JoinColumn(name = "event_id"), 
+		  inverseJoinColumns = @JoinColumn(name = "user_id"))
+		  private Set<User> invited;
+		
+	//@ManyToMany(mappedBy = "joinEvent", cascade = CascadeType.MERGE)
+	//private Set<User> joiners;
+	
+	//relazione event - team
+	@OneToMany(mappedBy="event", cascade = CascadeType.MERGE)
+	private Set<Team> teams;
 }

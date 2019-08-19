@@ -1,10 +1,10 @@
 package it.contrader.converter;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-import it.contrader.dto.EventDTO;
+import java.util.Set;
 import it.contrader.dto.FeedbackDTO;
-import it.contrader.model.Event;
 import it.contrader.model.Feedback;
 
 
@@ -15,8 +15,9 @@ public class ConverterFeedback {
 		if (feedback != null) {
 			feedbackDTO = new FeedbackDTO();
 			feedbackDTO.setId(feedback.getId());
-			feedbackDTO.setIdSport(feedback.getIdSport());
-			feedbackDTO.setIdUser(feedback.getIdUser());
+			feedbackDTO.setSportDTO(ConverterSport.toDTO(feedback.getSport()));
+			feedbackDTO.setUserDTO(ConverterUser.toDTO(feedback.getUser()));
+			feedbackDTO.setCreatorDTO(ConverterUser.toDTO(feedback.getCreator()));
 			feedbackDTO.setRate(feedback.getRate());
 		}
 		return feedbackDTO;
@@ -27,12 +28,14 @@ public class ConverterFeedback {
 		if (feedbackDTO != null) {
 			feedback = new Feedback();
 			feedback.setId(feedbackDTO.getId());
-			feedbackDTO.setIdSport(feedback.getIdSport());
-			feedbackDTO.setIdUser(feedback.getIdUser());
-			feedbackDTO.setRate(feedback.getRate());
+			feedback.setSport(ConverterSport.toEntity(feedbackDTO.getSportDTO()));
+			feedback.setUser(ConverterUser.toEntity(feedbackDTO.getUserDTO()));
+			feedback.setCreator(ConverterUser.toEntity(feedbackDTO.getCreatorDTO()));
+			feedback.setRate(feedbackDTO.getRate());
 		}
 		return feedback;
 	}
+	
 	public static List<FeedbackDTO> toListDTO(List<Feedback> list) {
 		List<FeedbackDTO> listFeedbackDTO = new ArrayList<>();
 		if (!list.isEmpty()) {
@@ -51,6 +54,26 @@ public class ConverterFeedback {
 			}
 		}
 		return list;
+	}
+	
+	public static Set<FeedbackDTO> toSetDTO(Set<Feedback> set) {
+		Set<FeedbackDTO> setFeedbackDTO = new HashSet<>();
+		if (!set.isEmpty()) {
+			for (Feedback feedback : set) {
+				setFeedbackDTO.add(ConverterFeedback.toDTO(feedback));
+			}
+		}
+		return setFeedbackDTO;
+	}
+	
+	public static Set<Feedback> toSetEntity(Set<FeedbackDTO> setFeedbackDTO) {
+		Set<Feedback> set = new HashSet<>();
+		if (!setFeedbackDTO.isEmpty()) {
+			for (FeedbackDTO feedbackDTO : setFeedbackDTO) {
+				set.add(ConverterFeedback.toEntity(feedbackDTO));
+			}
+		}
+		return set;
 	}
 }
 

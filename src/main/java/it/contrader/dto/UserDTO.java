@@ -1,5 +1,7 @@
 package it.contrader.dto;
 
+import java.util.Set;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class UserDTO {
 
 	
-	private Integer id;
+	private int id;
 
 	private String username;
 	
@@ -19,4 +21,19 @@ public class UserDTO {
 	private String usertype;
 	
 	private Boolean status;
+	
+	private Set<EventDTO> createdEventsDTO;
+	
+	private Set<EventDTO> joinEventDTO;
+	
+	private Set<EventDTO> invitedEventDTO;
+	
+	private Set<TeamDTO> memberOfDTO;
+	
+	private Set<SportDTO> likeDTO;
+	
+	private Set<FeedbackDTO> givedDTO;
+	
+	private Set<FeedbackDTO> receivedDTO;
+	
 }

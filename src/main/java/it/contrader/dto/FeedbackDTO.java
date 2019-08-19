@@ -1,6 +1,5 @@
 package it.contrader.dto;
 
-import java.sql.Date;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,8 +11,8 @@ import lombok.NoArgsConstructor;
 public class FeedbackDTO {
 	
 	private int id;
-	private int idSport;
-	private int idUser;
+	private SportDTO sportDTO;
+	private UserDTO userDTO;
+	private UserDTO creatorDTO;
 	private int rate;
-
 }

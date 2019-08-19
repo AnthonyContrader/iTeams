@@ -1,7 +1,8 @@
 <%@ taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="java.util.List"
-	import="it.contrader.dto.UserDTO"%>
+	import="it.contrader.dto.UserDTO"
+	import="it.contrader.dto.EventDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +17,7 @@
 
 	<div class="main">
 		<%
+			EventDTO event = (EventDTO)request.getAttribute("evento");
 			List<UserDTO> list = (List<UserDTO>) request.getAttribute("allUserDTO");
 		%>
 
@@ -37,7 +39,7 @@
 				<td><a href=User/readuser?idU= <%=u.getId()%>> <%=u.getUsername()%>
 				</a></td>
 				<td><%=u.getUsertype()%></td>
-				<td><a href="../User/invite?idInvite=<%=u.getId()%>">Invite</a></td>
+				<td><a href="../Event/inviteuser?idInvite=<%=u.getId()%>">Invite</a></td>
 				<td><a href="../User/sendmessage?idMessage=<%=u.getId()%>">Send
 						a message</a></td>
 			</tr>

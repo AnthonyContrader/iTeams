@@ -1,10 +1,12 @@
 package it.contrader.converter;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-
+import java.util.Set;
 import it.contrader.dto.EventDTO;
 import it.contrader.model.Event;
+
 
 public class ConverterEvent{
 
@@ -13,13 +15,19 @@ public class ConverterEvent{
 		if (event != null) {
 			eventDTO = new EventDTO();
 			eventDTO.setId(event.getId());
-			eventDTO.setSportName(event.getSportName());
-			eventDTO.setUserName(event.getUserName());
+			//eventDTO.setSportName(event.getSportName());
+			eventDTO.setUserDTO(ConverterUser.toDTO(event.getUser()));
+			//eventDTO.setUserName(event.getUserName());
 			eventDTO.setRate(event.getRate());
 			eventDTO.setCity(event.getCity());
 			eventDTO.setAddress(event.getAddress());
 			eventDTO.setMatchtime(event.getMatchtime());
-			//matchDTO.setStatus(match.isStatus());
+			eventDTO.setStatus(event.getStatus());
+			eventDTO.setSportDTO(ConverterSport.toDTO(event.getSport()));
+			eventDTO.setJoinersInt(event.getJoiners().size());
+			eventDTO.setInvitedDTO(ConverterUser.toSetDTO(event.getInvited()));
+			eventDTO.setJoinersDTO(ConverterUser.toSetDTO(event.getJoiners()));
+			eventDTO.setTeamsDTO(ConverterTeam.toSetDTO(event.getTeams()));
 		}
 		return eventDTO;
 	}
@@ -29,13 +37,18 @@ public class ConverterEvent{
 		if (eventDTO != null) {
 			event = new Event();
 			event.setId(eventDTO.getId());
-			event.setSportName(eventDTO.getSportName());
-			event.setUserName(eventDTO.getUserName());
+			//event.setSportName(eventDTO.getSportName());
+			//event.setUserName(eventDTO.getUserName());
+			event.setUser(ConverterUser.toEntity((eventDTO.getUserDTO())));
 			event.setRate(eventDTO.getRate());
 			event.setCity(eventDTO.getCity());
 			event.setAddress(eventDTO.getAddress());
 			event.setMatchtime(eventDTO.getMatchtime());
-			//match.setStatus(matchDTO.getStatus());
+			event.setStatus(eventDTO.getStatus());
+			event.setSport(ConverterSport.toEntity(eventDTO.getSportDTO()));
+			event.setJoiners(ConverterUser.toSetEntity(eventDTO.getJoinersDTO()));
+			event.setInvited(ConverterUser.toSetEntity(eventDTO.getInvitedDTO()));
+			event.setTeams(ConverterTeam.toSetEntity(eventDTO.getTeamsDTO()));
 		}
 		return event;
 	}
@@ -58,5 +71,25 @@ public class ConverterEvent{
 			}
 		}
 		return list;
+	}
+	
+	public static Set<EventDTO> toSetDTO(Set<Event> set) {
+		Set<EventDTO> setEventDTO = new HashSet<>();
+		if (!set.isEmpty()) {
+			for (Event event : set) {
+				setEventDTO.add(ConverterEvent.toDTO(event));
+			}
+		}
+		return setEventDTO;
+	}
+	
+	public static Set<Event> toSetEntity(Set<EventDTO> setEventDTO) {
+		Set<Event> set = new HashSet<>();
+		if (!setEventDTO.isEmpty()) {
+			for (EventDTO eventDTO : setEventDTO) {
+				set.add(ConverterEvent.toEntity(eventDTO));
+			}
+		}
+		return set;
 	}
 }

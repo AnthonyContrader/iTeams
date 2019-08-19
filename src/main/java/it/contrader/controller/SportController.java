@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.stereotype.Controller;
 
+import it.contrader.dto.EventDTO;
 import it.contrader.dto.FeedbackDTO;
 import it.contrader.dto.SportDTO;
 import it.contrader.dto.UserDTO;
@@ -17,6 +18,7 @@ import it.contrader.services.SportService;
 import it.contrader.services.UserService;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @CrossOrigin
@@ -36,22 +38,27 @@ public class SportController {
 	@RequestMapping(value = "/sportmanager", method = RequestMethod.GET)
 	public String sportManagement(HttpServletRequest request) {
 		request.setAttribute("sport", getSport());
+		System.out.println("dopo request setA");
+		for(SportDTO sport: getSport())
+			System.out.println(sport.getName());
 		return "/sport/sportmanager";
 	}
 
 	public List<SportDTO> getSport() {
+		System.out.println("in getSport()");
 		List<SportDTO> tmp = sportService.getListaSportDTO();
+		System.out.println("lista tmp creata");
 		List<SportDTO> sportList = new ArrayList<>();
 		for (SportDTO sport : tmp) {
-			
+			System.out.println("nel for");
 				sportList.add(sport);
 			
 		}
-
+		System.out.println("fuori dal for");
 		return sportList;
 	}		
 	
-	@RequestMapping(value ="/deleteSport", method = RequestMethod.GET)
+	@RequestMapping(value ="/deletesport", method = RequestMethod.GET)
 	public String deleteSport(HttpServletRequest request) {
 		int idSport = Integer.parseInt(request.getParameter("id"));
 		sportService.deleteSportById(idSport);
@@ -59,9 +66,12 @@ public class SportController {
 		return "/sport/sportmanager";
 	}
 	
-	@RequestMapping(value = "/redirectUpdate", method = RequestMethod.GET)
+	@RequestMapping(value = "/redirectupdate", method = RequestMethod.GET)
 	public String redirectUpdate(HttpServletRequest request) {
-		int idSport = Integer.parseInt(request.getParameter("id"));
+		System.out.println("in redirect update sport");
+		System.out.println("idSport in request: "+request.getParameter("idUpdate"));
+		int idSport = Integer.parseInt(request.getParameter("idUpdate"));
+		System.out.println("idSport: "+idSport);
 		SportDTO sport = sportService.getSportDTOById(idSport);
 		request.setAttribute("sport", sport);
 		return "/sport/updatesport";
@@ -72,12 +82,16 @@ public class SportController {
 	{
 		int idUpdate = Integer.parseInt(request.getParameter("id"));
 		String nameUpdate = request.getParameter("name");
-		Integer PlayersUpdate = Integer.parseInt(request.getParameter("players"));
+		Integer playersUpdate = Integer.parseInt(request.getParameter("players"));
 	
 		
 			
-		final SportDTO sport = new SportDTO(nameUpdate, PlayersUpdate);
-		sport.setId(idUpdate);
+		//final SportDTO sport = new SportDTO(nameUpdate, PlayersUpdate);
+		//final SportDTO sport = new SportDTO();
+		final SportDTO sport= sportService.getSportDTOById(idUpdate);
+		//sport.setId(idUpdate);
+		sport.setName(nameUpdate);
+		sport.setPlayers(playersUpdate);
 		
 		sportService.updateSport(sport);
 		request.setAttribute("sport", getSport());
@@ -94,27 +108,18 @@ public class SportController {
 		
 		
 		
-		SportDTO sportDTO = new SportDTO(name,players);
+		//SportDTO sportDTO = new SportDTO(name,players);
+		SportDTO sportDTO = new SportDTO();
+		sportDTO.setName(name);
+		sportDTO.setPlayers(players);
+		sportDTO.setEventsDTO(new HashSet<EventDTO>());
+		sportDTO.setSportfeedDTO(new HashSet<FeedbackDTO>());
+		
 		
 		sportService.insertSport(sportDTO);
 		
 		request.setAttribute("sport", getSport());
 		
-		return "/sport/sportmanager";		
-	}
-	
-	@RequestMapping(value= "/readsport", method = RequestMethod.GET)
-	public String readSportById(HttpServletRequest request) {
-
-	Integer idSport= Integer.parseInt( request.getSession().getAttribute("id").toString());
-	//SportDTO sport = sportService.getSportDTOById(idSport);
-	List<SportDTO> sport = sportService.getListaSportDTO();
-	
-	//request.setAttribute("sportById", sport);
-	request.setAttribute("list", sport);
-	return "/sport/sportmanager";
-	
-	//return "/sport/readsport"; 
-	
+		return "sport/sportmanager";		
 	}
 }

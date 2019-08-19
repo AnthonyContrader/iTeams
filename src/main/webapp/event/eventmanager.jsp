@@ -1,129 +1,195 @@
+<%@ taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ page import="java.util.List" %>
-<%@	page import="it.contrader.dto.EventDTO"%>
+	pageEncoding="ISO-8859-1" 
+	import="java.util.List"
+	import="it.contrader.dto.EventDTO" 
+	import="it.contrader.dto.UserDTO"
+	import="it.contrader.dto.SportDTO"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Event Management</title>
-	<%
-		List<EventDTO> listEvent = (List<EventDTO>) request.getAttribute("event");
-	 %>
-	 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
-  <meta name="author" content="GeeksLabs">
-  <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
-  <link rel="shortcut icon" href="img/favicon.png">
-
-  <title>Match Management</title>
-
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+<link rel="icon" type="image/png" href="img/icona.png" />
+<link href="../css/vittoriostyle.css" rel="stylesheet">
+<title>Sport Manager</title>
 </head>
 <body>
-	  <!-- container section start -->
-  <section id="container" class="">
+	<%@ include file="../css/header.jsp"%>
+	<%@ include file="../css/menu.jsp"%>
 
-
-    <header class="header dark-bg">
-      <div class="toggle-nav">
-        <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
-      </div>
-
-      <!--logo start-->
-      <a href="/homeadmin.jsp" class="logo">iTeams</a>
-      <!--logo end-->
-
-      <div class="top-nav notification-row">
-        <!-- notificatoin dropdown start-->
-        <ul class="nav pull-right top-menu">
-          <!-- user login dropdown start-->
-          <li class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <b class="caret"></b>
-                        </a>
-            <ul class="dropdown-menu extended logout">
-              <div class="log-arrow-up"></div>
-              <li>
-                <a href="/User/logout"><i class="icon_key_alt"></i> Log Out</a>
-              </li>
-            </ul>
-          </li>
-          <!-- user login dropdown end -->
-        </ul>
-        <!-- notificatoin dropdown end-->
-      </div>
-    </header>
-    <!--header end-->
-
-    <!--sidebar start-->
-     <%@ include file="/include/menu.jsp" %>
-    <!--sidebar end-->
-
-    <!--main content start-->
-    <section id="main-content">
-      <section class="wrapper">
-        <!--overview start-->
-        <div class="row">
-          <div class="col-lg-12">
-            <h3 class="page-header"><i class="fa fa-laptop"></i> Admin Management</h3>
-            <ol class="breadcrumb">
-              <li><i class="fa fa-home"></i>Home</a></li>
-              <li><i class="fa fa-laptop"></i>User Management</li>
-            </ol>
-          </div>
-        </div>
-        
-        <div class="row">
-        	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            	<table class="table table-striped">
-		<tr><th>Id</th><th>Username</th><th>Password</th><th>User type</th><th>Name</th><th>Surname</th><th>SSN</th><th colspan=2>Manage</th></tr>
+	<div class="main">
 		<%
-			for(EventDTO event: listEvent){
-		 %>
-		 	<tr>
-		 		<td><%=event.getId()%></td>
-		 		<td><%=event.getSportName()%></td>
-		 		<td><%=event.getUserName()%></td>
-		 		<td><%=event.getRate()%></td>
-		 		<td><%=event.getCity()%></td>
-		 		<td><%=event.getAddress()%></td>
-		 		<td><%=event.getMatchtime()%></td>
-		 		<td><%=event.getStatus()%></td>
-		 		<td><a class="btn btn-primary btn-lg btn-block" href="/Event/deleteevent?id=<%=event.getId() %>">Delete</a></td>
-		 		<td><a class="btn btn-primary btn-lg btn-block"href="/Event/updateevent?id=<%=event.getId()%>">Update</a></td>
-		 	</tr>
-		<% 
+			UserDTO creator = (UserDTO) session.getAttribute("utenteCollegato");
+			List<EventDTO> list = (List<EventDTO>) request.getAttribute("allEventDTO");
+			List<SportDTO> sportList = (List<SportDTO>) request.getAttribute("allSportDTO");
+		%>
+
+		<br>
+		<%
+			if (session.getAttribute("usertype").toString().toUpperCase().contains("USER")) {
+		%>
+
+		<table>
+			<tr>
+				<th>Creator</th>
+				<th>Sport Name</th>
+				<th>Location</th>
+				<th>Time</th>
+				<th>Rate</th>
+				<th>Joiners</th>
+				<th>Status</th>
+				<th colspan="2">Options</th>
+			</tr>
+			<%
+				for (EventDTO e : list) {
+			%>
+			<tr>
+				<td><%=e.getUserDTO().getUsername()%></td>
+				<td><%=e.getSportDTO().getName()%></td>
+				<td><a href="../Event/readevent" <%=e.getId()%>><%=e.getCity() + " " + e.getAddress()%></a></td>
+				<td><%=e.getMatchtime()%></td>
+				<td><%=e.getRate()%></td>
+				<td><%=e.getJoinersInt()%></td>
+				<%
+					if (e.getStatus()) {
+				%>
+				<td>Complete</td>
+				<%
+					} else {
+				%>
+				<td>Incomplete</td>
+				<%
+					}
+				%>
+				<%
+					if (e.getUserDTO().getId()==creator.getId()) {
+				%>
+				<td><a href="../Event/redirectupdate?idUpdate=<%=e.getId()%>">Edit</a>
+				</td>
+				<td><a href="../Event/deleteevent?id=<%=e.getId()%>">Delete</a>
+				</td>
+				<%
+				}else{
+				%>
+				<td></td>
+				<td></td>
+				<%
+				}
+				%>
+				<td><a href="../Event/redirectinvite?idEvent=<%=e.getId()%>">Invite User</a>
+				</td>
+			</tr>
+			<%
+				}
+			%>
+		</table>
+		<%
 			}
 		%>
-	</table>
-	<a class="btn btn-primary btn-lg btn-block" href="/user/insertUser.jsp">Insert new User</a>
+
+		<%-- 
+		<%
+		if(session.getAttribute("usertype").toString().toUpperCase().contains("USER") ){
+			
+		%>
+
+		<table>
+			<tr>
+				<th>Sport Name</th>
+				<th>Number of Players</th>
+				<th></th>
+				<th></th>
+			</tr>
+			<%
+		
+			for (SportDTO s : list) {
+		%>
+			<tr>
+				<td><a href="../Sport/readsport" <%=s.getId()%>> <%=s.getName()%>
+				</a></td>
+				<td><%=s.getPlayers()%></td>
+				<td><a href=#>JOIN</a>
+			</tr>
+			<%
+			}
+		
+		%>
+		</table>
+		<%
+			}
+		
+		%> --%>
+
+
+
+		<%
+			if (session.getAttribute("usertype").toString().toUpperCase().contains("USER")) {
+		%>
+		<form id="floatright" action="../Event/insertevent" method="post">
+			<input type="hidden" name="creator" value=<%=creator.getId()%>>
+			<div class="row">
+				<div class="col-25">
+					<label for="idsport">ID SPORT</label>
+				</div>
+				<div class="col-75">
+					<select id="sport" name="idsport">
+						<%
+							for (SportDTO s : sportList) {
+						%>
+						<option value=<%=s.getId()%>><%=s.getName()%></option>
+						<%
+							}
+						%>
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="pass">RATE</label>
+				</div>
+				<div class="col-75">
+					<input type="number" min="1" max="5" id="rate" name="rate"
+						placeholder="insert rate">
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="city">City</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="city" name="city"
+						placeholder="insert city">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="address">Address</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="address" name="address"
+						placeholder="insert address">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="time">Event time</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="time" name="time"
+						placeholder="insert event time">
+				</div>
+			</div>
+			<button type="submit">Insert</button>
+		</form>
+		<%
+			}
+		%>
+
+	</div>
+
 	<br>
-	<a class="btn btn-primary btn-lg btn-block" href="/homeadmin.jsp">Back to home</a>
-	<br>
-            </div>
-        </div>
-
-      </section>
-    </section>
-    <!--main content end-->
-  </section>
-  <!-- container section start -->
-
-  <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-
 </body>
 </html>

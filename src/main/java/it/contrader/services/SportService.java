@@ -26,6 +26,7 @@ public class SportService {
 	}
 
 	public List<SportDTO> getListaSportDTO() {
+		System.out.println("in getListaSportDTO()");
 		return ConverterSport.toListDTO((List<Sport>) sportRepository.findAll());
 	}
 

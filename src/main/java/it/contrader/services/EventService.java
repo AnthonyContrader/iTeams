@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import it.contrader.converter.ConverterEvent;
 import it.contrader.dao.EventRepository;
 import it.contrader.dto.EventDTO;
+import it.contrader.dto.UserDTO;
 import it.contrader.model.Event;
+import it.contrader.model.User;
 
 @Service
 public class EventService {
@@ -22,6 +24,7 @@ public class EventService {
 	}
 
 	public List<EventDTO> getListaEventDTO() {
+		System.out.println("in getListaEventDTO()");
 		return ConverterEvent.toListDTO((List<Event>) eventRepository.findAll());
 	}
 
@@ -54,5 +57,9 @@ public class EventService {
 		final List<EventDTO> eventDTOs = new ArrayList<>();
 		list.forEach(i -> eventDTOs.add(ConverterEvent.toDTO(i)));
 		return eventDTOs;
+	}
+
+	public List<EventDTO> getListaEventDTO(UserDTO user) {
+		return ConverterEvent.toListDTO((List<Event>) eventRepository.findAllByUser(user));
 	}
 }

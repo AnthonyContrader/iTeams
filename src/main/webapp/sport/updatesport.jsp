@@ -14,10 +14,11 @@
 <br>
 <div class="main">
 
-<%SportDTO s = (SportDTO) request.getAttribute("dto");%>
+<%SportDTO s = (SportDTO) request.getAttribute("sport");%>
 
 
-<form id="floatleft" action="SportServlet?mode=update&id=<%=s.getId()%>" method="post">
+<form id="floatleft" action="../Sport/updatesport" method="post">
+  <input type="hidden" id="idSport" name="id" value=<%=s.getId()%>>
   <div class="row">
     <div class="col-25">
       <label for="name">Sport Name</label>

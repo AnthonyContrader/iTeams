@@ -1,7 +1,9 @@
 package it.contrader.converter;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import it.contrader.dto.TeamDTO;
 import it.contrader.model.Team;
 
@@ -14,8 +16,10 @@ public class ConverterTeam {
 			teamDTO = new TeamDTO();
 			teamDTO.setId(team.getId());
 			teamDTO.setName(team.getName());
-			teamDTO.setIdSport(team.getIdSport());
-			teamDTO.setPlayers(team.getPlayers());
+//			teamDTO.setIdSport(team.getIdSport());
+//			teamDTO.setPlayers(team.getPlayers());
+			teamDTO.setEventDTO(ConverterEvent.toDTO(team.getEvent()));
+			teamDTO.setComponentsDTO(ConverterUser.toSetDTO(team.getComponents()));
 		}
 		return teamDTO;
 		
@@ -27,8 +31,10 @@ public class ConverterTeam {
 			team = new Team ();
 			team.setId(teamDTO.getId());
 			team.setName(teamDTO.getName());
-			team.setIdSport(teamDTO.getIdSport());
-			team.setPlayers(teamDTO.getPlayers());
+//			team.setIdSport(teamDTO.getIdSport());
+//			team.setPlayers(teamDTO.getPlayers());
+			team.setEvent(ConverterEvent.toEntity(teamDTO.getEventDTO()));
+			team.setComponents(ConverterUser.toSetEntity(teamDTO.getComponentsDTO()));
 						
 		}
 		return team;
@@ -57,6 +63,26 @@ public class ConverterTeam {
 			}
 		}
 		return list;
+	}
+	
+	public static Set<TeamDTO> toSetDTO(Set<Team> set) {
+		Set<TeamDTO> setTeamDTO = new HashSet<>();
+		if (!set.isEmpty()) {
+			for (Team team : set) {
+				setTeamDTO.add(ConverterTeam.toDTO(team));
+			}
+		}
+		return setTeamDTO;
+	}
+	
+	public static Set<Team> toSetEntity(Set<TeamDTO> setTeamDTO) {
+		Set<Team> set = new HashSet<>();
+		if (!setTeamDTO.isEmpty()) {
+			for (TeamDTO teamDTO : setTeamDTO) {
+				set.add(ConverterTeam.toEntity(teamDTO));
+			}
+		}
+		return set;
 	}
 
 	
