@@ -33,11 +33,11 @@ public class EventConverter  extends AbstractConverter<Event,EventDTO> {
 			eventDTO.setAddress(event.getAddress());
 			eventDTO.setMatchtime(event.getMatchtime());
 			eventDTO.setStatus(event.getStatus());
-			//eventDTO.setSportDTO(ConverterSport.toDTO(event.getSport()));
+			//eventDTO.setSportDTO(SportConverter.toDTO(event.getSport()));
 			//eventDTO.setJoinersInt(event.getJoiners().size());
-			//eventDTO.setInvitedDTO(ConverterUser.toSetDTO(event.getInvited()));
-			//eventDTO.setJoinersDTO(ConverterUser.toSetDTO(event.getJoiners()));
-			//eventDTO.setTeamsDTO(ConverterTeam.toSetDTO(event.getTeams()));
+			//eventDTO.setInvitedDTO(UserConverter.toSetDTO(event.getInvited()));
+			//eventDTO.setJoinersDTO(UserConverter.toSetDTO(event.getJoiners()));
+			//eventDTO.setTeamsDTO(TeamConverter.toSetDTO(event.getTeams()));
 		}
 		return eventDTO;
 		
@@ -63,8 +63,7 @@ public class EventConverter  extends AbstractConverter<Event,EventDTO> {
 			event.setTeams(TeamConverter.toSetEntity(eventDTO.getTeamsDTO()));*/
 		}
 		return event;
-
-		
+	
 			
 	}
 	

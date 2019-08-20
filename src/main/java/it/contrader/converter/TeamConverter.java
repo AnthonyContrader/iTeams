@@ -8,13 +8,14 @@ import it.contrader.model.Team;
 @Component
 public class TeamConverter extends AbstractConverter<Team, TeamDTO> {
 	
+	@Override
 	public TeamDTO toDTO(Team team) {
 		TeamDTO teamDTO = null;
 		if (team != null) {
 			teamDTO = new TeamDTO();
 			teamDTO.setId(team.getId());
 			teamDTO.setName(team.getName());
-			teamDTO.setEventDTO(ConverterEvent.toDTO(team.getEvent()));
+			//teamDTO.setEventDTO(EventConverter.toDTO(team.getEvent()));
 			//teamDTO.setComponentsDTO(ConverterUser.toSetDTO(team.getComponents()));
 		}
 		return teamDTO;
@@ -27,7 +28,7 @@ public class TeamConverter extends AbstractConverter<Team, TeamDTO> {
 			team = new Team ();
 			team.setId(teamDTO.getId());
 			team.setName(teamDTO.getName());
-			team.setEvent(ConverterEvent.toEntity(teamDTO.getEventDTO()));
+			//team.setEvent(EventConverter.toEntity(teamDTO.getEventDTO()));
 			//team.setComponents(ConverterUser.toSetEntity(teamDTO.getComponentsDTO()));
 						
 		}

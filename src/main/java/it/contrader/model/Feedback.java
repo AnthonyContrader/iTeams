@@ -36,8 +36,8 @@ public class Feedback {
 	private int idSport;
 	*/
 	
-	@ManyToOne
-	@JoinColumn(name = "idSport", referencedColumnName = "id")
+	/*@ManyToOne
+	@JoinColumn(name = "idSport", referencedColumnName = "id")*/
 	private Sport sport;
 	
 	/*
@@ -46,20 +46,21 @@ public class Feedback {
 	private int idUser;
 	*/
 	
-	@ManyToOne
-	@JoinColumn(name = "idUser", referencedColumnName = "id")
+	/*@ManyToOne
+	@JoinColumn(name = "idUser", referencedColumnName = "id")*/
 	private User user;
 	
-	@ManyToOne
-	@JoinColumn(name = "idCreator", referencedColumnName = "id")
+	/*@ManyToOne
+	@JoinColumn(name = "idCreator", referencedColumnName = "id")*/
 	private User creator;
 		
 	/*
 	 * @ManyToMany(cascade = CascadeType.ALL)
 	 * 
 	 * @JoinTable(name = "user", joinColumns = @JoinColumn(name = "User",
-	 * referencedColumnName = "id")) private Set<User> user;
-	 */
+	 * referencedColumnName = "id")) 
+	  private Set<User> user;*/
+	 
 	
 	@NotNull
 	@Column(name = "rate")
