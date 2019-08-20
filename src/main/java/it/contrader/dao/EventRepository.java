@@ -1,0 +1,21 @@
+package it.contrader.dao;
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import it.contrader.model.Event;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+
+@Repository
+@Transactional
+
+public interface EventRepository extends CrudRepository<Event, Long> {
+
+	Event findById(long id);
+}
