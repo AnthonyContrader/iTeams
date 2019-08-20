@@ -1,4 +1,5 @@
 import { UserDTO } from './userdto';
+import { TeamDTO } from './teamdto';
 
 export class EventDTO {
 
@@ -12,5 +13,6 @@ export class EventDTO {
     joinersInt: number;
     joinersDTO: UserDTO;
     invitedDTO: UserDTO;
-    teamDTO: ;
+    teamDTO: TeamDTO;
+    
 }
