@@ -38,11 +38,7 @@ public class Event {
 	
 	//relazione user - sport
 	@ManyToOne
-<<<<<<< HEAD
 	@JoinColumn(name = "idUser", referencedColumnName = "id")
-=======
-	@JoinColumn(name = "idUser", referencedColumnName = "id") */
->>>>>>> 6414a4c86b40d4d15c77f481819fef1b50173ff9
 	private User user;
 	
 	@NotNull
@@ -71,11 +67,7 @@ public class Event {
 		
 	//relazione event - sport
 	@ManyToOne(cascade = CascadeType.MERGE)
-<<<<<<< HEAD
 	@JoinColumn(name = "idSport", referencedColumnName = "id")
-=======
-	@JoinColumn(name = "idSport", referencedColumnName = "id")*/
->>>>>>> 6414a4c86b40d4d15c77f481819fef1b50173ff9
 	private Sport sport;
 	
 	//relazione event - user
@@ -92,27 +84,15 @@ public class Event {
 	//relazione utenteInvitato - evento
 		@ManyToMany(cascade = CascadeType.MERGE)
 		@JoinTable(
-<<<<<<< HEAD
 		  name = "invited_event", 
 		  joinColumns = @JoinColumn(name = "event_id"), 
 		  inverseJoinColumns = @JoinColumn(name = "user_id"))
 		  private Set<User> invited;
-=======
-		name = "invited_event", 
-		joinColumns = @JoinColumn(name = "event_id"), 
-		inverseJoinColumns = @JoinColumn(name = "user_id"))*/
-		private Set<User> invited;
->>>>>>> 6414a4c86b40d4d15c77f481819fef1b50173ff9
 		
 	//@ManyToMany(mappedBy = "joinEvent", cascade = CascadeType.MERGE)
-	private Set<User> joiners;
+//	private Set<User> joiners;
 	
-<<<<<<< HEAD
 	//relazione event - team
 	@OneToMany(mappedBy="event", cascade = CascadeType.MERGE)
-=======
-	/*relazione event - team
-	@OneToMany(mappedBy="event", cascade = CascadeType.MERGE)*/
->>>>>>> 6414a4c86b40d4d15c77f481819fef1b50173ff9
 	private Set<Team> teams;
 }
