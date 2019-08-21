@@ -1,9 +1,17 @@
 import { Injectable } from '@angular/core';
+import { AbstractService } from './abstractservice';
+import { FeedbackDTO } from 'src/dto/feedbackdto';
+import { HttpClient } from '@angular/common/http';
+import { TouchSequence } from 'selenium-webdriver';
 
 @Injectable({
   providedIn: 'root'
 })
-export class FeedbackService {
+export class FeedbackService extends AbstractService<FeedbackDTO>{
 
-  constructor() { }
+  constructor(http: HttpClient) { 
+    super(http);
+    this.type = 'feedback';
+  }
+
 }
