@@ -23,9 +23,9 @@ public class EventDTO {
 	private String address;
 	private String matchtime;
 	private Boolean status;
-	/*private SportDTO sportDTO;
+	private SportDTO sportDTO;
 	private Set<UserDTO> joinersDTO;
-	private Set<UserDTO> invitedDTO;*/
+	private Set<UserDTO> invitedDTO;
 	private long joinersInt;
-	//private Set<TeamDTO> teamsDTO;
+	private Set<TeamDTO> teamsDTO;
 }
