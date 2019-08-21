@@ -12,7 +12,7 @@ import it.contrader.service.FeedbackService;
 
 @RestController
 @RequestMapping("/feedback")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 public class FeedbackController extends AbstractController<FeedbackDTO>{
 	
 	@Autowired

@@ -9,7 +9,9 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import it.contrader.model.User.Usertype;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  * DTO della classe User. Ha gli stessi attributi di User
@@ -18,10 +20,10 @@ import lombok.NoArgsConstructor;
  * 
  *@see User
  */
-@Data
+@Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class UserDTO {
 
 	private long id;
@@ -32,13 +34,12 @@ public class UserDTO {
 
 	private Usertype usertype;
 	
-	private Boolean status;
+	/*private boolean status;
 	
 	private Set<EventDTO> createdEventsDTO;
 	
 	private Set<EventDTO> joinEventDTO;
 	
-	@JsonIgnore
 	private Set<EventDTO> invitedEventDTO;
 	
 	private Set<TeamDTO> memberOfDTO;
@@ -47,19 +48,14 @@ public class UserDTO {
 	
 	private Set<FeedbackDTO> givedDTO;
 	
-	private Set<FeedbackDTO> receivedDTO;
-
+	private Set<FeedbackDTO> receivedDTO;*/
+/*
 	@Override
 	public String toString() {
 		return "UserDTO [id=" + id + ", username=" + username + ", password=" + password + ", usertype=" + usertype
 				+ ", status=" + status + ", createdEventsDTO=" + createdEventsDTO + ", joinEventDTO=" + joinEventDTO
 				+ ", invitedEventDTO=" + invitedEventDTO + ", memberOfDTO=" + memberOfDTO + ", likeDTO=" + likeDTO
 				+ ", givedDTO=" + givedDTO + ", receivedDTO=" + receivedDTO + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		return ThreadLocalRandom.current().nextInt(0, 999999999);
 	}
 
 	@Override
@@ -113,21 +109,23 @@ public class UserDTO {
 				return false;
 		} else if (!receivedDTO.equals(other.receivedDTO))
 			return false;
-		if (status == null) {
-			if (other.status != null)
-				return false;
-		} else if (!status.equals(other.status))
+		if (status != other.status)
 			return false;
 		if (username == null) {
 			if (other.username != null)
 				return false;
 		} else if (!username.equals(other.username))
 			return false;
-		if (usertype == null) {
-			if (other.usertype != null)
-				return false;
-		} else if (!usertype.equals(other.usertype))
+		if (usertype != other.usertype)
 			return false;
 		return true;
+	}*/
+
+	@Override
+	public int hashCode() {
+		return ThreadLocalRandom.current().nextInt(0, 999999999);
 	}
+	
+	
+
 }

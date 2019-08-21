@@ -27,7 +27,7 @@ import java.util.HashSet;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 @RequestMapping("/event")
 
 public class EventController extends AbstractController<EventDTO>{

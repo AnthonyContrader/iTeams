@@ -15,7 +15,7 @@ import it.contrader.service.UserService;
 
 @RestController
 @RequestMapping("/team")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 public class TeamController extends AbstractController<TeamDTO>{
 	
 	

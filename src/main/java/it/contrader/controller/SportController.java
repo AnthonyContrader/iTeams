@@ -26,7 +26,7 @@ import java.util.HashSet;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 @RequestMapping("/sport")
 public class SportController extends AbstractController<SportDTO>{
 

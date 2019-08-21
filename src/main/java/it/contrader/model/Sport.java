@@ -49,7 +49,7 @@ public class Sport {
 	private Set<User> likes;
 			
 	//relazione sport - feedback
-	//@OneToMany(mappedBy="sport", cascade = CascadeType.MERGE)
+	@OneToMany(mappedBy="sport", cascade = CascadeType.MERGE)
 	private Set<Feedback> sportfeed;
 	
 }

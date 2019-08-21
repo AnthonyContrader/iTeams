@@ -1,9 +1,18 @@
 package it.contrader.converter;
 
+import java.util.HashSet;
+
 import org.springframework.stereotype.Component;
 
+import it.contrader.dto.EventDTO;
+import it.contrader.dto.FeedbackDTO;
+import it.contrader.dto.SportDTO;
+import it.contrader.dto.TeamDTO;
 import it.contrader.dto.UserDTO;
-
+import it.contrader.model.Event;
+import it.contrader.model.Feedback;
+import it.contrader.model.Sport;
+import it.contrader.model.Team;
 import it.contrader.model.User;
 
 /**
@@ -26,8 +35,9 @@ public class UserConverter extends AbstractConverter<User,UserDTO> {
 			userDTO.setId(user.getId());
 			userDTO.setUsername(user.getUsername());
 			userDTO.setPassword(user.getPassword());
-			userDTO.setStatus(user.isStatus());
+			//userDTO.setStatus(user.isStatus());
 			userDTO.setUsertype(user.getUsertype());
+				
 //			userDTO.setCreatedEventsDTO(ConverterEvent.toSetDTO(user.getCreatedEvents()));
 //			userDTO.setJoinEventDTO(ConverterEvent.toSetDTO(user.getJoinEvent()));
 //			userDTO.setInvitedEventDTO(ConverterEvent.toSetDTO(user.getInvitedEvent()));
@@ -49,7 +59,8 @@ public class UserConverter extends AbstractConverter<User,UserDTO> {
 			user.setUsername(userDTO.getUsername());
 			user.setPassword(userDTO.getPassword());
 			user.setUsertype(userDTO.getUsertype());
-			user.setStatus(userDTO.getStatus());
+			//user.setStatus(userDTO.isStatus());
+			
 //			user.setCreatedEvents(ConverterEvent.toSetEntity(userDTO.getCreatedEventsDTO()));
 //			user.setJoinEvent(ConverterEvent.toSetEntity(userDTO.getJoinEventDTO()));
 //			user.setInvitedEvent(ConverterEvent.toSetEntity(userDTO.getInvitedEventDTO()));
