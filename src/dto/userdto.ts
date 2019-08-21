@@ -1,4 +1,8 @@
 import {Usertype} from './usertype';
+import { EventDTO } from './eventdto';
+import { TeamDTO } from './teamdto';
+import { SportDTO } from './sportdto';
+import { FeedbackDTO } from './feedbackdto';
 
 /**
  * Classe DTO di User. DEVE essere uguale (stesso nome classe, stessi attributi e stessi nomi) a
@@ -18,5 +22,19 @@ export class UserDTO {
 
    usertype: Usertype;
 
-}
+   status: boolean;
 
+   createdEventsDTO: EventDTO;
+
+   joinEventDTO: EventDTO;
+
+   invitedEventDTO: EventDTO;
+
+   memberOfDTO: TeamDTO;
+
+   likeDTO: SportDTO;
+
+   givedDTO: FeedbackDTO;
+
+   receivedDTO: FeedbackDTO;
+}
