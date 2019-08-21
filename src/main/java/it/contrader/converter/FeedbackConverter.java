@@ -1,8 +1,11 @@
 package it.contrader.converter;
 
+import org.springframework.stereotype.Component;
+
 import it.contrader.dto.FeedbackDTO;
 import it.contrader.model.Feedback;
 
+@Component
 public class FeedbackConverter extends AbstractConverter <Feedback, FeedbackDTO>{
 	
 	@Override

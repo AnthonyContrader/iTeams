@@ -27,8 +27,7 @@ import java.util.HashSet;
 import java.util.List;
 
 @RestController
-@CrossOrigin
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/event")
 
 public class EventController extends AbstractController<EventDTO>{
@@ -43,7 +42,7 @@ public class EventController extends AbstractController<EventDTO>{
 		
 		//POST Angular a EventDTO
 		@PostMapping(value = "/eventmanager")
-		public EventDTO login( @RequestBody EventDTO eventDTO ) {
+		public EventDTO eventmanager( @RequestBody EventDTO eventDTO ) {
 			return eventService.findById(eventDTO.getId());
 		}
 	}

@@ -26,10 +26,8 @@ import java.util.HashSet;
 import java.util.List;
 
 @RestController
-@CrossOrigin
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/sport")
-
 public class SportController extends AbstractController<SportDTO>{
 
 	@Autowired
@@ -42,7 +40,7 @@ public class SportController extends AbstractController<SportDTO>{
 		
 		//POST Angular a SportDTO
 		@PostMapping(value = "/sportmanager")
-		public SportDTO login( @RequestBody SportDTO sportDTO ) {
+		public SportDTO sportmanager( @RequestBody SportDTO sportDTO ) {
 			return sportService.findByName(sportDTO.getName());
 		}
 	}

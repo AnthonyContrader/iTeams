@@ -36,10 +36,10 @@ public class Event {
 	private String sportName;*/
 	
 	
-	/*relazione user - sport
+	//relazione user - sport
 	@ManyToOne
 	@JoinColumn(name = "idUser", referencedColumnName = "id")
-	private User user; */
+	private User user;
 	
 	@NotNull
 	@Column(name = "userName")
@@ -65,34 +65,34 @@ public class Event {
 	@Column(name = "status", columnDefinition="tinyint(1) default 0")
 	private Boolean status;
 		
-	/*relazione event - sport
+	//relazione event - sport
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "idSport", referencedColumnName = "id")
-	private Sport sport;*/
+	private Sport sport;
 	
 	//relazione event - user
 	
-	/*relazione user - evento
+	//relazione user - evento
 		@ManyToMany(cascade = CascadeType.MERGE)
 		@JoinTable(
 		  name = "user_event", 
 		  joinColumns = @JoinColumn(name = "event_id"), 
 		  inverseJoinColumns = @JoinColumn(name = "user_id"))
-		  private Set<User> joiners;*/
+		  private Set<User> joiners;
 	
 		
-	/*relazione utenteInvitato - evento
+	//relazione utenteInvitato - evento
 		@ManyToMany(cascade = CascadeType.MERGE)
 		@JoinTable(
 		  name = "invited_event", 
 		  joinColumns = @JoinColumn(name = "event_id"), 
 		  inverseJoinColumns = @JoinColumn(name = "user_id"))
-		  private Set<User> invited;*/
+		  private Set<User> invited;
 		
 	//@ManyToMany(mappedBy = "joinEvent", cascade = CascadeType.MERGE)
 	//private Set<User> joiners;
 	
-	/*relazione event - team
+	//relazione event - team
 	@OneToMany(mappedBy="event", cascade = CascadeType.MERGE)
-	private Set<Team> teams;*/
+	private Set<Team> teams;
 }

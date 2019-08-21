@@ -34,13 +34,13 @@ public class Team {
 	@NotNull
 	private String name;
 	
-	/*//relazione sport - evento
+	//relazione sport - evento
 	@ManyToOne
-	@JoinColumn(name = "idEvent", referencedColumnName = "id")*/
+	@JoinColumn(name = "idEvent", referencedColumnName = "id")
 	private Event event;
 	
-	/*relazione team - utenti
-	@ManyToMany(mappedBy = "memberOf")*/
+	//relazione team - utenti
+	@ManyToMany(mappedBy = "memberOf")
     private Set<User> components; 
 
 	@Override
