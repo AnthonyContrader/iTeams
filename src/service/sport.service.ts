@@ -1,9 +1,16 @@
 import { Injectable } from '@angular/core';
+import { AbstractService } from './abstractservice';
+import { SportDTO } from 'src/dto/sportdto';
+import { HttpClient } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class SportService {
+export class SportService extends AbstractService<SportDTO>{
 
-  constructor() { }
+  constructor(http: HttpClient) {
+    super(http);
+    this.type = 'sport';
+  }
 }
