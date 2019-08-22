@@ -2,17 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-admin-menu',
-  templateUrl: './admin-menu.component.html',
-  styleUrls: ['./admin-menu.component.css']
+  selector: 'app-user-menu',
+  templateUrl: './user-menu.component.html',
+  styleUrls: ['./user-menu.component.css']
 })
-export class AdminMenuComponent implements OnInit {
+export class UserMenuComponent implements OnInit {
 
-  isUserCollapsed = false;
   isClientCollapsed = false;
   isAccountCollapsed = false;
+  isEventCollapsed = false;
   isSportCollapsed = false;
-  
+
+
   constructor(private router: Router) {
   }
 
@@ -24,16 +25,17 @@ export class AdminMenuComponent implements OnInit {
     this.router.navigateByUrl('');
   }
 
-  userscollapse() {
-    if (this.isUserCollapsed === false) {
-      this.isUserCollapsed = true;
-    } else { this.isUserCollapsed = false; }
-  }
 
   sportscollapse() {
     if (this.isSportCollapsed === false) {
       this.isSportCollapsed = true;
     } else { this.isSportCollapsed = false; }
+  }
+
+  eventscollapse() {
+    if (this.isEventCollapsed === false) {
+      this.isEventCollapsed = true;
+    } else { this.isEventCollapsed = false; }
   }
 
   accountcollapse() {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AbstractService } from './abstractservice';
-import { SportDTO } from 'src/dto/sportdto';
 import { HttpClient } from '@angular/common/http';
+import { SportDTO } from 'src/dto/sportdto';
 
 
 @Injectable({
@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SportService extends AbstractService<SportDTO>{
 
-  constructor(http: HttpClient) {
+  constructor(http: HttpClient) { 
     super(http);
     this.type = 'sport';
   }

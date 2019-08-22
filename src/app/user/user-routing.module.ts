@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AdminLayoutComponent } from '../layout/admin-layout/admin-layout.component';
-import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-import { UsersComponent } from './users/users.component';
+import { UserLayoutComponent } from '../layout/user-layout/user-layout.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+//import { UsersComponent } from './users/users.component';
 import { SportsComponent } from './sports/sports.component';
+import { EventsComponent } from './events/events.component';
 import { WorkInProgressComponent } from './work-in-progress/work-in-progress.component';
 
 /**
@@ -19,10 +20,11 @@ import { WorkInProgressComponent } from './work-in-progress/work-in-progress.com
  * @see layout
  */
 const routes: Routes = [
-  { path: 'admin-dashboard', component: AdminLayoutComponent, children:[
-    { path: '', component: AdminDashboardComponent},
-    { path: 'users', component: UsersComponent},
+  { path: 'user-dashboard', component: UserLayoutComponent, children:[
+    { path: '', component: UserDashboardComponent},
+   // { path: 'users', component: UsersComponent},
     { path: 'sports', component: SportsComponent},
+    { path: 'events', component: EventsComponent},
     { path: 'work-in-progress', component: WorkInProgressComponent}
   ]}
 ];
@@ -31,4 +33,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AdminRoutingModule { }
+export class UserRoutingModule { }

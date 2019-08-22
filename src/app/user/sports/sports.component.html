@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-10">
+      <table>
+        <tr>
+          <th>
+            Name
+          </th>
+          <th>
+            Players
+          </th>
+          <th>
+            Edit
+          </th>
+          <th>
+            Sport
+          </th>
+        </tr>
+        <tr>
+          <td>
+            <input placeholder="name" [(ngModel)]="sporttoinsert.name">
+          </td>
+          <td>
+            <input placeholder="players" [(ngModel)]="sporttoinsert.players">
+          </td>
+          <td>
+            <button (click)="insert(sporttoinsert)">Insert</button>
+          </td>
+          <td>
+            <button (click)="clear()">Clear</button>
+          </td>
+        </tr>
+        <tr *ngFor="let sport of sports">
+          <td>
+            <input [(ngModel)]="sport.name">
+          </td>
+          <td>
+            <input [(ngModel)]="sport.players">
+          </td>
+          <td>
+            <button (click)=update(sport)>Save</button>
+          </td>
+          <td>
+            <button (click)="delete(sport)">Delete</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-1">
+
+    </div>
+  </div>
+</div>
