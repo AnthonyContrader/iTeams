@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-10">
+      <table>
+        <tr>
+          <th>
+            User Name
+          </th>
+          <th>
+            Sport Name
+          </th>
+          <th>
+            Rate
+          </th>
+          <th>
+            Edit
+          </th>
+          <th>
+            Feedback
+          </th>
+        </tr>
+        <tr>
+            <input type="hidden" [(ngModel)]="feedbacktoinsert.creatorName=user.username">
+          <td>
+            <input placeholder="username" [(ngModel)]="feedbacktoinsert.userName">
+          </td>
+          <td>
+            <input placeholder="sportname" [(ngModel)]="feedbacktoinsert.sportName">
+          </td>
+          <td>
+            <input type="number" min="0" max="5" placeholder="rate" [(ngModel)]="feedbacktoinsert.rate">
+          </td>
+          <td>
+            <button (click)="insert(feedbacktoinsert); clear()">Insert</button>
+          </td>
+          <td>
+            <button (click)="clear()">Clear</button>
+          </td>
+        </tr>
+        <tr *ngFor="let feedback of feedbacks">
+          <td>
+            <input [(ngModel)]="feedback.userName">
+          </td>
+          <td>
+            <input [(ngModel)]="feedback.sportName">
+          </td>
+          <td>
+            <input type="number" min="0" max="5" [(ngModel)]="feedback.rate">
+          </td>
+          <td>
+            <button (click)=update(feedback)>Save</button>
+          </td>
+          <td>
+            <button (click)="delete(feedback)">Delete</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-1">
+
+    </div>
+  </div>
+</div>
