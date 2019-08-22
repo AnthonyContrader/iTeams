@@ -29,11 +29,11 @@ public class Feedback {
 	private String sportName;
 	
 	@NotNull
-	@Column(name = "idUser")
+	@Column(name = "userName")
 	private String userName;
 	
 	@NotNull
-	@Column(name = "idCreator")
+	@Column(name = "creatorName")
 	private String creatorName;
 	
 	@NotNull

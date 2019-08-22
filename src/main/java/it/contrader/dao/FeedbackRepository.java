@@ -12,10 +12,6 @@ import it.contrader.model.Feedback;
 
 public interface FeedbackRepository extends CrudRepository<Feedback, Long>{
 
-	Feedback findByIdUser(long id);
-
-	Feedback findByIdUserAndIdSport(long idUser, long idSport);
-
 	Feedback findByUserNameAndSportName(String userName, String sportName);
 	
 }
