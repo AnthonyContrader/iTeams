@@ -1,12 +1,17 @@
 package it.contrader.model;
 
-import java.util.Set;
+import javax.persistence.Entity;
 
 import javax.persistence.*;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+//import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  * 
@@ -17,7 +22,9 @@ import lombok.NoArgsConstructor;
  * 
  * @see UserDTO
  */
-@Data
+//@Data
+@Getter
+@Setter
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -39,8 +46,10 @@ public class User {
 
 	private Usertype usertype;
 	
+	
 	private boolean status;
 	
+	/*
 	//user-eventicreati
 	@OneToMany(mappedBy = "user", cascade= CascadeType.MERGE)
 	private Set<Event> createdEvents;
@@ -83,4 +92,5 @@ public class User {
 					+ ", invitedEvent=" + invitedEvent + ", memberOf=" + memberOf + ", like=" + like + ", gived=" + gived
 					+ ", received=" + received + "]";
 		}
+	*/
 }

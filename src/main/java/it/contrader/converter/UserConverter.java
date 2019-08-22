@@ -1,18 +1,9 @@
 package it.contrader.converter;
 
-import java.util.HashSet;
-
 import org.springframework.stereotype.Component;
 
-import it.contrader.dto.EventDTO;
-import it.contrader.dto.FeedbackDTO;
-import it.contrader.dto.SportDTO;
-import it.contrader.dto.TeamDTO;
 import it.contrader.dto.UserDTO;
-import it.contrader.model.Event;
-import it.contrader.model.Feedback;
-import it.contrader.model.Sport;
-import it.contrader.model.Team;
+
 import it.contrader.model.User;
 
 /**
@@ -25,6 +16,25 @@ import it.contrader.model.User;
  */
 @Component
 public class UserConverter extends AbstractConverter<User,UserDTO> {
+	/*
+	@Override
+	public User toEntity(UserDTO userDTO) {
+		User user = null;
+		if (userDTO != null) {
+			user = new User(userDTO.getId(),userDTO.getUsername(),userDTO.getPassword(),userDTO.getUsertype());			
+		}
+		return user;
+	}
+
+	@Override
+	public UserDTO toDTO(User user) {
+		UserDTO userDTO = null;
+		if (user != null) {
+			userDTO = new UserDTO(user.getId(),user.getUsername(),user.getPassword(),user.getUsertype());
+			
+		}
+		return userDTO;
+	}*/
 	
 	@Override
 	public UserDTO toDTO(User user) {
@@ -35,7 +45,7 @@ public class UserConverter extends AbstractConverter<User,UserDTO> {
 			userDTO.setId(user.getId());
 			userDTO.setUsername(user.getUsername());
 			userDTO.setPassword(user.getPassword());
-			//userDTO.setStatus(user.isStatus());
+			userDTO.setStatus(user.isStatus());
 			userDTO.setUsertype(user.getUsertype());
 				
 //			userDTO.setCreatedEventsDTO(ConverterEvent.toSetDTO(user.getCreatedEvents()));
@@ -59,7 +69,7 @@ public class UserConverter extends AbstractConverter<User,UserDTO> {
 			user.setUsername(userDTO.getUsername());
 			user.setPassword(userDTO.getPassword());
 			user.setUsertype(userDTO.getUsertype());
-			//user.setStatus(userDTO.isStatus());
+			user.setStatus(userDTO.isStatus());
 			
 //			user.setCreatedEvents(ConverterEvent.toSetEntity(userDTO.getCreatedEventsDTO()));
 //			user.setJoinEvent(ConverterEvent.toSetEntity(userDTO.getJoinEventDTO()));
@@ -71,4 +81,5 @@ public class UserConverter extends AbstractConverter<User,UserDTO> {
 		}
 		return user;
 	}
+	
 }

@@ -31,19 +31,19 @@ public class Event {
 	private long id;
 	
 	
-	/*@NotNull
+	@NotNull
 	@Column(name = "sportName")
-	private String sportName;*/
+	private String sportName;
 	
 	
-	//relazione user - sport
+/*	//relazione user - sport
 	@ManyToOne
 	@JoinColumn(name = "idUser", referencedColumnName = "id")
 	private User user;
-	
-	@NotNull
+	*/
+	/*@NotNull
 	@Column(name = "userName")
-	private String userName;
+	private String userName;*/
 	
 	@NotNull
 	@Column(name = "rate")
@@ -63,9 +63,9 @@ public class Event {
 	
 	@NotNull
 	@Column(name = "status", columnDefinition="tinyint(1) default 0")
-	private Boolean status;
+	private boolean status;
 		
-	//relazione event - sport
+/*	//relazione event - sport
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "idSport", referencedColumnName = "id")
 	private Sport sport;
@@ -94,5 +94,5 @@ public class Event {
 	
 	//relazione event - team
 	@OneToMany(mappedBy="event", cascade = CascadeType.MERGE)
-	private Set<Team> teams;
+	private Set<Team> teams;*/
 }

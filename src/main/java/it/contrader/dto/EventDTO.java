@@ -7,9 +7,13 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import it.contrader.model.User.Usertype;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+//@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 
@@ -22,10 +26,10 @@ public class EventDTO {
 	private String city;
 	private String address;
 	private String matchtime;
-	private Boolean status;
-	private SportDTO sportDTO;
+	private boolean status;
+/*	private SportDTO sportDTO;
 	private Set<UserDTO> joinersDTO;
 	private Set<UserDTO> invitedDTO;
 	private long joinersInt;
-	private Set<TeamDTO> teamsDTO;
+	private Set<TeamDTO> teamsDTO;*/
 }
