@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FeedbackService } from 'src/service/feedback.service';
 import { FeedbackDTO } from 'src/dto/feedbackdto';
+import { UserDTO } from 'src/dto/userdto';
+import { CompileStylesheetMetadata } from '@angular/compiler';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-feedbacks',
@@ -9,12 +12,16 @@ import { FeedbackDTO } from 'src/dto/feedbackdto';
 })
 export class FeedbacksComponent implements OnInit {
 
+  user: UserDTO;
   feedbacks: FeedbackDTO[];
   feedbacktoinsert: FeedbackDTO = new FeedbackDTO();
+  nome : string;
 
   constructor(private service: FeedbackService) { }
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
+    this.nome=this.user.username;
     this.getFeedbacks();
   }
 
@@ -31,6 +38,7 @@ export class FeedbacksComponent implements OnInit {
   }
 
   insert(feedback: FeedbackDTO) {
+    feedback.creatorName=this.nome;
     this.service.insert(feedback).subscribe(() => this.getFeedbacks());
   }
 

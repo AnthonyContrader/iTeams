@@ -10,6 +10,6 @@ export class FeedbackService extends AbstractService<FeedbackDTO> {
 
   constructor(http: HttpClient) { 
     super(http);
-    this.type = 'sport';
+    this.type = 'feedback';
   }
 }

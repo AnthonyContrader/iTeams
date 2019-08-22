@@ -12,6 +12,7 @@ export class UserMenuComponent implements OnInit {
   isAccountCollapsed = false;
   isEventCollapsed = false;
   isSportCollapsed = false;
+  isFeedbackCollapsed = false;
   isTeamCollapsed = false;
 
 
@@ -30,24 +31,60 @@ export class UserMenuComponent implements OnInit {
   sportscollapse() {
     if (this.isSportCollapsed === false) {
       this.isSportCollapsed = true;
+
+      this.isClientCollapsed = false;
+      this.isAccountCollapsed = false;
+      this.isEventCollapsed = false;
+      this.isFeedbackCollapsed = false;
+      this.isTeamCollapsed = false;
     } else { this.isSportCollapsed = false; }
   }
 
   eventscollapse() {
     if (this.isEventCollapsed === false) {
       this.isEventCollapsed = true;
+
+      this.isSportCollapsed = false;
+      this.isClientCollapsed = false;
+      this.isAccountCollapsed = false;
+      this.isFeedbackCollapsed = false;
+      this.isTeamCollapsed = false;
     } else { this.isEventCollapsed = false; }
   }
 
   teamscollapse() {
     if (this.isTeamCollapsed === false) {
       this.isTeamCollapsed = true;
+
+      this.isSportCollapsed = false;
+      this.isClientCollapsed = false;
+      this.isAccountCollapsed = false;
+      this.isEventCollapsed = false;
+      this.isFeedbackCollapsed = false;
     } else { this.isTeamCollapsed = false; }
+  }
+
+  feedbackscollapse() {
+    if (this.isFeedbackCollapsed === false) {
+      this.isFeedbackCollapsed = true;
+
+      this.isSportCollapsed = false;
+      this.isClientCollapsed = false;
+      this.isAccountCollapsed = false;
+      this.isEventCollapsed = false;
+      this.isTeamCollapsed = false;
+    } else { this.isFeedbackCollapsed = false; }
   }
 
   accountcollapse() {
     if (this.isAccountCollapsed === false) {
       this.isAccountCollapsed = true;
+
+      this.isSportCollapsed = false;
+      this.isClientCollapsed = false;
+      this.isEventCollapsed = false;
+      this.isFeedbackCollapsed = false;
+      this.isTeamCollapsed = false;
     } else { this.isAccountCollapsed = false; }
   }
 }

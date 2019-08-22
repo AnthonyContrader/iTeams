@@ -6,6 +6,7 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { SportsComponent } from './sports/sports.component';
 import { EventsComponent } from './events/events.component';
 import { TeamsComponent } from './teams/teams.component';
+import { FeedbacksComponent } from './feedbacks/feedbacks.component';
 
 import { WorkInProgressComponent } from './work-in-progress/work-in-progress.component';
 
@@ -28,6 +29,7 @@ const routes: Routes = [
     { path: 'sports', component: SportsComponent},
     { path: 'events', component: EventsComponent},
     { path: 'teams', component: TeamsComponent},
+    { path: 'feedbacks', component: FeedbacksComponent},
     { path: 'work-in-progress', component: WorkInProgressComponent}
   ]}
 ];
