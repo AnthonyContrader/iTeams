@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SportDTO } from 'src/dto/sportdto';
 import { UserDTO } from 'src/dto/userdto';
 import { EventDTO } from 'src/dto/eventdto';
+import { TeamDTO } from 'src/dto/teamdto';
 
 /**
  * Componente della dashboard admin. Nell'ngOnInit recupera

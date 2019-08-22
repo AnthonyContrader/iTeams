@@ -5,6 +5,7 @@ import { UserRoutingModule } from './user-routing.module';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { SportsComponent } from './sports/sports.component';
 import { EventsComponent } from './events/events.component';
+import { TeamsComponent } from './teams/teams.component';
 import { WorkInProgressComponent } from './work-in-progress/work-in-progress.component';
 
 /**
@@ -16,7 +17,7 @@ import { WorkInProgressComponent } from './work-in-progress/work-in-progress.com
  * @see AdminRoutingModule
  */
 @NgModule({
-  declarations: [UserDashboardComponent, /*UsersComponent,*/ WorkInProgressComponent, SportsComponent, EventsComponent],
+  declarations: [UserDashboardComponent, /*UsersComponent,*/ WorkInProgressComponent, SportsComponent, EventsComponent, TeamsComponent],
   imports: [
     CommonModule,
     UserRoutingModule,

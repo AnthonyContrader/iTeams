@@ -12,6 +12,7 @@ export class UserMenuComponent implements OnInit {
   isAccountCollapsed = false;
   isEventCollapsed = false;
   isSportCollapsed = false;
+  isTeamCollapsed = false;
 
 
   constructor(private router: Router) {
@@ -36,6 +37,12 @@ export class UserMenuComponent implements OnInit {
     if (this.isEventCollapsed === false) {
       this.isEventCollapsed = true;
     } else { this.isEventCollapsed = false; }
+  }
+
+  teamscollapse() {
+    if (this.isTeamCollapsed === false) {
+      this.isTeamCollapsed = true;
+    } else { this.isTeamCollapsed = false; }
   }
 
   accountcollapse() {
