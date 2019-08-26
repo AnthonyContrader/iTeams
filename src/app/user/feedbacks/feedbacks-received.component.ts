@@ -5,11 +5,14 @@ import { UserService } from 'src/service/user.service';
 import { UserDTO } from 'src/dto/userdto';
 import { CompileStylesheetMetadata } from '@angular/compiler';
 import { stringify } from 'querystring';
+import { SportDTO } from 'src/dto/sportdto';
+import { SportService } from 'src/service/sport.service';
+
 
 @Component({
-  selector: 'app-feedbacks',
-  templateUrl: './feedbacks.component.html',
-  styleUrls: ['./feedbacks.component.css']
+  selector: 'app-feedbacks-received',
+  templateUrl: './feedbacks-received.component.html',
+  styleUrls: ['./feedbacks-received.component.css']
 })
 export class FeedbacksReceivedComponent implements OnInit {
 
@@ -18,14 +21,16 @@ export class FeedbacksReceivedComponent implements OnInit {
   feedbacks: FeedbackDTO[];
   feedbacktoinsert: FeedbackDTO = new FeedbackDTO();
   nome : string;
+  sports: SportDTO[];
 
-  constructor(private service: FeedbackService, private uService: UserService) { }
+  constructor(private service: FeedbackService, private uService: UserService, private sService: SportService) { }
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.nome=this.user.username;
     this.getUsers();
-    this.getMine();
+    //this.getMine();
+    this.getSports();
     console.log("in init");
   }
 
@@ -50,6 +55,10 @@ export class FeedbacksReceivedComponent implements OnInit {
     this.uService.getAll().subscribe(users => this.users = users);
   }
 
+  getSports(){
+    this.sService.getAll().subscribe(sports => this.sports = sports);
+  }
+
   delete(feedback: FeedbackDTO) {
     this.service.delete(feedback.id).subscribe(() => this.getFeedbacks());
   }
@@ -62,7 +71,7 @@ export class FeedbacksReceivedComponent implements OnInit {
     feedback.creatorName=this.nome;
     //feedback.user=user;
     //console.log("feedback user: "+feedback.user.username);
-    this.service.insert(feedback).subscribe(() => this.getFeedbacks());
+    this.service.insert(feedback).subscribe(() => this.getMine());
   }
 
   clear(){

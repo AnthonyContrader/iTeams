@@ -33,7 +33,9 @@
         </tr>
         <tr>
           <td>
-            <input placeholder="sportname" [(ngModel)]="eventtoinsert.sportName">
+              <select [(ngModel)]="eventtoinsert.sport">
+                  <option [ngValue]="sport" *ngFor="let sport of sports">{{sport.name}}</option>
+              </select>            
           </td>
           <td>
             <input type="number" min="0" max="5" placeholder="rate" [(ngModel)]="eventtoinsert.rate">
@@ -58,7 +60,8 @@
         </tr>
         <tr *ngFor="let event of events">
           <td>
-            <input [(ngModel)]="event.sportName">
+            <!--<input [(ngModel)]="event.sport.name">-->
+            {{event.sport.name}}
           </td>
           <td>
             <input type="number" min="0" max="5" [(ngModel)]="event.rate">

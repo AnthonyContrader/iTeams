@@ -29,7 +29,9 @@
             </select>
           </td>
           <td>
-            <input placeholder="sportname" [(ngModel)]="feedbacktoinsert.sportName">
+            <select [(ngModel)]="feedbacktoinsert.sport">
+              <option [ngValue]="sport" *ngFor="let sport of sports">{{sport.name}}</option>
+            </select>
           </td>
           <td>
             <input type="number" min="0" max="5" placeholder="rate" [(ngModel)]="feedbacktoinsert.rate">
@@ -43,10 +45,12 @@
         </tr>
         <tr *ngFor="let feedback of feedbacks">
           <td>
-            <input [(ngModel)]="feedback.user.username">
+            <!--<input [(ngModel)]="feedback.user.username">-->
+            {{feedback.user.username}}
           </td>
           <td>
-            <input [(ngModel)]="feedback.sportName">
+            <!-- <input [(ngModel)]="feedback.sport.name">-->
+            {{feedback.sport.name}}
           </td>
           <td>
             <input type="number" min="0" max="5" [(ngModel)]="feedback.rate">

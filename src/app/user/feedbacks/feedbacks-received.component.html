@@ -15,48 +15,24 @@
           <th>
             Rate
           </th>
-          <th>
-            Edit
-          </th>
-          <th>
-            Feedback
-          </th>
+          
         </tr>
-        <tr>
+       
+        <tr *ngFor="let feedback of user.received">
+
           <td>
-            <select [(ngModel)]="feedbacktoinsert.user">
-              <option [ngValue]="user" *ngFor="let user of users">{{user.username}}</option>
-            </select>
+           <!-- <input [(ngModel)]="feedback.user.username">-->
+            {{feedback.user.username}}
           </td>
           <td>
-            <input placeholder="sportname" [(ngModel)]="feedbacktoinsert.sportName">
+            <!--<input [(ngModel)]="feedback.sport.name">-->
+            {{feedback.sport.name}}
           </td>
           <td>
-            <input type="number" min="0" max="5" placeholder="rate" [(ngModel)]="feedbacktoinsert.rate">
+            <!--<input type="number" min="0" max="5" [(ngModel)]="feedback.rate">-->
+            {{feedback.rate}}
           </td>
-          <td>
-            <button (click)="insert(feedbacktoinsert); clear()">Insert</button>
-          </td>
-          <td>
-            <button (click)="clear()">Clear</button>
-          </td>
-        </tr>
-        <tr *ngFor="let feedback of feedbacks">
-          <td>
-            <input [(ngModel)]="feedback.user.username">
-          </td>
-          <td>
-            <input [(ngModel)]="feedback.sportName">
-          </td>
-          <td>
-            <input type="number" min="0" max="5" [(ngModel)]="feedback.rate">
-          </td>
-          <td>
-            <button (click)=update(feedback)>Save</button>
-          </td>
-          <td>
-            <button (click)="delete(feedback)">Delete</button>
-          </td>
+          
         </tr>
       </table>
     </div>

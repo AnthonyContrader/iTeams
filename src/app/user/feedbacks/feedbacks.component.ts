@@ -5,6 +5,9 @@ import { UserService } from 'src/service/user.service';
 import { UserDTO } from 'src/dto/userdto';
 import { CompileStylesheetMetadata } from '@angular/compiler';
 import { stringify } from 'querystring';
+import { SportDTO } from 'src/dto/sportdto';
+import { SportService } from 'src/service/sport.service';
+
 
 @Component({
   selector: 'app-feedbacks',
@@ -18,14 +21,16 @@ export class FeedbacksComponent implements OnInit {
   feedbacks: FeedbackDTO[];
   feedbacktoinsert: FeedbackDTO = new FeedbackDTO();
   nome : string;
+  sports: SportDTO[];
 
-  constructor(private service: FeedbackService, private uService: UserService) { }
+  constructor(private service: FeedbackService, private uService: UserService, private sService: SportService) { }
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.nome=this.user.username;
     this.getUsers();
     this.getFeedbacks();
+    this.getSports();
     console.log("in init");
   }
 
@@ -39,6 +44,10 @@ export class FeedbacksComponent implements OnInit {
 
   getUsers(){
     this.uService.getAll().subscribe(users => this.users = users);
+  }
+
+  getSports(){
+    this.sService.getAll().subscribe(sports => this.sports = sports);
   }
 
   delete(feedback: FeedbackDTO) {
