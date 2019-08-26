@@ -39,7 +39,8 @@ public class UserConverter extends AbstractConverter<User,UserDTO> {
 //			userDTO.setGivedDTO(ConverterFeedback.toSetDTO(user.getGived()));
 			Converter<Feedback, FeedbackDTO> fc = new FeedbackConverter ();
 			userDTO.setReceived((Set<FeedbackDTO>) fc.toDTOSet(user.getReceived()));
-//			userDTO.setLikeDTO(ConverterSport.toSetDTO(user.getLike()));
+			SportConverter cs = new SportConverter();
+			userDTO.setLike(cs.toDTOSet(user.getLike()));
 		}
 		return userDTO;
 	}
@@ -63,7 +64,8 @@ public class UserConverter extends AbstractConverter<User,UserDTO> {
 			Converter<Feedback, FeedbackDTO> fc = new FeedbackConverter ();
 			user.setReceived((Set<Feedback>) fc.toEntitySet(userDTO.getReceived()));
 			//user.setReceived(ConverterFeedback.toSetEntity(userDTO.getReceivedDTO()));
-//			user.setLike(ConverterSport.toSetEntity(userDTO.getLikeDTO()));
+			SportConverter cs = new SportConverter();
+			user.setLike(cs.toEntitySet(userDTO.getLike()));
 		}
 		return user;
 	}

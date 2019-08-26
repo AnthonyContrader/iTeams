@@ -26,6 +26,8 @@ public class SportConverter  extends AbstractConverter<Sport,SportDTO> {
 			sportDTO.setId(sport.getId());
 			sportDTO.setName(sport.getName());
 			sportDTO.setPlayers(sport.getPlayers());
+			UserConverter uc = new UserConverter();
+			sportDTO.setLikes(uc.toDTOSet(sport.getLikes()));
 //			sportDTO.setEventsDTO(ConverterEvent.toSetDTO(sport.getEvents()));
 //			sportDTO.setLikesDTO(ConverterUser.toSetDTO(sport.getLikes()));
 //			sportDTO.setSportfeedDTO(ConverterFeedback.toSetDTO(sport.getSportfeed()));
@@ -43,7 +45,8 @@ public class SportConverter  extends AbstractConverter<Sport,SportDTO> {
 			sport.setName(sportDTO.getName());
 			sport.setPlayers(sportDTO.getPlayers());
 //			sport.setEvents(ConverterEvent.toSetEntity(sportDTO.getEventsDTO()));
-//			sport.setLikes(ConverterUser.toSetEntity(sportDTO.getLikesDTO()));
+			UserConverter uc = new UserConverter();
+			sport.setLikes(uc.toEntitySet(sportDTO.getLikes()));
 //			sport.setSportfeed(ConverterFeedback.toSetEntity(sportDTO.getSportfeedDTO()));
 		}
 		return sport;
@@ -59,7 +62,6 @@ public class SportConverter  extends AbstractConverter<Sport,SportDTO> {
 			sport.setName(sportDTO.getName());
 			sport.setPlayers(sportDTO.getPlayers());
 //			sport.setEvents(ConverterEvent.toSetEntity(sportDTO.getEventsDTO()));
-//			sport.setLikes(ConverterUser.toSetEntity(sportDTO.getLikesDTO()));
 //			sport.setSportfeed(ConverterFeedback.toSetEntity(sportDTO.getSportfeedDTO()));
 		}
 		return sport;

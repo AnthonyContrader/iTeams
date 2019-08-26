@@ -40,9 +40,9 @@ public class Sport {
 	@NotNull
 	private long players;
 	
-	/*//relazione sport - utenti
+	//relazione sport - utenti
 	@ManyToMany(mappedBy = "like", cascade = CascadeType.MERGE)
-	private Set<User> likes;*/
+	private Set<User> likes;
 	
 	//relazione sport - evento
 	@OneToMany(mappedBy="sport", cascade = CascadeType.MERGE)

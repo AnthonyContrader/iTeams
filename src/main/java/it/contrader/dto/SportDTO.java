@@ -21,10 +21,11 @@ public class SportDTO {
 	private long id;
 	private String name;
 	private long players;
-	//private Set<UserDTO> likesDTO;
+	private Set<FeedbackDTO> sportfeedDTO;
+	private Set<UserDTO> likes;
 	
 	/*private Set<EventDTO> eventsDTO;*/
-	private Set<FeedbackDTO> sportfeedDTO;
+	
 	
 	
 	

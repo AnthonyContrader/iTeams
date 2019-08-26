@@ -39,5 +39,7 @@ public class UserDTO {
 	private boolean status;
 	
 	private Set<FeedbackDTO> received=null;
+	
+	private Set<SportDTO> like;
 
 }

@@ -69,7 +69,7 @@ public class User {
 	@JoinTable(
 	name="user_team", joinColumns=@JoinColumn(name="user_id"),
 	inverseJoinColumns=@JoinColumn(name="team_id"))
-	Set<Team> memberOf;
+	Set<Team> memberOf;*/
 	
 	//relazione user - sport
 		@ManyToMany(cascade = CascadeType.MERGE)
@@ -79,10 +79,9 @@ public class User {
 		  inverseJoinColumns = @JoinColumn(name = "sport_id"))
 		  Set<Sport> like;
 		
-		//relazione user - feedback creati
-		@OneToMany(mappedBy="creator", cascade = CascadeType.MERGE)
-		private Set<Feedback> gived;
-		*/
+	/*//relazione user - feedback creati
+	@OneToMany(mappedBy="creator", cascade = CascadeType.MERGE)
+	private Set<Feedback> gived;*/
 	
 	
 		//relazione user - feedback ricevuti
