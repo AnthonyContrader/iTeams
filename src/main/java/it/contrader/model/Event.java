@@ -36,11 +36,12 @@ public class Event {
 	private String sportName;
 	
 	
-/*	//relazione user - sport
+	//relazione user - sport
 	@ManyToOne
 	@JoinColumn(name = "idUser", referencedColumnName = "id")
-	private User user;
-	*/
+	private User creator;
+	
+	
 	/*@NotNull
 	@Column(name = "userName")
 	private String userName;*/

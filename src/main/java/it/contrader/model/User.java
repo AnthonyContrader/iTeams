@@ -2,6 +2,8 @@ package it.contrader.model;
 
 import javax.persistence.Entity;
 
+import java.util.Set;
+
 import javax.persistence.*;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -80,11 +82,15 @@ public class User {
 		//relazione user - feedback creati
 		@OneToMany(mappedBy="creator", cascade = CascadeType.MERGE)
 		private Set<Feedback> gived;
-		
+		*/
+	
+	
 		//relazione user - feedback ricevuti
 		@OneToMany(mappedBy="user", cascade = CascadeType.MERGE)
 		private Set<Feedback> received;
-
+		
+		
+		/*
 		@Override
 		public String toString() {
 			return "User [id=" + id + ", username=" + username + ", password=" + password + ", usertype=" + usertype

@@ -1,7 +1,11 @@
 package it.contrader.dto;
 
+import java.util.Set;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import it.contrader.model.Feedback;
 import it.contrader.model.User.Usertype;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,18 +25,19 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
+//@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class UserDTO {
 
 	private long id;
 	
 	private String username;
 	
-	private String password;
+	private String password="";
 
 	private Usertype usertype;
 	
 	private boolean status;
 	
+	private Set<FeedbackDTO> received=null;
 
 }

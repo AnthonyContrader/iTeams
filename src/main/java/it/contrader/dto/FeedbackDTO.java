@@ -1,5 +1,6 @@
 package it.contrader.dto;
 
+import it.contrader.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,10 +16,11 @@ public class FeedbackDTO {
 	
 	private String sportName;
 	
-	private String userName;
+	//private String userName;
 	
 	private String creatorName;
 	
 	private int rate;
 	
+	private UserDTO user;
 }

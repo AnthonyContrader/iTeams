@@ -21,7 +21,7 @@ public class EventDTO {
 
 	private long id;
 	private String sportName;
-	//private UserDTO userDTO;
+	private UserDTO creator;
 	private long rate;
 	private String city;
 	private String address;

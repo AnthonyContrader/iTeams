@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
@@ -28,9 +30,15 @@ public class Feedback {
 	@Column(name = "sportName")		
 	private String sportName;
 	
+	/*
 	@NotNull
 	@Column(name = "userName")
 	private String userName;
+	*/
+	
+	@ManyToOne
+	@JoinColumn(name = "idUser", referencedColumnName = "id")
+	private User user;
 	
 	@NotNull
 	@Column(name = "creatorName")

@@ -49,6 +49,18 @@ public class SportConverter  extends AbstractConverter<Sport,SportDTO> {
 		return sport;
 			
 	}
+
+	@Override
+	public Sport toEntityS(SportDTO dto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public SportDTO toDTOS(Sport entity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 }

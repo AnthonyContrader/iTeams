@@ -33,6 +33,7 @@ public abstract class AbstractService<Entity,DTO> implements ServiceDTO<DTO> {
 
 	@Override
 	public Iterable<DTO> getAll() {
+		System.out.println("nel get all");
 		return converter.toDTOList(repository.findAll());
 	}
 

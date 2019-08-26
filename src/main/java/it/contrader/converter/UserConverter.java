@@ -1,9 +1,12 @@
 package it.contrader.converter;
 
+import java.util.Set;
+
 import org.springframework.stereotype.Component;
 
+import it.contrader.dto.FeedbackDTO;
 import it.contrader.dto.UserDTO;
-
+import it.contrader.model.Feedback;
 import it.contrader.model.User;
 
 /**
@@ -16,25 +19,6 @@ import it.contrader.model.User;
  */
 @Component
 public class UserConverter extends AbstractConverter<User,UserDTO> {
-	/*
-	@Override
-	public User toEntity(UserDTO userDTO) {
-		User user = null;
-		if (userDTO != null) {
-			user = new User(userDTO.getId(),userDTO.getUsername(),userDTO.getPassword(),userDTO.getUsertype());			
-		}
-		return user;
-	}
-
-	@Override
-	public UserDTO toDTO(User user) {
-		UserDTO userDTO = null;
-		if (user != null) {
-			userDTO = new UserDTO(user.getId(),user.getUsername(),user.getPassword(),user.getUsertype());
-			
-		}
-		return userDTO;
-	}*/
 	
 	@Override
 	public UserDTO toDTO(User user) {
@@ -53,7 +37,8 @@ public class UserConverter extends AbstractConverter<User,UserDTO> {
 //			userDTO.setInvitedEventDTO(ConverterEvent.toSetDTO(user.getInvitedEvent()));
 //			userDTO.setMemberOfDTO(ConverterTeam.toSetDTO(user.getMemberOf()));
 //			userDTO.setGivedDTO(ConverterFeedback.toSetDTO(user.getGived()));
-//			userDTO.setReceivedDTO(ConverterFeedback.toSetDTO(user.getReceived()));
+			Converter<Feedback, FeedbackDTO> fc = new FeedbackConverter ();
+			userDTO.setReceived((Set<FeedbackDTO>) fc.toDTOSet(user.getReceived()));
 //			userDTO.setLikeDTO(ConverterSport.toSetDTO(user.getLike()));
 		}
 		return userDTO;
@@ -69,17 +54,51 @@ public class UserConverter extends AbstractConverter<User,UserDTO> {
 			user.setUsername(userDTO.getUsername());
 			user.setPassword(userDTO.getPassword());
 			user.setUsertype(userDTO.getUsertype());
-			user.setStatus(userDTO.isStatus());
-			
+			user.setStatus(userDTO.isStatus());			
 //			user.setCreatedEvents(ConverterEvent.toSetEntity(userDTO.getCreatedEventsDTO()));
 //			user.setJoinEvent(ConverterEvent.toSetEntity(userDTO.getJoinEventDTO()));
 //			user.setInvitedEvent(ConverterEvent.toSetEntity(userDTO.getInvitedEventDTO()));
 //			user.setMemberOf(ConverterTeam.toSetEntity(userDTO.getMemberOfDTO()));
 //			user.setGived(ConverterFeedback.toSetEntity(userDTO.getGivedDTO()));
-//			user.setReceived(ConverterFeedback.toSetEntity(userDTO.getReceivedDTO()));
+			Converter<Feedback, FeedbackDTO> fc = new FeedbackConverter ();
+			user.setReceived((Set<Feedback>) fc.toEntitySet(userDTO.getReceived()));
+			//user.setReceived(ConverterFeedback.toSetEntity(userDTO.getReceivedDTO()));
 //			user.setLike(ConverterSport.toSetEntity(userDTO.getLikeDTO()));
 		}
 		return user;
+	}
+
+	@Override
+	public User toEntityS(UserDTO userDTO) {
+		User user = null;
+		if (userDTO != null) {
+			System.out.println("nel converter semplificato user toEntity");
+			user = new User();
+			user.setId(userDTO.getId());
+			user.setUsername(userDTO.getUsername());
+			//userDTO.setPassword(user.getPassword());
+			user.setUsertype(userDTO.getUsertype());
+			user.setStatus(userDTO.isStatus());
+		}
+		return user;
+	}
+
+	@Override
+	public UserDTO toDTOS(User user) {
+		UserDTO userDTO = null;
+		if (user != null) {
+			System.out.println("nel converter semplificato user toDTO");
+			userDTO = new UserDTO();
+			userDTO.setId(user.getId());
+			System.out.println("ID> "+userDTO.getId());
+			userDTO.setUsername(user.getUsername());
+			System.out.println("ID> "+userDTO.getUsername());
+			userDTO.setStatus(user.isStatus());
+			System.out.println("ID> "+user.isStatus());
+			userDTO.setUsertype(user.getUsertype());
+			System.out.println("ID> "+user.getUsertype());
+		}
+		return userDTO;
 	}
 	
 }

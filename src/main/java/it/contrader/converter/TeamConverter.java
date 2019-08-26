@@ -44,4 +44,16 @@ public class TeamConverter extends AbstractConverter<Team,TeamDTO> {
 		return team;
 			
 	}
+
+	@Override
+	public Team toEntityS(TeamDTO dto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public TeamDTO toDTOS(Team entity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

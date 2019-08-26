@@ -15,7 +15,8 @@ public class FeedbackConverter extends AbstractConverter<Feedback, FeedbackDTO> 
 			feedbackDTO = new FeedbackDTO();
 			feedbackDTO.setId(feedback.getId());
 			feedbackDTO.setSportName(feedback.getSportName());
-			feedbackDTO.setUserName(feedback.getUserName());
+			UserConverter userC = new UserConverter();
+			feedbackDTO.setUser(userC.toDTOS(feedback.getUser()));
 			feedbackDTO.setCreatorName(feedback.getCreatorName());
 			feedbackDTO.setRate(feedback.getRate());
 		}
@@ -29,8 +30,39 @@ public class FeedbackConverter extends AbstractConverter<Feedback, FeedbackDTO> 
 			feedback = new Feedback();
 			feedback.setId(feedbackDTO.getId());
 			feedback.setSportName(feedbackDTO.getSportName());
-			feedback.setUserName(feedbackDTO.getUserName());
+			UserConverter userC = new UserConverter();
+			feedback.setUser(userC.toEntityS(feedbackDTO.getUser()));
 			feedback.setCreatorName(feedbackDTO.getCreatorName());
+			feedback.setRate(feedbackDTO.getRate());
+		}
+		return feedback;
+	}
+
+	@Override
+	public FeedbackDTO toDTOS(Feedback feedback) {
+		FeedbackDTO feedbackDTO = null;
+		if (feedback != null) {
+			feedbackDTO = new FeedbackDTO();
+			feedbackDTO.setId(feedback.getId());
+			feedbackDTO.setSportName(feedback.getSportName());
+			feedbackDTO.setCreatorName(feedback.getCreatorName());
+			UserConverter userC = new UserConverter();
+			feedbackDTO.setUser(userC.toDTOS(feedback.getUser()));
+			feedbackDTO.setRate(feedback.getRate());
+		}
+		return feedbackDTO;
+	}
+	
+	@Override
+	public Feedback toEntityS(FeedbackDTO feedbackDTO) {
+		Feedback feedback = null; 
+		if (feedbackDTO != null) {
+			feedback = new Feedback();
+			feedback.setId(feedbackDTO.getId());
+			feedback.setSportName(feedbackDTO.getSportName());
+			feedback.setCreatorName(feedbackDTO.getCreatorName());
+			UserConverter userC = new UserConverter();
+			feedback.setUser(userC.toEntityS(feedbackDTO.getUser()));
 			feedback.setRate(feedbackDTO.getRate());
 		}
 		return feedback;
