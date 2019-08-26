@@ -60,7 +60,9 @@
         </tr>
         <tr *ngFor="let event of events">
           <td>
+            <!--con input rendo il nome dello sport modificabile-->
             <!--<input [(ngModel)]="event.sport.name">-->
+            <!--con {{...}} rendo il nome dello sport leggibile e non modificabile -->
             {{event.sport.name}}
           </td>
           <td>

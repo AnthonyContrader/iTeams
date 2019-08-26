@@ -28,6 +28,10 @@
             </button>
             <div class="collapsebtn" id="users" *ngIf="isSportCollapsed">
                 <button class="menubtn" style="padding-left: 40px; background-color: #334247;">
+                    <a [routerLink]="['/user-dashboard/sports-liked']"> <i class="fas fa-edit" style="margin-right: 10px">
+                        </i> Liked Sports </a>
+                </button>
+                <button class="menubtn" style="padding-left: 40px; background-color: #334247;">
                     <a [routerLink]="['/user-dashboard/sports']"> <i class="fas fa-edit" style="margin-right: 10px">
                         </i> Manage Sports </a>
                 </button>

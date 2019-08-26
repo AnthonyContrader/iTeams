@@ -1,4 +1,5 @@
 import { FeedbackDTO } from './feedbackdto';
+import { UserDTO } from './userdto';
 
 export class SportDTO {
 
@@ -6,5 +7,5 @@ export class SportDTO {
     name: string;
     players: number;
     sportfeedDTO: FeedbackDTO[];
-    
+    likes: UserDTO[];
 }

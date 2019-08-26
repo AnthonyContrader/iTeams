@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { UserRoutingModule } from './user-routing.module';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { SportsComponent } from './sports/sports.component';
+import { SportsLikedComponent } from './sports/sports-liked.component';
 import { EventsComponent } from './events/events.component';
 import { TeamsComponent } from './teams/teams.component';
 import { AccountsComponent } from './accounts/accounts.component';
@@ -20,7 +21,7 @@ import { WorkInProgressComponent } from './work-in-progress/work-in-progress.com
  * @see AdminRoutingModule
  */
 @NgModule({
-  declarations: [UserDashboardComponent, /*UsersComponent,*/ WorkInProgressComponent, SportsComponent, 
+  declarations: [UserDashboardComponent, /*UsersComponent,*/ WorkInProgressComponent, SportsComponent, SportsLikedComponent, 
     AccountsComponent, EventsComponent, FeedbacksReceivedComponent, TeamsComponent, FeedbacksComponent],
   imports: [
     CommonModule,

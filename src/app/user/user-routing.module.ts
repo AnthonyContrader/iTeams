@@ -4,6 +4,7 @@ import { UserLayoutComponent } from '../layout/user-layout/user-layout.component
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 //import { UsersComponent } from './users/users.component';
 import { SportsComponent } from './sports/sports.component';
+import { SportsLikedComponent } from './sports/sports-liked.component';
 import { EventsComponent } from './events/events.component';
 import { TeamsComponent } from './teams/teams.component';
 import { FeedbacksComponent } from './feedbacks/feedbacks.component';
@@ -28,6 +29,7 @@ const routes: Routes = [
     { path: '', component: UserDashboardComponent},
     { path: 'accounts', component: AccountsComponent},
     { path: 'sports', component: SportsComponent},
+    { path: 'sports-liked', component: SportsLikedComponent }, 
     { path: 'events', component: EventsComponent},
     { path: 'teams', component: TeamsComponent},
     { path: 'feedbacks', component: FeedbacksComponent},

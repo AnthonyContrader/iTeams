@@ -11,27 +11,15 @@
           </th>
           <th>
             Players
-          </th>
-          <th>
-            Edit
-          </th>
-          <th>
-            Sport
-          </th>
+          </th>         
         </tr>        
-        <tr *ngFor="let sport of sports">
+        <tr *ngFor="let sport of user.like">
           <td>
             <input [(ngModel)]="sport.name">
           </td>
           <td>
             <input [(ngModel)]="sport.players">
-          </td>
-          <td>
-            <button (click)="liked(sport)">Join</button>
-          </td>
-          <td>
-           <!-- <button (click)="#">-------</button> -->
-          </td>
+          </td>          
         </tr>
       </table>
     </div>
