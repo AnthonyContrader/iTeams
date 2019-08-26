@@ -11,7 +11,7 @@ import { stringify } from 'querystring';
   templateUrl: './feedbacks.component.html',
   styleUrls: ['./feedbacks.component.css']
 })
-export class FeedbacksComponent implements OnInit {
+export class FeedbacksReceivedComponent implements OnInit {
 
   user: UserDTO;
   users: UserDTO[];
@@ -25,8 +25,17 @@ export class FeedbacksComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.nome=this.user.username;
     this.getUsers();
-    this.getFeedbacks();
+    this.getMine();
     console.log("in init");
+  }
+
+  getMine() {
+    console.log("in get mine");
+    //this.service.getMine(use).subscribe(feedbacks => this.feedbacks = feedbacks);
+    this.feedbacks=this.user.received;
+    /*for(let feed of this.feedbacks) {
+      console.log("feed: "+feed.user.username);
+    }*/
   }
 
   getFeedbacks() {

@@ -1,3 +1,5 @@
+import { UserDTO } from './userdto';
+
 export class EventDTO {
 
    id: number;
@@ -13,5 +15,7 @@ export class EventDTO {
    matchtime: string;
    
    status: boolean;
+
+   creator: UserDTO;
 }
 

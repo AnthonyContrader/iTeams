@@ -7,7 +7,8 @@ import { SportsComponent } from './sports/sports.component';
 import { EventsComponent } from './events/events.component';
 import { TeamsComponent } from './teams/teams.component';
 import { FeedbacksComponent } from './feedbacks/feedbacks.component';
-
+import { AccountsComponent } from './accounts/accounts.component';
+import { FeedbacksReceivedComponent } from './feedbacks/feedbacks-received.component';
 import { WorkInProgressComponent } from './work-in-progress/work-in-progress.component';
 
 /**
@@ -25,11 +26,12 @@ import { WorkInProgressComponent } from './work-in-progress/work-in-progress.com
 const routes: Routes = [
   { path: 'user-dashboard', component: UserLayoutComponent, children:[
     { path: '', component: UserDashboardComponent},
-   // { path: 'users', component: UsersComponent},
+    { path: 'accounts', component: AccountsComponent},
     { path: 'sports', component: SportsComponent},
     { path: 'events', component: EventsComponent},
     { path: 'teams', component: TeamsComponent},
     { path: 'feedbacks', component: FeedbacksComponent},
+    { path: 'feedbacks-received', component: FeedbacksReceivedComponent},
     { path: 'work-in-progress', component: WorkInProgressComponent}
   ]}
 ];

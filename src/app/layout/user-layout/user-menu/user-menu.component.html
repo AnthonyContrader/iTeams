@@ -12,7 +12,7 @@
             </button>
             <div class="collapsebtn" id="account" *ngIf="isAccountCollapsed">
                 <button class="menubtn" style="background-color: #334247; padding-left: 40px">
-                    <a [routerLink]="['/user-dashboard/work-in-progress']"> <i class="fas fa-user-edit"
+                    <a [routerLink]="['/user-dashboard/accounts']"> <i class="fas fa-user-edit"
                             style="margin-right: 15px"></i>
                         Edit Profile U</a>
                 </button>
@@ -49,6 +49,10 @@
                 <i class="fas fa-users" style="margin-right: 15px"></i>Feedback
             </button>
             <div class="collapsebtn" id="users" *ngIf="isFeedbackCollapsed">
+                <button class="menubtn" style="padding-left: 40px; background-color: #334247;">
+                    <a [routerLink]="['/user-dashboard/feedbacks-received']"> <i class="fas fa-edit" style="margin-right: 10px">
+                        </i> Feedbacks Received </a>
+                </button>
                 <button class="menubtn" style="padding-left: 40px; background-color: #334247;">
                     <a [routerLink]="['/user-dashboard/feedbacks']"> <i class="fas fa-edit" style="margin-right: 10px">
                         </i> Manage Feedbacks </a>
