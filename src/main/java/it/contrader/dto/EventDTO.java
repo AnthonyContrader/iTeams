@@ -20,15 +20,15 @@ import lombok.Setter;
 public class EventDTO {
 
 	private long id;
-	private String sportName;
+	//private String sportName;
 	private UserDTO creator;
 	private long rate;
 	private String city;
 	private String address;
 	private String matchtime;
 	private boolean status;
-/*	private SportDTO sportDTO;
-	private Set<UserDTO> joinersDTO;
+	private SportDTO sport;
+/*	private Set<UserDTO> joinersDTO;
 	private Set<UserDTO> invitedDTO;
 	private long joinersInt;
 	private Set<TeamDTO> teamsDTO;*/

@@ -14,7 +14,7 @@ public class FeedbackDTO {
 	
 	private long id;
 	
-	private String sportName;
+	//private String sportName;
 	
 	//private String userName;
 	
@@ -23,4 +23,6 @@ public class FeedbackDTO {
 	private int rate;
 	
 	private UserDTO user;
+	
+	private SportDTO sport;
 }

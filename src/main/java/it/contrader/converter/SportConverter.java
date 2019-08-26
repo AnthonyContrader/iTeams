@@ -51,15 +51,33 @@ public class SportConverter  extends AbstractConverter<Sport,SportDTO> {
 	}
 
 	@Override
-	public Sport toEntityS(SportDTO dto) {
-		// TODO Auto-generated method stub
-		return null;
+	public Sport toEntityS(SportDTO sportDTO) {
+		Sport sport = null;
+		if (sportDTO !=null) {
+			sport = new Sport ();
+			sport.setId(sportDTO.getId());
+			sport.setName(sportDTO.getName());
+			sport.setPlayers(sportDTO.getPlayers());
+//			sport.setEvents(ConverterEvent.toSetEntity(sportDTO.getEventsDTO()));
+//			sport.setLikes(ConverterUser.toSetEntity(sportDTO.getLikesDTO()));
+//			sport.setSportfeed(ConverterFeedback.toSetEntity(sportDTO.getSportfeedDTO()));
+		}
+		return sport;
 	}
 
 	@Override
-	public SportDTO toDTOS(Sport entity) {
-		// TODO Auto-generated method stub
-		return null;
+	public SportDTO toDTOS(Sport sport) {
+		SportDTO sportDTO = null;
+		if (sport != null) {
+			sportDTO = new SportDTO();
+			sportDTO.setId(sport.getId());
+			sportDTO.setName(sport.getName());
+			sportDTO.setPlayers(sport.getPlayers());
+//			sportDTO.setEventsDTO(ConverterEvent.toSetDTO(sport.getEvents()));
+//			sportDTO.setLikesDTO(ConverterUser.toSetDTO(sport.getLikes()));
+//			sportDTO.setSportfeedDTO(ConverterFeedback.toSetDTO(sport.getSportfeed()));
+		}
+		return sportDTO;
 	}
 	
 

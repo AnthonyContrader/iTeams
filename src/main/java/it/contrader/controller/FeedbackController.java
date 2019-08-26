@@ -22,7 +22,7 @@ public class FeedbackController extends AbstractController<FeedbackDTO>{
 	private FeedbackService feedbackService;
 	
 	
-	@PostMapping(value = "/feedbackmanager")
+	/*@PostMapping(value = "/feedbackmanager")
 	public FeedbackDTO sportmanager( @RequestBody FeedbackDTO feedbackDTO ) {
 		return feedbackService.findByUserAndSportName(feedbackDTO.getUser(), feedbackDTO.getSportName());
 	}
@@ -30,5 +30,5 @@ public class FeedbackController extends AbstractController<FeedbackDTO>{
 	@PostMapping("/getmine")
 	public Iterable<FeedbackDTO> getMine(UserDTO user){
 		return feedbackService.getMine(user);		
-	}	
+	}	*/
 }

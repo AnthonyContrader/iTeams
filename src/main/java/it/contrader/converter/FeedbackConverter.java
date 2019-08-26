@@ -14,7 +14,8 @@ public class FeedbackConverter extends AbstractConverter<Feedback, FeedbackDTO> 
 		if (feedback != null) {
 			feedbackDTO = new FeedbackDTO();
 			feedbackDTO.setId(feedback.getId());
-			feedbackDTO.setSportName(feedback.getSportName());
+			SportConverter sc= new SportConverter();
+			feedbackDTO.setSport(sc.toDTOS(feedback.getSport()));
 			UserConverter userC = new UserConverter();
 			feedbackDTO.setUser(userC.toDTOS(feedback.getUser()));
 			feedbackDTO.setCreatorName(feedback.getCreatorName());
@@ -29,7 +30,8 @@ public class FeedbackConverter extends AbstractConverter<Feedback, FeedbackDTO> 
 		if (feedbackDTO != null) {
 			feedback = new Feedback();
 			feedback.setId(feedbackDTO.getId());
-			feedback.setSportName(feedbackDTO.getSportName());
+			SportConverter sc= new SportConverter();
+			feedback.setSport(sc.toEntityS(feedbackDTO.getSport()));
 			UserConverter userC = new UserConverter();
 			feedback.setUser(userC.toEntityS(feedbackDTO.getUser()));
 			feedback.setCreatorName(feedbackDTO.getCreatorName());
@@ -44,7 +46,8 @@ public class FeedbackConverter extends AbstractConverter<Feedback, FeedbackDTO> 
 		if (feedback != null) {
 			feedbackDTO = new FeedbackDTO();
 			feedbackDTO.setId(feedback.getId());
-			feedbackDTO.setSportName(feedback.getSportName());
+			SportConverter sc= new SportConverter();
+			feedbackDTO.setSport(sc.toDTOS(feedback.getSport()));
 			feedbackDTO.setCreatorName(feedback.getCreatorName());
 			UserConverter userC = new UserConverter();
 			feedbackDTO.setUser(userC.toDTOS(feedback.getUser()));
@@ -59,7 +62,8 @@ public class FeedbackConverter extends AbstractConverter<Feedback, FeedbackDTO> 
 		if (feedbackDTO != null) {
 			feedback = new Feedback();
 			feedback.setId(feedbackDTO.getId());
-			feedback.setSportName(feedbackDTO.getSportName());
+			SportConverter sc= new SportConverter();
+			feedback.setSport(sc.toEntityS(feedbackDTO.getSport()));
 			feedback.setCreatorName(feedbackDTO.getCreatorName());
 			UserConverter userC = new UserConverter();
 			feedback.setUser(userC.toEntityS(feedbackDTO.getUser()));

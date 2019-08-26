@@ -26,9 +26,9 @@ public class Feedback {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@NotNull
+	/*@NotNull
 	@Column(name = "sportName")		
-	private String sportName;
+	private String sportName;*/
 	
 	/*
 	@NotNull
@@ -39,6 +39,10 @@ public class Feedback {
 	@ManyToOne
 	@JoinColumn(name = "idUser", referencedColumnName = "id")
 	private User user;
+	
+	@ManyToOne
+	@JoinColumn(name = "idSport", referencedColumnName = "id")
+	private Sport sport;
 	
 	@NotNull
 	@Column(name = "creatorName")

@@ -25,7 +25,7 @@ public class EventConverter  extends AbstractConverter<Event,EventDTO> {
 		if (event != null) {
 			eventDTO = new EventDTO();
 			eventDTO.setId(event.getId());
-			eventDTO.setSportName(event.getSportName());
+			//eventDTO.setSportName(event.getSportName());
 			//eventDTO.setUserDTO(ConverterUser.toDTO(event.getUser()));
 			//eventDTO.setUserName(event.getUserName());
 			eventDTO.setRate(event.getRate());
@@ -35,7 +35,8 @@ public class EventConverter  extends AbstractConverter<Event,EventDTO> {
 			eventDTO.setStatus(event.isStatus());
 			UserConverter userC = new UserConverter();
 			eventDTO.setCreator(userC.toDTOS((event.getCreator())));
-			//eventDTO.setSportDTO(SportConverter.toDTO(event.getSport()));
+			SportConverter sc= new SportConverter();
+			eventDTO.setSport(sc.toDTOS(event.getSport()));
 			//eventDTO.setJoinersInt(event.getJoiners().size());
 			//eventDTO.setInvitedDTO(UserConverter.toSetDTO(event.getInvited()));
 			//eventDTO.setJoinersDTO(UserConverter.toSetDTO(event.getJoiners()));
@@ -50,7 +51,7 @@ public class EventConverter  extends AbstractConverter<Event,EventDTO> {
 		Event event = null;
 		if (eventDTO !=null) {
 			event = new Event ();
-			event.setSportName(eventDTO.getSportName());
+			//event.setSportName(eventDTO.getSportName());
 			//event.setUserName(eventDTO.getUserName());
 			//event.setUser(UserConverter.toEntity((eventDTO.getUserDTO())));
 			UserConverter userC = new UserConverter();
@@ -61,8 +62,9 @@ public class EventConverter  extends AbstractConverter<Event,EventDTO> {
 			event.setAddress(eventDTO.getAddress());
 			event.setMatchtime(eventDTO.getMatchtime());
 			event.setStatus(eventDTO.isStatus());
-			/*event.setSport(SportConverter.toEntity(eventDTO.getSportDTO()));
-			event.setJoiners(UseConverterr.toSetEntity(eventDTO.getJoinersDTO()));
+			SportConverter sc= new SportConverter();
+			event.setSport(sc.toEntityS(eventDTO.getSport()));
+			/*event.setJoiners(UseConverterr.toSetEntity(eventDTO.getJoinersDTO()));
 			event.setInvited(UserConverter.toSetEntity(eventDTO.getInvitedDTO()));
 			event.setTeams(TeamConverter.toSetEntity(eventDTO.getTeamsDTO()));*/
 		}
@@ -76,7 +78,7 @@ public class EventConverter  extends AbstractConverter<Event,EventDTO> {
 		Event event = null;
 		if (eventDTO !=null) {
 			event = new Event ();
-			event.setSportName(eventDTO.getSportName());
+			//event.setSportName(eventDTO.getSportName());
 			//event.setUserName(eventDTO.getUserName());
 			UserConverter userC = new UserConverter();
 			event.setCreator(userC.toEntityS((eventDTO.getCreator())));
@@ -86,6 +88,8 @@ public class EventConverter  extends AbstractConverter<Event,EventDTO> {
 			event.setAddress(eventDTO.getAddress());
 			event.setMatchtime(eventDTO.getMatchtime());
 			event.setStatus(eventDTO.isStatus());
+			SportConverter sc= new SportConverter();
+			event.setSport(sc.toEntityS(eventDTO.getSport()));
 			/*event.setSport(SportConverter.toEntity(eventDTO.getSportDTO()));
 			event.setJoiners(UseConverterr.toSetEntity(eventDTO.getJoinersDTO()));
 			event.setInvited(UserConverter.toSetEntity(eventDTO.getInvitedDTO()));
@@ -101,7 +105,8 @@ public class EventConverter  extends AbstractConverter<Event,EventDTO> {
 		if (event != null) {
 			eventDTO = new EventDTO();
 			eventDTO.setId(event.getId());
-			eventDTO.setSportName(event.getSportName());
+			SportConverter sc= new SportConverter();
+			eventDTO.setSport(sc.toDTOS(event.getSport()));
 			UserConverter userC = new UserConverter();
 			eventDTO.setCreator(userC.toDTOS((event.getCreator())));
 			//eventDTO.setUserName(event.getUserName());
@@ -110,7 +115,6 @@ public class EventConverter  extends AbstractConverter<Event,EventDTO> {
 			eventDTO.setAddress(event.getAddress());
 			eventDTO.setMatchtime(event.getMatchtime());
 			eventDTO.setStatus(event.isStatus());
-			//eventDTO.setSportDTO(SportConverter.toDTO(event.getSport()));
 			//eventDTO.setJoinersInt(event.getJoiners().size());
 			//eventDTO.setInvitedDTO(UserConverter.toSetDTO(event.getInvited()));
 			//eventDTO.setJoinersDTO(UserConverter.toSetDTO(event.getJoiners()));

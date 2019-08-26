@@ -31,9 +31,9 @@ public class Event {
 	private long id;
 	
 	
-	@NotNull
+	/*@NotNull
 	@Column(name = "sportName")
-	private String sportName;
+	private String sportName;*/
 	
 	
 	//relazione user - sport
@@ -66,12 +66,12 @@ public class Event {
 	@Column(name = "status", columnDefinition="tinyint(1) default 0")
 	private boolean status;
 		
-/*	//relazione event - sport
+	//relazione event - sport
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "idSport", referencedColumnName = "id")
 	private Sport sport;
 	
-	//relazione event - user
+/*	//relazione event - user
 	
 	//relazione user - evento
 		@ManyToMany(cascade = CascadeType.MERGE)
