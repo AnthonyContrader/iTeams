@@ -15,22 +15,18 @@
           <th>
             Edit
           </th>
-          <th>
-            Sport
-          </th>
         </tr>        
         <tr *ngFor="let sport of sports">
           <td>
-            <input [(ngModel)]="sport.name">
+            <!--<input [(ngModel)]="sport.name">-->
+            {{sport.name}}
           </td>
           <td>
-            <input [(ngModel)]="sport.players">
+            <!--<input [(ngModel)]="sport.players">-->
+            {{sport.players}}
           </td>
           <td>
             <button (click)="liked(sport)">Join</button>
-          </td>
-          <td>
-           <!-- <button (click)="#">-------</button> -->
           </td>
         </tr>
       </table>

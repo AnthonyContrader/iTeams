@@ -28,9 +28,13 @@ export class SportsComponent implements OnInit {
   }
 
   liked(sport: SportDTO){
+    console.log("indice:"+this.user.like.indexOf(sport));
+    this.user.like.splice(this.user.like.indexOf(sport), 1);
+    console.log("in ELSE");
     this.user.like.push(sport);
     this.uService.update(this.user).subscribe(()=>this.user);
     localStorage.setItem('currentUser', JSON.stringify(this.user));
+    console.log("utente corrente: "+localStorage.getItem('currentUser'));
     this.service.update(sport).subscribe(() => this.getSports());
   }
 

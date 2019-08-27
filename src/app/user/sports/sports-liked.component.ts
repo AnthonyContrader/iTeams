@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SportService } from 'src/service/sport.service';
 import { SportDTO } from 'src/dto/sportdto';
 import { UserDTO } from 'src/dto/userdto';
+import { UserService } from 'src/service/user.service';
 
 @Component({
   selector: 'app-sports-liked',
@@ -14,7 +15,7 @@ export class SportsLikedComponent implements OnInit {
   sports: SportDTO[];
   sporttoinsert: SportDTO = new SportDTO();
 
-  constructor(private service: SportService) { }
+  constructor(private service: SportService, private uService: UserService) { }
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
@@ -23,7 +24,8 @@ export class SportsLikedComponent implements OnInit {
   }
 
   getSports() {
-    this.service.getAll().subscribe(sports => this.sports = sports);
+    //this.service.getAll().subscribe(sports => this.sports = sports);
+    this.sports=this.user.like;
   }
 
   delete(sport: SportDTO) {
@@ -40,5 +42,14 @@ export class SportsLikedComponent implements OnInit {
 
   clear(){
     this.sporttoinsert = new SportDTO();
+  }
+
+  unlike(sport: SportDTO){
+    this.user.like.splice(this.user.like.indexOf(sport), 1);
+    console.log("index of sport unlike: "+this.user.like.indexOf(sport));
+    this.uService.update(this.user).subscribe(()=>this.user);
+    localStorage.setItem('currentUser', JSON.stringify(this.user));
+    console.log("utente corrente: "+localStorage.getItem('currentUser'));
+    this.service.update(sport).subscribe(() => this.getSports());
   }
 }
