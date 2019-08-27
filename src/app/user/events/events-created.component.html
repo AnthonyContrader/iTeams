@@ -31,7 +31,6 @@
             Event
           </th>
         </tr>
-        <!--
         <tr>
           <td>
               <select [(ngModel)]="eventtoinsert.sport">
@@ -59,12 +58,7 @@
             <button (click)="clear()">Clear</button>
           </td>
         </tr>
-      -->
         <tr *ngFor="let event of events">
-          <ng-template
-            *ngIf="mine(event);then showBlock;">
-          </ng-template>
-          <ng-template #showBlock>
           <td>
             <!--con input rendo il nome dello sport modificabile-->
             <!--<input [(ngModel)]="event.sport.name">-->
@@ -72,31 +66,25 @@
             {{event.sport.name}}
           </td>
           <td>
-            <!--<input type="number" min="0" max="5" [(ngModel)]="event.rate">-->
-            {{event.rate}}
+            <input type="number" min="0" max="5" [(ngModel)]="event.rate">
           </td>
           <td>
-            <!--<input [(ngModel)]="event.city">-->
-            {{event.city}}
+            <input [(ngModel)]="event.city">
           </td>
           <td>
-            <!--<input [(ngModel)]="event.address">-->
-            {{event.address}}
+            <input [(ngModel)]="event.address">
           </td>
           <td>
-            <!--<input [(ngModel)]="event.matchtime">-->
-            {{event.matchtime}}
+            <input [(ngModel)]="event.matchtime">
           </td>
           <td>
           </td>
           <td>
-
-            <button (click)=join(event)>Join</button>
+            <button (click)=update(event)>Save</button>
           </td>
           <td>
-            <button (click)="unjoin(event)">Unjoin</button>
+            <button (click)="delete(event)">Delete</button>
           </td>
-        </ng-template>
         </tr>
       </table>
     </div>

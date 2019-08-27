@@ -1,6 +1,6 @@
 
 #header{
-    background-color: darkorange;
+    background-color: white;
 }
 .searchContainer {
     margin-top: 10px;
@@ -24,17 +24,18 @@
   
   .searchBox {
     border: 0;
+    border-radius: 10px;
     padding: 0.5rem;
-    background-color: white;
+    background-color: rgb(214, 214, 214);
     font-size: 12px;
   }
   
   .searchButton {
       height: 70%;
       margin-top:7px;
-    background: white;
-    border: 2px solid darkorange;
-    color: darkorange;
+    background: gray;
+    border: 2px solid gray;
+    color: gray;
     border-radius: 15px;
   
   }

@@ -22,6 +22,8 @@
   }
   
   
+
+  
   a{
       text-decoration: none;
       color: white;
@@ -32,8 +34,8 @@
   }
   
   button:hover, a:hover {
-  background-color: #334247;
-  color: darkorange;
+  background-color: white;
+  color: gray;
   }
 
   *{
