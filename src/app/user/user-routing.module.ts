@@ -10,7 +10,11 @@ import { TeamsComponent } from './teams/teams.component';
 import { FeedbacksComponent } from './feedbacks/feedbacks.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { FeedbacksReceivedComponent } from './feedbacks/feedbacks-received.component';
+import { MessagesSentComponent } from './messages/messages-sent.component';
+import { MessagesSendComponent } from './messages/messages-send.component';
+import { MessagesReceivedComponent } from './messages/messages-received.component';
 import { WorkInProgressComponent } from './work-in-progress/work-in-progress.component';
+
 
 /**
  * Modulo di routing dell'admin. Qui ci sono i percorsi che un admin può seguire:
@@ -34,6 +38,9 @@ const routes: Routes = [
     { path: 'teams', component: TeamsComponent},
     { path: 'feedbacks', component: FeedbacksComponent},
     { path: 'feedbacks-received', component: FeedbacksReceivedComponent},
+    { path: 'messages-sent', component: MessagesSentComponent},
+    { path: 'messages-received', component: MessagesReceivedComponent},
+    { path: 'messages-send', component: MessagesSendComponent},
     { path: 'work-in-progress', component: WorkInProgressComponent}
   ]}
 ];

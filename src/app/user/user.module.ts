@@ -10,6 +10,9 @@ import { TeamsComponent } from './teams/teams.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { FeedbacksComponent } from './feedbacks/feedbacks.component';
 import { FeedbacksReceivedComponent } from './feedbacks/feedbacks-received.component';
+import { MessagesReceivedComponent } from './messages/messages-received.component';
+import { MessagesSentComponent } from './messages/messages-sent.component';
+import { MessagesSendComponent } from './messages/messages-send.component';
 import { WorkInProgressComponent } from './work-in-progress/work-in-progress.component';
 
 /**
@@ -22,7 +25,7 @@ import { WorkInProgressComponent } from './work-in-progress/work-in-progress.com
  */
 @NgModule({
   declarations: [UserDashboardComponent, /*UsersComponent,*/ WorkInProgressComponent, SportsComponent, SportsLikedComponent, 
-    AccountsComponent, EventsComponent, FeedbacksReceivedComponent, TeamsComponent, FeedbacksComponent],
+    AccountsComponent, EventsComponent, FeedbacksReceivedComponent, TeamsComponent, FeedbacksComponent, MessagesSentComponent, MessagesReceivedComponent, MessagesSendComponent],
   imports: [
     CommonModule,
     UserRoutingModule,

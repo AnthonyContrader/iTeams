@@ -13,6 +13,7 @@ export class UserMenuComponent implements OnInit {
   isEventCollapsed = false;
   isSportCollapsed = false;
   isFeedbackCollapsed = false;
+  isMessageCollapsed = false;
   isTeamCollapsed = false;
 
 
@@ -37,6 +38,8 @@ export class UserMenuComponent implements OnInit {
       this.isEventCollapsed = false;
       this.isFeedbackCollapsed = false;
       this.isTeamCollapsed = false;
+      this.isMessageCollapsed = false;
+
     } else { this.isSportCollapsed = false; }
   }
 
@@ -49,6 +52,8 @@ export class UserMenuComponent implements OnInit {
       this.isAccountCollapsed = false;
       this.isFeedbackCollapsed = false;
       this.isTeamCollapsed = false;
+      this.isMessageCollapsed = false;
+
     } else { this.isEventCollapsed = false; }
   }
 
@@ -61,6 +66,8 @@ export class UserMenuComponent implements OnInit {
       this.isAccountCollapsed = false;
       this.isEventCollapsed = false;
       this.isFeedbackCollapsed = false;
+      this.isMessageCollapsed = false;
+
     } else { this.isTeamCollapsed = false; }
   }
 
@@ -73,7 +80,23 @@ export class UserMenuComponent implements OnInit {
       this.isAccountCollapsed = false;
       this.isEventCollapsed = false;
       this.isTeamCollapsed = false;
+      this.isMessageCollapsed = false;
+
     } else { this.isFeedbackCollapsed = false; }
+  }
+
+  messagescollapse() {
+    if (this.isMessageCollapsed === false) {
+      this.isMessageCollapsed = true;
+
+      this.isSportCollapsed = false;
+      this.isClientCollapsed = false;
+      this.isAccountCollapsed = false;
+      this.isEventCollapsed = false;
+      this.isTeamCollapsed = false;
+      this.isFeedbackCollapsed = false;
+
+    } else { this.isMessageCollapsed = false; }
   }
 
   accountcollapse() {
@@ -85,6 +108,9 @@ export class UserMenuComponent implements OnInit {
       this.isEventCollapsed = false;
       this.isFeedbackCollapsed = false;
       this.isTeamCollapsed = false;
+      this.isMessageCollapsed = false;
+
+
     } else { this.isAccountCollapsed = false; }
   }
 }
