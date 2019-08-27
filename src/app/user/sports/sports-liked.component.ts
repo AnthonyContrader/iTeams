@@ -18,6 +18,7 @@ export class SportsLikedComponent implements OnInit {
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
+    this.sports=this.user.like;
    // this.getSports();
   }
 

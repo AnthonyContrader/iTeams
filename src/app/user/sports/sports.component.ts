@@ -10,8 +10,9 @@ import { UserService } from 'src/service/user.service';
   styleUrls: ['./sports.component.css']
 })
 export class SportsComponent implements OnInit {
-
+  users : UserDTO[];
   user: UserDTO;
+  sporttoupdate: SportDTO;
   sports: SportDTO[];
   sporttoinsert: SportDTO = new SportDTO();
   sportL: SportDTO =new SportDTO();
@@ -27,13 +28,10 @@ export class SportsComponent implements OnInit {
   }
 
   liked(sport: SportDTO){
-    console.log("nome sport: "+sport.name);
-    console.log("nome utente: "+this.user.username);
-    //console.log("lunghezza likes: "+sport.likes.length);
     this.user.like.push(sport);
-    this.uService.update(this.user);
-    //this.sportL.likes.push(this.user);
-    this.update(sport);
+    this.uService.update(this.user).subscribe(()=>this.user);
+    localStorage.setItem('currentUser', JSON.stringify(this.user));
+    this.service.update(sport).subscribe(() => this.getSports());
   }
 
   delete(sport: SportDTO) {
