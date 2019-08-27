@@ -72,7 +72,7 @@ public class User {
 	Set<Team> memberOf;*/
 	
 	//relazione user - sport
-		@ManyToMany(targetEntity = Sport.class, cascade = {CascadeType.ALL})
+		@ManyToMany(targetEntity = Sport.class, cascade = {CascadeType.MERGE})
 		@JoinTable(
 		  name = "user_sport", 
 		  joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), 
