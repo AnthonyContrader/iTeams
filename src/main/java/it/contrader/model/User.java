@@ -72,11 +72,11 @@ public class User {
 	Set<Team> memberOf;*/
 	
 	//relazione user - sport
-		@ManyToMany(cascade = CascadeType.MERGE)
+		@ManyToMany(targetEntity = Sport.class, cascade = {CascadeType.ALL})
 		@JoinTable(
 		  name = "user_sport", 
-		  joinColumns = @JoinColumn(name = "user_id"), 
-		  inverseJoinColumns = @JoinColumn(name = "sport_id"))
+		  joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), 
+		  inverseJoinColumns = @JoinColumn(name = "sport_id", referencedColumnName = "id"))
 		  Set<Sport> like;
 		
 	/*//relazione user - feedback creati

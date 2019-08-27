@@ -1,5 +1,6 @@
 package it.contrader.service;
 
+import org.hibernate.Incubating;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.repository.CrudRepository;
@@ -44,7 +45,11 @@ public abstract class AbstractService<Entity,DTO> implements ServiceDTO<DTO> {
 
 	@Override
 	public DTO update(DTO dto) {
-		return converter.toDTO(repository.save(converter.toEntity(dto)));
+		System.out.println("in update abstract");
+		
+		boolean fatto=  repository.save(converter.toEntity(dto))!=null;
+		System.out.println("inserimento riuscito? \n"+fatto);
+		return dto;
 	}
 
 	@Override

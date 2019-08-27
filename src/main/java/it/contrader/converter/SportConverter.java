@@ -56,10 +56,14 @@ public class SportConverter  extends AbstractConverter<Sport,SportDTO> {
 	@Override
 	public Sport toEntityS(SportDTO sportDTO) {
 		Sport sport = null;
+		System.out.println("in sport converter to entityS");
 		if (sportDTO !=null) {
 			sport = new Sport ();
 			sport.setId(sportDTO.getId());
 			sport.setName(sportDTO.getName());
+			System.out.println("sportDTO name: "+sportDTO.getName());
+			
+			System.out.println("sport name: "+sport.getName());
 			sport.setPlayers(sportDTO.getPlayers());
 //			sport.setEvents(ConverterEvent.toSetEntity(sportDTO.getEventsDTO()));
 //			sport.setSportfeed(ConverterFeedback.toSetEntity(sportDTO.getSportfeedDTO()));
@@ -70,11 +74,15 @@ public class SportConverter  extends AbstractConverter<Sport,SportDTO> {
 	@Override
 	public SportDTO toDTOS(Sport sport) {
 		SportDTO sportDTO = null;
+		System.out.println("in sport converter to dtoS");
 		if (sport != null) {
 			sportDTO = new SportDTO();
 			sportDTO.setId(sport.getId());
 			sportDTO.setName(sport.getName());
 			sportDTO.setPlayers(sport.getPlayers());
+			System.out.println("sportDTO name: "+sportDTO.getName());
+			
+			System.out.println("sport name: "+sport.getName());
 //			sportDTO.setEventsDTO(ConverterEvent.toSetDTO(sport.getEvents()));
 //			sportDTO.setLikesDTO(ConverterUser.toSetDTO(sport.getLikes()));
 //			sportDTO.setSportfeedDTO(ConverterFeedback.toSetDTO(sport.getSportfeed()));

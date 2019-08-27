@@ -61,8 +61,8 @@ public class UserConverter extends AbstractConverter<User,UserDTO> {
 //			user.setInvitedEvent(ConverterEvent.toSetEntity(userDTO.getInvitedEventDTO()));
 //			user.setMemberOf(ConverterTeam.toSetEntity(userDTO.getMemberOfDTO()));
 //			user.setGived(ConverterFeedback.toSetEntity(userDTO.getGivedDTO()));
-			Converter<Feedback, FeedbackDTO> fc = new FeedbackConverter ();
-			user.setReceived((Set<Feedback>) fc.toEntitySet(userDTO.getReceived()));
+			Converter<Feedback, FeedbackDTO> fc = new FeedbackConverter();
+			user.setReceived(fc.toEntitySet(userDTO.getReceived()));
 			//user.setReceived(ConverterFeedback.toSetEntity(userDTO.getReceivedDTO()));
 			SportConverter cs = new SportConverter();
 			user.setLike(cs.toEntitySet(userDTO.getLike()));

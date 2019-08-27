@@ -40,6 +40,7 @@ public abstract class AbstractController <DTO>{
 	
 	@PutMapping("/update")
 	public DTO update(@RequestBody DTO dto){
+		System.out.println("in /update "+dto.toString());
 		service.update(dto);
 		return dto;
 	}
