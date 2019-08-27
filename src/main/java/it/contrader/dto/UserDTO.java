@@ -41,5 +41,9 @@ public class UserDTO {
 	private Set<FeedbackDTO> received=null;
 	
 	private Set<SportDTO> like;
+	
+	private Set<MessageDTO> receivedmsg;
+	
+	private Set<MessageDTO> sentmsg;
 
 }

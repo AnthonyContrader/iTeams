@@ -37,10 +37,13 @@ public class UserConverter extends AbstractConverter<User,UserDTO> {
 //			userDTO.setInvitedEventDTO(ConverterEvent.toSetDTO(user.getInvitedEvent()));
 //			userDTO.setMemberOfDTO(ConverterTeam.toSetDTO(user.getMemberOf()));
 //			userDTO.setGivedDTO(ConverterFeedback.toSetDTO(user.getGived()));
-			Converter<Feedback, FeedbackDTO> fc = new FeedbackConverter ();
+			FeedbackConverter fc = new FeedbackConverter ();
 			userDTO.setReceived((Set<FeedbackDTO>) fc.toDTOSet(user.getReceived()));
 			SportConverter cs = new SportConverter();
 			userDTO.setLike(cs.toDTOSet(user.getLike()));
+			MessageConverter mc = new MessageConverter();
+			userDTO.setSentmsg(mc.toDTOSet(user.getSentmsg()));
+			userDTO.setReceivedmsg(mc.toDTOSet(user.getReceivedmsg()));
 		}
 		return userDTO;
 	}
@@ -66,6 +69,9 @@ public class UserConverter extends AbstractConverter<User,UserDTO> {
 			//user.setReceived(ConverterFeedback.toSetEntity(userDTO.getReceivedDTO()));
 			SportConverter cs = new SportConverter();
 			user.setLike(cs.toEntitySet(userDTO.getLike()));
+			MessageConverter mc= new MessageConverter();
+			user.setSentmsg(mc.toEntitySet(userDTO.getSentmsg()));
+			user.setReceivedmsg(mc.toEntitySet(userDTO.getReceivedmsg()));
 		}
 		return user;
 	}
@@ -81,6 +87,7 @@ public class UserConverter extends AbstractConverter<User,UserDTO> {
 			//userDTO.setPassword(user.getPassword());
 			user.setUsertype(userDTO.getUsertype());
 			user.setStatus(userDTO.isStatus());
+			
 		}
 		return user;
 	}
