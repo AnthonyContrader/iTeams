@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from 'src/service/event.service';
+import { UserService } from 'src/service/user.service';
 import { EventDTO } from 'src/dto/eventdto';
 import { UserDTO } from 'src/dto/userdto';
 import { SportDTO } from 'src/dto/sportdto';
@@ -17,16 +18,19 @@ export class EventsCreatedComponent implements OnInit {
   creator: UserDTO;
   sports: SportDTO[];
 
-  constructor(private service: EventService, private sService: SportService) { }
+  constructor(private service: EventService, private sService: SportService, 
+    private uService: UserService) { }
 
   ngOnInit() {
     this.creator = JSON.parse(localStorage.getItem('currentUser'));
     this.getEvents();
-    //this.getSports();
+    this.getSports();
   }
 
   getEvents() {
-    //this.service.getAll().subscribe(events => this.events = events);
+    //this.events= this.creator.createdEvents;
+    //console.log(localStorage.getItem('currentUser'));
+    this.uService.mine(this.creator).subscribe(events => this.events = events);
     //this.events = this.creator.created;
   }
 
@@ -46,6 +50,9 @@ export class EventsCreatedComponent implements OnInit {
   insert(event: EventDTO) {
     console.log("creator id: "+this.creator.username);
     event.creator=this.creator;
+    //this.creator.createdEvents.push(event);
+    //localStorage.setItem('currentUser', JSON.stringify(this.creator));
+    //this.getSports();
     this.service.insert(event).subscribe(() => this.getEvents());
   }
 

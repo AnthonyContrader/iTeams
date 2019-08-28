@@ -4,6 +4,8 @@
 
     </div>
     <div class="col-md-10">
+      <div>
+        <h1>Insert new event</h1>
       <table>
         <tr>
           <th>
@@ -20,9 +22,6 @@
           </th>
           <th>
             Matchtime
-          </th>
-          <th>
-            Status
           </th>
           <th>
             Edit
@@ -50,14 +49,38 @@
             <input placeholder="matchtime" [(ngModel)]="eventtoinsert.matchtime">
           </td>
           <td>
-          </td>
-          <td>
             <button (click)="insert(eventtoinsert); clear()">Insert</button>
           </td>
           <td>
             <button (click)="clear()">Clear</button>
           </td>
         </tr>
+      </table>
+      </div>
+      <p><br><br><br></p><p><br><br><br></p><br><br><br>
+      <div>
+          <h1>Manage created events</h1>
+      <table>
+      <tr>
+        <th>
+          Sport Name
+        </th>
+        <th>
+          Rate
+        </th>
+        <th>
+          City
+        </th>
+        <th>
+          Address
+        </th>
+        <th>
+          Matchtime
+        </th>
+        <th colspan="2">
+          Options
+        </th>
+      </tr>
         <tr *ngFor="let event of events">
           <td>
             <!--con input rendo il nome dello sport modificabile-->
@@ -78,8 +101,6 @@
             <input [(ngModel)]="event.matchtime">
           </td>
           <td>
-          </td>
-          <td>
             <button (click)=update(event)>Save</button>
           </td>
           <td>
@@ -87,6 +108,7 @@
           </td>
         </tr>
       </table>
+      </div>
     </div>
     <div class="col-md-1">
 

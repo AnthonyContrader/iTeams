@@ -27,7 +27,7 @@ export class MessagesReceivedComponent implements OnInit {
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.nome=this.user.username;
-    this.getUsers();
+    //this.getUsers();
     this.getMessages();
     //this.getMine();
     
@@ -46,7 +46,7 @@ export class MessagesReceivedComponent implements OnInit {
 
   getMessages() {
     console.log("in get messages");
-    this.service.getAll().subscribe(messages => this.messages = messages);
+    this.uService.receivedmsg(this.user).subscribe(messages => this.messages = messages);
     /*for(let feed of this.feedbacks) {
       console.log("feed: "+feed.user.username);
     }*/

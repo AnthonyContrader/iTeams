@@ -13,4 +13,5 @@ export class SportService extends AbstractService<SportDTO>{
     super(http);
     this.type = 'sport';
   }
+  
 }

@@ -12,44 +12,53 @@ import { UserService } from 'src/service/user.service';
 export class SportsLikedComponent implements OnInit {
 
   user: UserDTO;
+  sp: SportDTO;
   sports: SportDTO[];
   sporttoinsert: SportDTO = new SportDTO();
 
   constructor(private service: SportService, private uService: UserService) { }
 
   ngOnInit() {
+    this.sp= new SportDTO();
     this.user = JSON.parse(localStorage.getItem('currentUser'));
-    this.sports=this.user.like;
-   // this.getSports();
+    //this.sports=this.user.like;
+    this.getSports();
   }
 
   getSports() {
-    //this.service.getAll().subscribe(sports => this.sports = sports);
-    this.sports=this.user.like;
+    this.uService.liked(this.user).subscribe(sports => this.sports = sports);
+    //this.sports=this.user.like;
   }
 
-  delete(sport: SportDTO) {
+ /* delete(sport: SportDTO) {
     this.service.delete(sport.id).subscribe(() => this.getSports());
   }
-
+*/
   update(sport: SportDTO) {
     this.service.update(sport).subscribe(() => this.getSports());
   }
-
+/*
   insert(sport: SportDTO) {
     this.service.insert(sport).subscribe(() => this.getSports());
   }
-
+*/
   clear(){
     this.sporttoinsert = new SportDTO();
   }
 
   unlike(sport: SportDTO){
+    //this.service.read(sport.id).subscribe(()=>this.sp);
+    console.log("nome di "+sport.name+": "+this.user.like.indexOf(sport));
     this.user.like.splice(this.user.like.indexOf(sport), 1);
-    console.log("index of sport unlike: "+this.user.like.indexOf(sport));
-    this.uService.update(this.user).subscribe(()=>this.user);
+    //console.log("index of sport unlike: "+this.user.like.indexOf(sport));
+    this.uService.update(this.user).subscribe(u=>this.user=u);
+    this.getSports();
     localStorage.setItem('currentUser', JSON.stringify(this.user));
-    console.log("utente corrente: "+localStorage.getItem('currentUser'));
-    this.service.update(sport).subscribe(() => this.getSports());
+    //console.log("utente corrente: "+localStorage.getItem('currentUser'));
+    //this.service.update(sport).subscribe(() => this.getSports());
+    //this.service.read(sport.id).subscribe(() =>this.sp);
+    //this.sp.likes.splice(this.sp.likes.indexOf(this.user),1);
+    //this.update(this.sp);
+    
   }
 }

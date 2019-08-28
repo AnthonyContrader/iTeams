@@ -19,48 +19,61 @@ export class MessagesSentComponent implements OnInit {
   users: UserDTO[];
   messages: MessageDTO[];
   messagetoinsert: MessageDTO = new MessageDTO();
-  text: string;
   nome : string;
-  
+ 
+
   constructor(private service: MessageService, private uService: UserService) { }
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.nome=this.user.username;
-    this.getUsers();
+    //this.getUsers();
     this.getMessages();
+    //this.getMine();
     
     console.log("in init");
   }
+  
+
+  /*getMine() {
+    console.log("in get mine");
+    //this.service.getMine(use).subscribe(feedbacks => this.feedbacks = feedbacks);
+    this.feedbacks=this.user.received;
+    /*for(let feed of this.feedbacks) {
+      console.log("feed: "+feed.user.username);
+    }*/
+  
 
   getMessages() {
     console.log("in get messages");
-    this.service.getAll().subscribe(messages => this.messages = messages);
+    this.uService.sentmsg(this.user).subscribe(messages => this.messages = messages);
     /*for(let feed of this.feedbacks) {
       console.log("feed: "+feed.user.username);
     }*/
   }
 
-  getUsers(){
+  getUsers() {
     this.uService.getAll().subscribe(users => this.users = users);
   }
 
+  
   delete(message: MessageDTO) {
     this.service.delete(message.id).subscribe(() => this.getMessages());
   }
+}
 
-  update(message: MessageDTO) {
-    this.service.update(message).subscribe(() => this.getMessages());
-  }
+  /*update(feedback: FeedbackDTO) {
+    this.service.update(feedback).subscribe(() => this.getFeedbacks());
+  }*/
 
-  insert(message: MessageDTO) {
-    message.text=this.nome;
+ /* insert(feedback: FeedbackDTO) {
+    feedback.creatorName=this.nome;
     //feedback.user=user;
     //console.log("feedback user: "+feedback.user.username);
-    this.service.insert(message).subscribe(() => this.getMessages());
-  }
+    this.service.insert(feedback).subscribe(() => this.getMine());
+  }*/
 
-  clear(){
-    this.messagetoinsert = new MessageDTO();
-  }
-}
+  /*clear(){
+    this.feedbacktoinsert = new FeedbackDTO();
+  }*/
+

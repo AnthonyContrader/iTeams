@@ -28,7 +28,7 @@ export class MessagesSendComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.nome=this.user.username;
     this.getUsers();
-    this.getMessages();
+    //this.getMessages();
     //this.getMine();
     
     console.log("in init");
@@ -44,12 +44,16 @@ export class MessagesSendComponent implements OnInit {
     }*/
   
 
-  getMessages() {
+  /*getMessages() {
     console.log("in get messages");
     this.service.getAll().subscribe(messages => this.messages = messages);
     /*for(let feed of this.feedbacks) {
       console.log("feed: "+feed.user.username);
-    }*/
+    }
+}*/
+
+  sendMessage(){
+
   }
 
   getUsers() {
@@ -57,23 +61,23 @@ export class MessagesSendComponent implements OnInit {
   }
 
   
-  delete(message: MessageDTO) {
+  /*delete(message: MessageDTO) {
     this.service.delete(message.id).subscribe(() => this.getMessages());
-  }
-}
+  }*/
+
 
   /*update(feedback: FeedbackDTO) {
     this.service.update(feedback).subscribe(() => this.getFeedbacks());
   }*/
 
- /* insert(feedback: FeedbackDTO) {
-    feedback.creatorName=this.nome;
+  insert(message : MessageDTO) {
+    message.sender=this.user;
     //feedback.user=user;
     //console.log("feedback user: "+feedback.user.username);
-    this.service.insert(feedback).subscribe(() => this.getMine());
-  }*/
+    this.service.insert(message).subscribe();
+  }
 
-  /*clear(){
-    this.feedbacktoinsert = new FeedbackDTO();
-  }*/
-
+  clear(){
+    this.messagetoinsert = new MessageDTO();
+  }
+}

@@ -1,37 +1,40 @@
 <div class="container">
-  <div class="row mt-5">
-   
-    <div class="col-md-10">
-     
-      <h1>Send a Message</h1>
-        <form>
-          <fieldset>
-            
-            <p>
-              <label>Receiver:</label>
-              <input type = "text"
-                     id = "myText"
-                     placeholder="Insert Receiver">
-            </p>
-
-            <p>
-              <label>Text Area</label>
-              <textarea placeholder="Your text here"></textarea>              
-            </p>
-
-            <p>              
-                <button (click)="send()">Send</button>             
-            </p>
-            
-
-          </fieldset>
-        </form>
-       
-      
-
+    <div class="row mt-5">
+      <div class="col-md-1">
+  
+      </div>
+      <div class="col-md-10">
+        <table>
+          <tr>
+            <th>
+              User Name
+            </th>
+            <th>
+              Text
+            </th>                  
+          </tr>
+         
+          <tr *ngFor="let message of messages">
+  
+            <td>
+                <select [(ngModel)]="messagetoinsert.receiver">
+                    <option [ngValue]="user" *ngFor="let user of users">{{user.username}}</option>
+                </select> 
+            </td>
+            <td>
+              {{messagetoinsert.text}}
+            </td>
+            <td>
+              <button (click)="insert(messagetoinsert); clear()">Insert</button>
+            </td>
+            <td>
+              <button (click)="clear()">Clear</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-1">
+  
+      </div>
     </div>
-
-
-   
   </div>
-</div>

@@ -17,28 +17,39 @@ export class SportsComponent implements OnInit {
   sporttoupdate: SportDTO;
   sports: SportDTO[];
   sporttoinsert: SportDTO = new SportDTO();
-  sportL: SportDTO[];
+  sportM:SportDTO;
+  mysports: SportDTO[];
   bb : Boolean=true;
   constructor(private service: SportService, private uService: UserService) { }
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.getSports();
+    this.mySports();
   }
 
   getSports() {
     this.service.getAll().subscribe(sports => this.sports = sports);
   }
 
+  mySports() {
+    this.uService.liked(this.user).subscribe(mysports => this.mysports = mysports);
+  }
+
+
+  join(spor: SportDTO){
+    console.log("sport likato spor"+spor.name);
+    //this.service.read(spor.id).subscribe(sc => this.sportM= sc);
+    //console.log("sport likato"+this.sportM.name);
+    this.user.like.push(spor); 
+    this.uService.update(this.user).subscribe(u=>this.user=u);
+    localStorage.setItem('currentUser', JSON.stringify(this.user));
+  }
   liked(sport: SportDTO){
-    console.log("nome sport: "+sport.name);
-    console.log(this.user.like.indexOf(sport));
-    console.log("lunghezza array"+this.user.like.length);
-    this.sportL=this.user.like;
-    console.log("toStrong: "+this.user.like.toString);
+    ///this.sportL=this.user.like;
     sp : SportDTO;
     
-    for(let sp of this.sportL){
+    for(let sp of this.mysports){
       console.log("sportName:"+sport.name);
       console.log("sportName:"+sp.name);
       if(sp.name==sport.name){
@@ -53,7 +64,7 @@ export class SportsComponent implements OnInit {
       console.log("in ELSE");
       this.user.like.push(sport);
       this.uService.update(this.user).subscribe(()=>this.user);
-      localStorage.setItem('currentUser', JSON.stringify(this.user));
+      //localStorage.setItem('currentUser', JSON.stringify(this.user));
       console.log("utente corrente: "+localStorage.getItem('currentUser'));
       //this.service.update(sport).subscribe(() => this.getSports());
     }

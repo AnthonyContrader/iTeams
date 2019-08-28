@@ -1,53 +1,33 @@
 <div class="container">
-  <div class="row mt-5">
-    <div class="col-md-1">
-
-    </div>
-    <div class="col-md-10">
-      <table>
-        <tr>
-          <th>
-            From (Sender)
-          </th>
-          <th>
-            To (Receiver)
-          </th>
-          <th>
-            Text
-          </th>
-          <th>
-            Edit
-          </th>          
-        </tr>
-        <tr>
-          <td>
-            <select [(ngModel)]="messagetoinsert.user">
-              <option [ngValue]="user" *ngFor="let user of users">{{user.username}}</option>
-            </select>
-          </td>   
-          <td> 
-          <button (click)="insert(messagetoinsert); clear()">Insert text</button>
-          </td> 
-          <td>
-            <button (click)="clear()">Clear</button>
-          </td>
-        </tr>
-        <tr *ngFor="let message of messages">
-          <td>
-            <input [(ngModel)]="message.user.username">
-            <!--{{feedback.user.username}}-->
-          </td>       
-          <td>
-            <button (click)=update(feedback)>Send</button>
-          </td>
-          <td>
-            <button (click)="delete(feedback)">Delete</button>
-          </td>
-        </tr>
-      </table>
-    </div>
-    <div class="col-md-1">
-
+    <div class="row mt-5">
+      <div class="col-md-1">
+  
+      </div>
+      <div class="col-md-10">
+        <table>
+          <tr>
+            <th>
+              To
+            </th>
+            <th>
+              Text
+            </th>                  
+          </tr>
+         
+          <tr *ngFor="let message of messages">
+  
+            <td>
+             {{message.receiver}}
+            </td>
+            <td>
+              {{message.text}}
+            </td>
+            
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-1">
+  
+      </div>
     </div>
   </div>
-</div>

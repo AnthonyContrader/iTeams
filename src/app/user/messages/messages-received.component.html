@@ -7,23 +7,20 @@
       <table>
         <tr>
           <th>
-            User Name
-          </th>                    
+            From
+          </th>
+          <th>
+            Text
+          </th>                  
         </tr>
        
-        <tr *ngFor="let feedback of user.received">
+        <tr *ngFor="let message of messages">
 
           <td>
-           <!-- <input [(ngModel)]="feedback.user.username">-->
-            {{feedback.user.username}}
+           {{message.sender}}
           </td>
           <td>
-            <!--<input [(ngModel)]="feedback.sport.name">-->
-            {{feedback.sport.name}}
-          </td>
-          <td>
-            <!--<input type="number" min="0" max="5" [(ngModel)]="feedback.rate">-->
-            {{feedback.rate}}
+            {{message.text}}
           </td>
           
         </tr>
