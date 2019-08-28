@@ -52,8 +52,9 @@ export class EventsCreatedComponent implements OnInit {
     event.creator=this.creator;
     //this.creator.createdEvents.push(event);
     //localStorage.setItem('currentUser', JSON.stringify(this.creator));
-    //this.getSports();
+    //this.getSports(); 
     this.service.insert(event).subscribe(() => this.getEvents());
+    this.service.notify(event).subscribe();
   }
 
   clear(){

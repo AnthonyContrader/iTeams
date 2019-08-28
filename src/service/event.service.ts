@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { EventDTO } from 'src/dto/eventdto';
 import { UserDTO } from 'src/dto/userdto';
 import { Observable } from 'rxjs';
+import { SportDTO } from 'src/dto/sportdto';
 
 @Injectable({
   providedIn: 'root'
@@ -14,4 +15,10 @@ export class EventService extends AbstractService<EventDTO>{
     super(http);
     this.type = 'event';
   }
+
+  notify(eventDTO: EventDTO){
+    console.log("in norify evento service");
+    return this.http.post<any>('http://localhost:8080/' + this.type + '/notify', eventDTO)
+  }
+
 }
