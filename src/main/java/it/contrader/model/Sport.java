@@ -41,15 +41,15 @@ public class Sport {
 	private long players;
 	
 	//relazione sport - utenti
-	@ManyToMany(targetEntity = User.class, mappedBy = "like", cascade = CascadeType.MERGE)
+	@ManyToMany(/*targetEntity = User.class, */mappedBy = "like")
 	private Set<User> likes;
 	
 	//relazione sport - evento
-	@OneToMany(mappedBy="sport", cascade = CascadeType.MERGE)
+	@OneToMany(mappedBy="sport")
 	private Set<Event> events;
 		
 	//relazione sport - feedback
-	@OneToMany(mappedBy="sport", cascade = CascadeType.MERGE)
+	@OneToMany(mappedBy="sport")
 	private Set<Feedback> sportfeed; 
 	
 }

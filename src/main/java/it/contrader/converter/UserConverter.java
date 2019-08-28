@@ -31,8 +31,8 @@ public class UserConverter extends AbstractConverter<User,UserDTO> {
 			userDTO.setPassword(user.getPassword());
 			userDTO.setStatus(user.isStatus());
 			userDTO.setUsertype(user.getUsertype());
-				
-//			userDTO.setCreatedEventsDTO(ConverterEvent.toSetDTO(user.getCreatedEvents()));
+			EventConverter ec = new EventConverter();
+			userDTO.setCreatedEvents(ec.toDTOSet(user.getCreatedEvents()));
 //			userDTO.setJoinEventDTO(ConverterEvent.toSetDTO(user.getJoinEvent()));
 //			userDTO.setInvitedEventDTO(ConverterEvent.toSetDTO(user.getInvitedEvent()));
 //			userDTO.setMemberOfDTO(ConverterTeam.toSetDTO(user.getMemberOf()));
@@ -58,7 +58,9 @@ public class UserConverter extends AbstractConverter<User,UserDTO> {
 			user.setUsername(userDTO.getUsername());
 			user.setPassword(userDTO.getPassword());
 			user.setUsertype(userDTO.getUsertype());
-			user.setStatus(userDTO.isStatus());			
+			user.setStatus(userDTO.isStatus());		
+			EventConverter ec = new EventConverter();
+			user.setCreatedEvents(ec.toEntitySet(userDTO.getCreatedEvents()));
 //			user.setCreatedEvents(ConverterEvent.toSetEntity(userDTO.getCreatedEventsDTO()));
 //			user.setJoinEvent(ConverterEvent.toSetEntity(userDTO.getJoinEventDTO()));
 //			user.setInvitedEvent(ConverterEvent.toSetEntity(userDTO.getInvitedEventDTO()));

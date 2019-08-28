@@ -44,12 +44,11 @@ public class User {
 
 	private boolean status;
 
+	// user-eventicreati
+
+	@OneToMany(mappedBy = "creator")
+	private Set<Event> createdEvents;
 	/*
-	 * //user-eventicreati
-	 * 
-	 * @OneToMany(mappedBy = "user", cascade= CascadeType.MERGE) private Set<Event>
-	 * createdEvents;
-	 * 
 	 * //user-eventi partecipa
 	 * 
 	 * @ManyToMany(mappedBy= "joiners", cascade= CascadeType.MERGE) private
@@ -69,7 +68,7 @@ public class User {
 	 */
 
 	// relazione user - sport
-	@ManyToMany(targetEntity = Sport.class, cascade = { CascadeType.MERGE })
+	@ManyToMany/*(targetEntity = Sport.class)*/
 	@JoinTable(name = "user_sport", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "sport_id", referencedColumnName = "id"))
 	Set<Sport> like;
 
@@ -81,15 +80,15 @@ public class User {
 	 */
 
 	// relazione user - feedback ricevuti
-	@OneToMany(mappedBy = "user", cascade = CascadeType.MERGE)
+	@OneToMany(mappedBy = "user")
 	private Set<Feedback> received;
 
 	// relazione user - messaggi ricevuti
-	@OneToMany(mappedBy = "receiver", cascade = CascadeType.MERGE)
+	@OneToMany(mappedBy = "receiver")
 	private Set<Message> receivedmsg;
 
 	// relazione user - messaggi inviati
-	@OneToMany(mappedBy = "sender", cascade = CascadeType.MERGE)
+	@OneToMany(mappedBy = "sender")
 	private Set<Message> sentmsg;
 
 	/*

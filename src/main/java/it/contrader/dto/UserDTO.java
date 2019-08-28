@@ -45,5 +45,7 @@ public class UserDTO {
 	private Set<MessageDTO> receivedmsg;
 	
 	private Set<MessageDTO> sentmsg;
+	
+	private Set<EventDTO> createdEvents;
 
 }
