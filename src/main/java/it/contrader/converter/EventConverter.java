@@ -35,6 +35,7 @@ public class EventConverter  extends AbstractConverter<Event,EventDTO> {
 			eventDTO.setStatus(event.isStatus());
 			UserConverter userC = new UserConverter();
 			eventDTO.setCreator(userC.toDTOS((event.getCreator())));
+			eventDTO.setNotify(userC.toDTOSet((event.getNotify())));
 			SportConverter sc= new SportConverter();
 			eventDTO.setSport(sc.toDTOS(event.getSport()));
 			//eventDTO.setJoinersInt(event.getJoiners().size());
@@ -56,6 +57,7 @@ public class EventConverter  extends AbstractConverter<Event,EventDTO> {
 			//event.setUser(UserConverter.toEntity((eventDTO.getUserDTO())));
 			UserConverter userC = new UserConverter();
 			event.setCreator(userC.toEntityS((eventDTO.getCreator())));
+			event.setNotify(userC.toEntitySet((eventDTO.getNotify())));
 			event.setId(eventDTO.getId());
 			event.setRate(eventDTO.getRate());
 			event.setCity(eventDTO.getCity());

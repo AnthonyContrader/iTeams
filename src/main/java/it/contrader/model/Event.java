@@ -39,11 +39,14 @@ public class Event {
 	@ManyToOne
 	@JoinColumn(name = "idUser", referencedColumnName = "id")
 	private User creator;
-
+	
+	@ManyToMany(/*targetEntity = User.class, */mappedBy = "notified", cascade=CascadeType.ALL)
+	private Set<User> notify;
+	
 	/*@NotNull
 	@Column(name = "userName")
 	private User user;*/
-
+	
 	@NotNull
 	@Column(name = "rate")
 	private long rate;

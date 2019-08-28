@@ -72,6 +72,10 @@ public class User {
 	@JoinTable(name = "user_sport", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "sport_id", referencedColumnName = "id"))
 	Set<Sport> like;
 
+	@ManyToMany/*(targetEntity = Sport.class)*/(cascade=CascadeType.ALL)
+	@JoinTable(name = "user_eventn", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "event_id", referencedColumnName = "id"))
+	Set<Event> notified;
+	
 	/*
 	 * //relazione user - feedback creati
 	 * 

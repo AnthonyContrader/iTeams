@@ -4,6 +4,8 @@ import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import it.contrader.model.User;
 import it.contrader.model.User.Usertype;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,6 +30,7 @@ public class EventDTO {
 	private String matchtime;
 	private boolean status;
 	private SportDTO sport;
+	private Set<UserDTO> notify;
 /*	private Set<UserDTO> joinersDTO;
 	private Set<UserDTO> invitedDTO;
 	private long joinersInt;

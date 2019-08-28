@@ -5,6 +5,7 @@ import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+import it.contrader.model.Event;
 import it.contrader.model.Feedback;
 import it.contrader.model.User.Usertype;
 import lombok.AllArgsConstructor;
@@ -47,5 +48,7 @@ public class UserDTO {
 	private Set<MessageDTO> sentmsg;
 	
 	private Set<EventDTO> createdEvents;
+	
+	private Set<EventDTO> notified;
 
 }
