@@ -4,7 +4,8 @@
 
 /*Tables*/
 table {
-	border-collapse: collapse;
+	border-width: 5px;
+	border-color: black;
 	width: 100%;
 	float: left;
 	border-radius: 4px;
@@ -22,35 +23,16 @@ td{
 
 
 tr:nth-child(even) {
-	background-color: #ffdb99;
+	background-color: #bbbbbb;
 }
 
 th {
-	background-color: darkorange;
+	background-color: rgb(77, 74, 71);
 	color: #ffffff;
 }
 
 a:hover {
 	color: #999999;
-}
-
-textarea{
-	font-size: 16px;
-	height: 15em;
-	width: 15em;
-}
-
-select{
-	height: 25px;
-	width: 15em;
-	font-size: 16px;
-}
-
-button{
-	font-size: 16px;
-}
-option{
-	font-size: 16px;
 }
 
 input, select{
@@ -63,5 +45,6 @@ input:hover,  input:active, input:focus{
 }
 
 button:hover{
-    background-color: crimson;
+	background-color: black;
+	color: white;
 }

@@ -7,11 +7,11 @@ import { SportDTO } from 'src/dto/sportdto';
 import { SportService } from 'src/service/sport.service';
 
 @Component({
-  selector: 'app-events-created',
-  templateUrl: './events-created.component.html',
-  styleUrls: ['./events-created.component.css']
+  selector: 'app-events-notified',
+  templateUrl: './events-notified.component.html',
+  styleUrls: ['./events-notified.component.css']
 })
-export class EventsCreatedComponent implements OnInit {
+export class EventsNotifiedComponent implements OnInit {
 
   events: EventDTO[];
   eventtoinsert: EventDTO = new EventDTO();
@@ -30,7 +30,7 @@ export class EventsCreatedComponent implements OnInit {
   getEvents() {
     //this.events= this.creator.createdEvents;
     //console.log(localStorage.getItem('currentUser'));
-    this.uService.mine(this.creator).subscribe(events => this.events = events);
+    this.uService.notified(this.creator).subscribe(events => this.events = events);
     //this.events = this.creator.created;
   }
 
@@ -47,15 +47,15 @@ export class EventsCreatedComponent implements OnInit {
     this.service.update(event).subscribe(() => this.getEvents());
   }
 
-  insert(event: EventDTO) {
+  /*insert(event: EventDTO) {
     console.log("creator id: "+this.creator.username);
     event.creator=this.creator;
     //this.creator.createdEvents.push(event);
     //localStorage.setItem('currentUser', JSON.stringify(this.creator));
     //this.getSports(); 
-    this.service.notify(event).subscribe(() => this.getEvents());
-    //this.service.notify(event).subscribe();
-  }
+    this.service.insert(event).subscribe(() => this.getEvents());
+    this.service.notify(event).subscribe();
+  }*/
 
   clear(){
     this.eventtoinsert = new EventDTO();

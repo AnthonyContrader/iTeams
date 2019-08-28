@@ -47,5 +47,9 @@ export class UserService extends AbstractService<UserDTO>{
     return this.http.post<any>('http://localhost:8080/' + this.type + '/getsentmsg', userDTO)
   }
 
+  notified(userDTO: UserDTO): Observable<EventDTO[]> {
+    return this.http.post<any>('http://localhost:8080/' + this.type + '/geteventnotified', userDTO)
+  }
+
 
 }

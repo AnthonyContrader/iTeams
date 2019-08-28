@@ -13,12 +13,19 @@ img{
 }
 
 input, input:hover, input::selection, input:checked, input:focus{
+
+    font-size: 15px;
     border: 0;
     background-color: rgb(255, 255, 255);
     border-radius: 0;
-    color: white;
+    color: black;
     border-bottom: 1px solid crimson;
     margin: 0px; 
+}
+
+input {
+    height: 30px;
+    width: 30em;
 }
 
 .container-fluid{
@@ -26,7 +33,7 @@ input, input:hover, input::selection, input:checked, input:focus{
     height: 100vh;
 }
 input::placeholder{
-    color: white;
+    color: black;
 }
 .form-control{
 border: none;
@@ -50,4 +57,12 @@ padding-left: auto;
 p{
 font-size: 14px;
 color: white;
+}
+
+.txl{
+    color: grey;
+}
+
+button {
+    font-size: 15px;
 }

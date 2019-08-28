@@ -17,6 +17,7 @@ export class EventService extends AbstractService<EventDTO>{
   }
 
   notify(eventDTO: EventDTO){
+    //super.insert(eventDTO).subscribe(()=>eventDTO);
     console.log("in norify evento service");
     return this.http.post<any>('http://localhost:8080/' + this.type + '/notify', eventDTO)
   }

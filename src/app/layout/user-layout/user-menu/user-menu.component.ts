@@ -15,6 +15,7 @@ export class UserMenuComponent implements OnInit {
   isFeedbackCollapsed = false;
   isMessageCollapsed = false;
   isTeamCollapsed = false;
+  
 
 
   constructor(private router: Router) {

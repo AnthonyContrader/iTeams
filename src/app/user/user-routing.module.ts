@@ -15,6 +15,7 @@ import { MessagesSentComponent } from './messages/messages-sent.component';
 import { MessagesSendComponent } from './messages/messages-send.component';
 import { MessagesReceivedComponent } from './messages/messages-received.component';
 import { WorkInProgressComponent } from './work-in-progress/work-in-progress.component';
+import { EventsNotifiedComponent } from './events/events-notified.component';
 
 
 /**
@@ -37,6 +38,7 @@ const routes: Routes = [
     { path: 'sports-liked', component: SportsLikedComponent }, 
     { path: 'events', component: EventsComponent},
     { path: 'events-created', component: EventsCreatedComponent },
+    { path: 'events-notified', component: EventsNotifiedComponent },
     { path: 'teams', component: TeamsComponent},
     { path: 'feedbacks', component: FeedbacksComponent},
     { path: 'feedbacks-received', component: FeedbacksReceivedComponent},

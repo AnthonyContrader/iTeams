@@ -15,6 +15,7 @@ import { MessagesReceivedComponent } from './messages/messages-received.componen
 import { MessagesSentComponent } from './messages/messages-sent.component';
 import { MessagesSendComponent } from './messages/messages-send.component';
 import { WorkInProgressComponent } from './work-in-progress/work-in-progress.component';
+import { EventsNotifiedComponent } from './events/events-notified.component';
 
 /**
  * Modulo dell'admin, qui vengono dichiarate le component che utilizza 
@@ -26,7 +27,7 @@ import { WorkInProgressComponent } from './work-in-progress/work-in-progress.com
  */
 @NgModule({
   declarations: [UserDashboardComponent, /*UsersComponent,*/ WorkInProgressComponent, SportsComponent, SportsLikedComponent, 
-    AccountsComponent, EventsComponent, EventsCreatedComponent, FeedbacksReceivedComponent, TeamsComponent, FeedbacksComponent, MessagesSentComponent, MessagesReceivedComponent, MessagesSendComponent],
+    AccountsComponent, EventsComponent, EventsCreatedComponent, EventsNotifiedComponent, FeedbacksReceivedComponent, TeamsComponent, FeedbacksComponent, MessagesSentComponent, MessagesReceivedComponent, MessagesSendComponent],
   imports: [
     CommonModule,
     UserRoutingModule,
