@@ -33,19 +33,13 @@ public class EventController extends AbstractController<EventDTO>{
 	//	this.eventService = eventService;	
 		
 	@PostMapping(value = "/notify")
-	public void eventmanager( @RequestBody EventDTO eventDTO ) {
+	public EventDTO notify( @RequestBody EventDTO eventDTO ) {
 		System.out.println("++++++++++in notify");
-		EventDTO ev = eventService.findById(eventDTO.getId());
+		//EventDTO ev = eventService.findById(eventDTO.getId());
 		SportDTO sp= sportService.findByName(eventDTO.getSport().getName());
-		System.out.println("sport: "+sp.getName());
-		UserDTO u2;
-		for(UserDTO u: sp.getLikes()) {
-			u2=userService.findByUsername(u.getUsername());
-			System.out.println("nel for di notify");
-			u2.getNotified().add(eventDTO);
-			userService.update(u2);
-		}
-		
+		System.out.println("in notify sport: "+sp.getName());
+		eventDTO.setNotify(sp.getLikes());
+		return super.insert(eventDTO);		
 	}
 		//POST Angular a EventDTO
 		/*@PostMapping(value = "/eventmanager")

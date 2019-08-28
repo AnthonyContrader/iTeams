@@ -67,4 +67,9 @@ public class UserController extends AbstractController<UserDTO>{
 		return io.getSentmsg();		
 	}
 	
+	@PostMapping(value = "/geteventnotified")
+	public Iterable<EventDTO> getEventNotified( @RequestBody UserDTO userDTO ) {
+		UserDTO io = userService.findByUsernameAndPassword(userDTO.getUsername(), userDTO.getPassword());
+		return io.getNotified();	
+	}
 }
