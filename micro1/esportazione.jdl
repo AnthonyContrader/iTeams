@@ -1,0 +1,75 @@
+// JDL definition for application 'micro1' generated with command 'jhipster export-jdl'
+entity Sport {
+  name String required,
+  players Integer required 
+  
+}
+dto Sport with mapstruct
+paginate Sport with pagination
+service Sport with serviceImpl
+microservice Sport with micro1
+
+
+entity Event {
+	sportName String required,
+	rate Integer required min(1) max(100),
+	city String required,
+	address String required,
+	matchtime String required,
+	status Boolean required 
+}
+dto Event with mapstruct
+paginate Event with pagination
+service Event with serviceImpl
+microservice Event with micro1
+
+entity Feedback {
+	sportName String required,
+	creatorName String required,
+	rate Integer required min(1) max(100)
+}
+dto Feedback with mapstruct
+paginate Feedback with pagination
+service Feedback with serviceImpl
+microservice Feedback with micro1
+
+entity Message {
+	text String required
+}
+dto Message with mapstruct
+paginate Message with pagination
+service Message with serviceImpl
+microservice Message with micro1
+ 
+entity Team {
+	name String required
+}
+dto Team with mapstruct
+paginate Team with pagination
+service Team with serviceImpl
+microservice Team with micro1
+
+
+relationship ManyToOne {
+	Event{eventsport} to Sport
+}
+
+relationship ManyToOne {
+	Feedback{feedsport} to Sport
+}
+
+relationship OneToMany {
+	Sport{eventsport} to Event
+}
+
+relationship OneToMany {
+	Sport{feedsport} to Feedback
+}
+
+
+
+
+
+
+
+

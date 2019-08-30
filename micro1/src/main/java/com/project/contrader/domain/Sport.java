@@ -1,10 +1,13 @@
 package com.project.contrader.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -25,10 +28,14 @@ public class Sport implements Serializable {
     private String name;
 
     @NotNull
-    @Min(value = 2)
-    @Max(value = 100)
     @Column(name = "players", nullable = false)
     private Integer players;
+
+    @OneToMany(mappedBy = "sport")
+    private Set<Event> eventsports = new HashSet<>();
+
+    @OneToMany(mappedBy = "sport")
+    private Set<Feedback> feedsports = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -63,6 +70,56 @@ public class Sport implements Serializable {
 
     public void setPlayers(Integer players) {
         this.players = players;
+    }
+
+    public Set<Event> getEventsports() {
+        return eventsports;
+    }
+
+    public Sport eventsports(Set<Event> events) {
+        this.eventsports = events;
+        return this;
+    }
+
+    public Sport addEventsport(Event event) {
+        this.eventsports.add(event);
+        event.setSport(this);
+        return this;
+    }
+
+    public Sport removeEventsport(Event event) {
+        this.eventsports.remove(event);
+        event.setSport(null);
+        return this;
+    }
+
+    public void setEventsports(Set<Event> events) {
+        this.eventsports = events;
+    }
+
+    public Set<Feedback> getFeedsports() {
+        return feedsports;
+    }
+
+    public Sport feedsports(Set<Feedback> feedbacks) {
+        this.feedsports = feedbacks;
+        return this;
+    }
+
+    public Sport addFeedsport(Feedback feedback) {
+        this.feedsports.add(feedback);
+        feedback.setSport(this);
+        return this;
+    }
+
+    public Sport removeFeedsport(Feedback feedback) {
+        this.feedsports.remove(feedback);
+        feedback.setSport(null);
+        return this;
+    }
+
+    public void setFeedsports(Set<Feedback> feedbacks) {
+        this.feedsports = feedbacks;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

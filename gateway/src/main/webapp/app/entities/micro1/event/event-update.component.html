@@ -1,0 +1,116 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-event-heading">Create or edit a Event</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!event.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="event.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_sportName">Sport Name</label>
+                    <input type="text" class="form-control" name="sportName" id="field_sportName"
+                        [(ngModel)]="event.sportName" required/>
+                    <div [hidden]="!(editForm.controls.sportName?.dirty && editForm.controls.sportName?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.sportName?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_rate">Rate</label>
+                    <input type="number" class="form-control" name="rate" id="field_rate"
+                        [(ngModel)]="event.rate" required min="1" jhiMin="1" max="100" jhiMax="100"/>
+                    <div [hidden]="!(editForm.controls.rate?.dirty && editForm.controls.rate?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.rate?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.rate?.errors?.min">
+                            This field should be at least 1.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.rate?.errors?.max">
+                            This field cannot be more than 100.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.rate?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_city">City</label>
+                    <input type="text" class="form-control" name="city" id="field_city"
+                        [(ngModel)]="event.city" required/>
+                    <div [hidden]="!(editForm.controls.city?.dirty && editForm.controls.city?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.city?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_address">Address</label>
+                    <input type="text" class="form-control" name="address" id="field_address"
+                        [(ngModel)]="event.address" required/>
+                    <div [hidden]="!(editForm.controls.address?.dirty && editForm.controls.address?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.address?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_matchtime">Matchtime</label>
+                    <input type="text" class="form-control" name="matchtime" id="field_matchtime"
+                        [(ngModel)]="event.matchtime" required/>
+                    <div [hidden]="!(editForm.controls.matchtime?.dirty && editForm.controls.matchtime?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.matchtime?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_status">Status</label>
+                    <input type="checkbox" class="form-control" name="status" id="field_status"
+                        [(ngModel)]="event.status" />
+                    <div [hidden]="!(editForm.controls.status?.dirty && editForm.controls.status?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.status?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_sport">Sport</label>
+                    <select class="form-control" id="field_sport" name="sport" [(ngModel)]="event.sportId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="sportOption.id" *ngFor="let sportOption of sports; trackBy: trackSportById">{{sportOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_eventsport">Eventsport</label>
+                    <select class="form-control" id="field_eventsport" name="eventsport" [(ngModel)]="event.eventsportId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="sportOption.id" *ngFor="let sportOption of sports; trackBy: trackSportById">{{sportOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

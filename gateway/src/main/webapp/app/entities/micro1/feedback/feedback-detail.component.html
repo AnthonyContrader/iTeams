@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="feedback">
+            <h2><span>Feedback</span> {{feedback.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Sport Name</span></dt>
+                <dd>
+                    <span>{{feedback.sportName}}</span>
+                </dd>
+                <dt><span>Creator Name</span></dt>
+                <dd>
+                    <span>{{feedback.creatorName}}</span>
+                </dd>
+                <dt><span>Rate</span></dt>
+                <dd>
+                    <span>{{feedback.rate}}</span>
+                </dd>
+                <dt><span>Sport</span></dt>
+                <dd>
+                    <div *ngIf="feedback.sportId">
+                        <a [routerLink]="['/sport', feedback.sportId, 'view']">{{feedback.sportId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Feedsport</span></dt>
+                <dd>
+                    <div *ngIf="feedback.feedsportId">
+                        <a [routerLink]="['/sport', feedback.feedsportId, 'view']">{{feedback.feedsportId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/feedback', feedback.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

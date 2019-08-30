@@ -1,7 +1,5 @@
 {
-    "fluentMethods": true,
-    "clientRootFolder": "",
-    "relationships": [],
+    "name": "Sport",
     "fields": [
         {
             "fieldName": "name",
@@ -14,20 +12,32 @@
             "fieldName": "players",
             "fieldType": "Integer",
             "fieldValidateRules": [
-                "required",
-                "min",
-                "max"
-            ],
-            "fieldValidateRulesMin": "2",
-            "fieldValidateRulesMax": "100"
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "eventsport",
+            "otherEntityName": "event",
+            "otherEntityRelationshipName": "sport"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "feedsport",
+            "otherEntityName": "feedback",
+            "otherEntityRelationshipName": "sport"
         }
     ],
     "changelogDate": "20190829152132",
-    "dto": "mapstruct",
-    "searchEngine": false,
-    "service": "serviceImpl",
     "entityTableName": "sport",
-    "jpaMetamodelFiltering": false,
+    "dto": "mapstruct",
     "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
     "microserviceName": "micro1"
 }

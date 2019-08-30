@@ -45,8 +45,8 @@ public class SportResourceIntTest {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
-    private static final Integer DEFAULT_PLAYERS = 2;
-    private static final Integer UPDATED_PLAYERS = 3;
+    private static final Integer DEFAULT_PLAYERS = 1;
+    private static final Integer UPDATED_PLAYERS = 2;
 
     @Autowired
     private SportRepository sportRepository;

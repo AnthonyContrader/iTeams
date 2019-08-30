@@ -1,0 +1,54 @@
+{
+    "name": "Feedback",
+    "fields": [
+        {
+            "fieldName": "sportName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "creatorName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "rate",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required",
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": 1,
+            "fieldValidateRulesMax": 100
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "sport",
+            "otherEntityName": "sport",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "feedsport",
+            "otherEntityName": "sport",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190830151605",
+    "entityTableName": "feedback",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "microserviceName": "micro1"
+}

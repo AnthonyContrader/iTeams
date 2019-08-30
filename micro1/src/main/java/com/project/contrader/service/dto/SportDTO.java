@@ -15,8 +15,6 @@ public class SportDTO implements Serializable {
     private String name;
 
     @NotNull
-    @Min(value = 2)
-    @Max(value = 100)
     private Integer players;
 
     public Long getId() {
