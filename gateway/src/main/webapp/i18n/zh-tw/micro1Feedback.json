@@ -1,0 +1,28 @@
+
+{
+    "gatewayApp": {
+        "micro1Feedback" : {
+            "home": {
+                "title": "Feedbacks",
+                "createLabel": "建立一筆新的 Feedback",
+                "createOrEditLabel": "建立或編輯 Feedback"
+            },
+            "delete": {
+                "question": "您確定要刪除 Feedback {{ id }} 嗎?"
+            },
+            "detail": {
+                "title": "Feedback"
+            },
+            "creatorName": "Creator Name",
+            "rate": "Rate",
+            "sport": "Sport"
+        }
+    },
+    "micro1App": {
+        "micro1Feedback" : {
+            "created": "新的 Feedback 建立成功，識別碼為 {{ param }}",
+            "updated": "識別碼為 {{ param }} 的 Feedback 更新成功",
+            "deleted": "識別碼為 {{ param }} 的 Feedback 刪除成功"
+        }
+    }
+}

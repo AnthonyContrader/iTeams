@@ -1,0 +1,31 @@
+
+{
+    "gatewayApp": {
+        "micro1Event" : {
+            "home": {
+                "title": "Events",
+                "createLabel": "建立一筆新的 Event",
+                "createOrEditLabel": "建立或編輯 Event"
+            },
+            "delete": {
+                "question": "您確定要刪除 Event {{ id }} 嗎?"
+            },
+            "detail": {
+                "title": "Event"
+            },
+            "rate": "Rate",
+            "city": "City",
+            "address": "Address",
+            "status": "Status",
+            "matchtime": "Matchtime",
+            "sport": "Sport"
+        }
+    },
+    "micro1App": {
+        "micro1Event" : {
+            "created": "新的 Event 建立成功，識別碼為 {{ param }}",
+            "updated": "識別碼為 {{ param }} 的 Event 更新成功",
+            "deleted": "識別碼為 {{ param }} 的 Event 刪除成功"
+        }
+    }
+}

@@ -1,0 +1,29 @@
+
+{
+    "gatewayApp": {
+        "micro1Sport" : {
+            "home": {
+                "title": "Sports",
+                "createLabel": "Create a new Sport",
+                "createOrEditLabel": "Create or edit a Sport"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Sport {{ id }}?"
+            },
+            "detail": {
+                "title": "Sport"
+            },
+            "name": "Name",
+            "players": "Players",
+            "events": "Events",
+            "feeds": "Feeds"
+        }
+    },
+    "micro1App": {
+        "micro1Sport" : {
+            "created": "A new Sport is created with identifier {{ param }}",
+            "updated": "A Sport is updated with identifier {{ param }}",
+            "deleted": "A Sport is deleted with identifier {{ param }}"
+        }
+    }
+}

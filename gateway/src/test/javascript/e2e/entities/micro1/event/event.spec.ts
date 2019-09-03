@@ -1,4 +1,4 @@
-import { browser, ExpectedConditions as ec } from 'protractor';
+import { browser, ExpectedConditions as ec, protractor } from 'protractor';
 import { NavBarPage, SignInPage } from '../../../page-objects/jhi-page-objects';
 
 import { EventComponentsPage, EventUpdatePage } from './event.page-object';
@@ -20,28 +20,24 @@ describe('Event e2e test', () => {
     it('should load Events', async () => {
         await navBarPage.goToEntity('event');
         eventComponentsPage = new EventComponentsPage();
-        expect(await eventComponentsPage.getTitle()).toMatch(/Events/);
+        expect(await eventComponentsPage.getTitle()).toMatch(/gatewayApp.micro1Event.home.title/);
     });
 
     it('should load create Event page', async () => {
         await eventComponentsPage.clickOnCreateButton();
         eventUpdatePage = new EventUpdatePage();
-        expect(await eventUpdatePage.getPageTitle()).toMatch(/Create or edit a Event/);
+        expect(await eventUpdatePage.getPageTitle()).toMatch(/gatewayApp.micro1Event.home.createOrEditLabel/);
         await eventUpdatePage.cancel();
     });
 
-    it('should create and save Events', async () => {
+    /* it('should create and save Events', async () => {
         await eventComponentsPage.clickOnCreateButton();
-        await eventUpdatePage.setSportNameInput('sportName');
-        expect(await eventUpdatePage.getSportNameInput()).toMatch('sportName');
         await eventUpdatePage.setRateInput('5');
         expect(await eventUpdatePage.getRateInput()).toMatch('5');
         await eventUpdatePage.setCityInput('city');
         expect(await eventUpdatePage.getCityInput()).toMatch('city');
         await eventUpdatePage.setAddressInput('address');
         expect(await eventUpdatePage.getAddressInput()).toMatch('address');
-        await eventUpdatePage.setMatchtimeInput('matchtime');
-        expect(await eventUpdatePage.getMatchtimeInput()).toMatch('matchtime');
         const selectedStatus = eventUpdatePage.getStatusInput();
         if (await selectedStatus.isSelected()) {
             await eventUpdatePage.getStatusInput().click();
@@ -50,11 +46,12 @@ describe('Event e2e test', () => {
             await eventUpdatePage.getStatusInput().click();
             expect(await eventUpdatePage.getStatusInput().isSelected()).toBeTruthy();
         }
+        await eventUpdatePage.setMatchtimeInput('01/01/2001' + protractor.Key.TAB + '02:30AM');
+        expect(await eventUpdatePage.getMatchtimeInput()).toContain('2001-01-01T02:30');
         await eventUpdatePage.sportSelectLastOption();
-        await eventUpdatePage.eventsportSelectLastOption();
         await eventUpdatePage.save();
         expect(await eventUpdatePage.getSaveButton().isPresent()).toBeFalsy();
-    });
+    });*/
 
     afterAll(async () => {
         await navBarPage.autoSignOut();

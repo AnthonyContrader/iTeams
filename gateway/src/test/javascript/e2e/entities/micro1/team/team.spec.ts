@@ -20,13 +20,13 @@ describe('Team e2e test', () => {
     it('should load Teams', async () => {
         await navBarPage.goToEntity('team');
         teamComponentsPage = new TeamComponentsPage();
-        expect(await teamComponentsPage.getTitle()).toMatch(/Teams/);
+        expect(await teamComponentsPage.getTitle()).toMatch(/gatewayApp.micro1Team.home.title/);
     });
 
     it('should load create Team page', async () => {
         await teamComponentsPage.clickOnCreateButton();
         teamUpdatePage = new TeamUpdatePage();
-        expect(await teamUpdatePage.getPageTitle()).toMatch(/Create or edit a Team/);
+        expect(await teamUpdatePage.getPageTitle()).toMatch(/gatewayApp.micro1Team.home.createOrEditLabel/);
         await teamUpdatePage.cancel();
     });
 

@@ -19,18 +19,18 @@
     "relationships": [
         {
             "relationshipType": "one-to-many",
-            "relationshipName": "eventsport",
+            "relationshipName": "events",
             "otherEntityName": "event",
             "otherEntityRelationshipName": "sport"
         },
         {
             "relationshipType": "one-to-many",
-            "relationshipName": "feedsport",
+            "relationshipName": "feeds",
             "otherEntityName": "feedback",
             "otherEntityRelationshipName": "sport"
         }
     ],
-    "changelogDate": "20190829152132",
+    "changelogDate": "20190902151605",
     "entityTableName": "sport",
     "dto": "mapstruct",
     "pagination": "pagination",

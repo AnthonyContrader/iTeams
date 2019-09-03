@@ -12,19 +12,14 @@ public class FeedbackDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private String sportName;
-
-    @NotNull
     private String creatorName;
 
     @NotNull
     @Min(value = 1)
-    @Max(value = 100)
+    @Max(value = 5)
     private Integer rate;
 
     private Long sportId;
-
-    private Long feedsportId;
 
     public Long getId() {
         return id;
@@ -32,14 +27,6 @@ public class FeedbackDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getSportName() {
-        return sportName;
-    }
-
-    public void setSportName(String sportName) {
-        this.sportName = sportName;
     }
 
     public String getCreatorName() {
@@ -64,14 +51,6 @@ public class FeedbackDTO implements Serializable {
 
     public void setSportId(Long sportId) {
         this.sportId = sportId;
-    }
-
-    public Long getFeedsportId() {
-        return feedsportId;
-    }
-
-    public void setFeedsportId(Long sportId) {
-        this.feedsportId = sportId;
     }
 
     @Override
@@ -99,11 +78,9 @@ public class FeedbackDTO implements Serializable {
     public String toString() {
         return "FeedbackDTO{" +
             "id=" + getId() +
-            ", sportName='" + getSportName() + "'" +
             ", creatorName='" + getCreatorName() + "'" +
             ", rate=" + getRate() +
             ", sport=" + getSportId() +
-            ", feedsport=" + getFeedsportId() +
             "}";
     }
 }

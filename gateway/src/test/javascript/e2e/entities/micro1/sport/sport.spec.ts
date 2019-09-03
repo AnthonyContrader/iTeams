@@ -20,13 +20,13 @@ describe('Sport e2e test', () => {
     it('should load Sports', async () => {
         await navBarPage.goToEntity('sport');
         sportComponentsPage = new SportComponentsPage();
-        expect(await sportComponentsPage.getTitle()).toMatch(/Sports/);
+        expect(await sportComponentsPage.getTitle()).toMatch(/gatewayApp.micro1Sport.home.title/);
     });
 
     it('should load create Sport page', async () => {
         await sportComponentsPage.clickOnCreateButton();
         sportUpdatePage = new SportUpdatePage();
-        expect(await sportUpdatePage.getPageTitle()).toMatch(/Create or edit a Sport/);
+        expect(await sportUpdatePage.getPageTitle()).toMatch(/gatewayApp.micro1Sport.home.createOrEditLabel/);
         await sportUpdatePage.cancel();
     });
 

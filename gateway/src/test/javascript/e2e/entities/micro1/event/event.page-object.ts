@@ -9,7 +9,7 @@ export class EventComponentsPage {
     }
 
     async getTitle() {
-        return this.title.getText();
+        return this.title.getAttribute('jhiTranslate');
     }
 }
 
@@ -17,25 +17,15 @@ export class EventUpdatePage {
     pageTitle = element(by.id('jhi-event-heading'));
     saveButton = element(by.id('save-entity'));
     cancelButton = element(by.id('cancel-save'));
-    sportNameInput = element(by.id('field_sportName'));
     rateInput = element(by.id('field_rate'));
     cityInput = element(by.id('field_city'));
     addressInput = element(by.id('field_address'));
-    matchtimeInput = element(by.id('field_matchtime'));
     statusInput = element(by.id('field_status'));
+    matchtimeInput = element(by.id('field_matchtime'));
     sportSelect = element(by.id('field_sport'));
-    eventsportSelect = element(by.id('field_eventsport'));
 
     async getPageTitle() {
-        return this.pageTitle.getText();
-    }
-
-    async setSportNameInput(sportName) {
-        await this.sportNameInput.sendKeys(sportName);
-    }
-
-    async getSportNameInput() {
-        return this.sportNameInput.getAttribute('value');
+        return this.pageTitle.getAttribute('jhiTranslate');
     }
 
     async setRateInput(rate) {
@@ -62,16 +52,15 @@ export class EventUpdatePage {
         return this.addressInput.getAttribute('value');
     }
 
+    getStatusInput() {
+        return this.statusInput;
+    }
     async setMatchtimeInput(matchtime) {
         await this.matchtimeInput.sendKeys(matchtime);
     }
 
     async getMatchtimeInput() {
         return this.matchtimeInput.getAttribute('value');
-    }
-
-    getStatusInput() {
-        return this.statusInput;
     }
 
     async sportSelectLastOption() {
@@ -91,25 +80,6 @@ export class EventUpdatePage {
 
     async getSportSelectedOption() {
         return this.sportSelect.element(by.css('option:checked')).getText();
-    }
-
-    async eventsportSelectLastOption() {
-        await this.eventsportSelect
-            .all(by.tagName('option'))
-            .last()
-            .click();
-    }
-
-    async eventsportSelectOption(option) {
-        await this.eventsportSelect.sendKeys(option);
-    }
-
-    getEventsportSelect(): ElementFinder {
-        return this.eventsportSelect;
-    }
-
-    async getEventsportSelectedOption() {
-        return this.eventsportSelect.element(by.css('option:checked')).getText();
     }
 
     async save() {

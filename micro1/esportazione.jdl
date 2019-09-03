@@ -11,8 +11,7 @@ microservice Sport with micro1
 
 
 entity Event {
-	sportName String required,
-	rate Integer required min(1) max(100),
+	rate Integer required min(1) max(5),
 	city String required,
 	address String required,
 	matchtime String required,
@@ -24,9 +23,8 @@ service Event with serviceImpl
 microservice Event with micro1
 
 entity Feedback {
-	sportName String required,
 	creatorName String required,
-	rate Integer required min(1) max(100)
+	rate Integer required min(1) max(5)
 }
 dto Feedback with mapstruct
 paginate Feedback with pagination
@@ -51,25 +49,9 @@ microservice Team with micro1
 
 
 relationship ManyToOne {
-	Event{eventsport} to Sport
+	Event{sport} to Sport{events}
 }
 
 relationship ManyToOne {
-	Feedback{feedsport} to Sport
+	Feedback{sport} to Sport {feeds}
 }
-
-relationship OneToMany {
-	Sport{eventsport} to Event
-}
-
-relationship OneToMany {
-	Sport{feedsport} to Feedback
-}
-
-
-
-
-
-
-
-

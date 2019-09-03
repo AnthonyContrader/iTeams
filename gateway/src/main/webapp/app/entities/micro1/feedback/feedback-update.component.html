@@ -1,70 +1,52 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-            <h2 id="jhi-feedback-heading">Create or edit a Feedback</h2>
+            <h2 id="jhi-feedback-heading" jhiTranslate="gatewayApp.micro1Feedback.home.createOrEditLabel">Create or edit a Feedback</h2>
             <div>
                 <jhi-alert-error></jhi-alert-error>
                 <div class="form-group" [hidden]="!feedback.id">
-                    <label for="id">ID</label>
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
                     <input type="text" class="form-control" id="id" name="id"
                         [(ngModel)]="feedback.id" readonly />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_sportName">Sport Name</label>
-                    <input type="text" class="form-control" name="sportName" id="field_sportName"
-                        [(ngModel)]="feedback.sportName" required/>
-                    <div [hidden]="!(editForm.controls.sportName?.dirty && editForm.controls.sportName?.invalid)">
-                        <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.sportName?.errors?.required">
-                        This field is required.
-                        </small>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" for="field_creatorName">Creator Name</label>
+                    <label class="form-control-label" jhiTranslate="gatewayApp.micro1Feedback.creatorName" for="field_creatorName">Creator Name</label>
                     <input type="text" class="form-control" name="creatorName" id="field_creatorName"
                         [(ngModel)]="feedback.creatorName" required/>
                     <div [hidden]="!(editForm.controls.creatorName?.dirty && editForm.controls.creatorName?.invalid)">
                         <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.creatorName?.errors?.required">
+                        [hidden]="!editForm.controls.creatorName?.errors?.required" jhiTranslate="entity.validation.required">
                         This field is required.
                         </small>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_rate">Rate</label>
+                    <label class="form-control-label" jhiTranslate="gatewayApp.micro1Feedback.rate" for="field_rate">Rate</label>
                     <input type="number" class="form-control" name="rate" id="field_rate"
-                        [(ngModel)]="feedback.rate" required min="1" jhiMin="1" max="100" jhiMax="100"/>
+                        [(ngModel)]="feedback.rate" required min="1" jhiMin="1" max="5" jhiMax="5"/>
                     <div [hidden]="!(editForm.controls.rate?.dirty && editForm.controls.rate?.invalid)">
                         <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.rate?.errors?.required">
+                        [hidden]="!editForm.controls.rate?.errors?.required" jhiTranslate="entity.validation.required">
                         This field is required.
                         </small>
                         <small class="form-text text-danger"
-                            [hidden]="!editForm.controls.rate?.errors?.min">
+                            [hidden]="!editForm.controls.rate?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 1 }">
                             This field should be at least 1.
                         </small>
                         <small class="form-text text-danger"
-                            [hidden]="!editForm.controls.rate?.errors?.max">
-                            This field cannot be more than 100.
+                            [hidden]="!editForm.controls.rate?.errors?.max" jhiTranslate="entity.validation.max" translateValues="{ max: 5 }">
+                            This field cannot be more than 5.
                         </small>
                         <small class="form-text text-danger"
-                            [hidden]="!editForm.controls.rate?.errors?.number">
+                            [hidden]="!editForm.controls.rate?.errors?.number" jhiTranslate="entity.validation.number">
                             This field should be a number.
                         </small>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" for="field_sport">Sport</label>
+                    <label class="form-control-label" jhiTranslate="gatewayApp.micro1Feedback.sport" for="field_sport">Sport</label>
                     <select class="form-control" id="field_sport" name="sport" [(ngModel)]="feedback.sportId" >
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="sportOption.id" *ngFor="let sportOption of sports; trackBy: trackSportById">{{sportOption.id}}</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" for="field_feedsport">Feedsport</label>
-                    <select class="form-control" id="field_feedsport" name="feedsport" [(ngModel)]="feedback.feedsportId" >
                         <option [ngValue]="null"></option>
                         <option [ngValue]="sportOption.id" *ngFor="let sportOption of sports; trackBy: trackSportById">{{sportOption.id}}</option>
                     </select>
@@ -72,10 +54,10 @@
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
-                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
                 </button>
                 <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
-                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
                 </button>
             </div>
         </form>

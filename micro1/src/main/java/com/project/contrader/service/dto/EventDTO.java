@@ -1,5 +1,6 @@
 package com.project.contrader.service.dto;
 
+import java.time.ZonedDateTime;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -12,11 +13,8 @@ public class EventDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private String sportName;
-
-    @NotNull
     @Min(value = 1)
-    @Max(value = 100)
+    @Max(value = 5)
     private Integer rate;
 
     @NotNull
@@ -26,14 +24,14 @@ public class EventDTO implements Serializable {
     private String address;
 
     @NotNull
-    private String matchtime;
+    private Boolean status;
 
     @NotNull
-    private Boolean status;
+    private ZonedDateTime matchtime;
 
     private Long sportId;
 
-    private Long eventsportId;
+    private String sportName;
 
     public Long getId() {
         return id;
@@ -41,14 +39,6 @@ public class EventDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getSportName() {
-        return sportName;
-    }
-
-    public void setSportName(String sportName) {
-        this.sportName = sportName;
     }
 
     public Integer getRate() {
@@ -75,20 +65,20 @@ public class EventDTO implements Serializable {
         this.address = address;
     }
 
-    public String getMatchtime() {
-        return matchtime;
-    }
-
-    public void setMatchtime(String matchtime) {
-        this.matchtime = matchtime;
-    }
-
     public Boolean isStatus() {
         return status;
     }
 
     public void setStatus(Boolean status) {
         this.status = status;
+    }
+
+    public ZonedDateTime getMatchtime() {
+        return matchtime;
+    }
+
+    public void setMatchtime(ZonedDateTime matchtime) {
+        this.matchtime = matchtime;
     }
 
     public Long getSportId() {
@@ -99,12 +89,12 @@ public class EventDTO implements Serializable {
         this.sportId = sportId;
     }
 
-    public Long getEventsportId() {
-        return eventsportId;
+    public String getSportName() {
+        return sportName;
     }
 
-    public void setEventsportId(Long sportId) {
-        this.eventsportId = sportId;
+    public void setSportName(String sportName) {
+        this.sportName = sportName;
     }
 
     @Override
@@ -132,14 +122,13 @@ public class EventDTO implements Serializable {
     public String toString() {
         return "EventDTO{" +
             "id=" + getId() +
-            ", sportName='" + getSportName() + "'" +
             ", rate=" + getRate() +
             ", city='" + getCity() + "'" +
             ", address='" + getAddress() + "'" +
-            ", matchtime='" + getMatchtime() + "'" +
             ", status='" + isStatus() + "'" +
+            ", matchtime='" + getMatchtime() + "'" +
             ", sport=" + getSportId() +
-            ", eventsport=" + getEventsportId() +
+            ", sport='" + getSportName() + "'" +
             "}";
     }
 }

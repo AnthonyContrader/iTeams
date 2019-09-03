@@ -1,44 +1,36 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-            <h2 id="jhi-sport-heading">Create or edit a Sport</h2>
+            <h2 id="jhi-sport-heading" jhiTranslate="gatewayApp.micro1Sport.home.createOrEditLabel">Create or edit a Sport</h2>
             <div>
                 <jhi-alert-error></jhi-alert-error>
                 <div class="form-group" [hidden]="!sport.id">
-                    <label for="id">ID</label>
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
                     <input type="text" class="form-control" id="id" name="id"
                         [(ngModel)]="sport.id" readonly />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_name">Name</label>
+                    <label class="form-control-label" jhiTranslate="gatewayApp.micro1Sport.name" for="field_name">Name</label>
                     <input type="text" class="form-control" name="name" id="field_name"
                         [(ngModel)]="sport.name" required/>
                     <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
                         <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.name?.errors?.required">
+                        [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
                         This field is required.
                         </small>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_players">Players</label>
+                    <label class="form-control-label" jhiTranslate="gatewayApp.micro1Sport.players" for="field_players">Players</label>
                     <input type="number" class="form-control" name="players" id="field_players"
-                        [(ngModel)]="sport.players" required min="2" jhiMin="2" max="100" jhiMax="100"/>
+                        [(ngModel)]="sport.players" required/>
                     <div [hidden]="!(editForm.controls.players?.dirty && editForm.controls.players?.invalid)">
                         <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.players?.errors?.required">
+                        [hidden]="!editForm.controls.players?.errors?.required" jhiTranslate="entity.validation.required">
                         This field is required.
                         </small>
                         <small class="form-text text-danger"
-                            [hidden]="!editForm.controls.players?.errors?.min">
-                            This field should be at least 2.
-                        </small>
-                        <small class="form-text text-danger"
-                            [hidden]="!editForm.controls.players?.errors?.max">
-                            This field cannot be more than 100.
-                        </small>
-                        <small class="form-text text-danger"
-                            [hidden]="!editForm.controls.players?.errors?.number">
+                            [hidden]="!editForm.controls.players?.errors?.number" jhiTranslate="entity.validation.number">
                             This field should be a number.
                         </small>
                     </div>
@@ -47,10 +39,10 @@
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
-                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
                 </button>
                 <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
-                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
                 </button>
             </div>
         </form>

@@ -1,0 +1,29 @@
+
+{
+    "gatewayApp": {
+        "micro1Sport" : {
+            "home": {
+                "title": "Sports",
+                "createLabel": "建立一筆新的 Sport",
+                "createOrEditLabel": "建立或編輯 Sport"
+            },
+            "delete": {
+                "question": "您確定要刪除 Sport {{ id }} 嗎?"
+            },
+            "detail": {
+                "title": "Sport"
+            },
+            "name": "Name",
+            "players": "Players",
+            "events": "Events",
+            "feeds": "Feeds"
+        }
+    },
+    "micro1App": {
+        "micro1Sport" : {
+            "created": "新的 Sport 建立成功，識別碼為 {{ param }}",
+            "updated": "識別碼為 {{ param }} 的 Sport 更新成功",
+            "deleted": "識別碼為 {{ param }} 的 Sport 刪除成功"
+        }
+    }
+}

@@ -1,0 +1,28 @@
+
+{
+    "gatewayApp": {
+        "micro1Feedback" : {
+            "home": {
+                "title": "Feedbacks",
+                "createLabel": "Genera un nuovo Feedback",
+                "createOrEditLabel": "Genera o modifica un Feedback"
+            },
+            "delete": {
+                "question": "Sei sicuro di volere eliminare Feedback {{ id }}?"
+            },
+            "detail": {
+                "title": "Feedback"
+            },
+            "creatorName": "Creator Name",
+            "rate": "Rate",
+            "sport": "Sport"
+        }
+    },
+    "micro1App": {
+        "micro1Feedback" : {
+            "created": "&Egrave; stato generato un nuovo Feedback con identificatore { param }}",
+            "updated": "&Egrave; stato aggiornato Feedback identificato da {{ param }}",
+            "deleted": "&Egrave; stato eliminato Feedback con identificatore {{ param }}"
+        }
+    }
+}

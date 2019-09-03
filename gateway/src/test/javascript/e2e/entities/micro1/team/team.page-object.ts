@@ -9,7 +9,7 @@ export class TeamComponentsPage {
     }
 
     async getTitle() {
-        return this.title.getText();
+        return this.title.getAttribute('jhiTranslate');
     }
 }
 
@@ -20,7 +20,7 @@ export class TeamUpdatePage {
     nameInput = element(by.id('field_name'));
 
     async getPageTitle() {
-        return this.pageTitle.getText();
+        return this.pageTitle.getAttribute('jhiTranslate');
     }
 
     async setNameInput(name) {

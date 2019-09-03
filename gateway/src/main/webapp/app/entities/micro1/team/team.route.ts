@@ -36,7 +36,7 @@ export const teamRoute: Routes = [
         data: {
             authorities: ['ROLE_USER'],
             defaultSort: 'id,asc',
-            pageTitle: 'Teams'
+            pageTitle: 'gatewayApp.micro1Team.home.title'
         },
         canActivate: [UserRouteAccessService]
     },
@@ -48,7 +48,7 @@ export const teamRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'Teams'
+            pageTitle: 'gatewayApp.micro1Team.home.title'
         },
         canActivate: [UserRouteAccessService]
     },
@@ -60,7 +60,7 @@ export const teamRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'Teams'
+            pageTitle: 'gatewayApp.micro1Team.home.title'
         },
         canActivate: [UserRouteAccessService]
     },
@@ -72,7 +72,7 @@ export const teamRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'Teams'
+            pageTitle: 'gatewayApp.micro1Team.home.title'
         },
         canActivate: [UserRouteAccessService]
     }
@@ -87,7 +87,7 @@ export const teamPopupRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'Teams'
+            pageTitle: 'gatewayApp.micro1Team.home.title'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'

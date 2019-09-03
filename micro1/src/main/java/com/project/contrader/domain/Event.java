@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.time.ZonedDateTime;
 import java.util.Objects;
 
 /**
@@ -22,12 +23,8 @@ public class Event implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "sport_name", nullable = false)
-    private String sportName;
-
-    @NotNull
     @Min(value = 1)
-    @Max(value = 100)
+    @Max(value = 5)
     @Column(name = "rate", nullable = false)
     private Integer rate;
 
@@ -40,20 +37,17 @@ public class Event implements Serializable {
     private String address;
 
     @NotNull
-    @Column(name = "matchtime", nullable = false)
-    private String matchtime;
-
-    @NotNull
     @Column(name = "status", nullable = false)
     private Boolean status;
 
-    @ManyToOne
-    @JsonIgnoreProperties("eventsports")
-    private Sport sport;
+    @NotNull
+    @Column(name = "matchtime", nullable = false)
+    private ZonedDateTime matchtime;
 
-    @ManyToOne
-    @JsonIgnoreProperties("")
-    private Sport eventsport;
+    @ManyToOne(optional = false)
+    @NotNull
+    @JsonIgnoreProperties("events")
+    private Sport sport;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -62,19 +56,6 @@ public class Event implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getSportName() {
-        return sportName;
-    }
-
-    public Event sportName(String sportName) {
-        this.sportName = sportName;
-        return this;
-    }
-
-    public void setSportName(String sportName) {
-        this.sportName = sportName;
     }
 
     public Integer getRate() {
@@ -116,19 +97,6 @@ public class Event implements Serializable {
         this.address = address;
     }
 
-    public String getMatchtime() {
-        return matchtime;
-    }
-
-    public Event matchtime(String matchtime) {
-        this.matchtime = matchtime;
-        return this;
-    }
-
-    public void setMatchtime(String matchtime) {
-        this.matchtime = matchtime;
-    }
-
     public Boolean isStatus() {
         return status;
     }
@@ -142,6 +110,19 @@ public class Event implements Serializable {
         this.status = status;
     }
 
+    public ZonedDateTime getMatchtime() {
+        return matchtime;
+    }
+
+    public Event matchtime(ZonedDateTime matchtime) {
+        this.matchtime = matchtime;
+        return this;
+    }
+
+    public void setMatchtime(ZonedDateTime matchtime) {
+        this.matchtime = matchtime;
+    }
+
     public Sport getSport() {
         return sport;
     }
@@ -153,19 +134,6 @@ public class Event implements Serializable {
 
     public void setSport(Sport sport) {
         this.sport = sport;
-    }
-
-    public Sport getEventsport() {
-        return eventsport;
-    }
-
-    public Event eventsport(Sport sport) {
-        this.eventsport = sport;
-        return this;
-    }
-
-    public void setEventsport(Sport sport) {
-        this.eventsport = sport;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -193,12 +161,11 @@ public class Event implements Serializable {
     public String toString() {
         return "Event{" +
             "id=" + getId() +
-            ", sportName='" + getSportName() + "'" +
             ", rate=" + getRate() +
             ", city='" + getCity() + "'" +
             ", address='" + getAddress() + "'" +
-            ", matchtime='" + getMatchtime() + "'" +
             ", status='" + isStatus() + "'" +
+            ", matchtime='" + getMatchtime() + "'" +
             "}";
     }
 }

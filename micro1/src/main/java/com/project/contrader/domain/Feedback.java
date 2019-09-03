@@ -22,26 +22,18 @@ public class Feedback implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "sport_name", nullable = false)
-    private String sportName;
-
-    @NotNull
     @Column(name = "creator_name", nullable = false)
     private String creatorName;
 
     @NotNull
     @Min(value = 1)
-    @Max(value = 100)
+    @Max(value = 5)
     @Column(name = "rate", nullable = false)
     private Integer rate;
 
     @ManyToOne
-    @JsonIgnoreProperties("feedsports")
+    @JsonIgnoreProperties("feeds")
     private Sport sport;
-
-    @ManyToOne
-    @JsonIgnoreProperties("")
-    private Sport feedsport;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -50,19 +42,6 @@ public class Feedback implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getSportName() {
-        return sportName;
-    }
-
-    public Feedback sportName(String sportName) {
-        this.sportName = sportName;
-        return this;
-    }
-
-    public void setSportName(String sportName) {
-        this.sportName = sportName;
     }
 
     public String getCreatorName() {
@@ -103,19 +82,6 @@ public class Feedback implements Serializable {
     public void setSport(Sport sport) {
         this.sport = sport;
     }
-
-    public Sport getFeedsport() {
-        return feedsport;
-    }
-
-    public Feedback feedsport(Sport sport) {
-        this.feedsport = sport;
-        return this;
-    }
-
-    public void setFeedsport(Sport sport) {
-        this.feedsport = sport;
-    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -142,7 +108,6 @@ public class Feedback implements Serializable {
     public String toString() {
         return "Feedback{" +
             "id=" + getId() +
-            ", sportName='" + getSportName() + "'" +
             ", creatorName='" + getCreatorName() + "'" +
             ", rate=" + getRate() +
             "}";

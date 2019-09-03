@@ -1,7 +1,8 @@
 {
   "generator-jhipster": {
     "promptValues": {
-      "packageName": "com.project.contrader"
+      "packageName": "com.project.contrader",
+      "nativeLanguage": "it"
     },
     "jhipsterVersion": "5.2.1",
     "applicationType": "gateway",
@@ -12,7 +13,7 @@
     "authenticationType": "jwt",
     "cacheProvider": "hazelcast",
     "enableHibernateCache": false,
-    "websocket": false,
+    "websocket": "spring-websocket",
     "databaseType": "sql",
     "devDatabaseType": "h2Disk",
     "prodDatabaseType": "mysql",
@@ -21,14 +22,21 @@
     "serviceDiscoveryType": "consul",
     "buildTool": "maven",
     "enableSwaggerCodegen": false,
-    "jwtSecretKey": "116a32fd30d0c0762ccbc021daf1928ca35d9fd6",
+    "jwtSecretKey": "cc83d9ae900aa941120550d33cdfc43b5ad212eb",
     "clientFramework": "angularX",
-    "useSass": false,
+    "useSass": true,
     "clientPackageManager": "npm",
     "testFrameworks": [
       "protractor"
     ],
     "jhiPrefix": "jhi",
-    "enableTranslation": false
+    "enableTranslation": true,
+    "nativeLanguage": "it",
+    "languages": [
+      "it",
+      "zh-tw",
+      "nl",
+      "en"
+    ]
   }
 }

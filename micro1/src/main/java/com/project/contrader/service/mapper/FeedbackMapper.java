@@ -12,11 +12,9 @@ import org.mapstruct.*;
 public interface FeedbackMapper extends EntityMapper<FeedbackDTO, Feedback> {
 
     @Mapping(source = "sport.id", target = "sportId")
-    @Mapping(source = "feedsport.id", target = "feedsportId")
     FeedbackDTO toDto(Feedback feedback);
 
     @Mapping(source = "sportId", target = "sport")
-    @Mapping(source = "feedsportId", target = "feedsport")
     Feedback toEntity(FeedbackDTO feedbackDTO);
 
     default Feedback fromId(Long id) {

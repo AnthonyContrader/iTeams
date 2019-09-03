@@ -1,0 +1,31 @@
+
+{
+    "gatewayApp": {
+        "micro1Event" : {
+            "home": {
+                "title": "Events",
+                "createLabel": "Maak een nieuwe Event",
+                "createOrEditLabel": "Maak of wijzig een Event"
+            },
+            "delete": {
+                "question": "Bent u zeker dat u Event {{ id }} wilt verwijderen?"
+            },
+            "detail": {
+                "title": "Event"
+            },
+            "rate": "Rate",
+            "city": "City",
+            "address": "Address",
+            "status": "Status",
+            "matchtime": "Matchtime",
+            "sport": "Sport"
+        }
+    },
+    "micro1App": {
+        "micro1Event" : {
+            "created": "A new Event is created with identifier {{ param }}",
+            "updated": "A Event is updated with identifier {{ param }}",
+            "deleted": "A Event is deleted with identifier {{ param }}"
+        }
+    }
+}

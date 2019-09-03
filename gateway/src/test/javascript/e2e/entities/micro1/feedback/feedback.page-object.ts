@@ -9,7 +9,7 @@ export class FeedbackComponentsPage {
     }
 
     async getTitle() {
-        return this.title.getText();
+        return this.title.getAttribute('jhiTranslate');
     }
 }
 
@@ -17,22 +17,12 @@ export class FeedbackUpdatePage {
     pageTitle = element(by.id('jhi-feedback-heading'));
     saveButton = element(by.id('save-entity'));
     cancelButton = element(by.id('cancel-save'));
-    sportNameInput = element(by.id('field_sportName'));
     creatorNameInput = element(by.id('field_creatorName'));
     rateInput = element(by.id('field_rate'));
     sportSelect = element(by.id('field_sport'));
-    feedsportSelect = element(by.id('field_feedsport'));
 
     async getPageTitle() {
-        return this.pageTitle.getText();
-    }
-
-    async setSportNameInput(sportName) {
-        await this.sportNameInput.sendKeys(sportName);
-    }
-
-    async getSportNameInput() {
-        return this.sportNameInput.getAttribute('value');
+        return this.pageTitle.getAttribute('jhiTranslate');
     }
 
     async setCreatorNameInput(creatorName) {
@@ -68,25 +58,6 @@ export class FeedbackUpdatePage {
 
     async getSportSelectedOption() {
         return this.sportSelect.element(by.css('option:checked')).getText();
-    }
-
-    async feedsportSelectLastOption() {
-        await this.feedsportSelect
-            .all(by.tagName('option'))
-            .last()
-            .click();
-    }
-
-    async feedsportSelectOption(option) {
-        await this.feedsportSelect.sendKeys(option);
-    }
-
-    getFeedsportSelect(): ElementFinder {
-        return this.feedsportSelect;
-    }
-
-    async getFeedsportSelectedOption() {
-        return this.feedsportSelect.element(by.css('option:checked')).getText();
     }
 
     async save() {

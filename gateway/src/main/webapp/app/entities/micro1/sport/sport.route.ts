@@ -36,7 +36,7 @@ export const sportRoute: Routes = [
         data: {
             authorities: ['ROLE_USER'],
             defaultSort: 'id,asc',
-            pageTitle: 'Sports'
+            pageTitle: 'gatewayApp.micro1Sport.home.title'
         },
         canActivate: [UserRouteAccessService]
     },
@@ -48,7 +48,7 @@ export const sportRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'Sports'
+            pageTitle: 'gatewayApp.micro1Sport.home.title'
         },
         canActivate: [UserRouteAccessService]
     },
@@ -60,7 +60,7 @@ export const sportRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'Sports'
+            pageTitle: 'gatewayApp.micro1Sport.home.title'
         },
         canActivate: [UserRouteAccessService]
     },
@@ -72,7 +72,7 @@ export const sportRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'Sports'
+            pageTitle: 'gatewayApp.micro1Sport.home.title'
         },
         canActivate: [UserRouteAccessService]
     }
@@ -87,7 +87,7 @@ export const sportPopupRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'Sports'
+            pageTitle: 'gatewayApp.micro1Sport.home.title'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'

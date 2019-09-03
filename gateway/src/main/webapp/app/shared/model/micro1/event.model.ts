@@ -1,26 +1,26 @@
+import { Moment } from 'moment';
+
 export interface IEvent {
     id?: number;
-    sportName?: string;
     rate?: number;
     city?: string;
     address?: string;
-    matchtime?: string;
     status?: boolean;
+    matchtime?: Moment;
+    sportName?: string;
     sportId?: number;
-    eventsportId?: number;
 }
 
 export class Event implements IEvent {
     constructor(
         public id?: number,
-        public sportName?: string,
         public rate?: number,
         public city?: string,
         public address?: string,
-        public matchtime?: string,
         public status?: boolean,
-        public sportId?: number,
-        public eventsportId?: number
+        public matchtime?: Moment,
+        public sportName?: string,
+        public sportId?: number
     ) {
         this.status = this.status || false;
     }

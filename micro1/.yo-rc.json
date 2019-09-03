@@ -21,7 +21,7 @@
     "serviceDiscoveryType": "consul",
     "buildTool": "maven",
     "enableSwaggerCodegen": false,
-    "jwtSecretKey": "778c54600bdc62dcde217bff3cf19326c68dcf5b",
+    "jwtSecretKey": "78d11445a85fda36b299929ac0992119336b88c5",
     "enableTranslation": false,
     "testFrameworks": [],
     "jhiPrefix": "jhi",

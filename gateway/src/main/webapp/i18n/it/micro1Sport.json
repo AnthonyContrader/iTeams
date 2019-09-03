@@ -1,0 +1,29 @@
+
+{
+    "gatewayApp": {
+        "micro1Sport" : {
+            "home": {
+                "title": "Sports",
+                "createLabel": "Genera un nuovo Sport",
+                "createOrEditLabel": "Genera o modifica un Sport"
+            },
+            "delete": {
+                "question": "Sei sicuro di volere eliminare Sport {{ id }}?"
+            },
+            "detail": {
+                "title": "Sport"
+            },
+            "name": "Name",
+            "players": "Players",
+            "events": "Events",
+            "feeds": "Feeds"
+        }
+    },
+    "micro1App": {
+        "micro1Sport" : {
+            "created": "&Egrave; stato generato un nuovo Sport con identificatore { param }}",
+            "updated": "&Egrave; stato aggiornato Sport identificato da {{ param }}",
+            "deleted": "&Egrave; stato eliminato Sport con identificatore {{ param }}"
+        }
+    }
+}

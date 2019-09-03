@@ -12,11 +12,10 @@ import org.mapstruct.*;
 public interface EventMapper extends EntityMapper<EventDTO, Event> {
 
     @Mapping(source = "sport.id", target = "sportId")
-    @Mapping(source = "eventsport.id", target = "eventsportId")
+    @Mapping(source = "sport.name", target = "sportName")
     EventDTO toDto(Event event);
 
     @Mapping(source = "sportId", target = "sport")
-    @Mapping(source = "eventsportId", target = "eventsport")
     Event toEntity(EventDTO eventDTO);
 
     default Event fromId(Long id) {

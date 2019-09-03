@@ -10,7 +10,7 @@
         }
     ],
     "relationships": [],
-    "changelogDate": "20190830151607",
+    "changelogDate": "20190902151609",
     "entityTableName": "team",
     "dto": "mapstruct",
     "pagination": "pagination",

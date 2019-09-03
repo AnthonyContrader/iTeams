@@ -17,7 +17,7 @@ import { GatewayHomeModule } from './home/home.module';
 import { GatewayAccountModule } from './account/account.module';
 import { GatewayEntityModule } from './entities/entity.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
-import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ErrorComponent } from './layouts';
+import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
 
 @NgModule({
     imports: [
@@ -31,7 +31,7 @@ import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
         GatewayEntityModule
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
-    declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, FooterComponent],
+    declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
     providers: [
         {
             provide: HTTP_INTERCEPTORS,

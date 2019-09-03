@@ -1,44 +1,34 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="event">
-            <h2><span>Event</span> {{event.id}}</h2>
+            <h2><span jhiTranslate="gatewayApp.micro1Event.detail.title">Event</span> {{event.id}}</h2>
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
-                <dt><span>Sport Name</span></dt>
-                <dd>
-                    <span>{{event.sportName}}</span>
-                </dd>
-                <dt><span>Rate</span></dt>
+                <dt><span jhiTranslate="gatewayApp.micro1Event.rate">Rate</span></dt>
                 <dd>
                     <span>{{event.rate}}</span>
                 </dd>
-                <dt><span>City</span></dt>
+                <dt><span jhiTranslate="gatewayApp.micro1Event.city">City</span></dt>
                 <dd>
                     <span>{{event.city}}</span>
                 </dd>
-                <dt><span>Address</span></dt>
+                <dt><span jhiTranslate="gatewayApp.micro1Event.address">Address</span></dt>
                 <dd>
                     <span>{{event.address}}</span>
                 </dd>
-                <dt><span>Matchtime</span></dt>
-                <dd>
-                    <span>{{event.matchtime}}</span>
-                </dd>
-                <dt><span>Status</span></dt>
+                <dt><span jhiTranslate="gatewayApp.micro1Event.status">Status</span></dt>
                 <dd>
                     <span>{{event.status}}</span>
                 </dd>
-                <dt><span>Sport</span></dt>
+                <dt><span jhiTranslate="gatewayApp.micro1Event.matchtime">Matchtime</span></dt>
+                <dd>
+                    <span>{{event.matchtime}}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.micro1Event.sport">Sport</span></dt>
                 <dd>
                     <div *ngIf="event.sportId">
-                        <a [routerLink]="['/sport', event.sportId, 'view']">{{event.sportId}}</a>
-                    </div>
-                </dd>
-                <dt><span>Eventsport</span></dt>
-                <dd>
-                    <div *ngIf="event.eventsportId">
-                        <a [routerLink]="['/sport', event.eventsportId, 'view']">{{event.eventsportId}}</a>
+                        <a [routerLink]="['/sport', event.sportId, 'view']">{{event.sportName}}</a>
                     </div>
                 </dd>
             </dl>
@@ -46,13 +36,13 @@
             <button type="submit"
                     (click)="previousState()"
                     class="btn btn-info">
-                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
             </button>
 
             <button type="button"
                     [routerLink]="['/event', event.id, 'edit']"
                     class="btn btn-primary">
-                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
             </button>
         </div>
     </div>

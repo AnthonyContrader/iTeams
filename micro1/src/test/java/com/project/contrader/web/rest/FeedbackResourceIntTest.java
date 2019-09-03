@@ -42,9 +42,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = Micro1App.class)
 public class FeedbackResourceIntTest {
 
-    private static final String DEFAULT_SPORT_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_SPORT_NAME = "BBBBBBBBBB";
-
     private static final String DEFAULT_CREATOR_NAME = "AAAAAAAAAA";
     private static final String UPDATED_CREATOR_NAME = "BBBBBBBBBB";
 
@@ -97,7 +94,6 @@ public class FeedbackResourceIntTest {
      */
     public static Feedback createEntity(EntityManager em) {
         Feedback feedback = new Feedback()
-            .sportName(DEFAULT_SPORT_NAME)
             .creatorName(DEFAULT_CREATOR_NAME)
             .rate(DEFAULT_RATE);
         return feedback;
@@ -124,7 +120,6 @@ public class FeedbackResourceIntTest {
         List<Feedback> feedbackList = feedbackRepository.findAll();
         assertThat(feedbackList).hasSize(databaseSizeBeforeCreate + 1);
         Feedback testFeedback = feedbackList.get(feedbackList.size() - 1);
-        assertThat(testFeedback.getSportName()).isEqualTo(DEFAULT_SPORT_NAME);
         assertThat(testFeedback.getCreatorName()).isEqualTo(DEFAULT_CREATOR_NAME);
         assertThat(testFeedback.getRate()).isEqualTo(DEFAULT_RATE);
     }
@@ -147,25 +142,6 @@ public class FeedbackResourceIntTest {
         // Validate the Feedback in the database
         List<Feedback> feedbackList = feedbackRepository.findAll();
         assertThat(feedbackList).hasSize(databaseSizeBeforeCreate);
-    }
-
-    @Test
-    @Transactional
-    public void checkSportNameIsRequired() throws Exception {
-        int databaseSizeBeforeTest = feedbackRepository.findAll().size();
-        // set the field null
-        feedback.setSportName(null);
-
-        // Create the Feedback, which fails.
-        FeedbackDTO feedbackDTO = feedbackMapper.toDto(feedback);
-
-        restFeedbackMockMvc.perform(post("/api/feedbacks")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(feedbackDTO)))
-            .andExpect(status().isBadRequest());
-
-        List<Feedback> feedbackList = feedbackRepository.findAll();
-        assertThat(feedbackList).hasSize(databaseSizeBeforeTest);
     }
 
     @Test
@@ -217,7 +193,6 @@ public class FeedbackResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(feedback.getId().intValue())))
-            .andExpect(jsonPath("$.[*].sportName").value(hasItem(DEFAULT_SPORT_NAME.toString())))
             .andExpect(jsonPath("$.[*].creatorName").value(hasItem(DEFAULT_CREATOR_NAME.toString())))
             .andExpect(jsonPath("$.[*].rate").value(hasItem(DEFAULT_RATE)));
     }
@@ -234,7 +209,6 @@ public class FeedbackResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(feedback.getId().intValue()))
-            .andExpect(jsonPath("$.sportName").value(DEFAULT_SPORT_NAME.toString()))
             .andExpect(jsonPath("$.creatorName").value(DEFAULT_CREATOR_NAME.toString()))
             .andExpect(jsonPath("$.rate").value(DEFAULT_RATE));
     }
@@ -259,7 +233,6 @@ public class FeedbackResourceIntTest {
         // Disconnect from session so that the updates on updatedFeedback are not directly saved in db
         em.detach(updatedFeedback);
         updatedFeedback
-            .sportName(UPDATED_SPORT_NAME)
             .creatorName(UPDATED_CREATOR_NAME)
             .rate(UPDATED_RATE);
         FeedbackDTO feedbackDTO = feedbackMapper.toDto(updatedFeedback);
@@ -273,7 +246,6 @@ public class FeedbackResourceIntTest {
         List<Feedback> feedbackList = feedbackRepository.findAll();
         assertThat(feedbackList).hasSize(databaseSizeBeforeUpdate);
         Feedback testFeedback = feedbackList.get(feedbackList.size() - 1);
-        assertThat(testFeedback.getSportName()).isEqualTo(UPDATED_SPORT_NAME);
         assertThat(testFeedback.getCreatorName()).isEqualTo(UPDATED_CREATOR_NAME);
         assertThat(testFeedback.getRate()).isEqualTo(UPDATED_RATE);
     }

@@ -1,13 +1,18 @@
 {
-    "name": "Event",
-    "fields": [
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
         {
-            "fieldName": "sportName",
-            "fieldType": "String",
-            "fieldValidateRules": [
+            "relationshipName": "sport",
+            "otherEntityName": "sport",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
                 "required"
-            ]
-        },
+            ],
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
         {
             "fieldName": "rate",
             "fieldType": "Integer",
@@ -17,7 +22,7 @@
                 "max"
             ],
             "fieldValidateRulesMin": 1,
-            "fieldValidateRulesMax": 100
+            "fieldValidateRulesMax": 5
         },
         {
             "fieldName": "city",
@@ -34,42 +39,26 @@
             ]
         },
         {
-            "fieldName": "matchtime",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
             "fieldName": "status",
             "fieldType": "Boolean",
             "fieldValidateRules": [
                 "required"
             ]
-        }
-    ],
-    "relationships": [
-        {
-            "relationshipName": "sport",
-            "otherEntityName": "sport",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id"
         },
         {
-            "relationshipType": "many-to-one",
-            "relationshipName": "eventsport",
-            "otherEntityName": "sport",
-            "otherEntityField": "id"
+            "fieldName": "matchtime",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
-    "changelogDate": "20190830151604",
-    "entityTableName": "event",
+    "changelogDate": "20190902151606",
     "dto": "mapstruct",
-    "pagination": "pagination",
+    "searchEngine": false,
     "service": "serviceImpl",
+    "entityTableName": "event",
     "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "clientRootFolder": "",
-    "applications": "*",
+    "pagination": "pagination",
     "microserviceName": "micro1"
 }

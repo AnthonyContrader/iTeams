@@ -20,26 +20,23 @@ describe('Feedback e2e test', () => {
     it('should load Feedbacks', async () => {
         await navBarPage.goToEntity('feedback');
         feedbackComponentsPage = new FeedbackComponentsPage();
-        expect(await feedbackComponentsPage.getTitle()).toMatch(/Feedbacks/);
+        expect(await feedbackComponentsPage.getTitle()).toMatch(/gatewayApp.micro1Feedback.home.title/);
     });
 
     it('should load create Feedback page', async () => {
         await feedbackComponentsPage.clickOnCreateButton();
         feedbackUpdatePage = new FeedbackUpdatePage();
-        expect(await feedbackUpdatePage.getPageTitle()).toMatch(/Create or edit a Feedback/);
+        expect(await feedbackUpdatePage.getPageTitle()).toMatch(/gatewayApp.micro1Feedback.home.createOrEditLabel/);
         await feedbackUpdatePage.cancel();
     });
 
     it('should create and save Feedbacks', async () => {
         await feedbackComponentsPage.clickOnCreateButton();
-        await feedbackUpdatePage.setSportNameInput('sportName');
-        expect(await feedbackUpdatePage.getSportNameInput()).toMatch('sportName');
         await feedbackUpdatePage.setCreatorNameInput('creatorName');
         expect(await feedbackUpdatePage.getCreatorNameInput()).toMatch('creatorName');
         await feedbackUpdatePage.setRateInput('5');
         expect(await feedbackUpdatePage.getRateInput()).toMatch('5');
         await feedbackUpdatePage.sportSelectLastOption();
-        await feedbackUpdatePage.feedsportSelectLastOption();
         await feedbackUpdatePage.save();
         expect(await feedbackUpdatePage.getSaveButton().isPresent()).toBeFalsy();
     });

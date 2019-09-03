@@ -1,0 +1,26 @@
+
+{
+    "gatewayApp": {
+        "micro1Team" : {
+            "home": {
+                "title": "Teams",
+                "createLabel": "建立一筆新的 Team",
+                "createOrEditLabel": "建立或編輯 Team"
+            },
+            "delete": {
+                "question": "您確定要刪除 Team {{ id }} 嗎?"
+            },
+            "detail": {
+                "title": "Team"
+            },
+            "name": "Name"
+        }
+    },
+    "micro1App": {
+        "micro1Team" : {
+            "created": "新的 Team 建立成功，識別碼為 {{ param }}",
+            "updated": "識別碼為 {{ param }} 的 Team 更新成功",
+            "deleted": "識別碼為 {{ param }} 的 Team 刪除成功"
+        }
+    }
+}

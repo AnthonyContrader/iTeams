@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { AccountService } from './account.service';
+import { JhiTrackerService } from '../tracker/tracker.service';
 
 @Injectable({ providedIn: 'root' })
 export class Principal {
@@ -8,7 +9,7 @@ export class Principal {
     private authenticated = false;
     private authenticationState = new Subject<any>();
 
-    constructor(private account: AccountService) {}
+    constructor(private account: AccountService, private trackerService: JhiTrackerService) {}
 
     authenticate(identity) {
         this.userIdentity = identity;
@@ -69,6 +70,7 @@ export class Principal {
                 if (account) {
                     this.userIdentity = account;
                     this.authenticated = true;
+                    this.trackerService.connect();
                 } else {
                     this.userIdentity = null;
                     this.authenticated = false;
@@ -77,6 +79,9 @@ export class Principal {
                 return this.userIdentity;
             })
             .catch(err => {
+                if (this.trackerService.stompClient && this.trackerService.stompClient.connected) {
+                    this.trackerService.disconnect();
+                }
                 this.userIdentity = null;
                 this.authenticated = false;
                 this.authenticationState.next(this.userIdentity);
