@@ -1,0 +1,113 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="sidenav">
+            <button type="button" class="menubtn">
+                <a [routerLink]="['/user-dashboard']"> <i class="fas fa-home" style="margin-right: 10px"> </i>
+                    Dashboard </a>
+            </button>
+
+            <button type="button" class="menubtn" data-toggle="collapsebtn" data-target="#account"
+                (click)="accountcollapse()">
+                <i class="fas fa-user" style="margin-right: 15px"></i> Account
+            </button>
+            <div class="collapsebtn" id="account" *ngIf="isAccountCollapsed">
+                <button class="menubtn" style="background-color: #334247; padding-left: 40px">
+                    <a [routerLink]="['/user-dashboard/accounts']"> <i class="fas fa-user-edit"
+                            style="margin-right: 15px"></i>
+                        Edit Profile U</a>
+                </button>
+                <button class="menubtn" style="background-color: #334247; padding-left: 40px">
+                    <a [routerLink]="['/user-dashboard/work-in-progress']"><i class="fas fa-file-alt"
+                            style="margin-right: 15px"></i>General Info U</a>
+                </button>
+            </div>
+
+            <button type="button" class="menubtn" data-toggle="collapsebtn" data-target="#sports"
+                (click)="sportscollapse()">
+                <i class="fas fa-users" style="margin-right: 15px"></i>Sports
+            </button>
+            <div class="collapsebtn" id="users" *ngIf="isSportCollapsed">
+                <button class="menubtn" style="padding-left: 40px; background-color: #334247;">
+                    <a [routerLink]="['/user-dashboard/sports-liked']"> <i class="fas fa-edit" style="margin-right: 10px">
+                        </i> Liked Sports </a>
+                </button>
+                <button class="menubtn" style="padding-left: 40px; background-color: #334247;">
+                    <a [routerLink]="['/user-dashboard/sports']"> <i class="fas fa-edit" style="margin-right: 10px">
+                        </i> Manage Sports </a>
+                </button>
+            </div>
+
+            <button type="button" class="menubtn" data-toggle="collapsebtn" data-target="#events"
+                (click)="eventscollapse()">
+                <i class="fas fa-users" style="margin-right: 15px"></i>Events
+            </button>
+            <div class="collapsebtn" id="users" *ngIf="isEventCollapsed">
+                <button class="menubtn" style="padding-left: 40px; background-color: #334247;">
+                    <a [routerLink]="['/user-dashboard/events-created']"> <i class="fas fa-edit" style="margin-right: 10px">
+                        </i> Manage Events </a>
+                </button>
+                <button class="menubtn" style="padding-left: 40px; background-color: #334247;">
+                    <a [routerLink]="['/user-dashboard/events']"> <i class="fas fa-edit" style="margin-right: 10px">
+                        </i> Join Events </a>
+                </button>
+                <button class="menubtn" style="padding-left: 40px; background-color: #334247;">
+                    <a [routerLink]="['/user-dashboard/events-notified']"> <i class="fas fa-edit" style="margin-right: 10px">
+                        </i> Notified Events </a>
+                </button>
+            </div>
+
+            <button type="button" class="menubtn" data-toggle="collapsebtn" data-target="#feedback"
+                (click)="feedbackscollapse()">
+                <i class="fas fa-users" style="margin-right: 15px"></i>Feedback
+            </button>
+            <div class="collapsebtn" id="users" *ngIf="isFeedbackCollapsed">
+                <button class="menubtn" style="padding-left: 40px; background-color: #334247;">
+                    <a [routerLink]="['/user-dashboard/feedbacks-received']"> <i class="fas fa-edit" style="margin-right: 10px">
+                        </i> Feedbacks Received </a>
+                </button>
+                <button class="menubtn" style="padding-left: 40px; background-color: #334247;">
+                    <a [routerLink]="['/user-dashboard/feedbacks']"> <i class="fas fa-edit" style="margin-right: 10px">
+                        </i> Manage Feedbacks </a>
+                </button>
+            </div>
+
+            <button type="button" class="menubtn" data-toggle="collapsebtn" data-target="#message"
+                (click)="messagescollapse()">
+                <i class="fas fa-users" style="margin-right: 15px"></i>Messages
+            </button>
+            <div class="collapsebtn" id="users" *ngIf="isMessageCollapsed">
+
+                <button class="menubtn" style="padding-left: 40px; background-color: #334247;">
+                    <a [routerLink]="['/user-dashboard/messages-send']"> <i class="fas fa-edit" style="margin-right: 10px">
+                        </i> Send </a>
+                </button>              
+
+                <button class="menubtn" style="padding-left: 40px; background-color: #334247;">
+                    <a [routerLink]="['/user-dashboard/messages-received']"> <i class="fas fa-edit" style="margin-right: 10px">
+                        </i> Received </a>
+                </button>
+
+                <button class="menubtn" style="padding-left: 40px; background-color: #334247;">
+                    <a [routerLink]="['/user-dashboard/messages-sent']"> <i class="fas fa-edit" style="margin-right: 10px">
+                        </i> Sent</a>
+                </button>
+                
+            </div>
+
+            <button type="button" class="menubtn" data-toggle="collapsebtn" data-target="#teams"
+                (click)="teamscollapse()">
+                <i class="fas fa-users" style="margin-right: 15px"></i>Teams
+            </button>
+            <div class="collapsebtn" id="users" *ngIf="isTeamCollapsed">
+                <button class="menubtn" style="padding-left: 40px; background-color: #334247;">
+                    <a [routerLink]="['/user-dashboard/teams']"> <i class="fas fa-edit" style="margin-right: 10px">
+                        </i> Manage Teams </a>
+                </button>
+            </div>
+
+            <button class="menubtn" (click)="logout()">
+                <i class="fas fa-sign-out-alt" style="margin-right: 15px"></i>Logout USER
+            </button>
+        </div>
+    </div>
+</div>

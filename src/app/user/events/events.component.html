@@ -1,0 +1,107 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-10">
+      <table>
+        <tr>
+          <th>
+            Sport Name
+          </th>
+          <th>
+            Rate
+          </th>
+          <th>
+            City
+          </th>
+          <th>
+            Address
+          </th>
+          <th>
+            Matchtime
+          </th>
+          <th>
+            Status
+          </th>
+          <th>
+            Edit
+          </th>
+          <th>
+            Event
+          </th>
+        </tr>
+        <!--
+        <tr>
+          <td>
+              <select [(ngModel)]="eventtoinsert.sport">
+                  <option [ngValue]="sport" *ngFor="let sport of sports">{{sport.name}}</option>
+              </select>            
+          </td>
+          <td>
+            <input type="number" min="0" max="5" placeholder="rate" [(ngModel)]="eventtoinsert.rate">
+          </td>
+          <td>
+            <input placeholder="city" [(ngModel)]="eventtoinsert.city">
+          </td>
+          <td>
+            <input placeholder="address" [(ngModel)]="eventtoinsert.address">
+          </td>
+          <td>
+            <input placeholder="matchtime" [(ngModel)]="eventtoinsert.matchtime">
+          </td>
+          <td>
+          </td>
+          <td>
+            <button (click)="insert(eventtoinsert); clear()">Insert</button>
+          </td>
+          <td>
+            <button (click)="clear()">Clear</button>
+          </td>
+        </tr>
+      -->
+        <tr *ngFor="let event of events">
+          <ng-template
+            *ngIf="mine(event);then showBlock;">
+          </ng-template>
+          <ng-template #showBlock>
+          <td>
+            <!--con input rendo il nome dello sport modificabile-->
+            <!--<input [(ngModel)]="event.sport.name">-->
+            <!--con {{...}} rendo il nome dello sport leggibile e non modificabile -->
+            {{event.sport.name}}
+          </td>
+          <td>
+            <!--<input type="number" min="0" max="5" [(ngModel)]="event.rate">-->
+            {{event.rate}}
+          </td>
+          <td>
+            <!--<input [(ngModel)]="event.city">-->
+            {{event.city}}
+          </td>
+          <td>
+            <!--<input [(ngModel)]="event.address">-->
+            {{event.address}}
+          </td>
+          <td>
+            <!--<input [(ngModel)]="event.matchtime">-->
+            {{event.matchtime}}
+          </td>
+          <td>
+          </td>
+          <td>
+
+            <button (click)=join(event)>Join</button>
+          </td>
+          <td>
+            <button (click)="unjoin(event)">Unjoin</button>
+          </td>
+        </ng-template>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-1">
+
+    </div>
+  </div>
+</div>

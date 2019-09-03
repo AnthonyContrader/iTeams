@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-10">
+      <table>
+        <tr>
+          <th>
+            Name
+          </th>
+          <th>
+            Players
+          </th>
+          <th>
+            Option
+          </th>         
+        </tr>        
+        <tr *ngFor="let sport of sports">
+          <td>
+            <!--<input [(ngModel)]="sport.name">-->
+            {{sport.name}}
+          </td>
+          <td>
+            <!--<input [(ngModel)]="sport.players">-->
+            {{sport.players}}
+          </td>
+          <td>
+            <button (click)="unlike(sport)">Unjoin</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-1">
+
+    </div>
+  </div>
+</div>

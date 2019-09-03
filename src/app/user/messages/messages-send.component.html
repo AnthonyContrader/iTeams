@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row mt-5">
+   
+    <div class="col-md-10">
+     
+      <h1>Send a Message</h1>
+        <!--<form #f="ngForm" (ngSubmit)="insert(messagetoinsert)" novalidate>
+          <fieldset>
+            <label>Receiver:</label>
+              <input type = "text"
+                     id = "myText"
+                     placeholder="Insert Receiver">
+                     <select [(ngModel)]="messagetoinsert.user">
+                      <option [ngValue]="user" *ngFor="let user of users">{{user.username}}</option>
+                    </select>
+            
+
+              <label>Text Area</label>
+              <textarea placeholder="Your text here" [(ngModel)]="messagetoinsert.text"></textarea>              
+                <button>Submit</button>             
+          </fieldset>
+        </form>-->
+        <p>
+          <select [(ngModel)]="messagetoinsert.receiver">
+            <option [ngValue]="user" *ngFor="let user of users">{{user.username}}</option>
+          </select>
+        </p>
+        <p>
+          <textarea placeholder="Your text here" [(ngModel)]="messagetoinsert.text"></textarea>
+        </p>
+        <p>
+          <button (click)="insert(messagetoinsert); clear()">Insert</button>
+        </p>
+    </div>
+
+
+   
+  </div>
+</div>
