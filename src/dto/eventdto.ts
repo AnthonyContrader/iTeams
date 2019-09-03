@@ -1,9 +1,10 @@
 import { UserDTO } from './userdto';
+import { SportDTO } from './sportdto';
 
 export class EventDTO {
 
    id: number;
-   
+
    sportName: string;
 
    rate: number;
@@ -13,7 +14,7 @@ export class EventDTO {
    address: string;
 
    matchtime: string;
-   
+
    status: boolean;
 
    creator: UserDTO;

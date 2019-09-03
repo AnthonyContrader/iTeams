@@ -56,3 +56,4 @@ export class EventsComponent implements OnInit {
     this.eventtoinsert = new EventDTO();
   }
 }
+  
