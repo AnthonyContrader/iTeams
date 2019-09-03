@@ -16,21 +16,21 @@ export class SportService extends AbstractService<SportDTO>{
     this.type = 'sport';
   }
 
-  auth() {
+  /*auth() {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
     if(this.user) {
         return 'Bearer ' + this.user.authorities;
     } else {
         return '';
     }
-  }
+  }*/
 
 
-  getSports(): Observable<SportDTO[]>{
+  /*getSports(): Observable<SportDTO[]>{
     return this.http.get<SportDTO[]>('http://localhost:8080/micro1/api/sports', {
       headers: {
           Authorization: this.auth()
       }
     });
-  }
+  }*/
 }

@@ -29,7 +29,7 @@ export class SportsComponent implements OnInit {
   }
 
   getSports() {
-      this.service.getSports().subscribe(sports => this.sports = sports);
+      this.service.getAll().subscribe(sports => this.sports = sports);
     //this.service.getAll().subscribe(sports => this.sports = sports);
   }
 
