@@ -44,20 +44,36 @@ export abstract class AbstractService<DTO> implements Service<DTO> {
       }
 
     read(id: number): Observable<DTO> {
-        return this.http.get<DTO>('http://localhost:' + this.port + '/' + this.type + '/read?id=' + id);
+        return this.http.get<DTO>('http://localhost:'+ this.port +'/micro1/api/'+ this.type + 's/' + id, {
+            headers: {
+                Authorization: this.auth()
+            }
+          } );
     }
 
     delete(id: number): Observable<any> {
-        return this.http.delete('http://localhost:' + this.port + '/' + this.type + '/delete?id=' + id);
+        return this.http.delete('http://localhost:'+ this.port +'/micro1/api/'+ this.type + 's/' + id, {
+            headers: {
+                Authorization: this.auth()
+            }
+          });
     }
 
     insert(dto: DTO): Observable<any> {
-        return this.http.post('http://localhost:' + this.port + '/' + this.type + '/insert', dto);
+        return this.http.post('http://localhost:'+ this.port +'/micro1/api/'+ this.type + 's', dto, {
+            headers: {
+                Authorization: this.auth()
+            }
+          });
     }
 
     update(dto: DTO): Observable<DTO> {
         console.log("in update "+this.type);
-        return this.http.put<DTO>('http://localhost:' + this.port + '/' + this.type + '/update', dto);
+        return this.http.put<DTO>('http://localhost:'+ this.port +'/micro1/api/'+ this.type + 's', dto, {
+            headers: {
+                Authorization: this.auth()
+            }
+          });
 
     }
 
